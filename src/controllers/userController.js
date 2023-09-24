@@ -1,4 +1,5 @@
 const schemas = require("../models/userModel");
+const jwt = require("jsonwebtoken")
 
 const addNewUser = (req, res) => {
     console.log(req.body);
@@ -20,6 +21,7 @@ const addNewUser = (req, res) => {
     schemas.user
       .find({})
       .then((data) => {
+        
         res.json(data);
         console.log(data);
       })
@@ -28,8 +30,17 @@ const addNewUser = (req, res) => {
       });
   };
 
+  const fetchSingleUser = (req, res) => {
+    const {email, pass} = req.params;
+    schemas.user.findOne({email: req.params.email, password: req.params.password})
+    .then((data)=>{
+      const token = jwt.sign({email}, "hello",{"expiresIn": "1h"})
+      res.json({token:token})
+    })
+  }
   module.exports = {
     addNewUser,
-    fetchAllUser
+    fetchAllUser,
+    fetchSingleUser,
   };
 

@@ -1,10 +1,10 @@
-const schemas = require("../models/userModel");
+const property = require("../models/propertyModel");
 
-const addNewUser = (req, res) => {
-    console.log(req.body);
-    let newUser = new schemas.user(req.body);
+const addProperty = (req, res) => {
+    
+    let newProperty = new property(req.body);
   
-    newUser
+    newProperty
       .save()
       .then((user) => {
         console.log("Data saved successfully");
@@ -16,8 +16,8 @@ const addNewUser = (req, res) => {
       });
   };
 
-  const fetchAllUser = (req, res) => {
-    schemas.user
+  const fetchAllProperty = (req, res) => {
+    property
       .find({})
       .then((data) => {
         res.json(data);
@@ -29,7 +29,7 @@ const addNewUser = (req, res) => {
   };
 
   module.exports = {
-    addNewUser,
-    fetchAllUser
+    addProperty,
+    fetchAllProperty
+    
   };
-

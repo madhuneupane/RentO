@@ -7,6 +7,7 @@ const routes = (app)=>{
     app.route("/addUser").post(userController.addNewUser);
     app.route("/fetchAllUser").get(verifyToken,userController.fetchAllUser);
     app.route("/fetchSingleUser/:email/:password").get(userController.fetchSingleUser);
+    app.route("/fetchUserById/:id").get(userController.fetchUserById);
 
    app.route("/addProperty").post(verifyToken,propertyController.addProperty);
    app.route("/fetchAllProperty").get(verifyToken,propertyController.fetchAllProperty);

@@ -38,9 +38,20 @@ const addNewUser = (req, res) => {
       res.json({token:token})
     })
   }
+
+  const fetchUserById = (req, res) => {
+    const {id} = req.params;
+    schemas.user.findOne({_id:id})
+    .then((data)=>{
+      res.json({data})
+    }).catch((error)=>{
+      console.log(error);
+    })
+  }
   module.exports = {
     addNewUser,
     fetchAllUser,
     fetchSingleUser,
+    fetchUserById,
   };
 

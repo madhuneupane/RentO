@@ -28,10 +28,7 @@ const propertySchema = new Schema({
       max:'2024-05-10'
      
     },
-    bathRoomNumbers: {
-      type: Number,
-     
-    },
+    
     ownerID: {
       type: String,
      

@@ -1,5 +1,6 @@
 const userController = require("./controllers/userController");
 const propertyController = require("./controllers/propertyController");
+const openAiController = require("./controllers/openAiController")
 const jwt = require("jsonwebtoken");
 
 const routes = (app)=>{
@@ -9,6 +10,8 @@ const routes = (app)=>{
 
    app.route("/addProperty").post(verifyToken,propertyController.addProperty);
    app.route("/fetchAllProperty").get(verifyToken,propertyController.fetchAllProperty);
+
+   app.route("/descriptionSuggest").post(verifyToken,openAiController.suggestDescription);
 
 }
 

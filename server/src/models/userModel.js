@@ -18,6 +18,16 @@ const userSchema = new Schema({
       type: String,
       required: true,
     },
+    profilepic: {
+      type: String,
+    },
+    phonenumber: {
+      type: Number,
+    },
+    isOwner: {
+      type: Boolean,
+      default: false,
+    }
   });
 
   const user = mongoose.model("users", userSchema);

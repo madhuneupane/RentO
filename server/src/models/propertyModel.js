@@ -6,10 +6,37 @@ const propertySchema = new Schema({
       type: String,
       
     },
+    type: {
+      type: String,
+      
+    },
+    location: {
+      type: String,
+      
+    },
     roomNumbers: {
       type: Number,
      
     },
+    bathRoomNumbers: {
+      type: Number,
+     
+    },
+    availableDate: {
+      type: Date,
+      min:'2023-10-05',
+      max:'2024-05-10'
+     
+    },
+    bathRoomNumbers: {
+      type: Number,
+     
+    },
+    ownerID: {
+      type: String,
+     
+    },
+
     photoUrls:  [
         {
           url: {
@@ -19,6 +46,10 @@ const propertySchema = new Schema({
 
         ],
     pet: {
+      type: Boolean,
+      default: true,
+    },
+    parkingSpace: {
       type: Boolean,
       default: true,
     },

@@ -3,13 +3,14 @@ const property = require("../models/propertyModel");
 const addProperty = (req, res) => {
     
     let newProperty = new property(req.body);
-  
+
+  //console.log(newProperty);
     newProperty
       .save()
       .then((user) => {
         console.log("Data saved successfully");
         res.send(user);
-        console.log(user);
+        //console.log(user);
       })
       .catch((error) => {
         console.error("Error saving data:", error);

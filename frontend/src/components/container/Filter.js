@@ -28,7 +28,6 @@ const Filter = () => {
             <View style={styles.propertyType}>
             <Text style={styles.title}>Property Type</Text>          
             <List
-                style={{ padding: 2, margin: 2, borderRadius: 2 }}
                 numColumns={filterPropertyType.propertyType.length / 2}
                 items={filterPropertyType.propertyType}
                 selectedItems={selectedItems} 
@@ -45,7 +44,6 @@ const Filter = () => {
              <View style={styles.rooms}>
             <Text style={styles.title}>Bedrooms</Text>          
             <List
-                style={{ padding: 2, margin: 2, borderRadius: 2 }}
                 numColumns={filterPropertyType.bedrooms.length}
                 items={filterPropertyType.bedrooms}
                 selectedItems={selectedItems} 
@@ -65,7 +63,6 @@ const Filter = () => {
             <View style={styles.tour}>
             <Text style={styles.title}>Tour</Text>          
             <List
-                style={{ padding: 2, margin: 2, borderRadius: 2 }}
                 numColumns={filterPropertyType.tour.length/2}
                 items={filterPropertyType.tour}
                 selectedItems={selectedItems} 
@@ -75,7 +72,6 @@ const Filter = () => {
              <View style={styles.tour}>
             <Text style={styles.title}>Other Details</Text>          
             <List
-                style={{ padding: 2, margin: 2, borderRadius: 2 }}
                 numColumns={filterPropertyType.other_details.length/2}
                 items={filterPropertyType.other_details}
                 selectedItems={selectedItems} 

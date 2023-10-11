@@ -4,11 +4,17 @@ const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const routes = require("./routes");
+const routes = require("./src/routes");
+
+//const {OpenAIApi, Configuration} = require("openai");
+
+
 
 const PORT = process.env.PORT || 5001;
 app.use(cors());
 const url = process.env.url;
+
+
 async function connect() {
   try {
     await mongoose.connect(url);

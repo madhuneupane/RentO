@@ -2,10 +2,10 @@ import React from 'react'
 import { Button } from '@rneui/themed'
 import { TouchableOpacity,Text } from 'react-native'
 import { StyleSheet } from 'react-native'
-const ButtonUI = ({item,selectedItems,style,type}) => {
+const ButtonUI = ({item,selectedItems,customStyle,type}) => {
     return (
         <TouchableOpacity onPress={()=>selectedItems(item.value,type)}>
-        <Text style={styles.text}>
+        <Text style={customStyle ? {...styles.text,...customStyle} :styles.text}>
             {" "+item.value+" "}
             </Text>
     </TouchableOpacity>

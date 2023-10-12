@@ -5,14 +5,15 @@ import {InputUI} from '../UI/input/InputUI'
 import ButtonUI from '../UI/button/ButtonUI'
 import { rentorCredentials } from '../static/constants'
 import LoginRentorReducer from '../reducers/LoginRentorReducer'
-const LoginRentor = () => {
+const LoginRentor = ({navigation}) => {
 
     const [credentials, dispatch] = useReducer(LoginRentorReducer, {
         email: '',
         password:''
     })
     const callLoginApi = () => {
-        console.log('credentials:' +JSON.stringify(credentials))
+        console.log('credentials:' + JSON.stringify(credentials))
+        navigation.navigate("welcome")
     }
 
     const saveCredentials = (value,type) => {

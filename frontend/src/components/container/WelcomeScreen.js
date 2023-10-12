@@ -7,7 +7,7 @@ const WelcomeScreen = () => {
      // To test-> change Filter to Welcome in Rentor
   return (
     <View>
-      <Text>Welcome</Text>    
+      <Text>Welcome eeeeeeeee!</Text>    
     </View>
   )
 }

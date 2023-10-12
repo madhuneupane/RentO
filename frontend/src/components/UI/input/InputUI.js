@@ -4,7 +4,7 @@ import React from 'react'
 
 export const InputUI = ({placeholder,label,selectedItems,type,coustomStyle}) => {
   return (
-    <View style={coustomStyle.subContainer}>
+    <View style={coustomStyle&&coustomStyle.subContainer}>
       <Text>{label}</Text>
       <TextInput
         style={coustomStyle ? {...styles.textInput,...coustomStyle.textInput} :styles.textInput}

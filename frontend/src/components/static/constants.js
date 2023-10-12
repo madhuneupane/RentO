@@ -9,3 +9,9 @@ export const filterType = {
     tour: 'tour',
     other_details:'other_details'
 }
+
+export const rentorCredentials = {
+    email: 'email',
+    password:'password'
+    
+}

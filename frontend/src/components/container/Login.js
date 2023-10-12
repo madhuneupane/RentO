@@ -14,7 +14,7 @@ const Login = ({navigation}) => {
               item={{ value: `I'm  looking for a new Place` }}
               customStyle={styles.button}
               selectedItems={selectedItems}
-                  type='rentor' />
+                  type='login_rentor' />
           </View>
           
           <View style={styles.buttonView}>

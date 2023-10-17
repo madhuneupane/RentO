@@ -1,4 +1,4 @@
-import React, { useState,useReducer } from 'react'
+import React, { useState,useReducer, useEffect } from 'react'
 import { filterPropertyType } from '../static/FilterOptions'
 import List from '../list/List'
 import { View,StyleSheet,Text} from 'react-native'
@@ -6,6 +6,8 @@ import {Input} from '@rneui/themed'
 import { InputUI } from '../UI/input/InputUI'
 import { FilterReducer } from '../reducers/FilterReducer'
 import { Button } from '@rneui/themed'
+import ApiClient from '../service/Api'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Filter = () => {
 
@@ -20,9 +22,22 @@ const Filter = () => {
     const selectedItems = (value, type) => {
         // console.log(value,type)
         dispatch({type:type,value:value})
-        console.log('type:'+JSON.stringify(filterTypes))
+        console.log('type:' + JSON.stringify(filterTypes))
+        
     }
+    const api= new ApiClient('/fetchSingleUser/madhu@gmail.com/madhu123')
+    const api1= new ApiClient('/fetchAllProperty')
 
+    useEffect(() => {
+        api.loginUser()
+       
+       getToken()
+    })
+    const getToken = async() => {
+        const token = await AsyncStorage.getItem('token')
+         api1.getAllData(token)
+       console.log("token:"+token)
+    }
     return (
         <View style={styles.container}>
             <View style={styles.propertyType}>

@@ -3,6 +3,7 @@ import {  StyleSheet, Text, View } from 'react-native';
 import Filter from './src/components/container/Filter';
 
 export default function App() {
+  console.log(process.env.key);
   return (
 
     <View style={styles.container}>

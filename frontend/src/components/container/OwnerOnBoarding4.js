@@ -1,42 +1,44 @@
-import {View,StyleSheet,Text} from 'react-native'
-import {InputUI} from '../UI/input/InputUI'
+import { Text, View, StyleSheet } from "react-native";
+import { useReducer, useEffect, useState } from 'react'
+import OwnerReducerData from "../reducers/OwnerReducer";
+import { InputUI } from "../UI/input/InputUI";
 import ButtonUI from '../UI/button/ButtonUI'
-import { CheckBox } from '@rneui/themed';
-import { useState } from 'react'
-const OwnerOnboarding3 = ({navigation, route})=>{
-    const [onBoardData, setOnBoardData] = useState(
-       route.params
-        );
-    const setData = (value, type)=>{
-        setOnBoardData({...onBoardData,address:value})
-        //console.log(onBoardData);
+
+const OwnerOnboarding4 = ({navigation, route})=>{
+    const [onBoardData,dispatch] = useReducer(OwnerReducerData,{
+        placeType: route.params.placeType,
+        propertyType: route.params.propertyType,
+        address: route.params.address,
+        amount: ''
+    })
+    const setData=(value,type)=>{
+//console.log(value);
+dispatch({value:value})
 
     }
-    const navigateToNext =()=>{
-        navigation.navigate("owner_onboarding4",onBoardData)
+    const navigateToNext = ()=>{
+        console.log(onBoardData);
     }
 return(
     <View>
-    <Text>What's the address?</Text>
-    <View>
-    <InputUI
-              placeholder=' Type your address'
+        <Text>What is your desired rent amount?</Text>
+        <View>
+        <InputUI
+              placeholder=' $ Enter the amount'
               selectedItems={setData}
-              type="address"
+              type="amount"
               coustomStyle={styles}
           />
-   <CheckBox checked title="I want to keep my address private" />
-    </View>
-    <ButtonUI
+        </View>
+        <ButtonUI
               item={{ value: 'Continue' }}
               selectedItems={navigateToNext}
               customStyle={styles.button}
           />
-</View>
+    </View>
 )
 }
-export default OwnerOnboarding3
-
+export default OwnerOnboarding4;
 const styles = StyleSheet.create({
     container: {
           height: '70%',

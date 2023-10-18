@@ -2,14 +2,17 @@ import { Input, } from '@rneui/themed'
 import { TextInput,Text, StyleSheet, View } from 'react-native'
 import React from 'react'
 
-export const InputUI = ({placeholder,label,selectedItems,type,coustomStyle}) => {
+export const InputUI = ({ placeholder, label, selectedItems,
+                   type, coustomStyle, value, secureTextEntry }) => {
   return (
     <View style={coustomStyle&&coustomStyle.subContainer}>
       <Text>{label}</Text>
       <TextInput
         style={coustomStyle ? {...styles.textInput,...coustomStyle.textInput} :styles.textInput}
         placeholder={placeholder}
-        onChangeText={(value)=>selectedItems(value,type)}
+        onChangeText={(value) => selectedItems(value, type)}
+        value={value}
+        secureTextEntry={secureTextEntry}
       />
     </View>
   )

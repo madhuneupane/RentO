@@ -25,19 +25,19 @@ const Filter = () => {
         console.log('type:' + JSON.stringify(filterTypes))
         
     }
-    const api= new ApiClient('/fetchSingleUser/madhu@gmail.com/madhu123')
-    const api1= new ApiClient('/fetchAllProperty')
+    // const api= new ApiClient('/fetchSingleUser/madhu@gmail.com/madhu123')
+    // const api1= new ApiClient('/fetchAllProperty')
 
-    useEffect(() => {
-        api.loginUser()
+    // useEffect(() => {
+    //     api.loginUser()
        
-       getToken()
-    })
-    const getToken = async() => {
-        const token = await AsyncStorage.getItem('token')
-         api1.getAllData(token)
-       console.log("token:"+token)
-    }
+    //    getToken()
+    // })
+    // const getToken = async() => {
+    //     const token = await AsyncStorage.getItem('token')
+    //      api1.getAllData(token)
+    //    console.log("token:"+token)
+    // }
     return (
         <View style={styles.container}>
             <View style={styles.propertyType}>

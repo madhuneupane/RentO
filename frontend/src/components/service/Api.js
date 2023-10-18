@@ -5,7 +5,7 @@ import { BASE_URL } from '../static/ApiConstants'
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-let token
+let testtoken
 const url=BASE_URL
 const apiInstance = axios.create({
     baseURL: url,
@@ -27,7 +27,7 @@ class ApiClient{
         await apiInstance.get(this.endpoint).then(response =>
         AsyncStorage.setItem('token', response.data.token)
         ).then(
-             token= await AsyncStorage.getItem('token')
+             testtoken= await AsyncStorage.getItem('token')
             ) 
     }
 
@@ -36,6 +36,12 @@ class ApiClient{
         console.log('toke:'+JSON.stringify(headers))
         const response = await apiInstance.get(this.endpoint)
         return response.data
+    }
+    getDescription = async (token) => { 
+        console.log("t"+token)
+     apiInstance.defaults.headers.common['Authorization'] = token;
+        await apiInstance.post(this.endpoint, { content: "2 Bed,1 Bathroom, 200Cad, nopets allowed" })
+            .then(response => console.log(response))
     }
 }
 

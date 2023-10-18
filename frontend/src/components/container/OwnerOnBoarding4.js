@@ -2,10 +2,7 @@ import { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { InputUI } from "../UI/input/InputUI";
 import ButtonUI from '../UI/button/ButtonUI'
-import ApiClient from "../service/Api";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const api = new ApiClient("/descriptionSuggest")
 
 const OwnerOnboarding4 = ({navigation, route})=>{
    
@@ -18,10 +15,8 @@ const OwnerOnboarding4 = ({navigation, route})=>{
     const setData = (value, type) => {
         setOnBoardData({...onBoardData, amount:value})   
     }
-    const navigateToNext =async () => {
-        token = await AsyncStorage.getItem('token')
-        console.log(onBoardData);
-        api.getDescription(token)
+    const navigateToNext = () => {
+        navigation.navigate("owner_property_desc")
     }
 return(
     <View>

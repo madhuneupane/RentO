@@ -38,10 +38,10 @@ class ApiClient{
         return response.data
     }
     getDescription = async (token) => { 
-        console.log("t"+token)
+        console.log("t: "+token)
      apiInstance.defaults.headers.common['Authorization'] = token;
         await apiInstance.post(this.endpoint, { content: "2 Bed,1 Bathroom, 200Cad, nopets allowed" })
-            .then(response => console.log(response))
+            .then(response => console.log(response.data))
     }
 }
 

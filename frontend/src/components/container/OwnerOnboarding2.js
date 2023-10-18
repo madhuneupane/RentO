@@ -1,17 +1,14 @@
 import {Text, View} from 'react-native'
-import { useState } from 'react'
 import { listingOptions } from '../static/ListingOptions'
 import List from '../list/List'
 
 const OwnerOnboarding2 = ({navigation,route})=>{
-//const [propertyType, setPropertyType] = useState("")
     const selectedItems = (value, type)=>{
-//console.log(route.params);
-let onBoardData = {
+   let onBoardData = {
     placeType: route.params.placeType,
     propertyType: value
-}
-navigation.navigate("owner_onboarding3",onBoardData)
+  }
+   navigation.navigate("owner_onboarding3",onBoardData)
     }
     return(
     <View>

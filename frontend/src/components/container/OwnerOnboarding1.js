@@ -1,28 +1,10 @@
 import {Text, View} from 'react-native'
-import { useReducer, useEffect, useState } from 'react'
-import ButtonUI from '../UI/button/ButtonUI'
 import List from '../list/List'
 import { listingOptions } from '../static/ListingOptions'
-import PropertyReducerOwner from '../reducers/PropertyReducerOwner'
 const OwnerOnboarding1 = ({navigation})=>{
     
-    const [placeType, dispatch] = useReducer(PropertyReducerOwner,{
-        placeType:''
-    })
-    
-
-    useEffect(()=>{
-       // console.log(placeType);
-       if(placeType.placeType)
-        navigation.navigate("owner_onboarding2",placeType)
-
-    },[placeType])
-
     const selectedItems = (value, type)=>{
-        //console.log(type,value);
-        dispatch({value:value})
-        
-        
+        navigation.navigate("owner_onboarding2",{placeType:value})
     }
 return(
     <View>

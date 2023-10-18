@@ -5,35 +5,40 @@ import {InputUI} from '../UI/input/InputUI'
 import ButtonUI from '../UI/button/ButtonUI'
 import { rentorCredentials } from '../static/constants'
 import LoginRentorReducer from '../reducers/LoginRentorReducer'
+import login from '../hooks/login'
 const LoginRentor = ({navigation}) => {
-
     const [credentials, dispatch] = useReducer(LoginRentorReducer, {
-        email: '',
-        password:''
+        email: 'madhu@gmail.com',
+        password:'madhu123'
     })
+    login(credentials.email,credentials.password)
+
     const callLoginApi = () => {
         console.log('credentials:' + JSON.stringify(credentials))
         navigation.navigate("welcome")
     }
 
     const saveCredentials = (value,type) => {
-        dispatch({value:value,type:type})
+        // dispatch({value:value,type:type})
     }
   return (
       <View style={styles.container}>
           <Text style={styles.text}>Glad to see you back!</Text>
           {/* <Image source={{ uri:}}></Image> */}
           <InputUI
-              placeholder=' Type your email'
+            //   placeholder='Type your email'
               selectedItems={saveCredentials}
               type={rentorCredentials.email}
               coustomStyle={styles}
+              value="madhu@gmail.com"
           />
           <InputUI
               placeholder=' Password'
               selectedItems={saveCredentials}
               type={rentorCredentials.password}
               coustomStyle={styles}
+              value="madhu123"
+              secureTextEntry={true}
           />
           <ButtonUI
               item={{ value: 'Sign in' }}

@@ -4,13 +4,9 @@ import ButtonUI from '../UI/button/ButtonUI'
 import { CheckBox } from '@rneui/themed';
 import { useState } from 'react'
 const OwnerOnboarding3 = ({navigation, route})=>{
-    const [onBoardData, setOnBoardData] = useState(
-       route.params
-        );
+    const [onBoardData, setOnBoardData] = useState();
     const setData = (value, type)=>{
-        setOnBoardData({...onBoardData,address:value})
-        //console.log(onBoardData);
-
+        setOnBoardData({...route.params,address:value})
     }
     const navigateToNext =()=>{
         navigation.navigate("owner_onboarding4",onBoardData)

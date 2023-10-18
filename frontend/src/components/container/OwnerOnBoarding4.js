@@ -16,7 +16,7 @@ const OwnerOnboarding4 = ({navigation, route})=>{
         setOnBoardData({...onBoardData, amount:value})   
     }
     const navigateToNext = () => {
-        navigation.navigate("owner_property_desc")
+        navigation.navigate("owner_property_desc",onBoardData)
     }
 return(
     <View>

@@ -37,11 +37,12 @@ class ApiClient{
         const response = await apiInstance.get(this.endpoint)
         return response.data
     }
-    getDescription = async (token) => { 
-        console.log("t"+token)
+    getDescription = async (token,ownerSelections) => { 
+        console.log("t: "+token)
      apiInstance.defaults.headers.common['Authorization'] = token;
-        await apiInstance.post(this.endpoint, { content: "2 Bed,1 Bathroom, 200Cad, nopets allowed" })
-            .then(response => console.log(response))
+       const response= await apiInstance.post(this.endpoint, { content: ownerSelections})
+        console.log("description: "+JSON.stringify(response.data)) 
+        return response.data   
     }
 }
 

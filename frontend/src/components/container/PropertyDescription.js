@@ -10,7 +10,7 @@ const PropertyDescription = ({ navigation, route }) => {
     const keywords = route.params
     const [desc, setDesc] = useState("")
     const key=`${keywords.placeType} place type, ${keywords.propertyType} property type, ${keywords.address} location, ${keywords.amount} rent`
-    const ownerSelections = `Place Type: ${keywords.placeType},Property Type:${keywords.propertyType},Address: ${keywords.address},Amount: ${keywords.amount}`
+    const ownerSelections = `Place Type: 2${keywords.placeType} | Property Type: ${keywords.propertyType} | Address: ${keywords.address} | Amount: ${keywords.amount}`
     console.log("keyword:"+ JSON.stringify(keywords))
     const api = new ApiClient("/descriptionSuggest")
 
@@ -30,10 +30,10 @@ const PropertyDescription = ({ navigation, route }) => {
           <InputUI
          label="Let's create a captivating property description"
         value={desc?desc:ownerSelections}
-        coustomStyle ={styles.subContainer}
+        coustomStyle ={styles}
               />
         </View>
-          <ButtonUI selectedItems={generateDesc} item={{ value: "Write for me" }} />
+          <ButtonUI customStyle={styles.button} selectedItems={generateDesc} item={{ value: "Write for me" }} />
        
       </View>
   )
@@ -42,15 +42,30 @@ const PropertyDescription = ({ navigation, route }) => {
 export default PropertyDescription
 
 const styles = StyleSheet.create({
-    conatiner: {
-        alignItems: 'center',
-        // height:'80%'
+    conatiner: {    
     },
     subContainer: {
-        height: "100%",
-        backgroundColor:'grey'
+         alignItems: 'center',
+        justifyContent: 'center',
+        marginTop:80,
+        height: "70%",
     },
-    inputContainer: {
-       height:"100%" 
+    textInput: {
+        height: "100%",
+        width:"90%",
+        marginTop: 25,
+        fontSize: 20,
+        textAlign: "center",
+        padding:10     
+    },
+    label: {
+       fontSize:20
+    },
+    button: {
+        height: 40,
+        fontSize: 20,
+        width:"70%",
+        textAlign: "center",
+       marginLeft:50
     }
 })

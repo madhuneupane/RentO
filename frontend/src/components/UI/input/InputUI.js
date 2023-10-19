@@ -6,7 +6,7 @@ export const InputUI = ({ placeholder, label, selectedItems,
                    type, coustomStyle, value, secureTextEntry }) => {
   return (
     <View style={coustomStyle&&coustomStyle.subContainer}>
-      <Text>{label}</Text>
+      <Text style={coustomStyle&&coustomStyle.label}>{label}</Text>
       <TextInput
         style={coustomStyle ? {...styles.textInput,...coustomStyle.textInput} :styles.textInput}
         placeholder={placeholder}

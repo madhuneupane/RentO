@@ -17,7 +17,7 @@ export default ButtonUI
 const styles = StyleSheet.create({
   
   text: {
-    color: 'grey',
+    color: '#36827F',
     borderWidth:1,
     borderRadius: 6,
     borderColor:'#20232a',

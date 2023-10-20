@@ -1,9 +1,17 @@
 import React from 'react'
-import { View,Text } from 'react-native'
+import { View,Text, TouchableOpacity } from 'react-native'
 
-const Owner = () => {
+const Owner = ({navigation}) => {
+
+  const showListing = ()=>{
+    navigation.navigate('owner_onboarding1')
+  }
   return (
-    <View><Text>Owner</Text></View>
+    <View>
+      <TouchableOpacity onPress={showListing}>
+        <Text>New Listing</Text>
+        </TouchableOpacity>
+    </View>
   )
 }
 

@@ -7,6 +7,11 @@ import Owner from '../screen/Owner'
 import LoginRentor from '../container/LoginRentor';
 import WelcomeScreen from '../container/WelcomeScreen';
 import Listings from '../container/Listings'
+import OwnerOnboarding1 from '../container/OwnerOnboarding1';
+import OwnerOnboarding2 from '../container/OwnerOnboarding2';
+import OwnerOnboarding3 from '../container/OwnerOnBoarding3';
+import OwnerOnboarding4 from '../container/OwnerOnBoarding4';
+import PropertyDescription from '../container/PropertyDescription';
 const Stack=createStackNavigator()
 
 const AppStack = () => {
@@ -19,6 +24,13 @@ const AppStack = () => {
     <Stack.Screen name="list_view" component={Listings} />  
     <Stack.Screen name="rentor" component={Rentor} />
     <Stack.Screen name="owner" component={Owner} />
+    <Stack.Screen name="owner_onboarding1" component={OwnerOnboarding1} />
+    <Stack.Screen name="owner_onboarding2" component={OwnerOnboarding2} />
+    <Stack.Screen name="owner_onboarding3" component={OwnerOnboarding3} />
+    <Stack.Screen name="owner_onboarding4" component={OwnerOnboarding4} />
+    <Stack.Screen name="owner_property_desc" component={PropertyDescription} />
+
+
      </Stack.Navigator>
     </NavigationContainer>
   )

@@ -5,8 +5,8 @@ import Filter from './src/components/container/Filter';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import LoginRentor from './src/components/container/LoginRentor';
 import WelcomeScreen from './src/components/container/WelcomeScreen';
-
 export default function App() {
+  console.log(process.env.key);
   return (
   <SafeAreaProvider>
     <View style={styles.container}>

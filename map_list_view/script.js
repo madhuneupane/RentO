@@ -447,10 +447,20 @@ swiper.on("slideChange", function () {
   });
 });
 
+ const sendDataToReactNativeApp = async () => {
+                window.ReactNativeWebView.postMessage('Data from WebView / Website');
+              };
+              window.addEventListener("message", message => {
+                alert(message.data) 
+              });
+
 swiper.on("click", function () {
   let activeIndex = swiper.activeIndex;
   console.log("Swiper " + activeIndex + " is clicked");
-  window.postMessage("Hello");
+  window.ReactNativeWebView.postMessage(activeIndex);
+  // window.addEventListener("message", message => {
+  //               alert(check) 
+  //             });
   let activeMarker = markerInstances[activeIndex];
   let activeCoord = activeMarker.getLngLat();
 

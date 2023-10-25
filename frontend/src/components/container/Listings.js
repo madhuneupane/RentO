@@ -20,13 +20,28 @@ const Listings = ({ navigation }) => {
   };
 
   showFilter = () => {
-    navigation.navigate("rentor");
-  };
+      navigation.navigate('rentor')
+  }
+
   function onMessage(data) {
     console.log("data:" + data);
     alert(data.nativeEvent.data);
   }
   showlistingDets = () => {
+    navigation.navigate('listing_details')
+}
+
+  const [listData, setListData] = useState()
+  data(setListData)
+  return (
+    <>
+    <View>
+      <TouchableOpacity onPress={showFilter}>
+        <Text>Filter</Text>
+        </TouchableOpacity>
+        {listData && <DataList navigation={navigation} data={listData} />}   
+    </View>
+    <SafeAreaView style={{ flex: 1 }}>
     navigation.navigate("listing_details");
   };
   const [listData, setListData] = useState();

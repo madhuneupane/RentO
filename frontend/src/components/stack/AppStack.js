@@ -17,7 +17,6 @@ import ImageSelector from "../container/ImageSelector";
 import SelectImageOption from "../container/SelectImageOption";
 import CameraSelector from "../container/CameraSelector";
 import ListingDetails from "../container/ListingDetails";
-
 const Stack = createStackNavigator();
 
 const AppStack = () => {
@@ -47,5 +46,4 @@ const AppStack = () => {
     </NavigationContainer>
   );
 };
-
 export default AppStack;

@@ -1,0 +1,59 @@
+{
+    "locations": [
+      {
+        "coordinates": [-123.15951662039123, 49.250633464572914],
+        "price": 2475,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "area": 257,
+        "city": "Vancouver",
+        "time": 1664626312376
+      },
+      {
+        "coordinates": [-123.08982210073684, 49.24009943432222],
+        "price": 2643,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "area": 201,
+        "city": "Vancouver",
+        "time": 1664619632376
+      },
+      {
+        "coordinates": [-123.04244356065263, 49.27527879366187],
+        "price": 2365,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "area": 147,
+        "city": "Vancouver",
+        "time": 1664631552376
+      },
+      {
+        "coordinates": [-123.12425517631722, 49.15478251311902],
+        "price": 2246,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "area": 172,
+        "city": "Richmond",
+        "time": 1664609552376
+      },
+      {
+        "coordinates": [-122.95596319864401, 49.22387095203007],
+        "price": 2889,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "area": 156,
+        "city": "Burnaby",
+        "time": 1664638272376
+      },
+      {
+        "coordinates": [-122.83402831362159, 49.17949645680463],
+        "price": 2102,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "area": 237,
+        "city": "Surrey",
+        "time": 1664622992376
+      }
+    ]
+  }
+  

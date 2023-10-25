@@ -18,6 +18,7 @@ import SelectImageOption from "../container/SelectImageOption";
 import CameraSelector from "../container/CameraSelector";
 import ListingDetails from "../container/ListingDetails";
 const Stack = createStackNavigator();
+
 const AppStack = () => {
   return (
     <NavigationContainer>

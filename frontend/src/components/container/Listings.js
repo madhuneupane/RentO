@@ -22,10 +22,16 @@ const Listings = ({ navigation }) => {
   showFilter = () => {
       navigation.navigate('rentor')
   }
+<<<<<<< Updated upstream
   function onMessage(data) {
     console.log("data:"+data)
     alert(data.nativeEvent.data);
   }
+=======
+  showlistingDets = () => {
+    navigation.navigate('listing_details')
+}
+>>>>>>> Stashed changes
   const [listData, setListData] = useState()
   data(setListData)
   return (
@@ -34,7 +40,11 @@ const Listings = ({ navigation }) => {
       <TouchableOpacity onPress={showFilter}>
         <Text>Filter</Text>
         </TouchableOpacity>
+<<<<<<< Updated upstream
         {/* {listData && <DataList data={listData} />}    */}
+=======
+        {listData && <DataList navigation={navigation} data={listData} />}   
+>>>>>>> Stashed changes
     </View>
     <SafeAreaView style={{ flex: 1 }}>
       <View>

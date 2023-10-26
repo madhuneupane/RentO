@@ -1,9 +1,11 @@
 import React from "react";
 import { imageUploadOptions } from "../static/RoomImages";
 import List from "../list/List";
-const SelectImageOption = ({ navigation }) => {
+const SelectImageOption = ({ navigation, route }) => {
+  const data = route.params;
   const selectedItems = (value) => {
-    if (value == "Gallery") navigation.navigate("image_select");
+    console.log("data from select:" + JSON.stringify(data));
+    if (value == "Gallery") navigation.navigate("image_select", data);
     if (value == "Camera") navigation.navigate("camera_select");
   };
   return (

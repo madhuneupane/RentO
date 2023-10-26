@@ -12,19 +12,26 @@ const PropertyDescription = ({ navigation, route }) => {
   const key = `${keywords.placeType} place type, ${keywords.propertyType} property type, ${keywords.address} location, ${keywords.amount} rent`;
   const ownerSelections = `Place Type: 2${keywords.placeType} | Property Type: ${keywords.propertyType} | Address: ${keywords.address} | Amount: ${keywords.amount}`;
   console.log("keyword:" + JSON.stringify(keywords));
+  const [ownerData, setOwnerData] = useState();
   const api = new ApiClient("/descriptionSuggest");
 
-  const generateDesc = async () => {
-    token = await AsyncStorage.getItem("token");
-    // console.log(onBoardData);
-    const response = await api.getDescription(token, key);
-    console.log("description2: " + JSON.stringify(response));
-    const result = JSON.stringify(response);
-    setDesc(response);
+  const generateDesc = async (test) => {
+    // token = await AsyncStorage.getItem("token");
+    // // console.log(onBoardData);
+    // const response = await api.getDescription(token, key);
+    // // console.log("description2: " + JSON.stringify(response));
+    // const result = JSON.stringify(response);
+    // setDesc(result);
+    setDesc(test);
+    setOwnerData({ ...keywords, description: test });
   };
 
   const nextPage = () => {
-    navigation.navigate("owner_onboarding5");
+    console.log("ownerData:" + JSON.stringify(ownerData));
+    navigation.navigate("owner_onboarding5", {
+      ownerData: ownerData,
+      imageUploaded: true,
+    });
   };
   return (
     <View>
@@ -35,11 +42,11 @@ const PropertyDescription = ({ navigation, route }) => {
           value={desc ? desc : ownerSelections}
           coustomStyle={styles}
         />
-        {/* </View>
+      </View>
       {!desc ? (
         <ButtonUI
           customStyle={styles.button}
-          selectedItems={generateDesc}
+          selectedItems={() => generateDesc("tests")}
           item={{ value: "Write for me" }}
         />
       ) : (
@@ -49,20 +56,6 @@ const PropertyDescription = ({ navigation, route }) => {
           item={{ value: "continue" }}
         />
       )}
-    </View> */}
-      </View>
-
-      {/* <ButtonUI
-        customStyle={styles.button}
-        selectedItems={generateDesc}
-        item={{ value: "Write for me" }}
-      /> */}
-
-      <ButtonUI
-        customStyle={styles.button}
-        selectedItems={nextPage}
-        item={{ value: "continue" }}
-      />
     </View>
   );
 };

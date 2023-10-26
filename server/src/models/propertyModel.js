@@ -56,11 +56,63 @@ const propertySchema = new Schema({
     },
     pet: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     parkingSpace: {
       type: Boolean,
-      default: true,
+      default: false,
+    },
+    wifi: {
+      type: Boolean,
+      default: false,
+    },
+    heating: {
+      type: Boolean,
+      default: false,
+    },
+    ac: {
+      type: Boolean,
+      default: false,
+    },
+    laundry: {
+      type: Boolean,
+      default: false,
+    },
+    elevator: {
+      type: Boolean,
+      default: false,
+    },
+    smoking: {
+      type: Boolean,
+      default: false,
+    },
+    tv: {
+      type: Boolean,
+      default: false,
+    },
+    wheelchair: {
+      type: Boolean,
+      default: false,
+    },
+    balcony: {
+      type: Boolean,
+      default: false,
+    },
+    pool: {
+      type: Boolean,
+      default: false,
+    },
+    gym: {
+      type: Boolean,
+      default: false,
+    },
+    furnished: {
+      type: Boolean,
+      default: false,
+    },
+    dishwasher: {
+      type: Boolean,
+      default: false,
     },
     description: {
         type: String,
@@ -71,8 +123,8 @@ const propertySchema = new Schema({
         
       },
       postedDate:{
-        type: Date,
-        default: new Date().toJSON().slice(0, 10)
+        type: String,
+        default: new Date().toLocaleDateString()
       }
 
   });

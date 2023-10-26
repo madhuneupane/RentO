@@ -34,21 +34,85 @@ const propertySchema = new Schema({
      
     },
 
-    photoUrls:  [
-        {
-          url: {
-            type: String,
-            required: true,
-          },}
-
-        ],
+    images: {
+      image1:{
+        type:String,
+      },
+      image2:{
+        type:String,
+      },
+      image3:{
+        type:String,
+      },
+      image4:{
+        type:String,
+      },
+      image5:{
+        type:String,
+      },
+      image6:{
+        type:String,
+      }
+    },
     pet: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     parkingSpace: {
       type: Boolean,
-      default: true,
+      default: false,
+    },
+    wifi: {
+      type: Boolean,
+      default: false,
+    },
+    heating: {
+      type: Boolean,
+      default: false,
+    },
+    ac: {
+      type: Boolean,
+      default: false,
+    },
+    laundry: {
+      type: Boolean,
+      default: false,
+    },
+    elevator: {
+      type: Boolean,
+      default: false,
+    },
+    smoking: {
+      type: Boolean,
+      default: false,
+    },
+    tv: {
+      type: Boolean,
+      default: false,
+    },
+    wheelchair: {
+      type: Boolean,
+      default: false,
+    },
+    balcony: {
+      type: Boolean,
+      default: false,
+    },
+    pool: {
+      type: Boolean,
+      default: false,
+    },
+    gym: {
+      type: Boolean,
+      default: false,
+    },
+    furnished: {
+      type: Boolean,
+      default: false,
+    },
+    dishwasher: {
+      type: Boolean,
+      default: false,
     },
     description: {
         type: String,
@@ -58,6 +122,10 @@ const propertySchema = new Schema({
         type: Number,
         
       },
+      postedDate:{
+        type: String,
+        default: new Date().toLocaleDateString()
+      }
 
   });
 

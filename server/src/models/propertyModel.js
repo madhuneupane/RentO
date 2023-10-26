@@ -34,14 +34,26 @@ const propertySchema = new Schema({
      
     },
 
-    photoUrls:  [
-        {
-          url: {
-            type: String,
-            required: true,
-          },}
-
-        ],
+    images: {
+      image1:{
+        type:String,
+      },
+      image2:{
+        type:String,
+      },
+      image3:{
+        type:String,
+      },
+      image4:{
+        type:String,
+      },
+      image5:{
+        type:String,
+      },
+      image6:{
+        type:String,
+      }
+    },
     pet: {
       type: Boolean,
       default: true,
@@ -58,6 +70,10 @@ const propertySchema = new Schema({
         type: Number,
         
       },
+      postedDate:{
+        type: Date,
+        default: new Date().toJSON().slice(0, 10)
+      }
 
   });
 

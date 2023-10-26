@@ -114,14 +114,14 @@ const styles = StyleSheet.create({
         height:100,
         marginLeft: 0,
         marginTop: 0,
-       
     },
     priceRange: {
         margin: 2,
     },
     priceRangeInput: {
         flexDirection: 'row',
-        justifyContent:'space-around'
+        justifyContent:'space-around',
+        fontStyle:"italic"
 
     },
     rooms: {
@@ -140,8 +140,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginLeft: 70,
-        
-        
     }
 
    

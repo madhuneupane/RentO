@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from '@rneui/themed'
 import { TouchableOpacity,Text } from 'react-native'
 import { StyleSheet } from 'react-native'
+
 const ButtonUI = ({item,selectedItems,customStyle,type}) => {
     return (
         <TouchableOpacity onPress={()=>selectedItems(item.value,type)}>
@@ -18,11 +19,12 @@ const styles = StyleSheet.create({
   
   text: {
     color: '#36827F',
-    borderWidth:1,
-    borderRadius: 6,
-    borderColor:'#20232a',
-    margin: 10,
+    borderWidth:0.5,
+    borderRadius: 13,
+    borderColor:'#36827F',
+    margin: 8,
+    padding:5,
     textAlign:'center',
-    fontWeight:'bold'
+    fontWeight:'light',
   }
 })

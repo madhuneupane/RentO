@@ -27,26 +27,29 @@ const propertySchema = new Schema({
     type: String,
   },
 
-    images: {
-      image1:{
-        type:String,
+  images: {
+    bedrooms: {
+      left: {
+        type: String,
       },
-      image2:{
-        type:String,
+      right: {
+        type: String,
       },
-      image3:{
-        type:String,
+      top: {
+        type: String,
       },
-      image4:{
-        type:String,
+      bottom: {
+        type: String,
       },
-      image5:{
-        type:String,
+      front: {
+        type: String,
       },
-      image6:{
-        type:String,
-      }
+      back: {
+        type: String,
+      },
     },
+  },
+  amenities: {
     pet: {
       type: Boolean,
       default: false,
@@ -55,72 +58,30 @@ const propertySchema = new Schema({
       type: Boolean,
       default: false,
     },
-    wifi: {
-      type: Boolean,
-      default: false,
-    },
     heating: {
       type: Boolean,
       default: false,
     },
-    ac: {
+    airConditioning: {
       type: Boolean,
       default: false,
     },
-    laundry: {
+    washerDryer: {
       type: Boolean,
       default: false,
     },
-    elevator: {
+    wifi: {
       type: Boolean,
       default: false,
     },
-    smoking: {
-      type: Boolean,
-      default: false,
-    },
-    tv: {
-      type: Boolean,
-      default: false,
-    },
-    wheelchair: {
-      type: Boolean,
-      default: false,
-    },
-    balcony: {
-      type: Boolean,
-      default: false,
-    },
-    pool: {
-      type: Boolean,
-      default: false,
-    },
-    gym: {
-      type: Boolean,
-      default: false,
-    },
-    furnished: {
-      type: Boolean,
-      default: false,
-    },
-    dishwasher: {
-      type: Boolean,
-      default: false,
-    },
-    description: {
-        type: String,
-        
-      },
-      rent: {
-        type: Number,
-        
-      },
-      postedDate:{
-        type: String,
-        default: new Date().toLocaleDateString()
-      }
-
-  });
+  },
+  description: {
+    type: String,
+  },
+  rent: {
+    type: Number,
+  },
+});
 
 
 const property = mongoose.model("property", propertySchema);

@@ -35,7 +35,8 @@ const addNewUser = (req, res) => {
     schemas.user.findOne({email: req.params.email, password: req.params.password})
     .then((data)=>{
       const token = jwt.sign({email}, "hello",{"expiresIn": "1h"})
-      res.json({token:token,id:data._id})
+      res.json({token:token})
+      //res.json({token:token,id:data._id})
     })
   }
 

@@ -28,32 +28,52 @@ const propertySchema = new Schema({
   },
 
   images: {
-    image1: {
-      type: String,
-    },
-    image2: {
-      type: String,
-    },
-    image3: {
-      type: String,
-    },
-    image4: {
-      type: String,
-    },
-    image5: {
-      type: String,
-    },
-    image6: {
-      type: String,
+    bedrooms: {
+      left: {
+        type: String,
+      },
+      right: {
+        type: String,
+      },
+      top: {
+        type: String,
+      },
+      bottom: {
+        type: String,
+      },
+      front: {
+        type: String,
+      },
+      back: {
+        type: String,
+      },
     },
   },
-  pet: {
-    type: Boolean,
-    default: true,
-  },
-  parkingSpace: {
-    type: Boolean,
-    default: true,
+  amenities: {
+    pet: {
+      type: Boolean,
+      default: false,
+    },
+    parkingSpace: {
+      type: Boolean,
+      default: false,
+    },
+    heating: {
+      type: Boolean,
+      default: false,
+    },
+    airConditioning: {
+      type: Boolean,
+      default: false,
+    },
+    washerDryer: {
+      type: Boolean,
+      default: false,
+    },
+    wifi: {
+      type: Boolean,
+      default: false,
+    },
   },
   description: {
     type: String,

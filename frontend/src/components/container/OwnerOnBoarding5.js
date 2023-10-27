@@ -4,14 +4,14 @@ import { roomsImages } from "../static/RoomImages";
 import Postdata from "../hooks/postdata";
 const OwnerOnBoarding5 = ({ navigation, route }) => {
   const data = route.params;
-  console.log("on5:" + JSON.stringify(data));
+  // console.log("on5:" + JSON.stringify(data));
   const selectedItems = () => {
     navigation.navigate("upload_options", data);
   };
 
   if (data.imageUploaded) {
     console.log("data.ownerData :" + data.ownerData);
-    console.log("data.imageUploaded :" + data.imageUploaded);
+    // console.log("data.imageUploaded :" + data.imageUploaded);
     Postdata(data.ownerData);
   }
 

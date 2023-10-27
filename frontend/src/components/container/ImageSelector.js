@@ -13,7 +13,6 @@ import ImageReducer from "../reducers/ImageReducer";
 import ButtonUI from "../UI/button/ButtonUI";
 const ImageSelector = ({ navigation, route }) => {
   const ownerGivenData = route.params;
-  console.log("route.param:::" + JSON.stringify(ownerGivenData));
   const [images, dispatch] = useReducer(ImageReducer, {});
   const [ownerData, setOwnerData] = useState();
   const cameraPermission = async () => {
@@ -25,6 +24,9 @@ const ImageSelector = ({ navigation, route }) => {
     cameraPermission();
   }, []);
 
+  useEffect(() => {
+    setOwnerData({ ...ownerGivenData, images: images });
+  }, [images]);
   const selectImage = async (imageNumber) => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -35,16 +37,11 @@ const ImageSelector = ({ navigation, route }) => {
 
     console.log(result.assets[0].uri);
     if (!result.canceled) {
-      console.log("not canceld");
       dispatch({ type: imageNumber, value: result.assets[0].uri });
-      console.log("images seleted:" + JSON.stringify(images));
-      setOwnerData({ ...ownerGivenData, images: images });
     }
   };
 
   const uploadImages = () => {
-    console.log("Upload Image");
-    console.log("ownerData:" + JSON.stringify(ownerData));
     navigation.navigate("owner_onboarding5", {
       ownerData: ownerData,
       imageUploaded: true,

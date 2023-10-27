@@ -58,7 +58,6 @@ const ImageSelector = () => {
       const fileRef = ref(getStorage(),`RentO/${result.assets[0].uri}` );
       const result1 = await uploadBytes(fileRef, blob);
     
-      // We're done with the blob, close and release it
       blob.close();
     
       const h= await getDownloadURL(fileRef);

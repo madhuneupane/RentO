@@ -15,8 +15,11 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ImageReducer from "../reducers/ImageReducer";
-const ImageSelector = () => {
+import ButtonUI from "../UI/button/ButtonUI";
+const ImageSelector = ({ navigation, route }) => {
+  const ownerGivenData = route.params;
   const [images, dispatch] = useReducer(ImageReducer, {});
+  const [ownerData, setOwnerData] = useState();
   const cameraPermission = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync();
     if (!granted) alert("Need Gallery Access Permission");
@@ -27,6 +30,9 @@ const ImageSelector = () => {
     cameraPermission();
   }, []);
 
+  useEffect(() => {
+    setOwnerData({ ...ownerGivenData, images: images });
+  }, [images]);
   const selectImage = async (imageNumber) => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -37,7 +43,6 @@ const ImageSelector = () => {
 
     console.log("images seleted:" + {result});
     if (!result.canceled) {
-      console.log("not canceld");
       dispatch({ type: imageNumber, value: result.assets[0].uri });
 
 
@@ -63,10 +68,14 @@ const ImageSelector = () => {
       const h= await getDownloadURL(fileRef);
       console.log(h);
     }
-
-    console.log("images seleted:" + result);
   };
 
+  const uploadImages = () => {
+    navigation.navigate("owner_onboarding5", {
+      ownerData: ownerData,
+      imageUploaded: true,
+    });
+  };
   return (
     <View style={styles.mainContainer}>
       <View style={styles.container}>
@@ -163,6 +172,10 @@ const ImageSelector = () => {
           <Text style={styles.text}>Floor</Text>
         </View>
       </View>
+      <ButtonUI
+        item={{ value: "upload" }}
+        selectedItems={uploadImages}
+      ></ButtonUI>
     </View>
   );
 };

@@ -1,10 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import ImageSelector from "./src/components/container/ImageSelector";
-import { useEffect } from "react";
-import ImageContainer from "./src/components/list/ImageContainer";
-import OwnerOnBoarding5 from "./src/components/container/OwnerOnBoarding5";
 import AppStack from "./src/components/stack/AppStack";
+import OwnerOnBoarding6 from "./src/components/container/OwnerOnBoarding6";
 export default function App() {
   console.log(process.env.key);
 
@@ -12,7 +9,7 @@ export default function App() {
     <SafeAreaProvider>
       <View style={styles.container}>
         <AppStack />
-        {/* <OwnerOnBoarding5 /> */}
+        {/* <OwnerOnBoarding6 /> */}
         {/* <ImageSelector/> */}
       </View>
     </SafeAreaProvider>

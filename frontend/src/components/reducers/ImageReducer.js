@@ -1,24 +1,25 @@
-import React from 'react'
+import React from "react";
 
-const ImageReducer = (state, action) => {
-    console.log("action:"+action.type)
-    switch (action.type)
-    {
-        case "image1":
-            return { ...state, image1: action.value }
-        case "image2":
-            return { ...state, image2: action.value }
-        case "image3":
-            return { ...state, image3: action.value }
-        case "image4":
-            return { ...state, image4: action.value }
-        case "image5":
-            return { ...state, image5: action.value }
-        case "image6":
-            return { ...state, image6: action.value }
-        default: 
-        return state
-    }
-}
+const ImageReducer = (images, action) => {
+  // console.log("action:" + action.type);
+  // console.log("action value:" + action.value);
 
-export default ImageReducer
+  switch (action.type) {
+    case "image1":
+      return { ...images, image1: action.value };
+    case "image2":
+      return { ...images, image2: action.value };
+    case "image3":
+      return { ...images, image3: action.value };
+    case "image4":
+      return { ...images, image4: action.value };
+    case "image5":
+      return { ...images, image5: action.value };
+    case "image6":
+      return { ...images, image6: action.value };
+    default:
+      return images;
+  }
+};
+
+export default ImageReducer;

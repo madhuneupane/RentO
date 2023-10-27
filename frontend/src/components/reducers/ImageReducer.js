@@ -1,8 +1,8 @@
 import React from "react";
 
 const ImageReducer = (images, action) => {
-  console.log("action:" + action.type);
-  console.log("action value:" + action.value);
+  // console.log("action:" + action.type);
+  // console.log("action value:" + action.value);
 
   switch (action.type) {
     case "image1":

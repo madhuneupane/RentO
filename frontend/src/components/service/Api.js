@@ -42,20 +42,32 @@ class ApiClient {
   };
   postOwnerData = async (token, ownerData) => {
     apiInstance.defaults.headers.common["Authorization"] = token;
+    console.log("image6:" + ownerData.images.image6);
     const response = await apiInstance.post(this.endpoint, {
-      type: ownerData.ownerData.propertyType,
-      title: ownerData.ownerData.placeType,
-      location: ownerData.ownerData.Apartment,
+      type: ownerData.propertyType,
+      title: ownerData.placeType,
+      location: ownerData.Apartment,
+      amenities: {
+        pet: ownerData.amenities.petfriendly,
+        parkingSpace: ownerData.amenities.parking,
+        heating: ownerData.amenities.heating,
+        airConditioning: ownerData.amenities.air_conditioning,
+        washerDryer: ownerData.amenities.washer_dryer,
+        wifi: ownerData.amenities.wifi,
+      },
       images: {
-        image1: ownerData.images.image1,
-        image2: ownerData.images.image2,
-        image3: ownerData.images.image3,
-        image4: ownerData.images.image4,
-        image5: ownerData.images.image5,
-        image6: ownerData.images.image6,
+        bedrooms: {
+          left: ownerData.images.image1,
+          right: ownerData.images.image2,
+          top: ownerData.images.image3,
+          bottom: ownerData.images.image4,
+          front: ownerData.images.image5,
+          back: ownerData.images.image6,
+        },
       },
       description: ownerData.description,
     });
+
     console.log("owner response:" + JSON.stringify(response.data));
   };
 }

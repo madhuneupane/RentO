@@ -1,90 +1,146 @@
 <!DOCTYPE html>
-<html class='use-all-space'>
-<!-- 
+<html class="use-all-space">
+  <!-- 
 json-server --watch data.json -->
 
-<head>
-    <meta http-equiv='X-UA-Compatible' content='IE=Edge' />
-    <meta charset='UTF-8'>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="UTF-8" />
     <title>RentO - MapView</title>
-    <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
-    
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+
     <!-- TomTomMap CSS Libs -->
-    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css'>
-    <link rel='stylesheet' type='text/css' href='assets/ui-library/index.css' />
-    <link rel='stylesheet' type='text/css'
-        href='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.2.0/SearchBox.css' />
-    <link rel='stylesheet' type='text/css' href='assets/ui-library/icons-css/poi.css' />
-    <link rel='stylesheet' type='text/css' href="style.css"/>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css"
+    />
+    <link rel="stylesheet" type="text/css" href="assets/ui-library/index.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.2.0/SearchBox.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/ui-library/icons-css/poi.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
     <!-- Swiper CSS lib -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
 
     <!-- Swiper Style -->
     <style>
-        .swiper-container {
-            position: absolute;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 80%;
-            margin-bottom: 1rem;
-        }
-    
-        .swiper-slide {
-            margin-right: 5%;
-            width: 100px;
-            height: 150px;
-            background-color: rgb(207, 206, 206);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 18px;
-            border: 3px solid #2c2c2c;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-        }
+      .swiper-container {
+        position: absolute;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 80%;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column; /* Display children in a column layout */
+        align-items: center; /* Center children horizontally */
+      }
+
+      .swiper-slide {
+        margin-right: 5%;
+        width: 80%;
+        height: 350px;
+        background-color: rgb(207, 206, 206);
+        display: flex;
+        flex-direction: column; /* Display children in a column layout */
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        border: 3px solid #2c2c2c;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 60%; /* Set the maximum height for the image */
+        object-fit: cover; /* Ensure the image covers the available space */
+      }
+
+      .details-panel {
+        margin-top: 1rem;
+      }
+
+      .details-panel .detail {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Style the "Link" label */
+      .details-panel a {
+        text-decoration: none;
+        color: #0078d4; /* Use a color for links, you can adjust this color */
+        font-weight: bold;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <div class='map-view'>
-        <div class='tt-side-panel'>
-            <header class='tt-side-panel__header'>
-            </header>
-        </div>
+  <body>
+    <div class="map-view">
+      <div class="tt-side-panel">
+        <header class="tt-side-panel__header"></header>
+      </div>
 
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
+      <div class="swiper-container">
+        <div class="swiper-wrapper"></div>
+        <div class="swiper-pagination"></div>
+      </div>
 
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-
-        <div id='map' class='full-map'></div>
+      <div id="map" class="full-map"></div>
     </div>
 
     <!-- TomTomMap Libs -->
-    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js'></script>
-    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/services/services-web.min.js'></script>
-    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.2.0//SearchBox-web.js'></script>
-    <script type='text/javascript' src='assets/js/search-markers/search-marker.js'></script>
-    <script type='text/javascript' src='assets/js/search/search-results-parser.js'></script>
-    <script type='text/javascript' src='assets/js/search-markers/search-markers-manager.js'></script>
-    <script type='text/javascript' src='assets/js/info-hint.js'></script>
-    <script type='text/javascript' src='assets/js/mobile-or-tablet.js'></script>
-    <script type='text/javascript' src='assets/js/search/results-manager.js'></script>
-    <script type='text/javascript' src='assets/js/search/side-panel.js'></script>
-    <script type='text/javascript' src='assets/js/search/dom-helpers.js'></script>
-    <script type='text/javascript' src='assets/js/formatters.js'></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/services/services-web.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.2.0//SearchBox-web.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/js/search-markers/search-marker.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/js/search/search-results-parser.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/js/search-markers/search-markers-manager.js"
+    ></script>
+    <script type="text/javascript" src="assets/js/info-hint.js"></script>
+    <script type="text/javascript" src="assets/js/mobile-or-tablet.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/js/search/results-manager.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/js/search/side-panel.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/js/search/dom-helpers.js"
+    ></script>
+    <script type="text/javascript" src="assets/js/formatters.js"></script>
 
     <!-- Swiper JS Lib -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/dotenv@10.0.0/dist/main.js"></script>
     <script type="module" src="script.js"></script>
-</body>
-
+  </body>
 </html>

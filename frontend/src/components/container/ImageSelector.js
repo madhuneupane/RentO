@@ -1,4 +1,9 @@
 import React, { useEffect, useReducer, useState } from "react";
+import { firebaseConfig } from "../hooks/firebase";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore"
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
 import * as ImagePicker from "expo-image-picker";
 import {
   View,
@@ -19,7 +24,8 @@ const ImageSelector = ({ navigation, route }) => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync();
     if (!granted) alert("Need Gallery Access Permission");
   };
-
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
   useEffect(() => {
     cameraPermission();
   }, []);
@@ -35,9 +41,33 @@ const ImageSelector = ({ navigation, route }) => {
       quality: 1,
     });
 
-    console.log(result.assets[0].uri);
+    console.log("images seleted:" + {result});
     if (!result.canceled) {
       dispatch({ type: imageNumber, value: result.assets[0].uri });
+
+
+      const blob = await new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+          resolve(xhr.response);
+        };
+        xhr.onerror = function (e) {
+          console.log(e);
+          reject(new TypeError("Network request failed"));
+        };
+        xhr.responseType = "blob";
+        xhr.open("GET", result.assets[0].uri, true);
+        xhr.send(null);
+      });
+    
+      const fileRef = ref(getStorage(),`RentO/${result.assets[0].uri}` );
+      const result1 = await uploadBytes(fileRef, blob);
+    
+      // We're done with the blob, close and release it
+      blob.close();
+    
+      const h= await getDownloadURL(fileRef);
+      console.log(h);
     }
   };
 

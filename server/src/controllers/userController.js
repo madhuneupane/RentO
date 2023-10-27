@@ -5,12 +5,14 @@ const addNewUser = (req, res) => {
   console.log(req.body);
   let newUser = new schemas.user(req.body);
 
+
   newUser
     .save()
     .then((user) => {
       console.log("Data saved successfully");
       res.send(user);
       console.log(user);
+
     })
     .catch((error) => {
       console.error("Error saving data:", error);

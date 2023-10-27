@@ -109,7 +109,7 @@ ttSearchBox.on("tomtom.searchbox.resultselected", handleResultSelection);
 
 //Getting data from the API
 function fetchData() {
-  const url = "http://localhost:3000/locations";
+  const url = "http://localhost:5001/craigExtract"; // Modify the URL to the new API endpoint
   return fetch(url)
     .then((response) => {
       if (!response.ok) {
@@ -118,14 +118,12 @@ function fetchData() {
       return response.json();
     })
     .then((data) => {
+      console.log(data);
       if (Array.isArray(data)) {
         locations.push(...data);
-      } else if (Array.isArray(data.locations)) {
-        locations.push(...data.locations);
       } else {
-        throw new Error('Invalid data format: No "locations" array found.');
+        throw new Error("Invalid data format: Data should be an array.");
       }
-      //console.log('Locations data loaded:', locations);
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
@@ -334,29 +332,37 @@ function fillResultsList(results) {
 }
 
 function loadList() {
-  locations.forEach((location, index) => {
-    console.log("getting locations");
-    // Extract the coordinates from each location
-    const [longitude, latitude] = location.coordinates;
+  locations.forEach((property, index) => {
+    const {
+      link,
+      metaData: {
+        name,
+        numberOfBedrooms,
+        numberOfBathroomsTotal,
+        latitude,
+        longitude,
+      },
+      imageList,
+    } = property;
 
-    // Add the coordinates to the markerCoordinates array
     markerCoordinates.push([longitude, latitude]);
-
-    const { price, city, bedrooms, bathrooms, area } = location;
 
     const swiperSlide = document.createElement("div");
     swiperSlide.classList.add("swiper-slide");
 
+    const imageElement = document.createElement("img");
+    imageElement.src = imageList;
+    swiperSlide.appendChild(imageElement);
+
     const detailsPanel = document.createElement("div");
     detailsPanel.classList.add("details-panel");
-
     detailsPanel.innerHTML = `
-     <div class="detail">Price: <span class="price">${price}</span></div>
-     <div class="detail">City: <span class="city">${city}</span></div>
-     <div class="detail">Bedrooms: <span class="bedrooms">${bedrooms}</span></div>
-     <div class="detail">Bathrooms: <span class="bathrooms">${bathrooms}</span></div>
-     <div class="detail">Area: <span class="area">${area}</span> sq ft</div>
- `;
+      <div class="detail">Name: <span class="name">${name}</span></div>
+      <div class="detail">Bedrooms: <span class="bedrooms">${numberOfBedrooms}</span></div>
+      <div class="detail">Bathrooms: <span class="bathrooms">${numberOfBathroomsTotal}</span></div>
+      <div class="detail"><a href="${link}" target="_blank">Link</a></div>
+    `;
+
     swiperSlide.appendChild(detailsPanel);
 
     swiperContainer.querySelector(".swiper-wrapper").appendChild(swiperSlide);

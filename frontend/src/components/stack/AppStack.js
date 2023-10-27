@@ -17,6 +17,7 @@ import ImageSelector from "../container/ImageSelector";
 import SelectImageOption from "../container/SelectImageOption";
 import CameraSelector from "../container/CameraSelector";
 import ListingDetails from "../container/ListingDetails";
+import OwnerOnBoarding6 from "../container/OwnerOnBoarding6";
 const Stack = createStackNavigator();
 
 const AppStack = () => {
@@ -34,6 +35,7 @@ const AppStack = () => {
         <Stack.Screen name="owner_onboarding3" component={OwnerOnboarding3} />
         <Stack.Screen name="owner_onboarding4" component={OwnerOnboarding4} />
         <Stack.Screen name="owner_onboarding5" component={OwnerOnBoarding5} />
+        <Stack.Screen name="owner_onboarding6" component={OwnerOnBoarding6} />
         <Stack.Screen
           name="owner_property_desc"
           component={PropertyDescription}

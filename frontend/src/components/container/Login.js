@@ -12,7 +12,8 @@ const Login = ({navigation}) => {
         <View style={styles.buttonView}>
           <ButtonUI
               item={{ value: `I'm  looking for a new Place` }}
-              customStyle={styles.button}
+              customStyle={styles.showPost}
+              
               selectedItems={selectedItems}
                   type='login_rentor' />
           </View>
@@ -20,7 +21,7 @@ const Login = ({navigation}) => {
           <View style={styles.buttonView}>
           <ButtonUI
               item={{ value: `I want to post a listing` }}
-              customStyle={styles.button}
+              customStyle={styles.doPost}
               selectedItems={selectedItems}
                   type='owner' />
               </View>
@@ -33,21 +34,47 @@ export default Login
 
 const styles = StyleSheet.create({
   container: {
-    
 
     },
     subContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    height:'80%'
+    height:'100%',
     },
-    button: {
-    borderWidth:3,
-    borderRadius: 15,
-    fontSize: 22,
+    showPost: {
+    width: '80%',
+    display: 'flex', 
+    flexDirection: 'column',   
+    borderWidth:1,
+    borderRadius: 25,
+    padding:15,
+    fontSize: 20,
+    fontWeight: '500',
+    borderColor:'#36827F',
+    backgroundColor: '#36827F',
+    margin: 8,
+    color:'#fff',
+
     // margin: 10,
     // justifyContent:'center'
     },
+
+    doPost: {
+      width: '80%',
+      display: 'flex', 
+      flexDirection: 'column',   
+      borderWidth:1,
+      borderRadius: '25',
+      padding:15,
+      fontSize: 20,
+      fontWeight: '500',
+      borderColor:'#f26808',
+      backgroundColor: '#f26808',
+      margin: 8,
+      color:'#000',
+      paddingLeft: '10%',
+      paddingRight: '10%',
+      },
 
     buttonView: {
         width: '100%' ,

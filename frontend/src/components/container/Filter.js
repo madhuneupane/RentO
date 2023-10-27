@@ -112,35 +112,42 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 15,
     marginLeft: 10,
-  },
-  propertyType: {
-    marginBottom: 10,
-    height: 100,
-    marginLeft: 0,
-    marginTop: 0,
-  },
-  priceRange: {
-    margin: 2,
-  },
-  priceRangeInput: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-  rooms: {
-    marginTop: 15,
-    height: 50,
-    marginLeft: 0,
-  },
-  tour: {
-    marginTop: 15,
-    height: 100,
-    marginLeft: 0,
-  },
-  button: {
-    width: "60%",
-    height: 70,
-    alignItems: "center",
-    justifyContent: "center",
-    marginLeft: 70,
-  },
+
+    },
+    propertyType: {
+        marginBottom: 10,
+        height:100,
+        marginLeft: 0,
+        marginTop: 0,
+    },
+    priceRange: {
+        margin: 2,
+    },
+    priceRangeInput: {
+        flexDirection: 'row',
+        justifyContent:'space-around',
+        fontStyle:"italic"
+
+    },
+    rooms: {
+        marginTop: 15,
+        height:50,
+        marginLeft: 0,
+    },
+    tour: {
+        marginTop: 15,
+        height: 100,
+        marginLeft: 0,
+    },
+    button: {
+        width: '60%',
+        height: 70,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 70,
+    }
+
+   
+
+
 });

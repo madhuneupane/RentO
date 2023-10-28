@@ -12,6 +12,7 @@ const routes = (app)=>{
 
    app.route("/addProperty").post(verifyToken,propertyController.addProperty);
    app.route("/fetchAllProperty").get(verifyToken,propertyController.fetchAllProperty);
+   app.route("/fetchPropertyById/:id").get(propertyController.fetchPropertyById);
 
    app.route("/descriptionSuggest").post(verifyToken,openAiController.suggestDescription);
 

@@ -29,8 +29,20 @@ const addProperty = (req, res) => {
       });
   };
 
+  const fetchPropertyById = (req, res) => {
+    const { id } = req.params;
+    property
+      .findOne({ _id: id })
+      .then((data) => {
+        res.json({ data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   module.exports = {
     addProperty,
-    fetchAllProperty
+    fetchAllProperty,
+    fetchPropertyById
     
   };

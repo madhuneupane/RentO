@@ -22,7 +22,7 @@ class ApiClient {
     await apiInstance
       .get(this.endpoint)
       .then((response) => {
-        console.log("id:" + JSON.stringify(response.data));
+        console.log("id:" + response.data.id);
         AsyncStorage.setItem("token", response.data.token);
         // AsyncStorage.setItem("id", response.data.id);
       })

@@ -11,6 +11,7 @@ const LoginRentor = ({navigation}) => {
         email: 'madhu@gmail.com',
         password:'madhu123'
     })
+    console.log(credentials.email);
     login(credentials.email,credentials.password)
 
     const callLoginApi = () => {

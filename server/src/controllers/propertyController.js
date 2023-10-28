@@ -22,7 +22,7 @@ const addProperty = (req, res) => {
       .find({})
       .then((data) => {
         res.json(data);
-        console.log(data);
+        
       })
       .catch((error) => {
         console.error("Error fetching data:", error);

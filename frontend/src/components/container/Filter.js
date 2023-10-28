@@ -169,6 +169,6 @@ const styles = StyleSheet.create({
     }
 
    
-
+  }
 
 });

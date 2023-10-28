@@ -5,7 +5,7 @@ import singleData from '../hooks/singleData'
 const Login = ({navigation}) => {
   const [single, setSingle]=useState();
  singleData("653c21014e6bbc84a2d46d28",setSingle); 
- console.log("yo", single);
+ //console.log("yo", single);
     
     const selectedItems = (value, type) => {
         navigation.navigate(type)

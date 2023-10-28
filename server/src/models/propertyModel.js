@@ -11,6 +11,12 @@ const propertySchema = new Schema({
   location: {
     type: String,
   },
+  longitude: {
+    type: String,
+  },
+  latitude: {
+    type: String,
+  },
   roomNumbers: {
     type: Number,
   },

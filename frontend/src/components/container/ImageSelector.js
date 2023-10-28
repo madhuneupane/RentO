@@ -65,6 +65,7 @@ const ImageSelector = ({ navigation, route }) => {
 
       // const h= await getDownloadURL(fileRef);
       // console.log(h);
+
     }
   };
   useEffect(() => {

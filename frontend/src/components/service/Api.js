@@ -53,33 +53,40 @@ class ApiClient {
     apiInstance.defaults.headers.common["Authorization"] = token;
     // const id = await AsyncStorage.getItem("id");
 
-    console.log("ownerid:" + id);
+    console.log("owner data:" + JSON.stringify(ownerData));
+    console.log("owner data:" + JSON.stringify(ownerData));
+    console.log("owner data:" + JSON.stringify(ownerData));
+    console.log(
+      "owner amenities:" + JSON.stringify(ownerData.ownerData.amenities)
+    );
+
     const response = await apiInstance.post(this.endpoint, {
-      type: ownerData.propertyType,
-      title: ownerData.placeType,
-      location: ownerData.Apartment,
+      type: ownerData.ownerData.propertyType,
+      title: ownerData.ownerData.placeType,
+      location: ownerData.ownerData.Apartment,
       amenities: {
-        pet: ownerData.amenities.petfriendly,
-        parkingSpace: ownerData.amenities.parking,
-        heating: ownerData.amenities.heating,
-        airConditioning: ownerData.amenities.air_conditioning,
-        washerDryer: ownerData.amenities.washer_dryer,
-        wifi: ownerData.amenities.wifi,
+        pet: ownerData.ownerData.amenities.petfriendly,
+        parkingSpace: ownerData.ownerData.amenities.parking,
+        heating: ownerData.ownerData.amenities.heating,
+        airConditioning: ownerData.ownerData.amenities.air_conditioning,
+        washerDryer: ownerData.ownerData.amenities.washer_dryer,
+        wifi: ownerData.ownerData.amenities.wifi,
       },
       images: {
         bedrooms: {
-          left: ownerData.images.image1,
-          right: ownerData.images.image2,
-          top: ownerData.images.image3,
-          bottom: ownerData.images.image4,
-          front: ownerData.images.image5,
-          back: ownerData.images.image6,
+          left: ownerData.ownerData.images.image1,
+          right: ownerData.ownerData.images.image2,
+          top: ownerData.ownerData.images.image3,
+          bottom: ownerData.ownerData.images.image4,
+          front: ownerData.ownerData.images.image5,
+          back: ownerData.ownerData.images.image6,
         },
       },
-      description: ownerData.description,
+      description: ownerData.ownerData.description,
     });
 
     console.log("owner response:" + JSON.stringify(response.data));
+    return response.data;
   };
 }
 

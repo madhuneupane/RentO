@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { firebaseConfig } from "../hooks/firebase";
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore"
+import { getFirestore } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 import * as ImagePicker from "expo-image-picker";
@@ -20,6 +20,7 @@ const ImageSelector = ({ navigation, route }) => {
   const ownerGivenData = route.params;
   const [images, dispatch] = useReducer(ImageReducer, {});
   const [ownerData, setOwnerData] = useState();
+  const [firebaseImages, setFirebaseImage] = useState(false);
   const cameraPermission = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync();
     if (!granted) alert("Need Gallery Access Permission");
@@ -30,9 +31,6 @@ const ImageSelector = ({ navigation, route }) => {
     cameraPermission();
   }, []);
 
-  useEffect(() => {
-    setOwnerData({ ...ownerGivenData, images: images });
-  }, [images]);
   const selectImage = async (imageNumber) => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -41,40 +39,50 @@ const ImageSelector = ({ navigation, route }) => {
       quality: 1,
     });
 
-    console.log("images seleted:" + {result});
+    console.log("images seleted:" + { result });
     if (!result.canceled) {
       dispatch({ type: imageNumber, value: result.assets[0].uri });
 
+      // const blob = await new Promise((resolve, reject) => {
+      //   const xhr = new XMLHttpRequest();
+      //   xhr.onload = function () {
+      //     resolve(xhr.response);
+      //   };
+      //   xhr.onerror = function (e) {
+      //     console.log(e);
+      //     reject(new TypeError("Network request failed"));
+      //   };
+      //   xhr.responseType = "blob";
+      //   xhr.open("GET", result.assets[0].uri, true);
+      //   xhr.send(null);
+      // });
 
-      const blob = await new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-          resolve(xhr.response);
-        };
-        xhr.onerror = function (e) {
-          console.log(e);
-          reject(new TypeError("Network request failed"));
-        };
-        xhr.responseType = "blob";
-        xhr.open("GET", result.assets[0].uri, true);
-        xhr.send(null);
-      });
-    
-      const fileRef = ref(getStorage(),`RentO/${result.assets[0].uri}` );
-      const result1 = await uploadBytes(fileRef, blob);
-    
-      blob.close();
-    
-      const h= await getDownloadURL(fileRef);
-      console.log(h);
+      // const fileRef = ref(getStorage(),`RentO/${result.assets[0].uri}` );
+      // const result1 = await uploadBytes(fileRef, blob);
+
+      // // We're done with the blob, close and release it
+      // blob.close();
+
+      // const h= await getDownloadURL(fileRef);
+      // console.log(h);
+
     }
   };
+  useEffect(() => {
+    setOwnerData({ ...ownerGivenData, images: images });
+  }, [images]);
 
   const uploadImages = () => {
+    console.log("upload Image", JSON.stringify(ownerData));
     navigation.navigate("owner_onboarding5", {
       ownerData: ownerData,
       imageUploaded: true,
     });
+  };
+  const saveImages = () => {
+    // firebase code
+    // take  images and upload images in same structure done in reducer  and save in onwerData
+    setFirebaseImage(true);
   };
   return (
     <View style={styles.mainContainer}>
@@ -172,10 +180,15 @@ const ImageSelector = ({ navigation, route }) => {
           <Text style={styles.text}>Floor</Text>
         </View>
       </View>
-      <ButtonUI
-        item={{ value: "upload" }}
-        selectedItems={uploadImages}
-      ></ButtonUI>
+      {images.image6 && !firebaseImages && (
+        <ButtonUI
+          item={{ value: "upload Images" }}
+          selectedItems={saveImages}
+        />
+      )}
+      {firebaseImages && (
+        <ButtonUI item={{ value: "Continue" }} selectedItems={uploadImages} />
+      )}
     </View>
   );
 };

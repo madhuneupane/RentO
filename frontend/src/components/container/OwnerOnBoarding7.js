@@ -1,38 +1,48 @@
-import { View, StyleSheet, Text } from "react-native";
+import { useState } from "react";
+import { Text, View, StyleSheet } from "react-native";
 import { InputUI } from "../UI/input/InputUI";
 import ButtonUI from "../UI/button/ButtonUI";
-import { CheckBox } from "@rneui/themed";
-import { useState } from "react";
-const OwnerOnboarding3 = ({ navigation, route }) => {
+
+const OwnerOnboarding7 = ({ navigation, route }) => {
   const [onBoardData, setOnBoardData] = useState();
   var [isSubmitPress, setIsSubmitPress] = useState(false);
+
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
-  const setData = (value, type) => {
-    setOnBoardData({ ...route.params, address: value });
+  const setRoom = (value, type) => {
+    setOnBoardData({ ...route.params, ...onBoardData, room: value });
+  };
+  const setBathRoom = (value, type) => {
+    setOnBoardData({ ...route.params, ...onBoardData, bathroom: value });
   };
   const navigateToNext = () => {
-    console.log("on 3:" + JSON.stringify(onBoardData));
-    navigation.navigate("owner_onboarding4", onBoardData);
+    console.log("rooms::" + JSON.stringify(onBoardData));
+    navigation.navigate("owner_onboarding3", onBoardData);
   };
   return (
     <View>
       <View style={styles.textContainer}>
-        <Text style={styles.title}>What's the address?</Text>
+        <Text style={styles.title}>How many rooms do you have?</Text>
       </View>
-
       <View>
         <InputUI
-          placeholder=" Type your address"
-          selectedItems={setData}
-          type="address"
+          placeholder="Number of Rooms"
+          selectedItems={setRoom}
+          type="room"
           coustomStyle={styles}
         />
-        {/* <CheckBox checked title="I want to keep my address private" /> */}
+      </View>
+      <View>
+        <InputUI
+          placeholder="Number of BathRooms"
+          selectedItems={setBathRoom}
+          type="bathroom"
+          coustomStyle={styles}
+        />
       </View>
       <View style={styles.buttonContainer}>
         <ButtonUI
@@ -48,8 +58,7 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
     </View>
   );
 };
-export default OwnerOnboarding3;
-
+export default OwnerOnboarding7;
 const styles = StyleSheet.create({
   progressBar: {
     borderColor: "#B1D4D2",
@@ -64,7 +73,7 @@ const styles = StyleSheet.create({
   progressBarGreen: {
     backgroundColor: "#36827F",
     height: 10,
-    width: 110,
+    width: 100,
     borderRadius: 20,
   },
   container: {
@@ -76,7 +85,6 @@ const styles = StyleSheet.create({
   subContainer: {
     alignItems: "center",
     height: 60,
-    // backgroundColor: "pink",
   },
   textInput: {
     fontSize: 20,
@@ -100,7 +108,7 @@ const styles = StyleSheet.create({
     fontSize: "20",
   },
   textContainer: {
-    margin: 30,
+    margin: 10,
     height: "20%",
     justifyContent: "center",
   },
@@ -111,11 +119,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
   },
-  customStyle: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 20,
-  },
   submitButton: {
     backgroundColor: "#36827F",
     borderColor: "#36827F",
@@ -123,7 +126,7 @@ const styles = StyleSheet.create({
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
@@ -134,12 +137,17 @@ const styles = StyleSheet.create({
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
   },
   buttonContainer: {
     marginTop: 150,
+  },
+  customStyle: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
   },
 });

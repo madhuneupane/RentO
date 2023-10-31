@@ -3,7 +3,7 @@ import ApiClient from "../service/Api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const login = ({ email, password }) => {
-  const apiClient = new ApiClient(`/fetchSingleUser/${email}/${password}`);
+  const apiClient = new ApiClient(`/fetchSingleUser/madhu@gmail.com/madhu123`);
 
   const getToken = async () => {
     try {

@@ -5,14 +5,12 @@ const addNewUser = (req, res) => {
   console.log(req.body);
   let newUser = new schemas.user(req.body);
 
-
   newUser
     .save()
     .then((user) => {
       console.log("Data saved successfully");
       res.send(user);
       console.log(user);
-
     })
     .catch((error) => {
       console.error("Error saving data:", error);
@@ -37,9 +35,9 @@ const fetchSingleUser = (req, res) => {
     .findOne({ email: req.params.email, password: req.params.password })
     .then((data) => {
       const token = jwt.sign({ email }, "hello", { expiresIn: "1h" });
-      // console.log(JSON.stringify(data));
-      // res.json({ token: token, id: data._id });
-      res.json({ token: token });
+      console.log(JSON.stringify(data));
+      res.json({ token: token, id: data._id });
+      // res.json({ token: token });
     });
 };
 

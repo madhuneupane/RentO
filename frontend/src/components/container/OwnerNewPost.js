@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Text } from "@rneui/themed";
 export const OwnerNewPost = ({ navigation, route }) => {
   const data = route.params;
+  console.log(data);
   return (
     <Card>
       <Text>{console.log("owner new post :::" + JSON.stringify(data))}</Text>

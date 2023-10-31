@@ -10,6 +10,6 @@ export const roomsImages = {
     // { key: "living_area", value: "Living Area" },
     { key: "kitchen", value: "Kitchen" },
     { key: "bedroom", value: "Bedroom" },
-    { key: "batroom", value: "Bathroom" },
+    { key: "bathroom", value: "Bathroom" },
   ],
 };

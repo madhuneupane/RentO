@@ -32,6 +32,10 @@ const propertySchema = new Schema({
   ownerID: {
     type: String,
   },
+  interestedList:{
+    type: [String],
+    default: []
+  },
 
   images: {
     bedrooms: {

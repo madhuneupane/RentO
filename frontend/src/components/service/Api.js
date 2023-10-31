@@ -22,7 +22,7 @@ class ApiClient {
     await apiInstance
       .get(this.endpoint)
       .then((response) => {
-        console.log("id:" + JSON.stringify(response.data));
+        console.log("id:" + response.data.id);
         AsyncStorage.setItem("token", response.data.token);
         // AsyncStorage.setItem("id", response.data.id);
       })
@@ -52,10 +52,6 @@ class ApiClient {
   postOwnerData = async (token, ownerData) => {
     apiInstance.defaults.headers.common["Authorization"] = token;
     // const id = await AsyncStorage.getItem("id");
-
-    console.log("owner data:" + JSON.stringify(ownerData));
-    console.log("owner data:" + JSON.stringify(ownerData));
-    console.log("owner data:" + JSON.stringify(ownerData));
     console.log(
       "owner amenities:" + JSON.stringify(ownerData.ownerData.amenities)
     );

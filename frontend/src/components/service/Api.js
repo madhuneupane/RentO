@@ -52,10 +52,6 @@ class ApiClient {
   postOwnerData = async (token, ownerData) => {
     apiInstance.defaults.headers.common["Authorization"] = token;
     // const id = await AsyncStorage.getItem("id");
-
-    console.log("owner data:" + JSON.stringify(ownerData));
-    console.log("owner data:" + JSON.stringify(ownerData));
-    console.log("owner data:" + JSON.stringify(ownerData));
     console.log(
       "owner amenities:" + JSON.stringify(ownerData.ownerData.amenities)
     );

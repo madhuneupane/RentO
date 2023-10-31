@@ -46,3 +46,4 @@ const addProperty = (req, res) => {
     fetchPropertyById
     
   };
+  

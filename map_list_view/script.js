@@ -1,12 +1,11 @@
 //Init Data
 import config from "./web_config.js";
-// import "./dotenv/config";
-//require("dotenv").config();
 
-tt.setProductInfo("RentO_Map", "0.5");
+tt.setProductInfo("RentO_Map", "0.6");
 const locations = [];
 const markerCoordinates = [];
 var markerInstances = [];
+const IDArray = [];
 
 //Init Swiper
 const swiperContainer = document.querySelector(".swiper-container");
@@ -28,7 +27,7 @@ var map = tt.map({
   key: config.MAP_KEY,
   container: "map",
   center: [-123.1247356438283, 49.28004330952876],
-  zoom: 10,
+  zoom: 13,
   dragPan: !isMobileOrTablet(),
 });
 
@@ -109,7 +108,7 @@ ttSearchBox.on("tomtom.searchbox.resultselected", handleResultSelection);
 
 //Getting data from the API
 function fetchData() {
-  const url = "http://localhost:5001/craigExtract"; // Modify the URL to the new API endpoint
+  const url = "http://localhost:5001/fetchAllProperty"; // Modify the URL to the new API endpoint
   return fetch(url)
     .then((response) => {
       if (!response.ok) {
@@ -332,37 +331,96 @@ function fillResultsList(results) {
 }
 
 function loadList() {
+  //Randomly generate coordinates
+  const minLongitude = -123.178899;
+  const maxLongitude = -123.099158;
+  const minLatitude = 49.223433;
+  const maxLatitude = 49.299;
+
   locations.forEach((property, index) => {
     const {
-      link,
-      metaData: {
-        name,
-        numberOfBedrooms,
-        numberOfBathroomsTotal,
-        latitude,
-        longitude,
-      },
-      imageList,
+      _id,
+      title,
+      type,
+      location,
+      // longitude,
+      // latitude,
+      roomNumbers,
+      bathRoomNumbers,
+      rent,
+      photoUrl,
+      availableDate,
     } = property;
 
-    markerCoordinates.push([longitude, latitude]);
+    IDArray.push(_id);
+
+    const randomLongitude =
+      Math.random() * (maxLongitude - minLongitude) + minLongitude;
+    const randomLatitude =
+      Math.random() * (maxLatitude - minLatitude) + minLatitude;
+    console.log("log=" + randomLongitude + ", and lat=" + randomLatitude);
+
+    markerCoordinates.push([
+      parseFloat(randomLongitude),
+      parseFloat(randomLatitude),
+    ]);
+
+    const customerReview = Math.random() * 2 + 2;
+
+    let daysDifference = 0;
+    if (availableDate) {
+      const currentDate = new Date();
+      const availableDateTime = new Date(availableDate);
+      const timeDifference =
+        availableDateTime.getTime() - currentDate.getTime();
+      daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    }
+
+    let starIcons = "";
+    for (let i = 0; i < Math.floor(customerReview); i++) {
+      starIcons += '<i class="fa fa-star"></i>';
+    }
 
     const swiperSlide = document.createElement("div");
     swiperSlide.classList.add("swiper-slide");
 
-    const imageElement = document.createElement("img");
-    imageElement.src = imageList;
-    swiperSlide.appendChild(imageElement);
+    const imageDiv = document.createElement("div");
+    imageDiv.classList.add("image-div");
+    imageDiv.style.height = "55%";
+
+    // const imageElement = document.createElement("img");
+    // imageElement.src = "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1469&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+    // imageDiv.appendChild(imageElement);
+
+    imageDiv.style.backgroundImage = `url("https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1469&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`;
+
+    imageDiv.style.backgroundSize = "cover";
+
+    imageDiv.style.backgroundPosition = "center";
 
     const detailsPanel = document.createElement("div");
     detailsPanel.classList.add("details-panel");
-    detailsPanel.innerHTML = `
-      <div class="detail">Name: <span class="name">${name}</span></div>
-      <div class="detail">Bedrooms: <span class="bedrooms">${numberOfBedrooms}</span></div>
-      <div class="detail">Bathrooms: <span class="bathrooms">${numberOfBathroomsTotal}</span></div>
-      <div class="detail"><a href="${link}" target="_blank">Link</a></div>
-    `;
+    detailsPanel.style.height = "45%";
 
+    detailsPanel.innerHTML = `
+    <div class="left-column">
+      <div class="detail rent"><span class="rent">$${rent}</span></div>
+      <div class="detail location"><span class="location">Vancouver, BC</span></div>
+      <div class="detail rooms"><span class="roomNumbers">${roomNumbers} bd</span> | <span class="bathRoomNumbers">${bathRoomNumbers} ba</span></div>
+    
+    </div>
+    <div class="right-column">
+      <i class="far fa-heart"></i>
+      <div class="detail time">${
+        availableDate ? daysDifference + " days ago" : "0 day"
+      }</div>
+    
+      </div>
+  `;
+
+    //  <div class="detail star">${starIcons}</div>
+
+    swiperSlide.appendChild(imageDiv);
     swiperSlide.appendChild(detailsPanel);
 
     swiperContainer.querySelector(".swiper-wrapper").appendChild(swiperSlide);
@@ -456,16 +514,25 @@ swiper.on("slideChange", function () {
 swiper.on("click", function () {
   let activeIndex = swiper.activeIndex;
   console.log("Swiper " + activeIndex + " is clicked");
-  window.postMessage("Hello");
+
+  // this is sentind the data
+  // window.ReactNativeWebView.postMessage(activeIndex);
+  // window.addEventListener("message", (message) => {
+  //   alert(check);
+  // });
+
+  let clickedId = IDArray[activeIndex];
+  console.log("Clicked ID=" + clickedId);
+
+  // Post the ID to the parent window
+  window.ReactNativeWebView.postMessage(clickedId);
+
   let activeMarker = markerInstances[activeIndex];
   let activeCoord = activeMarker.getLngLat();
-
   deactivateMarkers();
   activeMarker.getElement().classList.remove("marker-normal");
   activeMarker.getElement().classList.add("marker-active");
-
   activeMarker.togglePopup();
-
   // Set the map's center to match the active slide's marker
   map.easeTo({
     center: activeCoord,
@@ -474,8 +541,8 @@ swiper.on("click", function () {
 
 const clickableElement = document.getElementById("map");
 clickableElement.addEventListener("click", () => {
-  console.log("map element clicked"); // Debugging statement
-  // Send a message to the native code when clicked
+  console.log("map element clicked");
+
   window.postMessage("Hello");
-  console.log("Message sent to native code"); // Debugging statement
+  console.log("Message sent to native code");
 });

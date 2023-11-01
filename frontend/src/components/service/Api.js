@@ -22,17 +22,19 @@ class ApiClient {
     await apiInstance
       .get(this.endpoint)
       .then((response) => {
-        console.log("id:" + response.data.id);
+        console.log("id:" + JSON.stringify(response.data));
         AsyncStorage.setItem("token", response.data.token);
-        // AsyncStorage.setItem("id", response.data.id);
+        AsyncStorage.setItem("id", response.data.id);
       })
       .then((testtoken = await AsyncStorage.getItem("token")));
   };
-  getSingleProperty = async(id)=>{
-    console.log("api"+id);
-    const response = await apiInstance.get(`http://localhost:5001/fetchPropertyById/${id}`);
+  getSingleProperty = async (id) => {
+    console.log("api" + id);
+    const response = await apiInstance.get(
+      `http://localhost:5001/fetchPropertyById/${id}`
+    );
     return response;
-  }
+  };
 
   getAllData = async (headers) => {
     apiInstance.defaults.headers.common["Authorization"] = headers;
@@ -52,6 +54,10 @@ class ApiClient {
   postOwnerData = async (token, ownerData) => {
     apiInstance.defaults.headers.common["Authorization"] = token;
     // const id = await AsyncStorage.getItem("id");
+
+    console.log("owner data:" + JSON.stringify(ownerData));
+    console.log("owner data:" + JSON.stringify(ownerData));
+    console.log("owner data:" + JSON.stringify(ownerData));
     console.log(
       "owner amenities:" + JSON.stringify(ownerData.ownerData.amenities)
     );
@@ -59,7 +65,11 @@ class ApiClient {
     const response = await apiInstance.post(this.endpoint, {
       type: ownerData.ownerData.propertyType,
       title: ownerData.ownerData.placeType,
-      location: ownerData.ownerData.Apartment,
+      location: ownerData.ownerData.address,
+      rent: ownerData.ownerData.amount,
+      roomNumbers: ownerData.ownerData.room,
+      bathRoomNumbers: ownerData.ownerData.bathroom,
+      ownerID: id,
       amenities: {
         pet: ownerData.ownerData.amenities.petfriendly,
         parkingSpace: ownerData.ownerData.amenities.parking,

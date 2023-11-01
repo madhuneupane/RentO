@@ -1,89 +1,140 @@
-import React, { useState } from 'react'
-import ButtonUI from '../UI/button/ButtonUI'
-import { Text,View,StyleSheet } from 'react-native'
-import singleData from '../hooks/singleData'
-const Login = ({navigation}) => {
-  const [single, setSingle]=useState();
- singleData("653c21014e6bbc84a2d46d28",setSingle); 
- //console.log("yo", single);
-    
-    const selectedItems = (value, type) => {
-        navigation.navigate(type)
- }
+import React, { useState } from "react";
+import ButtonUI from "../UI/button/ButtonUI";
+import { Text, View, StyleSheet, Image } from "react-native";
+const Login = ({ navigation }) => {
+  const selectedItems = (value, type) => {
+    navigation.navigate(type);
+  };
+  const logo = require("../../../assets/Favicon.png");
+  var [isPress, setIsPress] = useState(false);
+  var [isSubmitPress, setIsSubmitPress] = useState(false);
+  var touchPropsSubmit = {
+    underlayColor: "#B1D4D2", // <-- "backgroundColor" will be always overwritten by "underlayColor"
+    style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
+    onHideUnderlay: () => setIsSubmitPress(false),
+    onShowUnderlay: () => setIsSubmitPress(true),
+  };
+
+  var touchProps = {
+    underlayColor: "#FBEDEA",
+    style: isPress ? styles.postButtonClicked : styles.postButton,
+    onHideUnderlay: () => setIsPress(false),
+    onShowUnderlay: () => setIsPress(true),
+  };
   return (
-      <View style={styles.container}> 
+    <View>
+      <View style={styles.imageContainer}>
+        <Image source={logo} style={styles.image}></Image>
+      </View>
       <View style={styles.subContainer}>
         <View style={styles.buttonView}>
           <ButtonUI
-              item={{ value: `I'm  looking for a new Place` }}
-              customStyle={styles.showPost}
-              
-              selectedItems={selectedItems}
-                  type='login_rentor' />
-          </View>
-          
-          <View style={styles.buttonView}>
-          <ButtonUI
-              item={{ value: `I want to post a listing` }}
-              customStyle={styles.doPost}
-              selectedItems={selectedItems}
-                  type='owner' />
-              </View>
-        </View>
-    </View>
-  )
-}
+            item={{ value: `I'm  looking for a new Place` }}
+            customStyle={styles.customStyle}
+            selectedItems={selectedItems}
+            touchProps={touchPropsSubmit}
+            type="welcome"
+          />
 
-export default Login
+          <ButtonUI
+            item={{ value: `I want to post a listing` }}
+            customStyle={styles.customStyle}
+            selectedItems={selectedItems}
+            touchProps={touchProps}
+            type="owner"
+          />
+        </View>
+      </View>
+    </View>
+  );
+};
+
+export default Login;
 
 const styles = StyleSheet.create({
-  container: {
-
-    },
-    subContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height:'100%',
-    },
-    showPost: {
-    width: '80%',
-    display: 'flex', 
-    flexDirection: 'column',   
-    borderWidth:1,
-    borderRadius: 25,
-    padding:15,
-    fontSize: 20,
-    fontWeight: '500',
-    borderColor:'#36827F',
-    backgroundColor: '#36827F',
-    margin: 8,
-    color:'#fff',
-
+  imageContainer: {
+    marginTop: "20%",
+    alignItems: "center",
+  },
+  image: {
+    width: 100,
+    height: 100,
+  },
+  subContainer: {
+    // marginBottom: 20,
+    justifyContent: "space-around",
+    alignItems: "center",
+    height: "65%",
+    marginBottom: 20,
+  },
+  button: {
+    borderWidth: 3,
+    borderRadius: 15,
+    fontSize: 22,
     // margin: 10,
     // justifyContent:'center'
-    },
+  },
 
-    doPost: {
-      width: '80%',
-      display: 'flex', 
-      flexDirection: 'column',   
-      borderWidth:1,
-      borderRadius: '25',
-      padding:15,
-      fontSize: 20,
-      fontWeight: '500',
-      borderColor:'#f26808',
-      backgroundColor: '#f26808',
-      margin: 8,
-      color:'#000',
-      paddingLeft: '10%',
-      paddingRight: '10%',
-      },
+  buttonView: {
+    width: "100%",
+    margin: 5,
+    padding: 4,
+    alignItems: "center",
+    textAlign: "center",
+    marginBottom: 100,
+    marginTop: 100,
+    // backgroundColor: "pink",
+    justifyContent: "space-around",
+    height: "50%",
+  },
 
-    buttonView: {
-        width: '100%' ,
-        margin: 5,
-        padding: 4,
-        alignItems: 'center',        
-    }
-})
+  submitButton: {
+    backgroundColor: "#36827F",
+    borderColor: "#36827F",
+    height: "35%",
+    width: "88%",
+    marginLeft: 20,
+    // marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 30,
+  },
+  submitButtonClicked: {
+    borderColor: "#B1D4D2",
+    height: "35%",
+    width: "88%",
+    marginLeft: 20,
+    // marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 30,
+  },
+  customStyle: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
+    textAlign: "center",
+  },
+
+  postButton: {
+    backgroundColor: "#f56e51",
+    borderColor: "#f56e51",
+    height: "35%",
+    width: "88%",
+    marginLeft: 20,
+    // marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 30,
+  },
+  postButtonClicked: {
+    borderColor: "#f56e51",
+    height: "35%",
+    width: "88%",
+    marginLeft: 20,
+    // marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 30,
+  },
+});

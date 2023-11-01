@@ -36,35 +36,13 @@ const ImageSelector = ({ navigation, route }) => {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsMultipleSelection: true,
       aspect: [4, 3],
-      quality: 1,
+      quality: 0,
     });
 
-    console.log("images seleted:" + { result });
+    console.log("images seleted:" + JSON.stringify(result.assets[0]) );
     if (!result.canceled) {
       dispatch({ type: imageNumber, value: result.assets[0].uri });
 
-      // const blob = await new Promise((resolve, reject) => {
-      //   const xhr = new XMLHttpRequest();
-      //   xhr.onload = function () {
-      //     resolve(xhr.response);
-      //   };
-      //   xhr.onerror = function (e) {
-      //     console.log(e);
-      //     reject(new TypeError("Network request failed"));
-      //   };
-      //   xhr.responseType = "blob";
-      //   xhr.open("GET", result.assets[0].uri, true);
-      //   xhr.send(null);
-      // });
-
-      // const fileRef = ref(getStorage(),`RentO/${result.assets[0].uri}` );
-      // const result1 = await uploadBytes(fileRef, blob);
-
-      // // We're done with the blob, close and release it
-      // blob.close();
-
-      // const h= await getDownloadURL(fileRef);
-      // console.log(h);
     }
   };
   useEffect(() => {
@@ -78,9 +56,43 @@ const ImageSelector = ({ navigation, route }) => {
       imageUploaded: true,
     });
   };
-  const saveImages = () => {
-    // firebase code
-    // take  images and upload images in same structure done in reducer  and save in onwerData
+  const saveImages = async() => {
+    console.log('WE ARE INSIDE',ownerData.images);
+    if(ownerData.images){
+      for (const imageKey in ownerData.images) {
+        const imageUri = ownerData.images[imageKey];
+       if(imageUri){
+        const blob = await new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.onload = function () {
+            resolve(xhr.response);
+          };
+  
+          xhr.onerror = function (e) {
+            console.log(e);
+            reject(new TypeError("Network request failed"));
+          };
+          xhr.responseType = "blob";
+          xhr.open("GET", imageUri, true);
+          xhr.send(null);
+        });
+        //console.log("line 60");
+  
+        const fileRef = ref(getStorage(),`RentO/${imageUri}` );
+        const result1 = await uploadBytes(fileRef, blob);
+       // console.log("line 64");
+        // We're done with the blob, close and release it
+        blob.close();
+        //console.log("line 67");
+        const h= await getDownloadURL(fileRef);
+        console.log(h);
+        ownerData.images[imageKey]= h;
+
+       }
+      }
+
+    }
+
     setFirebaseImage(true);
   };
   return (

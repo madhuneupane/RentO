@@ -5,7 +5,7 @@ const Login = ({ navigation }) => {
   const selectedItems = (value, type) => {
     navigation.navigate(type);
   };
-  const logo = require("../../../assets/Favicon.png");
+  const logo = require("../../../assets/favicon.png");
   var [isPress, setIsPress] = useState(false);
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var touchPropsSubmit = {

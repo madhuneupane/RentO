@@ -7,6 +7,7 @@ import { Text, View, StyleSheet } from "react-native";
 
 const OwnerOnBoarding5 = ({ navigation, route }) => {
   const data = route.params;
+  const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState();
   const [check, setCheck] = useState();
   var [isSubmitPress, setIsSubmitPress] = useState(false);
@@ -29,7 +30,7 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
-  Postdata(data, setResponse);
+  Postdata(data, setResponse, setLoading);
   submitData = () => {
     console.log("res::" + response);
     navigation.navigate("ower_new_post", response);

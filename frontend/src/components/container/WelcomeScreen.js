@@ -7,7 +7,7 @@ const WelcomeScreen = ({ navigation }) => {
   const showListView = () => {
     navigation.navigate("rentor");
   };
-  const logo = require("../../../assets/Favicon.png");
+  const logo = require("../../../assets/favicon.png");
   // remove back button
   var [isSubmitPress, setIsSubmitPress] = useState(false);
 

@@ -29,7 +29,7 @@ const LoginRentor = ({ navigation }) => {
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
-  const logo = require("../../../assets/Favicon.png");
+  const logo = require("../../../assets/favicon.png");
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>

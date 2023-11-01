@@ -35,31 +35,31 @@ const Listings = ({ navigation }) => {
   data(setListData);
   return (
     <>
-      <View>
+      {/* <View>
         <TouchableOpacity onPress={showFilter}>
           <Text>Filter</Text>
         </TouchableOpacity>
         {listData && <DataList navigation={navigation} data={listData} />}
-      </View>
-      <SafeAreaView style={{ flex: 1 }}>
+      </View> */}
+      {/* <SafeAreaView style={{ flex: 1 }}>
         <View>
           <Text>Screen1</Text>
         </View>
-        <StatusBar style="auto" />
+        <StatusBar style="auto" /> */}
 
-        <WebView
-          style={{ flex: 1 }}
-          source={{ uri: LOCAL }}
-          scrollEnabled={false}
-          javaScriptEnabled={true} // Enable JavaScript execution
-          allowsWebContentsDebugging={true}
-          onMessage={onMessage}
-          mixedContentMode="compatibility"
-        />
-        <View>
+      <WebView
+        style={{ flex: 1 }}
+        source={{ uri: LOCAL }}
+        scrollEnabled={false}
+        javaScriptEnabled={true} // Enable JavaScript execution
+        allowsWebContentsDebugging={true}
+        onMessage={onMessage}
+        mixedContentMode="compatibility"
+      />
+      {/* <View>
           <Text>Some Description</Text>
         </View>
-      </SafeAreaView>
+      </SafeAreaView> */}
     </>
   );
 };

@@ -21,8 +21,19 @@ class ApiClient {
     console.log("endpoint:" + this.endpoint);
     await apiInstance
       .get(this.endpoint)
-      .then((response) => AsyncStorage.setItem("token", response.data.token))
+      .then((response) => {
+        console.log("id:" + JSON.stringify(response.data));
+        AsyncStorage.setItem("token", response.data.token);
+        AsyncStorage.setItem("id", response.data.id);
+      })
       .then((testtoken = await AsyncStorage.getItem("token")));
+  };
+  getSingleProperty = async (id) => {
+    console.log("api" + id);
+    const response = await apiInstance.get(
+      `http://localhost:5001/fetchPropertyById/${id}`
+    );
+    return response;
   };
 
   getAllData = async (headers) => {
@@ -42,33 +53,41 @@ class ApiClient {
   };
   postOwnerData = async (token, ownerData) => {
     apiInstance.defaults.headers.common["Authorization"] = token;
-    console.log("image6:" + ownerData.images.image6);
+    const id = await AsyncStorage.getItem("id");
+
+    console.log("owner data:" + JSON.stringify(ownerData));
+
     const response = await apiInstance.post(this.endpoint, {
-      type: ownerData.propertyType,
-      title: ownerData.placeType,
-      location: ownerData.Apartment,
+      type: ownerData.ownerData.propertyType,
+      title: ownerData.ownerData.placeType,
+      location: ownerData.ownerData.address,
+      rent: ownerData.ownerData.amount,
+      roomNumbers: ownerData.ownerData.room,
+      bathRoomNumbers: ownerData.ownerData.bathroom,
+      ownerID: id,
       amenities: {
-        pet: ownerData.amenities.petfriendly,
-        parkingSpace: ownerData.amenities.parking,
-        heating: ownerData.amenities.heating,
-        airConditioning: ownerData.amenities.air_conditioning,
-        washerDryer: ownerData.amenities.washer_dryer,
-        wifi: ownerData.amenities.wifi,
+        pet: ownerData.ownerData.amenities.petfriendly,
+        parkingSpace: ownerData.ownerData.amenities.parking,
+        heating: ownerData.ownerData.amenities.heating,
+        airConditioning: ownerData.ownerData.amenities.air_conditioning,
+        washerDryer: ownerData.ownerData.amenities.washer_dryer,
+        wifi: ownerData.ownerData.amenities.wifi,
       },
       images: {
         bedrooms: {
-          left: ownerData.images.image1,
-          right: ownerData.images.image2,
-          top: ownerData.images.image3,
-          bottom: ownerData.images.image4,
-          front: ownerData.images.image5,
-          back: ownerData.images.image6,
+          left: ownerData.ownerData.images.image1,
+          right: ownerData.ownerData.images.image2,
+          top: ownerData.ownerData.images.image3,
+          bottom: ownerData.ownerData.images.image4,
+          front: ownerData.ownerData.images.image5,
+          back: ownerData.ownerData.images.image6,
         },
       },
-      description: ownerData.description,
+      description: ownerData.ownerData.description,
     });
 
     console.log("owner response:" + JSON.stringify(response.data));
+    return response.data;
   };
 }
 

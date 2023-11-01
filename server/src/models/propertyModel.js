@@ -11,6 +11,12 @@ const propertySchema = new Schema({
   location: {
     type: String,
   },
+  longitude: {
+    type: String,
+  },
+  latitude: {
+    type: String,
+  },
   roomNumbers: {
     type: Number,
   },
@@ -25,6 +31,10 @@ const propertySchema = new Schema({
 
   ownerID: {
     type: String,
+  },
+  interestedList:{
+    type: [String],
+    default: []
   },
 
   images: {

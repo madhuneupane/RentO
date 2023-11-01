@@ -31,19 +31,17 @@ const fetchAllUser = (req, res) => {
 
 const fetchSingleUser = (req, res) => {
   const { email, pass } = req.params;
-  console.log(req.params.email,req.params.password);
+  console.log(req.params.email, req.params.password);
   schemas.user
     .findOne({ email: req.params.email, password: req.params.password })
     .then((data) => {
-      if(data){
-        
-      
-      const token = jwt.sign({ email }, "hello", { expiresIn: "1h" });
-      console.log(JSON.stringify(data));
-      res.json({ token: token, id: data._id });
-      // res.json({ token: token });
+      if (data) {
+        const token = jwt.sign({ email }, "hello", { expiresIn: "1h" });
+        console.log(JSON.stringify(data));
+        res.json({ token: token, id: data._id });
+        // res.json({ token: token });
+      }
     });
-  
 };
 
 const fetchUserById = (req, res) => {

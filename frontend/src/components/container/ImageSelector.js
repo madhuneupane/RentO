@@ -3,7 +3,6 @@ import { firebaseConfig } from "../hooks/firebase";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
 import * as ImagePicker from "expo-image-picker";
 import {
   View,
@@ -30,7 +29,6 @@ const ImageSelector = ({ navigation, route }) => {
   useEffect(() => {
     cameraPermission();
   }, []);
-
   const selectImage = async (imageNumber) => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -38,17 +36,14 @@ const ImageSelector = ({ navigation, route }) => {
       aspect: [4, 3],
       quality: 0,
     });
-
     console.log("images seleted:" + JSON.stringify(result.assets[0]) );
     if (!result.canceled) {
       dispatch({ type: imageNumber, value: result.assets[0].uri });
-
     }
   };
   useEffect(() => {
     setOwnerData({ ...ownerGivenData, images: images });
   }, [images]);
-
   const uploadImages = () => {
     console.log("upload Image", JSON.stringify(ownerData));
     navigation.navigate("owner_onboarding5", {
@@ -67,7 +62,6 @@ const ImageSelector = ({ navigation, route }) => {
           xhr.onload = function () {
             resolve(xhr.response);
           };
-  
           xhr.onerror = function (e) {
             console.log(e);
             reject(new TypeError("Network request failed"));
@@ -77,7 +71,6 @@ const ImageSelector = ({ navigation, route }) => {
           xhr.send(null);
         });
         //console.log("line 60");
-  
         const fileRef = ref(getStorage(),`RentO/${imageUri}` );
         const result1 = await uploadBytes(fileRef, blob);
        // console.log("line 64");
@@ -87,12 +80,9 @@ const ImageSelector = ({ navigation, route }) => {
         const h= await getDownloadURL(fileRef);
         console.log(h);
         ownerData.images[imageKey]= h;
-
        }
       }
-
     }
-
     setFirebaseImage(true);
   };
   return (
@@ -112,7 +102,6 @@ const ImageSelector = ({ navigation, route }) => {
           </TouchableWithoutFeedback>
           <Text style={styles.text}>Left Wall</Text>
         </View>
-
         <View>
           <TouchableWithoutFeedback onPress={() => selectImage("image2")}>
             <View>
@@ -127,7 +116,6 @@ const ImageSelector = ({ navigation, route }) => {
           </TouchableWithoutFeedback>
           <Text style={styles.text}>Right Wall</Text>
         </View>
-
         <View>
           <TouchableWithoutFeedback onPress={() => selectImage("image3")}>
             <View>
@@ -142,7 +130,6 @@ const ImageSelector = ({ navigation, route }) => {
           </TouchableWithoutFeedback>
           <Text style={styles.text}>Front Wall</Text>
         </View>
-
         {/* 2nd Column  */}
       </View>
       <View style={styles.container}>
@@ -160,7 +147,6 @@ const ImageSelector = ({ navigation, route }) => {
           </TouchableWithoutFeedback>
           <Text style={styles.text}>Back Wall</Text>
         </View>
-
         <View>
           <TouchableWithoutFeedback onPress={() => selectImage("image5")}>
             <View>
@@ -175,7 +161,6 @@ const ImageSelector = ({ navigation, route }) => {
           </TouchableWithoutFeedback>
           <Text style={styles.text}>Ceiling</Text>
         </View>
-
         <View>
           <TouchableWithoutFeedback onPress={() => selectImage("image6")}>
             <View>
@@ -203,7 +188,6 @@ const ImageSelector = ({ navigation, route }) => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   mainContainer: {
     alignItems: "center",

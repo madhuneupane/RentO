@@ -7,6 +7,7 @@ tt.setProductInfo("RentO_Map", "0.5");
 const locations = [];
 const markerCoordinates = [];
 var markerInstances = [];
+const IDArray = [];
 
 //Init Swiper
 const swiperContainer = document.querySelector(".swiper-container");
@@ -109,7 +110,7 @@ ttSearchBox.on("tomtom.searchbox.resultselected", handleResultSelection);
 
 //Getting data from the API
 function fetchData() {
-  const url = "http://localhost:5001/craigExtract"; // Modify the URL to the new API endpoint
+  const url = "http://localhost:5001/fetchAllProperty"; // Modify the URL to the new API endpoint
   return fetch(url)
     .then((response) => {
       if (!response.ok) {
@@ -334,33 +335,42 @@ function fillResultsList(results) {
 function loadList() {
   locations.forEach((property, index) => {
     const {
-      link,
-      metaData: {
-        name,
-        numberOfBedrooms,
-        numberOfBathroomsTotal,
-        latitude,
-        longitude,
-      },
-      imageList,
+      _id,
+      title,
+      type,
+      location,
+      longitude,
+      latitude,
+      roomNumbers,
+      bathRoomNumbers,
+      rent,
+      photoUrl,
     } = property;
 
-    markerCoordinates.push([longitude, latitude]);
+    IDArray.push(_id);
+
+    // Push the coordinates to the markerCoordinates array
+    markerCoordinates.push([parseFloat(longitude), parseFloat(latitude)]);
 
     const swiperSlide = document.createElement("div");
     swiperSlide.classList.add("swiper-slide");
 
     const imageElement = document.createElement("img");
-    imageElement.src = imageList;
+    // Assuming you have a valid image URL in your photoUrls array
+    imageElement.src = photoUrl;
     swiperSlide.appendChild(imageElement);
 
     const detailsPanel = document.createElement("div");
     detailsPanel.classList.add("details-panel");
     detailsPanel.innerHTML = `
-      <div class="detail">Name: <span class="name">${name}</span></div>
-      <div class="detail">Bedrooms: <span class="bedrooms">${numberOfBedrooms}</span></div>
-      <div class="detail">Bathrooms: <span class="bathrooms">${numberOfBathroomsTotal}</span></div>
-      <div class="detail"><a href="${link}" target="_blank">Link</a></div>
+      <div class="detail hidden">ID: <span class="id">${_id}</span></div>
+      <div class="detail">Title: <span class="title">${title}</span></div>
+      <div class="detail">Type: <span class="type">${type}</span></div>
+      <div class="detail">Location: <span class="location">${location}</span></div>
+      <div class="detail">Room Numbers: <span class="roomNumbers">${roomNumbers}</span></div>
+      <div class="detail">Bathroom Numbers: <span class="bathRoomNumbers">${bathRoomNumbers}</span></div>
+      <div class="detail">Rent: <span class="rent">${rent}</span></div>
+  
     `;
 
     swiperSlide.appendChild(detailsPanel);
@@ -453,29 +463,28 @@ swiper.on("slideChange", function () {
   });
 });
 
- const sendDataToReactNativeApp = async () => {
-                window.ReactNativeWebView.postMessage('Data from WebView / Website');
-              };
-              window.addEventListener("message", message => {
-                alert(message.data) 
-              });
-
 swiper.on("click", function () {
   let activeIndex = swiper.activeIndex;
   console.log("Swiper " + activeIndex + " is clicked");
-  window.ReactNativeWebView.postMessage(activeIndex);
-  // window.addEventListener("message", message => {
-  //               alert(check) 
-  //             });
+
+  // this is sentind the data
+  // window.ReactNativeWebView.postMessage(activeIndex);
+  // window.addEventListener("message", (message) => {
+  //   alert(check);
+  // });
+
+  let clickedId = IDArray[activeIndex];
+  console.log("Clicked ID=" + clickedId);
+
+  // Post the ID to the parent window
+  window.ReactNativeWebView.postMessage(clickedId);
+
   let activeMarker = markerInstances[activeIndex];
   let activeCoord = activeMarker.getLngLat();
-
   deactivateMarkers();
   activeMarker.getElement().classList.remove("marker-normal");
   activeMarker.getElement().classList.add("marker-active");
-
   activeMarker.togglePopup();
-
   // Set the map's center to match the active slide's marker
   map.easeTo({
     center: activeCoord,

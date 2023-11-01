@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
       display: 'flex', 
       flexDirection: 'column',   
       borderWidth:1,
-      borderRadius: '25',
+      borderRadius: 25,
       padding:15,
       fontSize: 20,
       fontWeight: '500',

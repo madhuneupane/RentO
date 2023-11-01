@@ -1,7 +1,17 @@
 import React from "react";
 import { FlatList, Text } from "react-native";
 import ButtonUI from "../UI/button/ButtonUI";
-const List = ({ items, selectedItems, numColumns, style, type, check }) => {
+const List = ({
+  items,
+  selectedItems,
+  numColumns,
+  style,
+  type,
+  check,
+  touchProps,
+  customStyle,
+  isPress,
+}) => {
   return (
     <FlatList
       data={items}
@@ -12,6 +22,9 @@ const List = ({ items, selectedItems, numColumns, style, type, check }) => {
           style={style}
           type={type}
           check={check}
+          touchProps={touchProps}
+          customStyle={customStyle}
+          isPress={isPress}
         />
       )}
       numColumns={numColumns}

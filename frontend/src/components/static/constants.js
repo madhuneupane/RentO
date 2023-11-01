@@ -17,11 +17,17 @@ export const rentorCredentials = {
 
 export const amenitiesType = {
   types: [
-    { key: 1, value: "wifi" },
-    { key: 2, value: "heating" },
-    { key: 3, value: "air_conditioning" },
-    { key: 4, value: "parking" },
-    { key: 5, value: "washer_dryer" },
-    { key: 6, value: "petfriendly" },
+    { key: 1, value: "Wi-fi" },
+    { key: 2, value: "Heating" },
+    { key: 3, value: "Air Conditioning" },
+    { key: 4, value: "Parking" },
+    { key: 5, value: "Washer/Dryer" },
+    { key: 6, value: "Pet friendly" },
+    { key: 7, value: "TV" },
+    { key: 8, value: "Swimming pool" },
+    { key: 9, value: "Fitness center/Gym" },
+    { key: 10, value: "Balcony/Patio" },
+    { key: 11, value: "Elevator" },
+    { key: 12, value: "Non-smoking" },
   ],
 };

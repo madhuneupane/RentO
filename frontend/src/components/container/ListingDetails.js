@@ -1,20 +1,35 @@
 import React, { useState } from 'react';
+import {useEffect} from 'react-native';
 import { View, ScrollView, Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import ButtonUI from '../UI/button/ButtonUI'
+import ImageGallery from './ImageGallery'
 
-const ListingDetails = ({ navigation, route }) => {
-    const item = route.params.item
-    console.log("data!! this", item.rent);
+const ListingDetails = ({ id }) => {
+    const item = id;
+    // const item = route.params.item
+    // const item = {
+    //     id: '653c21014e6bbc84a2d46d28',
+    //     title: "Quiet Street, Gorgeous & Bright Garden Suite",
+    //     type: "House",
+    //     location: "7405 4th St",
+    //     longitude: -123.119790, // Corrected to a numeric value
+    //     latitude: 49.272991,   // Corrected to a numeric value
+    //     roomNumbers: 1,
+    //     bathRoomNumbers: 2,
+    //     availableDate: "2023-11-01", // Corrected the date format
+    //     description: "Modern look and spacious 2 bedroom garden level suite located in a nice neighborhood.",
+    //     rent: 1500,
+    //     photoUrls: [
+    //         "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?cs=sr",
+    //         "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?cs=sr"
+    //     ]
+    // };
+
+    console.log("my new id: ", id);
 
     const [selectedImage, setSelectedImage] = useState(0);
-
-
-    const images = [
-        require('../../../assets/house2.jpg'),
-        require('../../../assets/house3.jpg'),
-        require('../../../assets/house4.jpg'),
-        // Add more image paths
-    ];
+    const [photosURL, setPhotosURL] = useState(['']);
+    
 
     const showTour = () => {
         //navigation.navigate("")
@@ -25,16 +40,25 @@ const ListingDetails = ({ navigation, route }) => {
         setSelectedImage(index);
     };
 
+    // useEffect(() => {
+    //     // Set the photosURL state with item's photoUrls
+    //     setPhotosURL(item.photoUrls);
+    //   }, []);
+
     return (
+        // <View>
+        //     <Text>the id is {id}</Text>
+        // </View>
         <ScrollView>
             <View>
                 {/* Gallery Header Image */}
-                <Image
-                    source={require('../../../assets/house1.jpeg')}
-                    style={{ width: 390, height: 423 }}
-                />
-    
-                {/* Thumbnail Gallery */}
+                {/* <ScrowView horizontal>
+                    <View>
+                        <ImageGallery photoUrls={photoUrls} />
+                    </View>
+                </ScrowView> */}
+
+                {/* Thumbnail Gallery
                 <ScrollView horizontal>
                     {images.map((imagePath, index) => (
                         <TouchableOpacity key={index} onPress={() => handleImageClick(index)}>
@@ -44,13 +68,15 @@ const ListingDetails = ({ navigation, route }) => {
                             />
                         </TouchableOpacity>
                     ))}
-                </ScrollView>
+                </ScrollView> */}
                 <ButtonUI
                     item={{ value: '3D Tour Available' }}
                     customStyle={styles.button}
                     selectedItems={showTour}
                 />
+                
                 <View style={styles.container}>
+                <Text>OUR ID {id}</Text>
                     <Text style={styles.rent}>$ {item.rent}</Text>
                     <Text style={styles.location}>{item.location}</Text>
                     <Text style={styles.location}>{item.roomNumbers} bd | {item.bathRoomNumbers} ba | {item.type} </Text>
@@ -67,10 +93,11 @@ const ListingDetails = ({ navigation, route }) => {
                     <Text style={styles.titles}>Utilities Included</Text>
                     <Text style={styles.description}>{item.description}</Text>
                 </View>
-    
-    
+
+
             </View>
         </ScrollView>
+
     );
 };
 

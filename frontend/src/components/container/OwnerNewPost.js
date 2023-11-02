@@ -8,6 +8,7 @@ import {
   StyleSheet,
   ImageBackground,
 } from "react-native";
+import { StackActions } from "@react-navigation/native";
 import ButtonUI from "../UI/button/ButtonUI";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -33,7 +34,8 @@ const OwnerNewPost = ({ navigation, route }) => {
     console.log("click");
   };
   const savePost = () => {
-    navigation.navigate("owner_welcome");
+    // StackActions.push("owner");
+    navigation.navigate("post_created");
   };
   return (
     <ScrollView style={{ backgroundColor: "white" }}>

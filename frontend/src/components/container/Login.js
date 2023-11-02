@@ -22,7 +22,7 @@ const Login = ({ navigation }) => {
     onShowUnderlay: () => setIsPress(true),
   };
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image source={logo} style={styles.image}></Image>
       </View>
@@ -52,6 +52,9 @@ const Login = ({ navigation }) => {
 export default Login;
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+  },
   imageContainer: {
     marginTop: "20%",
     alignItems: "center",

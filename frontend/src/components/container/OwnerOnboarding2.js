@@ -21,7 +21,7 @@ const OwnerOnboarding2 = ({ navigation, route }) => {
     navigation.navigate("owner_onboarding6", onBoardData);
   };
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.title}>What is your property type?</Text>
       </View>
@@ -45,6 +45,9 @@ const OwnerOnboarding2 = ({ navigation, route }) => {
 export default OwnerOnboarding2;
 
 var styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+  },
   progressBar: {
     borderColor: "#B1D4D2",
     height: 10,
@@ -52,7 +55,7 @@ var styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 12,
+    marginTop: 30,
     marginLeft: 55,
   },
   progressBarGreen: {

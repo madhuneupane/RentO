@@ -511,6 +511,13 @@ swiper.on("slideChange", function () {
   });
 });
 
+ const sendDataToReactNativeApp = async () => {
+                window.ReactNativeWebView.postMessage('Data from WebView / Website');
+              };
+              window.addEventListener("message", message => {
+                alert(message.data) 
+              });
+
 swiper.on("click", function () {
   let activeIndex = swiper.activeIndex;
   console.log("Swiper " + activeIndex + " is clicked");
@@ -526,6 +533,7 @@ swiper.on("click", function () {
 
   // Post the ID to the parent window
   window.ReactNativeWebView.postMessage(clickedId);
+
 
   let activeMarker = markerInstances[activeIndex];
   let activeCoord = activeMarker.getLngLat();

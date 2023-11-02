@@ -1,33 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import ApiClient from '../service/Api'
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useEffect, useState } from "react";
+import ApiClient from "../service/Api";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const login = ({email,password}) => {
-    const apiClient = new ApiClient(`/fetchSingleUser/${email}/${password}`)
-    const api1= new ApiClient('/fetchAllProperty')
+const login = ({ email, password }) => {
+  const apiClient = new ApiClient(`/fetchSingleUser/madhu@gmail.com/madhu123`);
 
-    const getToken = async () => {
-        
-       try {
-         apiClient.loginUser()
-       }
-       catch (error){
-           console.log(error)
-        }
-   }
-     const saveToken = async() => {
-        const token = await AsyncStorage.getItem('token')
-         api1.getAllData(token)
-       console.log("token:"+token)
+  const getToken = async () => {
+    try {
+      apiClient.loginUser();
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    useEffect(() => {
-        getToken()
-        // saveToken()
-    },[])
+  useEffect(() => {
+    getToken();
+  }, []);
+};
 
-      
- 
-}
-
-export default login
+export default login;

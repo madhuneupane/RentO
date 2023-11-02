@@ -27,6 +27,7 @@ const Listings = ({ navigation }) => {
     console.log("data:" + data.nativeEvent.data);
     alert(data.nativeEvent.data);
   }
+  //trr
   showlistingDets = () => {
     navigation.navigate("listing_details");
   };
@@ -34,6 +35,7 @@ const Listings = ({ navigation }) => {
   const [listData, setListData] = useState();
   data(setListData);
   return (
+    
     <>
       {/* <View>
         <TouchableOpacity onPress={showFilter}>

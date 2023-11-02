@@ -36,7 +36,7 @@ const fetchSingleUser = (req, res) => {
     .findOne({ email: req.params.email, password: req.params.password })
     .then((data) => {
       if (data) {
-        const token = jwt.sign({ email }, "hello", { expiresIn: "1h" });
+        const token = jwt.sign({ email }, "RentOMadhu", { expiresIn: "1h" });
         console.log(JSON.stringify(data));
         res.json({ token: token, id: data._id });
         // res.json({ token: token });

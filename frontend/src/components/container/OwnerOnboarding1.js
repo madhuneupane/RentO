@@ -13,7 +13,7 @@ const OwnerOnboarding1 = ({ navigation, route }) => {
   var [isPress, setIsPress] = useState(false);
   var touchProps = {
     activeOpacity: 1,
-    underlayColor: "#f56e51", // <-- "backgroundColor" will be always overwritten by "underlayColor"
+    underlayColor: "#ED7861", // <-- "backgroundColor" will be always overwritten by "underlayColor"
     style: isPress ? styles.btnPress : styles.btnNormal, // <-- but you can still apply other style changes
     onHideUnderlay: () => setIsPress(false),
     onShowUnderlay: () => setIsPress(true),
@@ -71,7 +71,7 @@ var styles = StyleSheet.create({
     fontSize: 15,
   },
   btnNormal: {
-    borderColor: "#f56e51",
+    borderColor: "#FBEDEA",
     // borderWidth: 1,
     backgroundColor: "#FBEDEA",
     height: "50",
@@ -80,17 +80,17 @@ var styles = StyleSheet.create({
     marginTop: 20,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 25,
+    borderRadius: 30,
   },
   btnPress: {
-    borderColor: "#f56e51",
+    borderColor: "#FBEDEA",
     height: "50",
     width: "80%",
     marginLeft: 40,
     marginTop: 20,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 25,
+    borderRadius: 30,
   },
   textContainer: {
     margin: 30,

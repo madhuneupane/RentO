@@ -96,7 +96,7 @@ const OwnerOnBoarding6 = ({ navigation, route }) => {
       </View>
       <View style={styles.buttonContainer}>
         <ButtonUI
-          item={{ value: "submit" }}
+          item={{ value: "Continue" }}
           selectedItems={submit}
           touchProps={touchPropsSubmit}
           customStyle={styles.customStyle}
@@ -120,22 +120,22 @@ const styles = StyleSheet.create({
   amenities: {
     color: "#36827F",
     backgroundColor: "#B1D4D2",
-    borderWidth: 1,
+    //borderWidth: 1,
     borderRadius: 5,
     textAlign: "center",
   },
   amenitiesExtra: {
     color: "#36827F",
     backgroundColor: "#B1D4D2",
-    borderWidth: 1,
+    //borderWidth: 1,
     borderRadius: 5,
     textAlign: "center",
   },
   selectOptions: {
-    color: "#B1D4D2",
+    color: "white",
     backgroundColor: "#36827F",
-    borderWidth: 1,
-    borderRadius: 10,
+    //borderWidth: 2,
+    borderRadius: 5,
     borderColor: "#36827F",
     textAlign: "center",
 
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 35,
   },
   submitButtonClicked: {
     backgroundColor: "#B1D4D2",
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 40,
+    borderRadius: 45,
   },
   buttonContainer: {
     marginTop: 280,

@@ -29,7 +29,7 @@ const Login = ({ navigation }) => {
       <View style={styles.subContainer}>
         <View style={styles.buttonView}>
           <ButtonUI
-            item={{ value: `I'm  looking for a new Place` }}
+            item={{ value: `I’m looking for a new place` }}
             customStyle={styles.customStyle}
             selectedItems={selectedItems}
             touchProps={touchPropsSubmit}
@@ -37,8 +37,8 @@ const Login = ({ navigation }) => {
           />
 
           <ButtonUI
-            item={{ value: `I want to post a listing` }}
-            customStyle={styles.customStyle}
+            item={{ value: `I want to list my property` }}
+            customStyle={styles.customStyleOrange}
             selectedItems={selectedItems}
             touchProps={touchProps}
             type="owner"
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    borderWidth: 3,
+    borderWidth: 5,
     borderRadius: 15,
     fontSize: 22,
     // margin: 10,
@@ -118,10 +118,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
   },
+  customStyleOrange: {
+    color: "#413855",
+    fontWeight: "bold",
+    fontSize: 20,
+    textAlign: "center",
+  },
 
   postButton: {
-    backgroundColor: "#f56e51",
-    borderColor: "#f56e51",
+    backgroundColor: "#ED7861",
+    borderColor: "#ED7861",
     height: "35%",
     width: "88%",
     marginLeft: 20,
@@ -131,7 +137,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   postButtonClicked: {
-    borderColor: "#f56e51",
+    borderColor: "#ED7861",
     height: "35%",
     width: "88%",
     marginLeft: 20,

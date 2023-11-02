@@ -24,7 +24,7 @@ const OwnerOnboarding7 = ({ navigation, route }) => {
     navigation.navigate("owner_onboarding3", onBoardData);
   };
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.title}>How many rooms do you have?</Text>
       </View>
@@ -60,6 +60,9 @@ const OwnerOnboarding7 = ({ navigation, route }) => {
 };
 export default OwnerOnboarding7;
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+  },
   progressBar: {
     borderColor: "#B1D4D2",
     height: 10,
@@ -67,21 +70,16 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 30,
+    marginTop: 50,
     marginLeft: 55,
   },
   progressBarGreen: {
     backgroundColor: "#36827F",
     height: 10,
-    width: 100,
+    width: 80,
     borderRadius: 20,
   },
-  container: {
-    height: "70%",
-    justifyContent: "center",
-    margin: 10,
-    padding: 10,
-  },
+
   subContainer: {
     alignItems: "center",
     height: 60,

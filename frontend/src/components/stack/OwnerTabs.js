@@ -1,13 +1,8 @@
-import * as React from "react";
-import { Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import * as React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import OwnerWelcome from "../container/OwnerWelcome";
 import OwnerOnboarding1 from "../container/OwnerOnboarding1";
 import OwnerListings from "./OwnerListings";
-import OwnerOnboardingStack from "./OwnerOnboardingStack";
-import Title from "../container/Title";
 
 const Tab = createMaterialBottomTabNavigator();
 const OwnerTabs = () => {

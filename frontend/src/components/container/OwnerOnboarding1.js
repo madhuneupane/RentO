@@ -4,7 +4,9 @@ import List from "../list/List";
 import { listingOptions } from "../static/ListingOptions";
 import { useEffect } from "react";
 import Postdata from "../hooks/postdata";
-const OwnerOnboarding1 = ({ navigation }) => {
+const OwnerOnboarding1 = ({ navigation, route }) => {
+  // const data = route?.params?.created;
+  console.log("Back:" + JSON.stringify(route.params));
   const selectedItems = (value, type) => {
     navigation.navigate("owner_onboarding2", { placeType: value });
   };
@@ -19,7 +21,7 @@ const OwnerOnboarding1 = ({ navigation }) => {
   };
   // Postdata();
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.title}>
           What kind of place do you want to list?
@@ -45,6 +47,9 @@ const OwnerOnboarding1 = ({ navigation }) => {
 export default OwnerOnboarding1;
 
 var styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+  },
   progressBar: {
     borderColor: "#B1D4D2",
     height: 10,
@@ -52,7 +57,7 @@ var styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 45,
+    marginTop: 40,
     marginLeft: 55,
   },
   progressBarGreen: {

@@ -27,6 +27,7 @@
     "expo-image-picker": "~14.3.2",
     "expo-status-bar": "~1.6.0",
     "firebase": "^10.5.2",
+    "lottie-react-native": "^5.1.6",
     "patch-package": "^8.0.0",
     "qs": "^6.11.2",
     "react": "18.2.0",
@@ -41,8 +42,7 @@
     "react-native-vector-icons": "^10.0.1",
     "react-native-webview": "^13.6.2",
     "react-query": "^3.39.3",
-    "typed-async-storage": "^3.1.2",
-    "lottie-react-native": "5.1.6"
+    "typed-async-storage": "^3.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

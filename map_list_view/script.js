@@ -511,12 +511,7 @@ swiper.on("slideChange", function () {
   });
 });
 
- const sendDataToReactNativeApp = async () => {
-                window.ReactNativeWebView.postMessage('Data from WebView / Website');
-              };
-              window.addEventListener("message", message => {
-                alert(message.data) 
-              });
+ 
 
 swiper.on("click", function () {
   let activeIndex = swiper.activeIndex;

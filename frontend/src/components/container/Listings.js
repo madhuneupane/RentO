@@ -24,7 +24,7 @@ const Listings = ({ navigation }) => {
   };
 
   function onMessage(data) {
-    console.log("data:" + data);
+    console.log("data:" + data.nativeEvent.data);
     alert(data.nativeEvent.data);
   }
   showlistingDets = () => {

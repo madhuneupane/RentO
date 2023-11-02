@@ -30,7 +30,21 @@ const ImageSelector = ({ navigation, route }) => {
   useEffect(() => {
     cameraPermission();
   }, []);
+  var [isSubmitPress, setIsSubmitPress] = useState(false);
+  var [isCameraPress, setIsCamerasPress] = useState(false);
 
+  var touchPropsSubmit = {
+    underlayColor: "#B1D4D2",
+    style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
+    onHideUnderlay: () => setIsSubmitPress(false),
+    onShowUnderlay: () => setIsSubmitPress(true),
+  };
+  var touchPropsCamera = {
+    underlayColor: "#FBEDEA",
+    style: isCameraPress ? styles.CameraButtonClicked : styles.CameraButton,
+    onHideUnderlay: () => setIsCamerasPress(false),
+    onShowUnderlay: () => setIsCamerasPress(true),
+  };
   const selectImage = async (imageNumber) => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -39,10 +53,9 @@ const ImageSelector = ({ navigation, route }) => {
       quality: 0,
     });
 
-    console.log("images seleted:" + JSON.stringify(result.assets[0]) );
+    console.log("images seleted:" + JSON.stringify(result.assets[0]));
     if (!result.canceled) {
       dispatch({ type: imageNumber, value: result.assets[0].uri });
-
     }
   };
   useEffect(() => {
@@ -56,41 +69,39 @@ const ImageSelector = ({ navigation, route }) => {
       imageUploaded: true,
     });
   };
-  const saveImages = async() => {
-    console.log('WE ARE INSIDE',ownerData.images);
-    if(ownerData.images){
+  const saveImages = async () => {
+    console.log("WE ARE INSIDE", ownerData.images);
+    if (ownerData.images) {
       for (const imageKey in ownerData.images) {
         const imageUri = ownerData.images[imageKey];
-       if(imageUri){
-        const blob = await new Promise((resolve, reject) => {
-          const xhr = new XMLHttpRequest();
-          xhr.onload = function () {
-            resolve(xhr.response);
-          };
-  
-          xhr.onerror = function (e) {
-            console.log(e);
-            reject(new TypeError("Network request failed"));
-          };
-          xhr.responseType = "blob";
-          xhr.open("GET", imageUri, true);
-          xhr.send(null);
-        });
-        //console.log("line 60");
-  
-        const fileRef = ref(getStorage(),`RentO/${imageUri}` );
-        const result1 = await uploadBytes(fileRef, blob);
-       // console.log("line 64");
-        // We're done with the blob, close and release it
-        blob.close();
-        //console.log("line 67");
-        const h= await getDownloadURL(fileRef);
-        console.log(h);
-        ownerData.images[imageKey]= h;
+        if (imageUri) {
+          const blob = await new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+              resolve(xhr.response);
+            };
 
-       }
+            xhr.onerror = function (e) {
+              console.log(e);
+              reject(new TypeError("Network request failed"));
+            };
+            xhr.responseType = "blob";
+            xhr.open("GET", imageUri, true);
+            xhr.send(null);
+          });
+          //console.log("line 60");
+
+          const fileRef = ref(getStorage(), `RentO/${imageUri}`);
+          const result1 = await uploadBytes(fileRef, blob);
+          // console.log("line 64");
+          // We're done with the blob, close and release it
+          blob.close();
+          //console.log("line 67");
+          const h = await getDownloadURL(fileRef);
+          console.log(h);
+          ownerData.images[imageKey] = h;
+        }
       }
-
     }
 
     setFirebaseImage(true);
@@ -195,10 +206,17 @@ const ImageSelector = ({ navigation, route }) => {
         <ButtonUI
           item={{ value: "upload Images" }}
           selectedItems={saveImages}
+          customStyle={styles.customStyleCamera}
+          touchProps={touchPropsCamera}
         />
       )}
       {firebaseImages && (
-        <ButtonUI item={{ value: "Continue" }} selectedItems={uploadImages} />
+        <ButtonUI
+          item={{ value: "Continue" }}
+          selectedItems={uploadImages}
+          customStyle={styles.customStyle}
+          touchProps={touchPropsSubmit}
+        />
       )}
     </View>
   );
@@ -219,8 +237,15 @@ const styles = StyleSheet.create({
     // backgroundColor: "pink",
     width: "100%",
   },
+  customStyleCamera: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
   imageContainer: {
-    backgroundColor: "grey",
+    backgroundColor: "#E9E7EE",
+    borderColor: "#413855",
+    borderWidth: 0.5,
     borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
@@ -233,8 +258,62 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   text: {
-    fontWeight: "bold",
+    marginTop: 5,
+    fontWeight: 400,
     textAlign: "center",
+  },
+  submitButton: {
+    backgroundColor: "#36827F",
+    borderColor: "#36827F",
+    height: "50",
+    width: "80%",
+    marginLeft: 40,
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 40,
+    marginLeft: 20,
+  },
+  submitButtonClicked: {
+    backgroundColor: "#B1D4D2",
+    borderColor: "#B1D4D2",
+    height: "50",
+    width: "80%",
+    marginLeft: 40,
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 40,
+    marginLeft: 20,
+  },
+  customStyle: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  CameraButton: {
+    backgroundColor: "#ED7861",
+    borderColor: "#ED7861",
+    height: "50",
+    width: "80%",
+    marginLeft: 40,
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 40,
+    marginLeft: 20,
+  },
+  CameraButtonClicked: {
+    backgroundColor: "#FBEDEA",
+    borderColor: "#ED7861",
+    height: "50",
+    width: "80%",
+    marginLeft: 40,
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 40,
+    marginLeft: 20,
   },
 });
 export default ImageSelector;

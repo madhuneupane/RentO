@@ -26,7 +26,11 @@ const ButtonUI = ({
 
         {check && (
           <View style={styles.checkContainer}>
-            <MaterialCommunityIcons name="check" size={20} />
+            <MaterialCommunityIcons
+              name="check-circle"
+              size={20}
+              color="#f56e51"
+            />
           </View>
         )}
       </Text>
@@ -48,12 +52,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   checkContainer: {
-    backgroundColor: "#f56e51",
-    borderColor: "#f56e51",
-    borderRadius: 10,
-    // margin: 10,
-    // marginTop: 20,
-    alignItems: "center",
-    // justifyContent: "center",
+    // backgroundColor: "#f56e51",
+    // borderColor: "#f56e51",
+    // borderRadius: 10,
+    // alignItems: "center",
+    // margin: 2,
+    // position: "absolute",
+    // top: 2,
   },
 });

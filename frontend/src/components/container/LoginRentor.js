@@ -81,8 +81,9 @@ const styles = StyleSheet.create({
   container: {
     height: "70%",
     justifyContent: "center",
-    margin: 10,
-    padding: 5,
+    // margin: 10,
+    // padding: 5,
+    backgroundColor: "white",
   },
   subContainer: {
     alignItems: "center",

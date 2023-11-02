@@ -163,6 +163,7 @@ function handleResultsFound(event) {
   ) {
     var results = event.data.results.fuzzySearch.results;
 
+    console.log("Results = " + results);
     if (results.length === 0) {
       handleNoResults();
     }
@@ -179,6 +180,7 @@ function handleResultsFound(event) {
 function handleResultSelection(event) {
   if (isFuzzySearchResult(event)) {
     var result = event.data.result;
+    console.log("Search Result=" + JSON.stringify(result));
     searchMarkersManager.draw([result]);
     searchMarkersManager.openPopup(result.id);
     fitToViewport(result);

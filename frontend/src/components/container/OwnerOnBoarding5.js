@@ -36,7 +36,7 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
     navigation.navigate("ower_new_post", response);
   };
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.title}>
           Time to showcase your property with 360 panoramic pictures!
@@ -64,12 +64,18 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
           customStyle={styles.customStyleSubmit}
         ></ButtonUI>
       </View>
+      <View style={styles.progressBar}>
+        <View style={styles.progressBarGreen}></View>
+      </View>
     </View>
   );
 };
 
 export default OwnerOnBoarding5;
 var styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+  },
   customStyle: {
     color: "#413855",
     fontSize: 15,
@@ -86,17 +92,20 @@ var styles = StyleSheet.create({
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 25,
+    // flexDirection: "row",
+    // justifyContent: "center",
+    // alignItems: "center",
   },
   btnPress: {
     borderColor: "#36827F",
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 25,
@@ -124,7 +133,7 @@ var styles = StyleSheet.create({
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 2,
+    // marginTop: 2,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 30,
@@ -136,13 +145,44 @@ var styles = StyleSheet.create({
     height: 50,
     width: "80%",
     marginLeft: 40,
-    marginTop: 2,
+    // marginTop: 2,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 30,
   },
   submitContainer: {
     marginTop: 20,
-    // backgroundColor: 20,
+    backgroundColor: "white",
+  },
+  textContainer: {
+    margin: 2,
+    height: "20%",
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+  title: {
+    fontWeight: 300,
+    fontSize: 15,
+    marginLeft: 10,
+    fontSize: 20,
+    textAlign: "center",
+  },
+  progressBar: {
+    borderColor: "#B1D4D2",
+    height: 10,
+    width: "80%",
+    borderRadius: 20,
+    flexDirection: "row",
+    backgroundColor: "#B1D4D2",
+    // marginTop: 50,
+    marginLeft: 50,
+    position: "absolute",
+    bottom: -40,
+  },
+  progressBarGreen: {
+    backgroundColor: "#36827F",
+    height: 10,
+    width: 220,
+    borderRadius: 20,
   },
 });

@@ -20,7 +20,7 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
     navigation.navigate("owner_onboarding4", onBoardData);
   };
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.title}>What's the address?</Text>
       </View>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 30,
+    marginTop: 50,
     marginLeft: 55,
   },
   progressBarGreen: {
@@ -68,10 +68,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   container: {
-    height: "70%",
-    justifyContent: "center",
-    margin: 10,
-    padding: 10,
+    backgroundColor: "white",
   },
   subContainer: {
     alignItems: "center",

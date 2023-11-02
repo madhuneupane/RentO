@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     // margin: 10,
     padding: 10,
+    backgroundColor: "white",
   },
   subContainer: {
     alignItems: "center",

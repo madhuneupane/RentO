@@ -1,22 +1,18 @@
 import qs from "qs";
 import axios from "axios";
 import { BASE_URL } from "../static/ApiConstants";
-
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 let testtoken;
 const url = BASE_URL;
 const apiInstance = axios.create({
   baseURL: url,
   params: {},
 });
-
 class ApiClient {
   constructor(endpoint) {
     console.log("en:" + endpoint);
     this.endpoint = endpoint;
   }
-
   loginUser = async () => {
     console.log("endpoint:" + this.endpoint);
     await apiInstance
@@ -29,13 +25,12 @@ class ApiClient {
       .then((testtoken = await AsyncStorage.getItem("token")));
   };
   getSingleProperty = async (id) => {
-    console.log("api" + id);
+    apiInstance.defaults.headers.common["Authorization"] = await AsyncStorage.getItem('token');
     const response = await apiInstance.get(
       `http://localhost:5001/fetchPropertyById/${id}`
     );
     return response;
   };
-
   getAllData = async (headers) => {
     apiInstance.defaults.headers.common["Authorization"] = headers;
     console.log("toke:" + JSON.stringify(headers));
@@ -54,9 +49,7 @@ class ApiClient {
   postOwnerData = async (token, ownerData) => {
     apiInstance.defaults.headers.common["Authorization"] = token;
     const id = await AsyncStorage.getItem("id");
-
     console.log("owner data:" + JSON.stringify(ownerData));
-
     const response = await apiInstance.post(this.endpoint, {
       type: ownerData.ownerData.propertyType,
       title: ownerData.ownerData.placeType,
@@ -85,10 +78,17 @@ class ApiClient {
       },
       description: ownerData.ownerData.description,
     });
-
     console.log("owner response:" + JSON.stringify(response.data));
     return response.data;
   };
 }
-
 export default ApiClient;
+
+
+
+
+
+
+
+
+

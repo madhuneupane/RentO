@@ -1,8 +1,9 @@
 const userController = require("./controllers/userController");
 const propertyController = require("./controllers/propertyController");
-const openAiController = require("./controllers/openAiController")
-const craigEnd = require("./controllers/craigExtract")
+const openAiController = require("./controllers/openAiController");
+const craigEnd = require("./controllers/craigExtract");
 const jwt = require("jsonwebtoken");
+
 
 const routes = (app)=>{
     app.route("/addUser").post(userController.addNewUser);
@@ -31,12 +32,12 @@ if(!token){
 }
 try {
     jwt.verify(token, "RentOMadhu")
+
     next();
     //testing
-} catch (error) {
+  } catch (error) {
     console.log(error);
-    
-}  
-}
+  }
+};
 
 module.exports = routes;

@@ -46,6 +46,14 @@ class ApiClient {
     console.log("description: " + JSON.stringify(response.data));
     return response.data;
   };
+  getOwnerPosts = async (token, id) => {
+    apiInstance.defaults.headers.common["Authorization"] = token;
+    console.log("token in post" + token);
+    console.log("id of owner:" + id);
+    const response = await apiInstance.get(this.endpoint + `/${id}`);
+    console.log("onwer posts: " + JSON.stringify(response.data));
+    return response.data;
+  };
   postOwnerData = async (token, ownerData) => {
     apiInstance.defaults.headers.common["Authorization"] = token;
     const id = await AsyncStorage.getItem("id");

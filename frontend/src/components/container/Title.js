@@ -5,8 +5,8 @@ const Title = () => {
   return (
     <View style={styles.container}>
       <Image
-        style={{ width: 40, height: 60 }}
-        source={require("../../../assets/favicon.png")}
+        style={{ width: 110, height: 70 }}
+        source={require("../../../assets/horizontal-logo.png")}
         resizeMode="contain"
       />
     </View>

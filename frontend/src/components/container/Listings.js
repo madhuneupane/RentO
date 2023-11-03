@@ -7,30 +7,26 @@ import WebView from "react-native-webview";
 import { useNavigation } from "@react-navigation/native";
 const Listings = ({ navigation }) => {
   const LOCAL = "http://127.0.0.1:5500/map_list_view/index.html";
-
   const navigation1 = useNavigation();
-
   const handleWebViewMessage = (event) => {
     const message = event.nativeEvent.data;
     console.log("Received message from WebView:", event.nativeEvent.data);
     console.log("clicked");
     console.log(message);
-
     navigation1.navigate("Screen2", { message });
   };
-
   showFilter = () => {
     navigation.navigate("rentor");
   };
-
   function onMessage(data) {
-    console.log("data:" + data);
-    alert(data.nativeEvent.data);
+    console.log("data:" + data.nativeEvent.data);
+   // alert(data.nativeEvent.data);
+    showlistingDets(data.nativeEvent.data);
   }
-  showlistingDets = () => {
-    navigation.navigate("listing_details");
+  //trr
+  showlistingDets = (id) => {
+    navigation.navigate("listing_details",id);
   };
-
   const [listData, setListData] = useState();
   data(setListData);
   return (
@@ -46,7 +42,6 @@ const Listings = ({ navigation }) => {
           <Text>Screen1</Text>
         </View>
         <StatusBar style="auto" /> */}
-
       <WebView
         style={{ flex: 1 }}
         source={{ uri: LOCAL }}
@@ -63,5 +58,4 @@ const Listings = ({ navigation }) => {
     </>
   );
 };
-
 export default Listings;

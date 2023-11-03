@@ -4,7 +4,10 @@ import List from "../list/List";
 import { listingOptions } from "../static/ListingOptions";
 import { useEffect } from "react";
 import Postdata from "../hooks/postdata";
+
 const OwnerOnboarding1 = ({ navigation, route }) => {
+
+
   // const data = route?.params?.created;
   console.log("Back:" + JSON.stringify(route.params));
   const selectedItems = (value, type) => {

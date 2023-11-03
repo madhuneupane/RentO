@@ -13,7 +13,7 @@ const routes = (app)=>{
    app.route("/addProperty").post(verifyToken,propertyController.addProperty);
    app.route("/addInterested").post(verifyToken,propertyController.addInterested);
    app.route("/fetchAllProperty").get(propertyController.fetchAllProperty);
-   app.route("/fetchPropertyById/:id").get(propertyController.fetchPropertyById);
+   app.route("/fetchPropertyById/:id").get(verifyToken,propertyController.fetchPropertyById);
    app.route("/fetchPropertiesByOwner").get(verifyToken,propertyController.fetchPropertiesByOwner);
 
    app.route("/descriptionSuggest").post(verifyToken,openAiController.suggestDescription);

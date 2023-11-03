@@ -12,7 +12,6 @@ import { StackActions } from "@react-navigation/native";
 import ButtonUI from "../UI/button/ButtonUI";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import singleData from "../hooks/singleData";
-
 const ListingDetails = ({ navigation, route }) => {
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var touchPropsSubmit = {
@@ -63,7 +62,6 @@ const ListingDetails = ({ navigation, route }) => {
             <Text style={styles.verified}>Verified</Text>
           </View>
         </ImageBackground>
-
         {/* Thumbnail Gallery */}
         <ScrollView horizontal>
           {images.map((imagePath, index) => (
@@ -83,7 +81,6 @@ const ListingDetails = ({ navigation, route }) => {
             </TouchableOpacity>
           ))}
         </ScrollView>
-
         <ButtonUI
           item={{ value: "3D Tour Available" }}
           // customStyle={styles.button}
@@ -146,7 +143,6 @@ const ListingDetails = ({ navigation, route }) => {
             Madhu Nyoupane
           </Text>
         </View>
-
         <ButtonUI
           item={{ value: "Interested" }}
           selectedItems={savePost}
@@ -167,7 +163,6 @@ const ListingDetails = ({ navigation, route }) => {
   );
 };
 export default ListingDetails;
-
 const styles = StyleSheet.create({
   verified: {
     fontSize: 15,
@@ -250,7 +245,6 @@ const styles = StyleSheet.create({
   submitButton: {
     backgroundColor: "#36827F",
     borderColor: "#36827F",
-
     height: "50",
     width: "80%",
     marginLeft: 40,
@@ -271,7 +265,6 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
 });
-
 {
   /* <Text>{console.log("owner new post :::" + JSON.stringify(data))}</Text>
       <Text>Title:{data.title}</Text>

@@ -37,6 +37,7 @@ const PropertyDescription = ({ navigation, route }) => {
     const result = JSON.stringify(response);
     setDesc(result);
     // setDesc(test);
+
     setOwnerData({ ...keywords, description: test });
   };
   //

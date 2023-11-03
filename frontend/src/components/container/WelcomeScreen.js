@@ -24,10 +24,11 @@ const WelcomeScreen = ({ navigation }) => {
         <Image source={logo} style={styles.image}></Image>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.title}>Search your city</Text>
+        <Text style={styles.title}>What’s your address?</Text>
       </View>
-      <InputUI
-        placeholder=" search city"
+      <InputUI 
+        style={styles.input}
+        placeholder="  Search by location  "
         coustomStyle={styles}
         selectedItems={saveCity}
       />
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     height: 100,
   },
   container: {
-    height: "70%",
+    height: "100%",
     justifyContent: "center",
     // margin: 10,
     padding: 10,
@@ -69,6 +70,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     textAlign: "justify",
     height: 50,
+    paddingLeft:20,
   },
   button: {
     borderWidth: 1.5,
@@ -99,11 +101,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#36827F",
     // borderWidth: 1,
     borderColor: "#36827F",
-    height: "20%",
+    height: "10%",
     width: "80%",
     marginLeft: 40,
     marginTop: "20%",
-    padding: 10,
+    padding: 5,
     borderWidth: 0.5,
     borderRadius: 40,
   },

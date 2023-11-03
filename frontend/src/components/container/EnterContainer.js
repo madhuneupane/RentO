@@ -2,7 +2,7 @@ import React from "react";
 import { TouchableHighlight } from "react-native";
 import { Text, View, StyleSheet, Image } from "react-native";
 const EnterContainer = ({ navigation, route }) => {
-  const logo = require("../../../assets/logo-splash-screen-svg.svg");
+  const logo = require("../../../assets/splash-screen-logo.png");
 
   const login = () => {
     navigation.navigate("login_rentor");

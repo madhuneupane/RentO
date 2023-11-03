@@ -30,13 +30,14 @@ const PropertyDescription = ({ navigation, route }) => {
   };
 
   const generateDesc = async (test) => {
-    // token = await AsyncStorage.getItem("token");
-    // // console.log(onBoardData);
-    // const response = await api.getDescription(token, key);
-    // // console.log("description2: " + JSON.stringify(response));
-    // const result = JSON.stringify(response);
-    // setDesc(result);
-    setDesc(test);
+    token = await AsyncStorage.getItem("token");
+    // console.log(onBoardData);
+    const response = await api.getDescription(token, key);
+    // console.log("description2: " + JSON.stringify(response));
+    const result = JSON.stringify(response);
+    setDesc(result);
+    // setDesc(test);
+
     setOwnerData({ ...keywords, description: test });
   };
   //

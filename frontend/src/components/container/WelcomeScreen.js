@@ -4,6 +4,7 @@ import ButtonUI from "../UI/button/ButtonUI";
 import { InputUI } from "../UI/input/InputUI";
 import { rentorCredentials } from "../static/constants";
 const WelcomeScreen = ({ navigation }) => {
+
   const showListView = () => {
     navigation.navigate("rentor");
   };

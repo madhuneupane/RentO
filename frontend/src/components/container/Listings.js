@@ -20,16 +20,20 @@ const Listings = ({ navigation }) => {
   };
   function onMessage(data) {
     console.log("data:" + data.nativeEvent.data);
-   // alert(data.nativeEvent.data);
+
     showlistingDets(data.nativeEvent.data);
   }
   //trr
   showlistingDets = (id) => {
     navigation.navigate("listing_details",id);
+   
+  }
+ 
   };
   const [listData, setListData] = useState();
   data(setListData);
   return (
+    
     <>
       {/* <View>
         <TouchableOpacity onPress={showFilter}>

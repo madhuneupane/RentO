@@ -510,6 +510,7 @@ center: activeCoord,
 });
 
 
+
 swiper.on("click", function () {
 let activeIndex = swiper.activeIndex;
 console.log("Swiper " + activeIndex + " is clicked");

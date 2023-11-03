@@ -30,7 +30,7 @@ if(!token){
     return res.status(401).json({message: "unauthorized"});
 }
 try {
-    jwt.verify(token, "hello")
+    jwt.verify(token, "RentOMadhu")
     next();
     //testing
 } catch (error) {

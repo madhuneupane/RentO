@@ -38,6 +38,8 @@ const ListingDetails = ({ navigation, route }) => {
   const showTour = () => {
     //navigation.navigate("")
     console.log("click");
+    navigation.navigate("panaroma_view",{id: route.params});
+
   };
   const savePost = () => {
     // StackActions.push("owner");

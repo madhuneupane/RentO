@@ -26,6 +26,7 @@ import WelcomeScreen from "../container/WelcomeScreen";
 import OwnerTabs from "./OwnerTabs";
 import RentorTabs from "./RentorTabs";
 import PostCreated from "../container/postCreated";
+import PanaromaView from "../container/PanaromaView";
 const Stack = createStackNavigator();
 
 const AppStack = () => {
@@ -216,6 +217,16 @@ const AppStack = () => {
         <Stack.Screen
           name="post_created"
           component={PostCreated}
+          options={{
+            headerBackTitleVisible: false,
+            headerTitle: "",
+            headerTintColor: "black",
+            headerBackTitle: false,
+          }}
+        />
+         <Stack.Screen
+          name="panaroma_view"
+          component={PanaromaView}
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",

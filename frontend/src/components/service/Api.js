@@ -25,7 +25,8 @@ class ApiClient {
       .then((testtoken = await AsyncStorage.getItem("token")));
   };
   getSingleProperty = async (id) => {
-    apiInstance.defaults.headers.common["Authorization"] = await AsyncStorage.getItem('token');
+    apiInstance.defaults.headers.common["Authorization"] =
+      await AsyncStorage.getItem("token");
     const response = await apiInstance.get(
       `http://localhost:5001/fetchPropertyById/${id}`
     );
@@ -52,6 +53,21 @@ class ApiClient {
     console.log("id of owner:" + id);
     const response = await apiInstance.get(this.endpoint + `/${id}`);
     console.log("onwer posts: " + JSON.stringify(response.data));
+    return response.data;
+  };
+  getInterestedTenant = async (token) => {
+    apiInstance.defaults.headers.common["Authorization"] = token;
+    const response = await apiInstance.get(this.endpoint);
+    console.log("InterestedTenant: " + JSON.stringify(response.data));
+    return response.data;
+  };
+  updateInteredtedList = async (propertyId, interestedId, token) => {
+    apiInstance.defaults.headers.common["Authorization"] = token;
+    const response = await apiInstance.post(this.endpoint, {
+      propertyId: propertyId,
+      interestedId: interestedId,
+    });
+    console.log("InterestedList: " + JSON.stringify(response.data));
     return response.data;
   };
   postOwnerData = async (token, ownerData) => {
@@ -91,12 +107,3 @@ class ApiClient {
   };
 }
 export default ApiClient;
-
-
-
-
-
-
-
-
-

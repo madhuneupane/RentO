@@ -8,7 +8,7 @@ import {
   StyleSheet,
   ImageBackground,
 } from "react-native";
-import { StackActions } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import ButtonUI from "../UI/button/ButtonUI";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import singleData from "../hooks/singleData";
@@ -22,8 +22,8 @@ const ListingDetails = ({ navigation, route }) => {
   };
   const [single, setSingle] = useState();
   singleData(route.params, setSingle);
-  const item = {...single};
-  console.log("data",item)
+  const item = { ...single };
+  console.log("data", item);
   //console.log("item:" + JSON.stringify(item));
   const [selectedImage, setSelectedImage] = useState(0);
   const images = [
@@ -36,9 +36,13 @@ const ListingDetails = ({ navigation, route }) => {
     //navigation.navigate("")
     console.log("click");
   };
-  const savePost = () => {
-    // StackActions.push("owner");
-    navigation.navigate("post_created");
+  const showInterest = async () => {
+    const id = await AsyncStorage.getItem("id");
+
+    navigation.navigate("show_interest", {
+      propertyId: route.params,
+      interestedId: id,
+    });
   };
   return (
     <ScrollView style={{ backgroundColor: "white" }}>
@@ -104,24 +108,24 @@ const ListingDetails = ({ navigation, route }) => {
           <Text style={styles.title}>Amenities</Text>
           <View style={styles.amenitiesTextView}>
             <View>
-            {item.amenities?.pet &&<Text style={styles.textView}>
-                Pet friendly
-              </Text>}
-              {item.amenities?.wifi &&<Text style={styles.textView}>
-                Wi-fi
-              </Text>}
+              {item.amenities?.pet && (
+                <Text style={styles.textView}>Pet friendly</Text>
+              )}
+              {item.amenities?.wifi && (
+                <Text style={styles.textView}>Wi-fi</Text>
+              )}
               <Text style={styles.textView}>TV</Text>
             </View>
             <View>
-            {item.amenities?.parkingSpace &&<Text style={styles.textView}>
-                Parking
-              </Text>}
-              {item.amenities?.washerDryer&&<Text style={styles.textView}>
-                  In-unit laundry
-              </Text>}
-              {item.amenities?.airConditioning && <Text style={styles.textView}>
-                  Air Conditioning
-              </Text>}
+              {item.amenities?.parkingSpace && (
+                <Text style={styles.textView}>Parking</Text>
+              )}
+              {item.amenities?.washerDryer && (
+                <Text style={styles.textView}>In-unit laundry</Text>
+              )}
+              {item.amenities?.airConditioning && (
+                <Text style={styles.textView}>Air Conditioning</Text>
+              )}
             </View>
           </View>
         </View>
@@ -133,7 +137,7 @@ const ListingDetails = ({ navigation, route }) => {
         </View>
         <ButtonUI
           item={{ value: "Interested" }}
-          selectedItems={savePost}
+          selectedItems={showInterest}
           customStyle={styles.customStyle}
           touchProps={touchPropsSubmit}
         />

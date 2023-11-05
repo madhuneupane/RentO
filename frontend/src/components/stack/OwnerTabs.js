@@ -3,6 +3,7 @@ import * as React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import OwnerOnboarding1 from "../container/OwnerOnboarding1";
 import OwnerListings from "./OwnerListings";
+import TenantInterested from "../container/TenantInterested";
 
 const Tab = createMaterialBottomTabNavigator();
 const OwnerTabs = () => {

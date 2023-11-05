@@ -8,7 +8,7 @@ import {
   StyleSheet,
   ImageBackground,
 } from "react-native";
-import { StackActions } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import ButtonUI from "../UI/button/ButtonUI";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import singleData from "../hooks/singleData";
@@ -24,6 +24,7 @@ const ListingDetails = ({ navigation, route }) => {
   const [single, setSingle] = useState();
 
   singleData(route.params, setSingle);
+
   
   const item = {...single};
   console.log("data",item)
@@ -41,9 +42,13 @@ const ListingDetails = ({ navigation, route }) => {
     navigation.navigate("panaroma_view",{id: route.params});
 
   };
-  const savePost = () => {
-    // StackActions.push("owner");
-    navigation.navigate("post_created");
+  const showInterest = async () => {
+    const id = await AsyncStorage.getItem("id");
+
+    navigation.navigate("show_interest", {
+      propertyId: route.params,
+      interestedId: id,
+    });
   };
   return (
     <ScrollView style={{ backgroundColor: "white" }}>
@@ -147,7 +152,7 @@ const ListingDetails = ({ navigation, route }) => {
         </View>
         <ButtonUI
           item={{ value: "Interested" }}
-          selectedItems={savePost}
+          selectedItems={showInterest}
           customStyle={styles.customStyle}
           touchProps={touchPropsSubmit}
         />

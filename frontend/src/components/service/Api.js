@@ -25,8 +25,8 @@ class ApiClient {
       .then((testtoken = await AsyncStorage.getItem("token")));
   };
   getSingleProperty = async (id) => {
-    apiInstance.defaults.headers.common["Authorization"] =
-      await AsyncStorage.getItem("token");
+
+    apiInstance.defaults.headers.common["Authorization"] = await AsyncStorage.getItem('token');
     const response = await apiInstance.get(
       `http://localhost:5001/fetchPropertyById/${id}`
     );

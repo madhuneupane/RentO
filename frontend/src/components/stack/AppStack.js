@@ -26,6 +26,7 @@ import WelcomeScreen from "../container/WelcomeScreen";
 import OwnerTabs from "./OwnerTabs";
 import RentorTabs from "./RentorTabs";
 import PostCreated from "../container/postCreated";
+import PanaromaView from "../container/PanaromaView";
 import TenantInterested from "../container/TenantInterested";
 import UserShownInterest from "../container/UserShownInterest";
 const Stack = createStackNavigator();
@@ -225,6 +226,11 @@ const AppStack = () => {
             headerBackTitle: false,
           }}
         />
+
+         <Stack.Screen
+          name="panaroma_view"
+          component={PanaromaView}
+/>
         <Stack.Screen
           name="tenant_interested"
           component={TenantInterested}

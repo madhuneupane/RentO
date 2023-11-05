@@ -20,10 +20,14 @@ const ListingDetails = ({ navigation, route }) => {
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
+
   const [single, setSingle] = useState();
+
   singleData(route.params, setSingle);
-  const item = { ...single };
-  console.log("data", item);
+
+  
+  const item = {...single};
+  console.log("data",item)
   //console.log("item:" + JSON.stringify(item));
   const [selectedImage, setSelectedImage] = useState(0);
   const images = [
@@ -35,6 +39,8 @@ const ListingDetails = ({ navigation, route }) => {
   const showTour = () => {
     //navigation.navigate("")
     console.log("click");
+    navigation.navigate("panaroma_view",{id: route.params});
+
   };
   const showInterest = async () => {
     const id = await AsyncStorage.getItem("id");
@@ -89,7 +95,9 @@ const ListingDetails = ({ navigation, route }) => {
           customStyle={styles.customStyle}
           touchProps={touchPropsSubmit}
         />
+
         <View style={styles.subContainer}>
+          
           <View>
             <Text style={styles.rent}>${item.rent}</Text>
             <Text style={styles.location}>{item.location}</Text>
@@ -99,37 +107,44 @@ const ListingDetails = ({ navigation, route }) => {
           </View>
         </View>
         <View style={styles.subContainer}>
+          
           <Text style={styles.title}>Description</Text>
           <View style={styles.descView}>
             <Text style={styles.desc}>{item.description}</Text>
           </View>
         </View>
         <View style={styles.subContainer}>
+          
           <Text style={styles.title}>Amenities</Text>
           <View style={styles.amenitiesTextView}>
             <View>
-              {item.amenities?.pet && (
-                <Text style={styles.textView}>Pet friendly</Text>
-              )}
-              {item.amenities?.wifi && (
-                <Text style={styles.textView}>Wi-fi</Text>
-              )}
+            {item.amenities?.pet &&<Text style={styles.textView}>
+                Pet friendly 
+              </Text>}
+              {item.amenities?.wifi &&<Text style={styles.textView}>
+                Wi-fi
+              </Text>}
               <Text style={styles.textView}>TV</Text>
             </View>
             <View>
-              {item.amenities?.parkingSpace && (
-                <Text style={styles.textView}>Parking</Text>
-              )}
-              {item.amenities?.washerDryer && (
-                <Text style={styles.textView}>In-unit laundry</Text>
-              )}
-              {item.amenities?.airConditioning && (
-                <Text style={styles.textView}>Air Conditioning</Text>
-              )}
+            {item.amenities?.parkingSpace &&<Text style={styles.textView}>
+                Parking
+              </Text>}
+              {item.amenities?.washerDryer&&<Text style={styles.textView}>
+                
+                  
+                  In-unit laundry
+              </Text>}
+              {item.amenities?.airConditioning && <Text style={styles.textView}>
+               
+                  Air Conditioning
+                  
+              </Text>}
             </View>
           </View>
         </View>
         <View style={styles.subContainer}>
+          
           <Text style={styles.title}>Property Owner</Text>
           <Text style={{ ...styles.textView, marginTop: 10, marginBottom: 20 }}>
             Madhu Nyoupane
@@ -141,7 +156,9 @@ const ListingDetails = ({ navigation, route }) => {
           customStyle={styles.customStyle}
           touchProps={touchPropsSubmit}
         />
+
         <View style={styles.subContainer}>
+          
           <Text style={styles.title}>Location</Text>
           <Image
             source={require("../../../assets/map.png")}

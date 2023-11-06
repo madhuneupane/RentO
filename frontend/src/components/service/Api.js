@@ -25,12 +25,26 @@ class ApiClient {
       .then((testtoken = await AsyncStorage.getItem("token")));
   };
   getSingleProperty = async (id) => {
-
-    apiInstance.defaults.headers.common["Authorization"] = await AsyncStorage.getItem('token');
+    apiInstance.defaults.headers.common["Authorization"] =
+      await AsyncStorage.getItem("token");
     const response = await apiInstance.get(
       `http://localhost:5001/fetchPropertyById/${id}`
     );
     return response;
+  };
+  newUser = async (data, headers) => {
+    apiInstance.defaults.headers.common["Authorization"] = headers;
+    console.log("toke:" + JSON.stringify(headers));
+    console.log("data:" + JSON.stringify(data));
+    const response = await apiInstance.post(this.endpoint, {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      password: data.password,
+      phonenumber: data.contactNumber,
+      isOwner: data.owner == "Yes" ? "true" : false,
+    });
+    console.log(response.data);
   };
   getAllData = async (headers) => {
     apiInstance.defaults.headers.common["Authorization"] = headers;
@@ -53,6 +67,21 @@ class ApiClient {
     console.log("id of owner:" + id);
     const response = await apiInstance.get(this.endpoint + `/${id}`);
     console.log("onwer posts: " + JSON.stringify(response.data));
+    return response.data;
+  };
+  getInterestedTenant = async (token) => {
+    apiInstance.defaults.headers.common["Authorization"] = token;
+    const response = await apiInstance.get(this.endpoint);
+    console.log("InterestedTenant: " + JSON.stringify(response.data));
+    return response.data;
+  };
+  updateInteredtedList = async (propertyId, interestedId, token) => {
+    apiInstance.defaults.headers.common["Authorization"] = token;
+    const response = await apiInstance.post(this.endpoint, {
+      propertyId: propertyId,
+      interestedId: interestedId,
+    });
+    console.log("InterestedList: " + JSON.stringify(response.data));
     return response.data;
   };
   postOwnerData = async (token, ownerData) => {
@@ -92,12 +121,3 @@ class ApiClient {
   };
 }
 export default ApiClient;
-
-
-
-
-
-
-
-
-

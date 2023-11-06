@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     // justifyContent:'space-evenly'
   },
   textInput: {
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: "#5C5D8D",
-    backgroundColor: "#E9E7EE",
+    backgroundColor: "#F3F3F3",
   },
 });

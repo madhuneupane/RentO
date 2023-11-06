@@ -6,8 +6,6 @@ import { useEffect } from "react";
 import Postdata from "../hooks/postdata";
 
 const OwnerOnboarding1 = ({ navigation, route }) => {
-
-
   // const data = route?.params?.created;
   console.log("Back:" + JSON.stringify(route.params));
   const selectedItems = (value, type) => {
@@ -107,7 +105,7 @@ var styles = StyleSheet.create({
     // marginTop: ,
   },
   title: {
-    fontWeight: 300,
+    fontWeight: "300",
     fontSize: 15,
     marginLeft: 10,
     fontSize: 20,

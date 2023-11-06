@@ -103,7 +103,7 @@ var styles = StyleSheet.create({
     // marginTop: ,
   },
   title: {
-    fontWeight: 300,
+    fontWeight: "300",
     fontSize: 15,
     marginLeft: 10,
     fontSize: 20,

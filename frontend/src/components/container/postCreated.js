@@ -1,7 +1,7 @@
 import { Button } from "@rneui/base";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import LottieView from "lottie-react-native";
+//import LottieView from "lottie-react-native";
 import ButtonUI from "../UI/button/ButtonUI";
 const PostCreated = ({ navigation }) => {
   const done = () => {
@@ -9,7 +9,7 @@ const PostCreated = ({ navigation }) => {
   };
   return (
     <View>
-      <LottieView
+      {/* <LottieView
         autoPlay
         style={{
           width: 100,
@@ -17,7 +17,7 @@ const PostCreated = ({ navigation }) => {
           backgroundColor: "#eee",
         }}
         source={require("../../../assets/posted.json")}
-      />
+      /> */}
       <ButtonUI
         item={{ value: "View Listing" }}
         selectedItems={done}

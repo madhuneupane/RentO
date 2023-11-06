@@ -29,6 +29,10 @@ import PostCreated from "../container/postCreated";
 import PanaromaView from "../container/PanaromaView";
 import TenantInterested from "../container/TenantInterested";
 import UserShownInterest from "../container/UserShownInterest";
+import SingUp from "../container/SinUp";
+import SingUp2 from "../container/SignUp2";
+import SingUp3 from "../container/SignUp3";
+
 const Stack = createStackNavigator();
 
 const AppStack = () => {
@@ -48,6 +52,21 @@ const AppStack = () => {
         <Stack.Screen
           name="login_rentor"
           component={LoginRentor}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="signup"
+          component={SingUp}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="signup2"
+          component={SingUp2}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="signup3"
+          component={SingUp3}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -227,10 +246,7 @@ const AppStack = () => {
           }}
         />
 
-         <Stack.Screen
-          name="panaroma_view"
-          component={PanaromaView}
-/>
+        <Stack.Screen name="panaroma_view" component={PanaromaView} />
         <Stack.Screen
           name="tenant_interested"
           component={TenantInterested}

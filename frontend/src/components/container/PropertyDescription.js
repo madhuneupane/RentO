@@ -30,13 +30,11 @@ const PropertyDescription = ({ navigation, route }) => {
   };
 
   const generateDesc = async (test) => {
-    token = await AsyncStorage.getItem("token");
-    // console.log(onBoardData);
-    const response = await api.getDescription(token, key);
-    // console.log("description2: " + JSON.stringify(response));
-    const result = JSON.stringify(response);
-    setDesc(result);
-    // setDesc(test);
+    // token = await AsyncStorage.getItem("token");
+    // const response = await api.getDescription(token, key);
+    // const result = JSON.stringify(response);
+    // setDesc(result);
+    setDesc(test);
 
     setOwnerData({ ...keywords, description: test });
   };
@@ -102,7 +100,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "white",
   },
   title: {
-    fontWeight: 300,
+    fontWeight: "300",
     fontSize: 15,
     marginLeft: 10,
     fontSize: 20,
@@ -146,7 +144,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   label: {
-    fontWeight: 300,
+    fontWeight: "300",
     fontSize: 15,
     marginLeft: 10,
     fontSize: 20,

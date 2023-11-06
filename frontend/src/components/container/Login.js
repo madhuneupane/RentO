@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     height: "65%",
-    marginBottom: 20,
+    marginBottom: 45,
   },
   button: {
     borderWidth: 5,

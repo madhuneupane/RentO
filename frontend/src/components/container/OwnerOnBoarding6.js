@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   progressBar: {
     borderColor: "#B1D4D2",
     height: 10,
-    width: "70%",
+    width: "75%",
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   progressBarGreen: {
     backgroundColor: "#36827F",
     height: 10,
-    width: 90,
+    width: 40,
     borderRadius: 20,
   },
   container: {

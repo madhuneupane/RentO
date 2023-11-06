@@ -56,18 +56,20 @@ var styles = StyleSheet.create({
   progressBar: {
     borderColor: "#B1D4D2",
     height: 10,
-    width: "70%",
+    width: "75%",
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
     marginTop: 40,
     marginLeft: 55,
+    marginBottom: 60,
   },
   progressBarGreen: {
     backgroundColor: "#36827F",
     height: 10,
-    width: 20,
+    width: 10,
     borderRadius: 20,
+    marginBottom: 20,
   },
   customStyle: {
     color: "#413855",

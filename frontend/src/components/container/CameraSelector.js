@@ -1,69 +1,147 @@
-import { Camera, CameraType } from "expo-camera";
-import { useState } from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, Button, Image } from "react-native";
+import { Camera } from "expo-camera";
+import ButtonUI from "../UI/button/ButtonUI";
 
-CameraSelector = () => {
-  const [type, setType] = useState(CameraType.back);
-  const [permission, requestPermission] = Camera.useCameraPermissions();
+export default function App() {
+  const [hasCameraPermission, setHasCameraPermission] = useState(null);
+  const [camera, setCamera] = useState(null);
+  const [image, setImage] = useState(null);
+  const [type, setType] = useState(Camera.Constants.Type.back);
+  var [isSubmitPress, setIsSubmitPress] = useState(false);
+  var [isFlip, setFlip] = useState(false);
 
-  if (!permission) {
-    // Camera permissions are still loading
-    return <View />;
+  var touchPropsSubmit = {
+    underlayColor: "#B1D4D2",
+    style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
+    onHideUnderlay: () => setIsSubmitPress(false),
+    onShowUnderlay: () => setIsSubmitPress(true),
+  };
+  var touchPropsFlip = {
+    underlayColor: "#FBEDEA",
+    style: isFlip ? styles.flipButtonClicked : styles.flipButton,
+    onHideUnderlay: () => setFlip(false),
+    onShowUnderlay: () => setFlip(true),
+  };
+  useEffect(() => {
+    (async () => {
+      const cameraStatus = await Camera.requestPermissionsAsync();
+      setHasCameraPermission(cameraStatus.status === "granted");
+    })();
+  }, []);
+  const takePicture = async () => {
+    if (camera) {
+      const data = await camera.takePictureAsync(null);
+      setImage(data.uri);
+    }
+    console.log("image::" + image);
+  };
+
+  if (hasCameraPermission === false) {
+    return <Text>No access to camera</Text>;
   }
-
-  if (!permission.granted) {
-    // Camera permissions are not granted yet
-    return (
-      <View style={styles.container}>
-        <Text style={{ textAlign: "center" }}>
-          We need your permission to show the camera
-        </Text>
-        <Button onPress={requestPermission} title="grant permission" />
-      </View>
-    );
-  }
-
-  function toggleCameraType() {
-    setType((current) =>
-      current === CameraType.back ? CameraType.front : CameraType.back
-    );
-  }
-
   return (
-    <View style={styles.container}>
-      <Camera style={styles.camera} type={type}>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-            <Text style={styles.text}>Flip Camera</Text>
-          </TouchableOpacity>
-        </View>
-      </Camera>
+    <View style={{ flex: 1, backgroundColor: "#E9E7EE" }}>
+      <View style={styles.cameraContainer}>
+        <Camera
+          ref={(ref) => setCamera(ref)}
+          style={styles.fixedRatio}
+          type={type}
+          ratio={"1:1"}
+        />
+      </View>
+      <ButtonUI
+        item={{ value: "Flip Image" }}
+        selectedItems={() => {
+          setType(
+            type === Camera.Constants.Type.back
+              ? Camera.Constants.Type.front
+              : Camera.Constants.Type.back
+          );
+        }}
+        customStyle={styles.customStyle}
+        touchProps={touchPropsFlip}
+      ></ButtonUI>
+      {/* <Button
+        title="Flip Image"
+        onPress={() => {
+          setType(
+            type === Camera.Constants.Type.back
+              ? Camera.Constants.Type.front
+              : Camera.Constants.Type.back
+          );
+        }}
+      ></Button> */}
+      <ButtonUI
+        item={{ value: "Take Picture" }}
+        selectedItems={() => takePicture()}
+        customStyle={styles.customStyle}
+        touchProps={touchPropsSubmit}
+      ></ButtonUI>
+      {/* <Button title="Take Picture" onPress={() => takePicture()} /> */}
+      {image && <Image source={{ uri: image }} style={{ flex: 1 }} />}
     </View>
   );
-};
-export default CameraSelector;
+}
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  camera: {
-    flex: 1,
-  },
-  buttonContainer: {
+  cameraContainer: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "transparent",
-    margin: 64,
   },
-  button: {
+  fixedRatio: {
     flex: 1,
-    alignSelf: "flex-end",
-    alignItems: "center",
+    aspectRatio: 1,
   },
-  text: {
-    fontSize: 24,
-    fontWeight: "bold",
+  customStyle: {
     color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  submitButton: {
+    backgroundColor: "#36827F",
+    borderColor: "#36827F",
+    height: "50",
+    width: "80%",
+    marginLeft: 40,
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 40,
+  },
+  submitButtonClicked: {
+    backgroundColor: "#B1D4D2",
+    borderColor: "#B1D4D2",
+    height: "50",
+    width: "80%",
+    marginLeft: 40,
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 40,
+  },
+  buttonContainer: {
+    marginTop: 150,
+  },
+  flipButton: {
+    backgroundColor: "#f56e51",
+    borderColor: "#f56e51",
+    height: "50",
+    width: "80%",
+    marginLeft: 40,
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 40,
+  },
+  flipButtonClicked: {
+    backgroundColor: "#f56e51",
+    borderColor: "#f56e51",
+    height: "50",
+    width: "80%",
+    marginLeft: 40,
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 40,
   },
 });

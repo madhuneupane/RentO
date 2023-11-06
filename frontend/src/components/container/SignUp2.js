@@ -56,7 +56,6 @@ const SingUp = ({ navigation, route }) => {
           touchProps={touchPropsSubmit}
         />
       </View>
-      <Text style={styles.loginText}>Already have an account? Sign in</Text>
     </View>
   );
 };
@@ -163,9 +162,5 @@ const styles = StyleSheet.create({
   },
   optionTitle: {
     marginTop: "20%",
-  },
-  loginText: {
-    marginTop: 10,
-    marginLeft: 90,
   },
 });

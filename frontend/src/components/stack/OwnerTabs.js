@@ -4,6 +4,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import OwnerOnboarding1 from "../container/OwnerOnboarding1";
 import OwnerListings from "./OwnerListings";
 import TenantInterested from "../container/TenantInterested";
+import ProfileStack from "./ProfileStack";
 
 const Tab = createMaterialBottomTabNavigator();
 const OwnerTabs = () => {
@@ -59,7 +60,7 @@ const OwnerTabs = () => {
 
       <Tab.Screen
         name="profile"
-        component={OwnerOnboarding1}
+        component={ProfileStack}
         options={{
           tabBarLabel: "User",
           tabBarIcon: ({ color }) => (

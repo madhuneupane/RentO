@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 import OwnerPropertyInterestList from "../list/OwnerPropertyInterestList";
-const OwnerPropertyInterest = () => {
-  const ownerData = [
-    {
-      name: "test2",
-      id: 1,
-    },
-    { name: "test3", id: 2 },
-  ];
+import ownerpost from "../hooks/ownerpost";
+const OwnerPropertyInterest = ({ navigation, id }) => {
+  const [ownerPost, setOwnerPosts] = useState();
+  const getTenant = (data) => {
+    console.log("interestedList:" + data);
+    navigation.navigate("tenant_interested", {
+      ids: data.interestedList,
+      type: data.type,
+      location: data.location,
+    });
+  };
+  ownerpost(setOwnerPosts);
+  console.log("intenets:::" + JSON.stringify(ownerPost));
   return (
     <View>
-      <OwnerPropertyInterestList ownerData={ownerData} />
+      <OwnerPropertyInterestList ownerData={ownerPost} getTenant={getTenant} />
     </View>
   );
 };

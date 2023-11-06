@@ -55,6 +55,21 @@ class ApiClient {
     console.log("onwer posts: " + JSON.stringify(response.data));
     return response.data;
   };
+  getInterestedTenant = async (token) => {
+    apiInstance.defaults.headers.common["Authorization"] = token;
+    const response = await apiInstance.get(this.endpoint);
+    console.log("InterestedTenant: " + JSON.stringify(response.data));
+    return response.data;
+  };
+  updateInteredtedList = async (propertyId, interestedId, token) => {
+    apiInstance.defaults.headers.common["Authorization"] = token;
+    const response = await apiInstance.post(this.endpoint, {
+      propertyId: propertyId,
+      interestedId: interestedId,
+    });
+    console.log("InterestedList: " + JSON.stringify(response.data));
+    return response.data;
+  };
   postOwnerData = async (token, ownerData) => {
     apiInstance.defaults.headers.common["Authorization"] = token;
     const id = await AsyncStorage.getItem("id");
@@ -92,12 +107,3 @@ class ApiClient {
   };
 }
 export default ApiClient;
-
-
-
-
-
-
-
-
-

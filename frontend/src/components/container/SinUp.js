@@ -25,6 +25,9 @@ const SingUp = ({ navigation }) => {
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
+  const signIn = () => {
+    navigation.navigate("login_rentor");
+  };
   const logo = require("../../../assets/favicon.png");
   return (
     <View style={styles.container}>
@@ -76,6 +79,9 @@ const SingUp = ({ navigation }) => {
           touchProps={touchPropsSubmit}
         />
       </View>
+      <Text style={styles.loginText}>
+        Already have an account? <Text onPress={signIn}>sign in</Text>
+      </Text>
     </View>
   );
 };
@@ -83,6 +89,15 @@ const SingUp = ({ navigation }) => {
 export default SingUp;
 
 const styles = StyleSheet.create({
+  signin: {
+    color: "green",
+    // fontWeight: "bold",
+    fontSize: 10,
+  },
+  loginText: {
+    marginTop: 10,
+    marginLeft: 90,
+  },
   haveAccount: {
     marginTop: 10,
     marginLeft: 80,

@@ -7,7 +7,7 @@ const SignUp3 = ({ navigation, route }) => {
   const userValues = route.params;
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   const saveData = () => {
-    navigation.navigate("login_rentor", userValues);
+    navigation.navigate("login_rentor");
   };
   addUser(userValues);
   var touchPropsSubmit = {

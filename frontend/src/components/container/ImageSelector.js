@@ -4,6 +4,8 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from "expo-image-picker";
+import LottieView from "lottie-react-native";
+
 import {
   View,
   Text,
@@ -19,7 +21,7 @@ const ImageSelector = ({ navigation, route }) => {
   const ownerGivenData = route.params;
   const [images, dispatch] = useReducer(ImageReducer, {});
   const [ownerData, setOwnerData] = useState();
-  const [firebaseImages, setFirebaseImage] = useState(false);
+  const [firebaseImages, setFirebaseImage] = useState(null);
   const cameraPermission = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync();
     if (!granted) alert("Need Gallery Access Permission");
@@ -46,7 +48,6 @@ const ImageSelector = ({ navigation, route }) => {
     onShowUnderlay: () => setIsCamerasPress(true),
   };
 
-
   const selectImage = async (imageNumber) => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -55,9 +56,7 @@ const ImageSelector = ({ navigation, route }) => {
       quality: 0,
     });
 
-
     console.log("images seleted:" + JSON.stringify(result.assets[0]));
-
 
     if (!result.canceled) {
       dispatch({ type: imageNumber, value: result.assets[0].uri });
@@ -74,6 +73,7 @@ const ImageSelector = ({ navigation, route }) => {
     });
   };
   const saveImages = async () => {
+    setFirebaseImage(true);
     console.log("WE ARE INSIDE", ownerData.images);
     if (ownerData.images) {
       for (const imageKey in ownerData.images) {
@@ -108,7 +108,7 @@ const ImageSelector = ({ navigation, route }) => {
         }
       }
     }
-    setFirebaseImage(true);
+    setFirebaseImage(false);
   };
   return (
     <View style={styles.mainContainer}>
@@ -201,15 +201,31 @@ const ImageSelector = ({ navigation, route }) => {
           <Text style={styles.text}>Floor</Text>
         </View>
       </View>
-      {images.image6 && !firebaseImages && (
+      {images.image6 && firebaseImages == null && (
         <ButtonUI
-          item={{ value: "upload Images" }}
+          item={{ value: "Upload Images" }}
           selectedItems={saveImages}
           customStyle={styles.customStyleCamera}
           touchProps={touchPropsCamera}
         />
       )}
       {firebaseImages && (
+        <LottieView
+          autoPlay
+          style={{
+            width: "100%",
+            height: "65%",
+            backgroundColor: "white",
+            marginLeft: 30,
+            // marginBottom: 7,
+          }}
+          source={require("../../../assets/loading.json")}
+          // source={{
+          //   uri: "https://lottie.host/fde45e7c-36a5-493d-ae49-80631ac15f5f/avgoduAK0g.json",
+          // }}
+        />
+      )}
+      {!firebaseImages && firebaseImages != null && (
         <ButtonUI
           item={{ value: "Continue" }}
           selectedItems={uploadImages}
@@ -223,7 +239,7 @@ const ImageSelector = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   mainContainer: {
     alignItems: "center",
-    marginTop: "30%",
+    marginTop: "20%",
     padding: "3px",
   },
   container: {

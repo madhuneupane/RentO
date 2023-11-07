@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import addUser from "../hooks/addUser";
 import ButtonUI from "../UI/button/ButtonUI";
+import LottieView from "lottie-react-native";
 
 const SignUp3 = ({ navigation, route }) => {
   const userValues = route.params;
@@ -18,8 +19,20 @@ const SignUp3 = ({ navigation, route }) => {
   };
   console.log("userValues:" + JSON.stringify(userValues));
   return (
-    <View>
-      <Text>SignUp3</Text>
+    <View style={styles.container}>
+      <LottieView
+        autoPlay
+        style={{
+          width: "100%",
+          height: "75%",
+          backgroundColor: "white",
+          // marginLeft: 10,
+        }}
+        source={require("../../../assets/hello.json")}
+        // source={{
+        //   uri: "https://lottie.host/06d1c1df-eda1-47ab-aa01-385125607c54/o1lzwIUBD8.json",
+        // }}
+      />
       <View style={styles.buttonContainer}>
         <ButtonUI
           item={{ value: "Continue" }}
@@ -34,6 +47,9 @@ const SignUp3 = ({ navigation, route }) => {
 
 export default SignUp3;
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+  },
   submitButton: {
     backgroundColor: "#36827F",
     borderColor: "#36827F",

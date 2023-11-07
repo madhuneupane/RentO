@@ -2,25 +2,21 @@ import React, { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import List from "../list/List";
 import { listingOptions } from "../static/ListingOptions";
-import { useEffect } from "react";
-import Postdata from "../hooks/postdata";
 
 const OwnerOnboarding1 = ({ navigation, route }) => {
-  // const data = route?.params?.created;
   console.log("Back:" + JSON.stringify(route.params));
+  var [isPress, setIsPress] = useState(false);
   const selectedItems = (value, type) => {
     navigation.navigate("owner_onboarding2", { placeType: value });
   };
-  var [isPress, setIsPress] = useState(false);
   var touchProps = {
     activeOpacity: 1,
     underlayColor: "#ED7861", // <-- "backgroundColor" will be always overwritten by "underlayColor"
     style: isPress ? styles.btnPress : styles.btnNormal, // <-- but you can still apply other style changes
     onHideUnderlay: () => setIsPress(false),
     onShowUnderlay: () => setIsPress(true),
-    // onPress: () => console.log("HELLO"), // <-- "onPress" is apparently required
   };
-  // Postdata();
+
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
@@ -110,5 +106,6 @@ var styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 20,
     textAlign: "center",
+    fontFamily: "Mulish_600SemiBold_Italic",
   },
 });

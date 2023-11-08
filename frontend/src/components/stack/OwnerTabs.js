@@ -12,8 +12,8 @@ const OwnerTabs = () => {
   return (
     <Tab.Navigator
       initialRouteName="owner_welcome"
-      activeColor="#e91e63"
-      labelStyle={{ fontSize: 12 }}
+      activeColor="#36827F"
+      labelStyle={{ fontSize: 12, fontWeight: "bold" }}
       style={{ backgroundColor: "#E9E7EE", color: "black" }}
       ScreenOptions={{ headerShown: false }}
     >

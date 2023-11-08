@@ -1,4 +1,4 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import {
   HeaderBackButton,
   createStackNavigator,
@@ -36,8 +36,16 @@ import SingUp3 from "../container/SignUp3";
 const Stack = createStackNavigator();
 
 const AppStack = () => {
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: "#36827F",
+      background: "white",
+    },
+  };
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
       <Stack.Navigator>
         <Stack.Screen
           name="entercontainer"

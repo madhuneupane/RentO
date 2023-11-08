@@ -29,7 +29,7 @@ const LoginRentor = ({ navigation }) => {
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
-  const logo = require("../../../assets/favicon.png");
+  const logo = require("../../../assets/login-screen-logo.png");
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -71,12 +71,12 @@ export default LoginRentor;
 
 const styles = StyleSheet.create({
   imageContainer: {
-    marginTop: "20%",
+    marginTop: "30%",
     alignItems: "center",
   },
   image: {
     width: 100,
-    height: 100,
+    height: 110,
   },
   container: {
     height: "70%",

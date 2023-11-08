@@ -4,11 +4,10 @@ import ButtonUI from "../UI/button/ButtonUI";
 import { InputUI } from "../UI/input/InputUI";
 import { rentorCredentials } from "../static/constants";
 const WelcomeScreen = ({ navigation }) => {
-
   const showListView = () => {
     navigation.navigate("rentor");
   };
-  const logo = require("../../../assets/favicon.png");
+  const logo = require("../../../assets/login-screen-logo.png");
   // remove back button
   var [isSubmitPress, setIsSubmitPress] = useState(false);
 
@@ -22,12 +21,12 @@ const WelcomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={logo} style={styles.image}></Image>
+        <Image source={logo} style={styles.image} resizeMode="contain"></Image>
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.title}>What’s your address?</Text>
       </View>
-      <InputUI 
+      <InputUI
         style={styles.input}
         placeholder="  Search by location  "
         coustomStyle={styles}
@@ -47,12 +46,15 @@ export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   imageContainer: {
-    marginTop: "10%",
+    // marginTop: "5%",
     alignItems: "center",
+    // backgroundColor: "pink",
+    height: "25%",
   },
   image: {
-    width: 100,
-    height: 100,
+    marginTop: 3,
+    width: "30%",
+    height: "90%",
   },
   container: {
     height: "100%",
@@ -71,7 +73,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     textAlign: "justify",
     height: 50,
-    paddingLeft:20,
+    paddingLeft: 20,
   },
   button: {
     borderWidth: 1.5,

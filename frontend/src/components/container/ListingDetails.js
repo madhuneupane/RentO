@@ -15,24 +15,25 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import singleData from "../hooks/singleData";
 import UserShownInterest from "./UserShownInterest";
 const ListingDetails = ({ navigation, route }) => {
-  var [isSubmitPress, setIsSubmitPress] = useState(false);
+  const [isSubmitPress, setIsSubmitPress] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [propertyId, setPropertyId] = useState();
+  const [interestedId, setInterestedId] = useState();
+  const [single, setSingle] = useState();
+  const [selectedImage, setSelectedImage] = useState(0);
+  const item = { ...single };
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
-  const [modalVisible, setModalVisible] = useState(false);
-  const [propertyId, setPropertyId] = useState();
-  const [interestedId, setInterestedId] = useState();
-  const [single, setSingle] = useState();
 
   singleData(route.params, setSingle);
 
-  const item = { ...single };
   console.log("data", item);
   //console.log("item:" + JSON.stringify(item));
-  const [selectedImage, setSelectedImage] = useState(0);
+
   const images = [
     require("../../../assets/house2.jpg"),
     require("../../../assets/house3.jpg"),

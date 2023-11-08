@@ -72,31 +72,34 @@ var styles = StyleSheet.create({
   },
   btnNormal: {
     borderColor: "#FBEDEA",
-    // borderWidth: 1,
+
     backgroundColor: "#FBEDEA",
-    height: "50",
+    height: "60",
     width: "80%",
     marginLeft: 40,
-    marginBottom: 10,
+    marginBottom: 20,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 30,
   },
   btnPress: {
     borderColor: "#FBEDEA",
-    height: "50",
+    backgroundColor: "#FBEDEA",
+    height: "60",
     width: "80%",
     marginLeft: 40,
-    marginTop: 10,
-    marginBottom:30,
+    //marginTop: 18,
+    marginBottom:20,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 30,
   },
   textContainer: {
     margin: 10,
-    height: "24%",
+    height: "20%",
     justifyContent: "center",
+    fontWeight: "bold",
+    fontFamily: "Mulish_400Regular"
     // backgroundColor: "pink",
   },
   listContainer: {
@@ -104,9 +107,11 @@ var styles = StyleSheet.create({
   },
   title: {
     fontWeight: "300",
-    fontSize: 15,
+    fontWeight: "bold",
+    fontSize: 22,
     marginLeft: 10,
-    fontSize: 20,
+    
     textAlign: "center",
+    fontFamily: "Mulish_700Bold"
   },
 });

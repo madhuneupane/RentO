@@ -120,24 +120,27 @@ const styles = StyleSheet.create({
   amenities: {
     color: "#36827F",
     backgroundColor: "#B1D4D2",
-    //borderWidth: 1,
-    borderRadius: 5,
+    borderWidth: 1,
+    borderRadius: 15,
     textAlign: "center",
+    padding: 5
   },
   amenitiesExtra: {
     color: "#36827F",
     backgroundColor: "#B1D4D2",
-    //borderWidth: 1,
-    borderRadius: 5,
+    borderWidth: 1,
+    borderRadius: 15,
     textAlign: "center",
+    padding: 5
   },
   selectOptions: {
     color: "white",
     backgroundColor: "#36827F",
-    //borderWidth: 2,
-    borderRadius: 5,
+    borderWidth: 2,
+    borderRadius: 15,
     borderColor: "#36827F",
     textAlign: "center",
+    padding: 5
 
     // width: 70,
   },
@@ -162,11 +165,15 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   title: {
+    width: "85%",
+    height: "25",
     fontWeight: "300",
-    fontSize: 15,
+    fontSize: 22,
+    marginBottom:20,
     marginLeft: 10,
     fontSize: 20,
     textAlign: "center",
+    fontFamily: "Mulish_700Bold"
   },
   propertyType: {
     marginBottom: 10,
@@ -215,10 +222,10 @@ const styles = StyleSheet.create({
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 45,
+    borderRadius: 35,
   },
   buttonContainer: {
     marginTop: 280,
@@ -229,12 +236,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   listContainer: {
-    height: "300%",
+    fontFamily:"Mulish_400Regular",
+    height: "270%",
     width: "100%",
     marginLeft: 10,
     marginRight: 10,
   },
   textContainer: {
+    fontFamily:"Mulish_400Regular",
     height: "100%",
     width: "90%",
     justifyContent: "center",

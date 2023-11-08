@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import LottieView from "lottie-react-native";
 import ButtonUI from "../UI/button/ButtonUI";
-const PostCreated = ({ navigation }) => {
-  const done = () => {
-    navigation.navigate("owner_welcome");
-  };
+const PostCreated = ({ showListings }) => {
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
@@ -19,10 +16,12 @@ const PostCreated = ({ navigation }) => {
         autoPlay
         style={{
           // width: "0%",
-          height: "80%",
+          height: "60%",
           backgroundColor: "white",
           padding: 2,
-          // marginRight: 40,
+          marginTop: 50,
+          marginBottom: 80,
+          marginLeft: 20,
           // borderWidth: 1,
         }}
         source={require("../../../assets/done.json")}
@@ -33,7 +32,7 @@ const PostCreated = ({ navigation }) => {
       <View style={styles.buttonContainer}>
         <ButtonUI
           item={{ value: "View Listing" }}
-          selectedItems={done}
+          selectedItems={showListings}
           customStyle={styles.customStyle}
           touchProps={touchPropsSubmit}
         ></ButtonUI>
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
 
     height: "50",
     width: "80%",
-    marginLeft: 40,
+    marginLeft: 25,
     marginTop: 20,
     padding: 10,
     borderWidth: 0.5,
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
     borderColor: "#B1D4D2",
     height: "50",
     width: "80%",
-    marginLeft: 40,
+    marginLeft: 25,
     marginTop: 20,
     padding: 10,
     borderWidth: 0.5,

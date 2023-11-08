@@ -5,7 +5,7 @@ const EnterContainer = ({ navigation, route }) => {
   const logo = require("../../../assets/splash-screen-logo.png");
 
   const login = () => {
-    navigation.navigate("login_rentor");
+    navigation.navigate("signup");
   };
   return (
     <TouchableHighlight onPress={login} style={styles.container}>
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   image: {
-    width: 100,
-    height: 100,
+    width: "33%",
+    height: "21%",
   },
 });

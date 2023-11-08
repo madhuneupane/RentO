@@ -5,6 +5,7 @@ import { InputUI } from "../UI/input/InputUI";
 import ButtonUI from "../UI/button/ButtonUI";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ApiClient from "../service/Api";
+import LottieView from "lottie-react-native";
 
 const PropertyDescription = ({ navigation, route }) => {
   const keywords = route.params;
@@ -15,7 +16,7 @@ const PropertyDescription = ({ navigation, route }) => {
   const api = new ApiClient("/descriptionSuggest");
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var [isSubmit, setIsSubmit] = useState(false);
-
+  const [creating, setCreating] = useState(false);
   var touchPropsSubmit = {
     underlayColor: "#ffffff00",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
@@ -30,13 +31,13 @@ const PropertyDescription = ({ navigation, route }) => {
   };
 
   const generateDesc = async (test) => {
-    token = await AsyncStorage.getItem("token");
-    // console.log(onBoardData);
-    const response = await api.getDescription(token, key);
-    // console.log("description2: " + JSON.stringify(response));
-    const result = JSON.stringify(response);
-    setDesc(result);
-    // setDesc(test);
+    setCreating(true);
+    // token = await AsyncStorage.getItem("token");
+    // const response = await api.getDescription(token, key);
+    // const result = JSON.stringify(response);
+    // setDesc(result);
+    setCreating(false);
+    setDesc(test);
 
     setOwnerData({ ...keywords, description: test });
   };
@@ -52,7 +53,23 @@ const PropertyDescription = ({ navigation, route }) => {
           Let's create a captivating property description
         </Text>
       </View>
-      <InputUI value={desc ? desc : ownerSelections} coustomStyle={styles} />
+      {creating ? (
+        <LottieView
+          autoPlay
+          style={{
+            width: "100%",
+            height: "72%",
+            backgroundColor: "white",
+            marginLeft: 10,
+          }}
+          source={require("../../../assets/waitingCat.json")}
+          // source={{
+          //   uri: "https://lottie.host/73bbe7a4-f718-48d6-bc72-f608432fe7c5/Vkwa7zBEZW.json",
+          // }}
+        />
+      ) : (
+        <InputUI value={desc ? desc : ownerSelections} coustomStyle={styles} />
+      )}
 
       {!desc ? (
         <View style={styles.wirteContainer}>
@@ -102,7 +119,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "white",
   },
   title: {
-    fontWeight: 300,
+    fontWeight: "300",
     fontSize: 15,
     marginLeft: 10,
     fontSize: 20,
@@ -146,7 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   label: {
-    fontWeight: 300,
+    fontWeight: "300",
     fontSize: 15,
     marginLeft: 10,
     fontSize: 20,

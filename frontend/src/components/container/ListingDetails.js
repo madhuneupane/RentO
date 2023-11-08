@@ -7,13 +7,21 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
+  Modal,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ButtonUI from "../UI/button/ButtonUI";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import singleData from "../hooks/singleData";
+import UserShownInterest from "./UserShownInterest";
 const ListingDetails = ({ navigation, route }) => {
-  var [isSubmitPress, setIsSubmitPress] = useState(false);
+  const [isSubmitPress, setIsSubmitPress] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [propertyId, setPropertyId] = useState();
+  const [interestedId, setInterestedId] = useState();
+  const [single, setSingle] = useState();
+  const [selectedImage, setSelectedImage] = useState(0);
+  const item = { ...single };
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
@@ -21,15 +29,11 @@ const ListingDetails = ({ navigation, route }) => {
     onShowUnderlay: () => setIsSubmitPress(true),
   };
 
-  const [single, setSingle] = useState();
-
   singleData(route.params, setSingle);
 
-  
-  const item = {...single};
-  console.log("data",item)
+  console.log("data", item);
   //console.log("item:" + JSON.stringify(item));
-  const [selectedImage, setSelectedImage] = useState(0);
+
   const images = [
     require("../../../assets/house2.jpg"),
     require("../../../assets/house3.jpg"),
@@ -39,134 +43,141 @@ const ListingDetails = ({ navigation, route }) => {
   const showTour = () => {
     //navigation.navigate("")
     console.log("click");
-    navigation.navigate("panaroma_view",{id: route.params});
-
+    navigation.navigate("panaroma_view", { id: route.params });
   };
   const showInterest = async () => {
     const id = await AsyncStorage.getItem("id");
-
-    navigation.navigate("show_interest", {
-      propertyId: route.params,
-      interestedId: id,
-    });
+    setPropertyId(route.params);
+    setInterestedId(id);
+    setModalVisible(true);
+    // navigation.navigate("show_interest", {
+    //   propertyId: route.params,
+    //   interestedId: id,
+    // });
   };
   return (
-    <ScrollView style={{ backgroundColor: "white" }}>
-      <View style={styles.mainImageContainer}>
-        {/* Gallery Header Image */}
-        <ImageBackground
-          source={require("../../../assets/house1.jpeg")}
-          style={{ width: 390, height: 423, overflow: true }}
-        >
-          <View style={styles.verifiedContainer}>
-            <View>
-              <MaterialCommunityIcons
-                name="check-circle"
-                size={20}
-                color="white"
-              />
-            </View>
-            <Text style={styles.verified}>Verified</Text>
-          </View>
-        </ImageBackground>
-        {/* Thumbnail Gallery */}
-        <ScrollView horizontal>
-          {images.map((imagePath, index) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() => handleImageClick(index)}
+    <>
+      {!modalVisible ? (
+        <ScrollView style={{ backgroundColor: "white" }}>
+          <View style={styles.mainImageContainer}>
+            {/* Gallery Header Image */}
+            <ImageBackground
+              source={require("../../../assets/house1.jpeg")}
+              style={{ width: 390, height: 423, overflow: true }}
             >
+              <View style={styles.verifiedContainer}>
+                <View>
+                  <MaterialCommunityIcons
+                    name="check-circle"
+                    size={20}
+                    color="white"
+                  />
+                </View>
+                <Text style={styles.verified}>Verified</Text>
+              </View>
+            </ImageBackground>
+            {/* Thumbnail Gallery */}
+            <ScrollView horizontal>
+              {images.map((imagePath, index) => (
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => handleImageClick(index)}
+                >
+                  <Image
+                    source={imagePath}
+                    style={{
+                      width: 130,
+                      height: 250,
+                      margin: 2,
+                      // borderWidth: selectedImage === index ? 2 : 0,
+                    }}
+                  />
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+            <ButtonUI
+              item={{ value: "3D Tour Available" }}
+              // customStyle={styles.button}
+              selectedItems={showTour}
+              customStyle={styles.customStyle}
+              touchProps={touchPropsSubmit}
+            />
+
+            <View style={styles.subContainer}>
+              <View>
+                <Text style={styles.rent}>${item.rent}</Text>
+                <Text style={styles.location}>{item.location}</Text>
+                <Text style={styles.rooms}>
+                  {item.roomNumbers} bd | {item.bathRoomNumbers} ba |{" "}
+                  {item.type}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.subContainer}>
+              <Text style={styles.title}>Description</Text>
+              <View style={styles.descView}>
+                <Text style={styles.desc}>{item.description}</Text>
+              </View>
+            </View>
+            <View style={styles.subContainer}>
+              <Text style={styles.title}>Amenities</Text>
+              <View style={styles.amenitiesTextView}>
+                <View>
+                  {item.amenities?.pet && (
+                    <Text style={styles.textView}>Pet friendly</Text>
+                  )}
+                  {item.amenities?.wifi && (
+                    <Text style={styles.textView}>Wi-fi</Text>
+                  )}
+                  <Text style={styles.textView}>TV</Text>
+                </View>
+                <View>
+                  {item.amenities?.parkingSpace && (
+                    <Text style={styles.textView}>Parking</Text>
+                  )}
+                  {item.amenities?.washerDryer && (
+                    <Text style={styles.textView}>In-unit laundry</Text>
+                  )}
+                  {item.amenities?.airConditioning && (
+                    <Text style={styles.textView}>Air Conditioning</Text>
+                  )}
+                </View>
+              </View>
+            </View>
+            <View style={styles.subContainer}>
+              <Text style={styles.title}>Property Owner</Text>
+              <Text
+                style={{ ...styles.textView, marginTop: 10, marginBottom: 20 }}
+              >
+                Madhu Nyoupane
+              </Text>
+            </View>
+            <ButtonUI
+              item={{ value: "Interested" }}
+              selectedItems={showInterest}
+              customStyle={styles.customStyle}
+              touchProps={touchPropsSubmit}
+            />
+
+            <View style={styles.subContainer}>
+              <Text style={styles.title}>Location</Text>
               <Image
-                source={imagePath}
-                style={{
-                  width: 130,
-                  height: 250,
-                  margin: 2,
-                  // borderWidth: selectedImage === index ? 2 : 0,
-                }}
-              />
-            </TouchableOpacity>
-          ))}
+                source={require("../../../assets/map.png")}
+                style={styles.mapView}
+              ></Image>
+            </View>
+          </View>
         </ScrollView>
-        <ButtonUI
-          item={{ value: "3D Tour Available" }}
-          // customStyle={styles.button}
-          selectedItems={showTour}
-          customStyle={styles.customStyle}
-          touchProps={touchPropsSubmit}
-        />
-
-        <View style={styles.subContainer}>
-          
-          <View>
-            <Text style={styles.rent}>${item.rent}</Text>
-            <Text style={styles.location}>{item.location}</Text>
-            <Text style={styles.rooms}>
-              {item.roomNumbers} bd | {item.bathRoomNumbers} ba | {item.type}
-            </Text>
-          </View>
-        </View>
-        <View style={styles.subContainer}>
-          
-          <Text style={styles.title}>Description</Text>
-          <View style={styles.descView}>
-            <Text style={styles.desc}>{item.description}</Text>
-          </View>
-        </View>
-        <View style={styles.subContainer}>
-          
-          <Text style={styles.title}>Amenities</Text>
-          <View style={styles.amenitiesTextView}>
-            <View>
-            {item.amenities?.pet &&<Text style={styles.textView}>
-                Pet friendly 
-              </Text>}
-              {item.amenities?.wifi &&<Text style={styles.textView}>
-                Wi-fi
-              </Text>}
-              <Text style={styles.textView}>TV</Text>
-            </View>
-            <View>
-            {item.amenities?.parkingSpace &&<Text style={styles.textView}>
-                Parking
-              </Text>}
-              {item.amenities?.washerDryer&&<Text style={styles.textView}>
-                
-                  
-                  In-unit laundry
-              </Text>}
-              {item.amenities?.airConditioning && <Text style={styles.textView}>
-               
-                  Air Conditioning
-                  
-              </Text>}
-            </View>
-          </View>
-        </View>
-        <View style={styles.subContainer}>
-          
-          <Text style={styles.title}>Property Owner</Text>
-          <Text style={{ ...styles.textView, marginTop: 10, marginBottom: 20 }}>
-            Madhu Nyoupane
-          </Text>
-        </View>
-        <ButtonUI
-          item={{ value: "Interested" }}
-          selectedItems={showInterest}
-          customStyle={styles.customStyle}
-          touchProps={touchPropsSubmit}
-        />
-
-        <View style={styles.subContainer}>
-          
-          <Text style={styles.title}>Location</Text>
-          <Image
-            source={require("../../../assets/map.png")}
-            style={styles.mapView}
-          ></Image>
-        </View>
-      </View>
-    </ScrollView>
+      ) : (
+        <Modal animationType="slide" transparent={true} visible={modalVisible}>
+          <UserShownInterest
+            propertyId={propertyId}
+            interestedId={interestedId}
+            setModalVisible={setModalVisible}
+          />
+        </Modal>
+      )}
+    </>
   );
 };
 export default ListingDetails;

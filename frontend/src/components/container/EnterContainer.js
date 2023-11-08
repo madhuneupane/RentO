@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   image: {
-    width: 100,
-    height: 100,
+    width: "33%",
+    height: "21%",
   },
 });

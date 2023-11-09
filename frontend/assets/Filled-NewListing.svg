@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.11 56.11">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3.5px;
+      }
+
+      .cls-2 {
+        stroke: #000;
+      }
+    </style>
+  </defs>
+  <g id="filled-new-listing">
+    <g>
+      <polygon class="cls-2" points="54.36 26.14 54.36 54.36 1.75 54.36 1.75 26.14 1.85 26.14 28.07 1.75 54.3 26.14 54.36 26.14"/>
+      <line class="cls-1" x1="28.05" y1="18.63" x2="28.05" y2="44.65"/>
+      <line class="cls-1" x1="41.07" y1="31.64" x2="15.04" y2="31.64"/>
+    </g>
+  </g>
+</svg>

@@ -7,6 +7,9 @@ import OwnerListings from "./OwnerListings";
 import TenantInterested from "../container/TenantInterested";
 import ProfileStack from "./ProfileStack";
 import MyListing from "../../../assets/MyListings.svg";
+import Alert from "../../../assets/Filled-Alerts.svg";
+import NewListing from "../../../assets/Filled-NewListing.svg";
+import User from "../../../assets/Filled-Profile.svg";
 const Tab = createMaterialBottomTabNavigator();
 const OwnerTabs = () => {
   const color = "#36827F";
@@ -14,9 +17,8 @@ const OwnerTabs = () => {
     <Tab.Navigator
       initialRouteName="owner_welcome"
       activeColor="#36827F"
-      labelStyle={{ fontSize: 12, fontWeight: "bold" }}
-      style={{ backgroundColor: "#E9E7EE", color: "black" }}
-      ScreenOptions={{ headerShown: false }}
+      labelStyle={{ fontSize: 12, fontWeight: "bold", color: "#36827F" }}
+      ScreenOptions={{ headerShown: false, tabBarActiveTintColor: "white" }}
     >
       <Tab.Screen
         name="owner_welcome"
@@ -24,12 +26,7 @@ const OwnerTabs = () => {
         options={{
           tabBarLabel: "My Listing",
           tabBarIcon: ({ color }) => (
-            // <MaterialCommunityIcons
-            //   name="view-list"
-            //   color={"#36827F"}
-            //   size={26}
-            // />
-            <MyListing width={30} height={30} fill="#36827F" />
+            <MyListing width={30} height={30} fill="#36827F" stoke="#36827F" />
           ),
         }}
       />
@@ -40,10 +37,12 @@ const OwnerTabs = () => {
         options={{
           tabBarLabel: "New Listing",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="home-city"
-              color={"#36827F"}
-              size={26}
+            <NewListing
+              width={30}
+              height={30}
+              fill="#36827F"
+              // stoke={"#36827F"}
+              // style={{ stroke: "white" }}
             />
           ),
         }}
@@ -55,7 +54,7 @@ const OwnerTabs = () => {
         options={{
           tabBarLabel: "Alerts",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="bell" color={"#36827F"} size={26} />
+            <Alert width={30} height={30} fill="#36827F" stroke="#36827F" />
           ),
         }}
       />
@@ -66,11 +65,7 @@ const OwnerTabs = () => {
         options={{
           tabBarLabel: "User",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="account"
-              color={"#36827F"}
-              size={26}
-            />
+            <User width={30} height={30} fill="#36827F" stroke="#36827F" />
           ),
         }}
       />

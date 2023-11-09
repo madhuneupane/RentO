@@ -114,7 +114,7 @@ const AppStack = () => {
             headerBackground: () => <Title />,
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "black",
+            headerTintColor: "white",
             headerBackTitle: false,
             // headerLeft: () => {
             //   navigation.pop(); // The B screen will delete

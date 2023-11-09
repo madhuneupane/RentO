@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="use-all-space">
+  <!-- 
+json-server --watch data.json -->
+
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="UTF-8" />
+    <title>RentO - MapView</title>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+
+    <!-- TomTomMap CSS Libs -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css"
+    />
+    <link rel="stylesheet" type="text/css" href="assets/ui-library/index.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.2.0/SearchBox.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/ui-library/icons-css/poi.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <!-- Swiper CSS lib -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <!-- Swiper Style -->
+    <style>
+      .swiper-container {
+        position: absolute;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 80%;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .swiper-slide {
+        margin-right: 5%;
+        width: 80%;
+        height: 350px;
+        background-color: rgb(207, 206, 206);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        border-radius: 20px;
+        margin-bottom: 1.5rem;
+      }
+
+      img {
+        max-width: 120%;
+        max-height: 100%;
+        object-fit: cover;
+      }
+
+      .image-div {
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+      }
+
+      .details-panel {
+        padding: 15px;
+        width: 100%;
+        background-color: white;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        font-family: "Inter", sans-serif;
+      }
+
+      .details-panel .detail {
+        margin-bottom: 0.5rem;
+      }
+
+      .detail .rent {
+        font-size: 1.8rem;
+        font-weight: bold;
+      }
+
+      .detail .location {
+        font-size: 1.1rem;
+        color: #003233;
+      }
+
+      .detail .rooms {
+        font-size: 0.3rem;
+      }
+
+      .details-panel a {
+        text-decoration: none;
+        color: #0078d4;
+        font-weight: bold;
+      }
+
+      .detail hidden {
+        display: none;
+      }
+
+      .left-column {
+        grid-column: 1;
+      }
+
+      .left-column .detail {
+        margin-bottom: 1rem;
+      }
+
+      .right-column {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+
+      .right-column .fa-heart {
+        margin-bottom: 3rem;
+      }
+
+      .right-column .fa-heart {
+        align-content: end;
+        color: red;
+        font-size: 1rem;
+      }
+
+      .right-column .detail .time {
+        color: #767676;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="map-view">
+      <div class="tt-side-panel">
+        <header class="tt-side-panel__header"></header>
+      </div>
+      <div id="map" class="full-map"></div>
+    </div>
+
+    <!-- TomTomMap Libs -->
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/services/services-web.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.2.0//SearchBox-web.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/js/search-markers/search-marker.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/js/search/search-results-parser.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/js/search-markers/search-markers-manager.js"
+    ></script>
+    <script type="text/javascript" src="assets/js/info-hint.js"></script>
+    <script type="text/javascript" src="assets/js/mobile-or-tablet.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/js/search/results-manager.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/js/search/side-panel.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/js/search/dom-helpers.js"
+    ></script>
+    <script type="text/javascript" src="assets/js/formatters.js"></script>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

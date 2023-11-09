@@ -28,7 +28,7 @@ const SingUp = ({ navigation }) => {
   const signIn = () => {
     navigation.navigate("login_rentor");
   };
-  const logo = require("../../../assets/favicon.png");
+  const logo = require("../../../assets/login-screen-logo.png");
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -105,10 +105,12 @@ const styles = StyleSheet.create({
   imageContainer: {
     marginTop: "50%",
     alignItems: "center",
+    // height: "0%",
   },
   image: {
-    width: 100,
-    height: 100,
+    // margin: 20,
+    width: 110,
+    height: 120,
   },
   container: {
     height: "70%",
@@ -148,6 +150,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
+    // marginTop: 15,
     fontWeight: "300",
     fontSize: 25,
     textAlign: "center",

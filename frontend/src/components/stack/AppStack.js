@@ -44,13 +44,21 @@ const AppStack = () => {
       background: "white",
     },
   };
+  const forFade = ({ current }) => ({
+    cardStyle: {
+      opacity: current.progress,
+    },
+  });
   return (
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator>
         <Stack.Screen
           name="entercontainer"
           component={EnterContainer}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false,
+            animationEnabled: true,
+          }}
         />
         <Stack.Screen
           name="login"
@@ -92,6 +100,7 @@ const AppStack = () => {
           name="rentor"
           component={RentorTabs}
           options={{
+            headerBackground: () => <Title />,
             headerBackTitleVisible: false,
             headerTitle: "",
             headerTintColor: "black",
@@ -105,7 +114,7 @@ const AppStack = () => {
             headerBackground: () => <Title />,
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "black",
+            headerTintColor: "white",
             headerBackTitle: false,
             // headerLeft: () => {
             //   navigation.pop(); // The B screen will delete

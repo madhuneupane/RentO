@@ -20,7 +20,7 @@ const SingUp = ({ navigation, route }) => {
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
-  const logo = require("../../../assets/favicon.png");
+  const logo = require("../../../assets/login-screen-logo.png");
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 100,
-    height: 100,
+    height: 110,
   },
   container: {
     height: "70%",

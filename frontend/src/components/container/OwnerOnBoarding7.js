@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: "20",
+    fontSize: 20,
   },
   textContainer: {
     margin: 10,

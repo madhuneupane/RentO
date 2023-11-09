@@ -10,7 +10,7 @@ const SelectImageOption = ({ navigation, route }) => {
   const selectedItems = (value) => {
     console.log("data from select:" + JSON.stringify(data));
     if (value == "Gallery") navigation.navigate("image_select", data);
-    if (value == "Camera") navigation.navigate("camera_select");
+    if (value == "Camera") navigation.navigate("camera_select", data);
   };
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var [isCameraPress, setIsCamerasPress] = useState(false);

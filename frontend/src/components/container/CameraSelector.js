@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
+import { firebaseConfig } from "../hooks/firebase";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Camera } from "expo-camera";
 import ButtonUI from "../UI/button/ButtonUI";
 
-export default function App() {
+export default function App({navigation, route}) {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [camera, setCamera] = useState(null);
   const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var [isFlip, setFlip] = useState(false);
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
 
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
@@ -32,9 +39,19 @@ export default function App() {
   const takePicture = async () => {
     if (camera) {
       const data = await camera.takePictureAsync(null);
+      
+      // const blob = await fetch(data.uri).then((response) => response.blob());
+
+      // const fileRef = ref(getStorage(), `RentO/${data.uri}`);
+      // await uploadBytes(fileRef, blob);
+  
+      // const downloadURL = await getDownloadURL(fileRef);
+  
+      // console.log("image::" + downloadURL);
+      // setImage(downloadURL);
       setImage(data.uri);
+      navigation.navigate("image_select",route.params);
     }
-    console.log("image::" + image);
   };
 
   if (hasCameraPermission === false) {

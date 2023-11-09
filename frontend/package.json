@@ -48,6 +48,7 @@
     "react-native-vector-icons": "^10.0.1",
     "react-native-webview": "^13.6.2",
     "react-query": "^3.39.3",
+    "svg-fill-custom": "^1.0.3",
     "typed-async-storage": "^3.1.2"
   },
   "devDependencies": {

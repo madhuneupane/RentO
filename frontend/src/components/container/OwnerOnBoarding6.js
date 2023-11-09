@@ -120,28 +120,36 @@ const styles = StyleSheet.create({
   amenities: {
     color: "#36827F",
     backgroundColor: "#B1D4D2",
-    borderWidth: 1,
+    borderColor: "#B1D4D2",
+    borderWidth: 2,
     borderRadius: 15,
     textAlign: "center",
-    padding: 5
+    padding: 5,
+    margin:5,
+    height:30,
   },
   amenitiesExtra: {
     color: "#36827F",
+    borderColor: "#B1D4D2",
+    margin: 5,
     backgroundColor: "#B1D4D2",
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: 15,
     textAlign: "center",
-    padding: 5
+    padding: 5,
+    height:30,
   },
   selectOptions: {
+    fontFamily:"Mulish_800ExtraBold",
     color: "white",
+    margin: 5,
     backgroundColor: "#36827F",
     borderWidth: 2,
     borderRadius: 15,
     borderColor: "#36827F",
     textAlign: "center",
-    padding: 5
-
+    padding: 5,
+    height:30
     // width: 70,
   },
   progressBar: {
@@ -169,7 +177,7 @@ const styles = StyleSheet.create({
     height: "25",
     fontWeight: "300",
     fontSize: 22,
-    marginBottom:20,
+    marginBottom:30,
     marginLeft: 10,
     fontSize: 20,
     textAlign: "center",
@@ -204,6 +212,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginLeft: 70,
+    fontFamily:"Mulish_400Regular",
   },
   submitButton: {
     backgroundColor: "#36827F",
@@ -233,7 +242,8 @@ const styles = StyleSheet.create({
   customStyle: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 20, 
+    fontFamily:"Mulish_400Regular",
   },
   listContainer: {
     fontFamily:"Mulish_400Regular",

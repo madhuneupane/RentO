@@ -27,7 +27,7 @@ const OwnerOnboarding4 = ({ navigation, route }) => {
       </View>
       <View>
         <InputUI
-          placeholder=" $ Enter the amount"
+          placeholder="$ Type in your amount"
           selectedItems={setData}
           type="amount"
           coustomStyle={styles}
@@ -73,12 +73,14 @@ const styles = StyleSheet.create({
     height: 60,
   },
   textInput: {
-    fontSize: 20,
+    fontSize: 18,
     height: 30,
-    width: "90%",
-    borderRadius: 30,
+    width: "87%",
+    borderRadius: 24,
     textAlign: "justify",
     height: 50,
+    paddingLeft: 15,
+    fontFamily:"Mulish_400Regular",
   },
   button: {
     borderWidth: 1.5,
@@ -95,15 +97,16 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     margin: 30,
-    height: "20%",
+    height: "15%",
     justifyContent: "center",
   },
   title: {
     fontWeight: "300",
-    fontSize: 15,
-    marginLeft: 10,
-    fontSize: 20,
+    
+    //marginLeft: 10,
+    fontSize: 22,
     textAlign: "center",
+    fontFamily: "Mulish_700Bold"
   },
   submitButton: {
     backgroundColor: "#36827F",
@@ -134,5 +137,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily:"Mulish_400Regular",
   },
 });

@@ -1,11 +1,73 @@
+document.addEventListener("DOMContentLoaded", function () {
+  var sumSort = document.querySelector(".sum_sort");
+  var sortOptions = document.querySelector("#sortOptions");
+  var sortOption = document.querySelector("#sortOption");
+
+  sumSort.addEventListener("click", function (e) {
+    sortOptions.style.display =
+      sortOptions.style.display === "block" ? "none" : "block";
+    e.stopPropagation();
+  });
+
+  sortOptions.addEventListener("click", function (e) {
+    var newSortOption = e.target.textContent;
+    sortOption.textContent = newSortOption;
+    sortOptions.style.display = "none";
+    selectedSortOption = newSortOption;
+    sortAndRenderList();
+    e.stopPropagation();
+  });
+
+  document.addEventListener("click", function () {
+    sortOptions.style.display = "none";
+  });
+
+  //Sort the location array and re-render
+  sortAndRenderList();
+});
+
+function sortAndRenderList() {
+  switch (selectedSortOption) {
+    case "Relevance":
+      //TODO
+      break;
+    case "Time":
+      locations.sort((a, b) => {
+        return new Date(a.availableDate) - new Date(b.availableDate);
+      });
+      break;
+    case "Price: High to Low":
+      locations.sort((a, b) => {
+        return b.rent - a.rent;
+      });
+      break;
+    case "Price: Low to High":
+      locations.sort((a, b) => {
+        return a.rent - b.rent;
+      });
+      break;
+    default:
+      break;
+  }
+
+  // Clear swiperSlides
+  const swiperWrapper = swiperContainer.querySelector(".swiper-wrapper");
+  swiperWrapper.innerHTML = "";
+
+  RenderList();
+}
+
 //Init Data
 import config from "./web_config.js";
 
 tt.setProductInfo("RentO_Map", "0.6");
+
+//Global var
 const locations = [];
 const markerCoordinates = [];
 var markerInstances = [];
 const IDArray = [];
+let selectedSortOption = "Relevance";
 
 //Init Swiper
 const swiperContainer = document.querySelector(".swiper-container");
@@ -74,7 +136,7 @@ var state = {
 map.addControl(
   new tt.FullscreenControl({ container: document.querySelector("body") })
 );
-map.addControl(new tt.NavigationControl());
+// map.addControl(new tt.NavigationControl());
 new SidePanel(".tt-side-panel", map);
 
 var geolocateControl = new tt.GeolocateControl({
@@ -83,17 +145,36 @@ var geolocateControl = new tt.GeolocateControl({
   },
 });
 
-geolocateControl.on("geolocate", function (event) {
-  var coordinates = event.coords;
-  state.userLocation = [coordinates.longitude, coordinates.latitude];
-  ttSearchBox.updateOptions(
-    Object.assign({}, ttSearchBox.getOptions(), {
-      distanceFromPoint: state.userLocation,
-    })
-  );
-});
+// geolocateControl.on("geolocate", function (event) {
+//   var coordinates = event.coords;
+//   state.userLocation = [coordinates.longitude, coordinates.latitude];
+//   ttSearchBox.updateOptions(
+//     Object.assign({}, ttSearchBox.getOptions(), {
+//       distanceFromPoint: state.userLocation,
+//     })
+//   );
+// });
+
+const geolocateButton = document.getElementById("custom-geolocate-button");
 
 map.addControl(geolocateControl);
+
+geolocateButton.addEventListener("click", function () {
+  geolocateControl.trigger();
+
+  geolocateControl.on("geolocate", function (event) {
+    var coordinates = event.coords;
+    state.userLocation = [coordinates.longitude, coordinates.latitude];
+
+    ttSearchBox.updateOptions(
+      Object.assign({}, ttSearchBox.getOptions(), {
+        distanceFromPoint: state.userLocation,
+      })
+    );
+
+    //alert("Your location: " + state.userLocation.join(", "));
+  });
+});
 
 var resultsManager = new ResultsManager();
 var searchMarkersManager = new SearchMarkersManager(map);
@@ -117,7 +198,7 @@ function fetchData() {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      //console.log(data);
       if (Array.isArray(data)) {
         locations.push(...data);
       } else {
@@ -163,7 +244,6 @@ function handleResultsFound(event) {
   ) {
     var results = event.data.results.fuzzySearch.results;
 
-    console.log("Results = " + results);
     if (results.length === 0) {
       handleNoResults();
     }
@@ -180,7 +260,6 @@ function handleResultsFound(event) {
 function handleResultSelection(event) {
   if (isFuzzySearchResult(event)) {
     var result = event.data.result;
-    console.log("Search Result=" + JSON.stringify(result));
     searchMarkersManager.draw([result]);
     searchMarkersManager.openPopup(result.id);
     fitToViewport(result);
@@ -333,6 +412,17 @@ function fillResultsList(results) {
 }
 
 function loadList() {
+  const resultsCount = locations.length;
+  //Update the result sum label
+  const resultsCountElement = document.getElementById("resultsCount");
+  if (resultsCountElement) {
+    resultsCountElement.textContent = `${resultsCount} results in view`;
+  }
+
+  RenderList();
+}
+
+function RenderList() {
   //Randomly generate coordinates
   const minLongitude = -123.178899;
   const maxLongitude = -123.099158;
@@ -360,7 +450,7 @@ function loadList() {
       Math.random() * (maxLongitude - minLongitude) + minLongitude;
     const randomLatitude =
       Math.random() * (maxLatitude - minLatitude) + minLatitude;
-    console.log("log=" + randomLongitude + ", and lat=" + randomLatitude);
+    //console.log("log=" + randomLongitude + ", and lat=" + randomLatitude);
 
     markerCoordinates.push([
       parseFloat(randomLongitude),
@@ -406,21 +496,19 @@ function loadList() {
 
     detailsPanel.innerHTML = `
     <div class="left-column">
-      <div class="detail rent"><span class="rent">$${rent}</span></div>
-      <div class="detail location"><span class="location">Vancouver, BC</span></div>
-      <div class="detail rooms"><span class="roomNumbers">${roomNumbers} bd</span> | <span class="bathRoomNumbers">${bathRoomNumbers} ba</span></div>
-    
+    <div class="detail rent"><span class="rent">$${rent}</span></div>
+    <div class="detail location"><span class="location">Vancouver, BC</span></div>
+    <div class="detail rooms"><span class="roomNumbers">${roomNumbers} bd</span> | <span class="bathRoomNumbers">${bathRoomNumbers} ba</span></div>
     </div>
     <div class="right-column">
-      <i class="far fa-heart"></i>
-      <div class="detail time">${
-        availableDate ? daysDifference + " days ago" : "0 day"
-      }</div>
-    
-      </div>
-  `;
+    <i class="far fa-heart"></i>
+    <div class="detail time">${
+      availableDate ? daysDifference + " days ago" : "0 day"
+    }</div>
+    </div>
+    `;
 
-    //  <div class="detail star">${starIcons}</div>
+    // <div class="detail star">${starIcons}</div>
 
     swiperSlide.appendChild(imageDiv);
     swiperSlide.appendChild(detailsPanel);
@@ -428,7 +516,6 @@ function loadList() {
     swiperContainer.querySelector(".swiper-wrapper").appendChild(swiperSlide);
   });
 }
-
 async function initializeApp() {
   try {
     await fetchData();
@@ -452,23 +539,76 @@ function deactivateMarkers() {
   });
 }
 
+function updateNormalMarkersRentText() {
+  markerInstances.forEach(function (marker, index) {
+    var rentValue = locations[index].rent;
+    var rentText;
+
+    if (rentValue < 100) {
+      rentText = "$";
+    } else if (rentValue >= 100 && rentValue <= 1000) {
+      rentText = "$$";
+    } else {
+      rentText = "$$$";
+    }
+
+    var messageBody = marker.getElement().querySelector(".message-body");
+
+    // Only update the text if the marker has the .marker-normal class
+    if (marker.getElement().classList.contains("marker-normal")) {
+      console.log("normal marker detected");
+      messageBody.textContent = rentText;
+    }
+  });
+}
+
+var messageBodies = [];
 function initMarkers() {
   // Array to store marker instances
-
   markerCoordinates.forEach(function (coord, index) {
     var markerElement = document.createElement("div");
-    markerElement.className = "marker-normal";
+    markerElement.className = "marker-icon";
+
+    var rentText;
+    var rentValue = locations[index].rent;
+
+    if (rentValue < 100) {
+      rentText = "$";
+    } else if (rentValue >= 100 && rentValue <= 1000) {
+      rentText = "$$";
+    } else {
+      rentText = "$$$";
+    }
+
+    var messageIcon = document.createElement("div");
+    messageIcon.className = "message-icon";
+
+    var messageBody = document.createElement("div");
+    messageBody.className = "message-body";
+    messageBody.textContent = rentText;
+    messageBodies.push(messageBody);
+
+    var messageTail = document.createElement("div");
+    messageTail.className = "message-tail";
+
+    messageIcon.appendChild(messageBody);
+    messageIcon.appendChild(messageTail);
+
+    markerElement.appendChild(messageIcon);
 
     var marker = new tt.Marker({ element: markerElement }).setLngLat(coord);
+    marker.getElement().classList.add("marker-normal");
+    //   marker.getElement().classList.add("marker-active");
+
     markerInstances.push(marker);
 
-    //focus on the default marker
+    // Focus on the default marker
     if (index === 0) {
       map.setCenter(coord);
     }
 
     marker.getElement().addEventListener("click", () => {
-      //Clear all status
+      // Clear all status
       deactivateMarkers();
 
       marker.getElement().classList.remove("marker-normal");
@@ -480,7 +620,13 @@ function initMarkers() {
         center: coord,
       });
 
-      //sync
+      updateNormalMarkersRentText();
+
+      // Update the messageBody.textContent of the current marker with the rent value
+      var rentValue = locations[index].rent;
+      messageBody.textContent = "$" + rentValue;
+
+      // Sync with swiper
       swiper.slideTo(index);
     });
   });
@@ -504,21 +650,20 @@ swiper.on("slideChange", function () {
 
   activeMarker.getElement().classList.remove("marker-normal");
   activeMarker.getElement().classList.add("marker-active");
-
   activeMarker.togglePopup();
 
-  // Set the map's center to match the active slide's marker
+  updateNormalMarkersRentText();
+
+  //update the rate
+  var rentValue = locations[activeIndex].rent;
+  console.log("current swiper's rent=" + rentValue);
+  var messageBody = activeMarker.getElement().querySelector(".message-body");
+  messageBody.textContent = "$" + rentValue;
+
   map.easeTo({
     center: activeCoord,
   });
 });
-
- const sendDataToReactNativeApp = async () => {
-                window.ReactNativeWebView.postMessage('Data from WebView / Website');
-              };
-              window.addEventListener("message", message => {
-                alert(message.data) 
-              });
 
 swiper.on("click", function () {
   let activeIndex = swiper.activeIndex;
@@ -527,26 +672,30 @@ swiper.on("click", function () {
   // this is sentind the data
   // window.ReactNativeWebView.postMessage(activeIndex);
   // window.addEventListener("message", (message) => {
-  //   alert(check);
+  // alert(check);
   // });
 
   let clickedId = IDArray[activeIndex];
-  console.log("Clicked ID=" + clickedId);
-
-  // Post the ID to the parent window
-  window.ReactNativeWebView.postMessage(clickedId);
-
+  //console.log("Clicked ID=" + clickedId);
 
   let activeMarker = markerInstances[activeIndex];
+  var rentValue = locations[activeIndex].rent;
+  var messageBody = activeMarker.getElement().querySelector(".message-body");
+  messageBody.textContent = "$" + rentValue;
+
+  //console.log("activeMarker="+activeMarker)
   let activeCoord = activeMarker.getLngLat();
   deactivateMarkers();
   activeMarker.getElement().classList.remove("marker-normal");
   activeMarker.getElement().classList.add("marker-active");
   activeMarker.togglePopup();
-  // Set the map's center to match the active slide's marker
+
   map.easeTo({
     center: activeCoord,
   });
+
+  // Post the ID to the parent window
+  window.ReactNativeWebView.postMessage(clickedId);
 });
 
 const clickableElement = document.getElementById("map");

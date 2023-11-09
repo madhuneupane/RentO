@@ -82,15 +82,18 @@ const styles = StyleSheet.create({
 
   subContainer: {
     alignItems: "center",
-    height: 60,
+    height: 80,
   },
   textInput: {
-    fontSize: 20,
+    fontSize: 18,
     height: 30,
-    width: "90%",
-    borderRadius: 30,
+    width: "87%",
+    borderRadius: 24,
     textAlign: "justify",
     height: 50,
+    //marginTop: 10,
+    paddingLeft: 15,
+    fontFamily:"Mulish_400Regular",
   },
   button: {
     borderWidth: 1.5,
@@ -104,6 +107,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily:"Mulish_400Regular",
   },
   textContainer: {
     margin: 10,
@@ -112,10 +116,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "300",
-    fontSize: 15,
-    marginLeft: 10,
-    fontSize: 20,
+    width:"70%",
+    marginLeft: 50,
+    fontSize: 22,
     textAlign: "center",
+    fontFamily: "Mulish_700Bold"
   },
   submitButton: {
     backgroundColor: "#36827F",
@@ -147,5 +152,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily:"Mulish_400Regular",
   },
 });

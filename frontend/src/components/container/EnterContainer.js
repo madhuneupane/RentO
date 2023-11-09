@@ -19,7 +19,7 @@ export default EnterContainer;
 const styles = StyleSheet.create({
   view: {
     height: "100%",
-    width: "200%",
+    width: "100%",
     // backgroundColor: "pink",
     alignItems: "center",
     justifyContent: "center",
@@ -31,11 +31,11 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
-    padding: 10,
+    //padding: 10,
   },
   image: {
-    width: "33%",
-    height: "21%",
+    width: "45.4%",
+    height: "24%",
     shadowColor: "#171717",
   },
 });

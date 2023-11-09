@@ -73,14 +73,14 @@ const SingUp = ({ navigation }) => {
       />
       <View style={styles.buttonContainer}>
         <ButtonUI
-          item={{ value: "Continue" }}
+          item={{ value: "Sign up" }}
           selectedItems={callLoginApi}
           customStyle={styles.customStyle}
           touchProps={touchPropsSubmit}
         />
       </View>
       <Text style={styles.loginText}>
-        Already have an account? <Text onPress={signIn}>sign in</Text>
+        Already have an account? <Text style={styles.signin} onPress={signIn}>Sign in</Text>
       </Text>
     </View>
   );
@@ -90,17 +90,22 @@ export default SingUp;
 
 const styles = StyleSheet.create({
   signin: {
-    color: "green",
-    // fontWeight: "bold",
-    fontSize: 10,
+    color: "#36827F",
+    fontSize: 16,
+    fontFamily: "Mulish_700Bold",
+    textDecorationLine: 'underline',
   },
   loginText: {
-    marginTop: 10,
-    marginLeft: 90,
+    fontStyle: 'italic',
+    marginTop: 20,
+    marginLeft: 77,
+    fontSize: 16,
+    fontFamily: "Mulish_600SemiBold"
   },
   haveAccount: {
     marginTop: 10,
     marginLeft: 80,
+    fontFamily:"Mulish_400Regular",
   },
   imageContainer: {
     marginTop: "50%",
@@ -113,9 +118,9 @@ const styles = StyleSheet.create({
     height: 120,
   },
   container: {
-    height: "70%",
+    height: "65%",
     justifyContent: "center",
-    // margin: 10,
+    //margin: 10,
     // padding: 5,
     backgroundColor: "white",
   },
@@ -124,12 +129,15 @@ const styles = StyleSheet.create({
     height: 60,
   },
   textInput: {
-    fontSize: 20,
+    fontSize: 18,
+    fontStyle: "italic",
     height: 30,
-    width: "90%",
-    borderRadius: 15,
+    width: "87%",
+    borderRadius: 10,
     textAlign: "justify",
-    height: 50,
+    height: 45,
+    paddingLeft: 10,
+    fontFamily:"Mulish_400Regular",
   },
   button: {
     borderWidth: 1.5,
@@ -141,19 +149,24 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: "center",
-    fontWeight: "light",
+    fontWeight: "bold",
     fontSize: 20,
+    fontFamily:"Mulish_400Regular",
   },
   textContainer: {
-    // margin: 10,
+    //margin: 10,
     height: "10%",
     justifyContent: "center",
   },
   title: {
     // marginTop: 15,
     fontWeight: "300",
-    fontSize: 25,
+    fontSize: 28,
+    width:"70%",
+    marginLeft:"12%",
     textAlign: "center",
+    fontFamily: "Mulish_700Bold",
+    color: "#36827F"
   },
   submitButton: {
     backgroundColor: "#36827F",
@@ -171,17 +184,18 @@ const styles = StyleSheet.create({
     height: "30",
     width: "80%",
     marginLeft: 40,
-    // marginTop: 20,
+    //marginTop: 20,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 50,
+    marginTop: 40,
   },
   customStyle: {
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily: "Mulish_700Bold"
   },
 });

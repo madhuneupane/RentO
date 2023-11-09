@@ -102,7 +102,9 @@ const ListingDetails = ({ navigation, route }) => {
               customStyle={styles.customStyle}
               touchProps={touchPropsSubmit}
             />
-
+            <Text style={styles.heading}>
+              {item.roomNumbers} Bedroom {item.type} on {item.location}
+            </Text>
             <View style={styles.subContainer}>
               <View>
                 <Text style={styles.rent}>${item.rent}</Text>
@@ -182,6 +184,13 @@ const ListingDetails = ({ navigation, route }) => {
 };
 export default ListingDetails;
 const styles = StyleSheet.create({
+  heading: {
+    marginTop: 25,
+    fontSize: 25,
+    color: "black",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
   verified: {
     fontSize: 15,
     fontWeight: "bold",

@@ -5,7 +5,7 @@ const Login = ({ navigation }) => {
   const selectedItems = (value, type) => {
     navigation.navigate(type);
   };
-  const logo = require("../../../assets/favicon.png");
+  const logo = require("../../../assets/login-screen-logo.png");
   var [isPress, setIsPress] = useState(false);
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var touchPropsSubmit = {
@@ -56,19 +56,24 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   imageContainer: {
-    marginTop: "20%",
+    marginTop: "15%",
     alignItems: "center",
+    // backgroundColor: "yellow",
+    height: "30%",
   },
   image: {
-    width: 100,
-    height: 100,
+    marginTop: 3,
+    width: "30%",
+    height: "64%",
+    // backgroundColor: "Pink",
   },
   subContainer: {
     // marginBottom: 20,
     justifyContent: "space-around",
     alignItems: "center",
-    height: "65%",
-    marginBottom: 45,
+    // height: "65%",
+    // marginBottom: 45,
+    // backgroundColor: "pink",
   },
   button: {
     borderWidth: 5,
@@ -85,7 +90,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     marginBottom: 100,
-    marginTop: 100,
+    // marginTop: 100,
     // backgroundColor: "pink",
     justifyContent: "space-around",
     height: "50%",

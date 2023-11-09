@@ -1,11 +1,12 @@
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import * as React from "react";
+import { Image } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import OwnerOnboarding1 from "../container/OwnerOnboarding1";
 import OwnerListings from "./OwnerListings";
 import TenantInterested from "../container/TenantInterested";
 import ProfileStack from "./ProfileStack";
-
+import MyListing from "../../../assets/MyListings.svg";
 const Tab = createMaterialBottomTabNavigator();
 const OwnerTabs = () => {
   const color = "#36827F";
@@ -23,11 +24,12 @@ const OwnerTabs = () => {
         options={{
           tabBarLabel: "My Listing",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="view-list"
-              color={"#36827F"}
-              size={26}
-            />
+            // <MaterialCommunityIcons
+            //   name="view-list"
+            //   color={"#36827F"}
+            //   size={26}
+            // />
+            <MyListing width={30} height={30} fill="#36827F" />
           ),
         }}
       />

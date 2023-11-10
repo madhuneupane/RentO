@@ -10,6 +10,7 @@ import MyListing from "../../../assets/MyListings.svg";
 import Alert from "../../../assets/Filled-Alerts.svg";
 import NewListing from "../../../assets/Filled-NewListing.svg";
 import User from "../../../assets/Filled-Profile.svg";
+import OwnerNewListingStart from "../container/OwnerNewListingStart";
 const Tab = createMaterialBottomTabNavigator();
 const OwnerTabs = () => {
   const color = "#36827F";
@@ -33,7 +34,7 @@ const OwnerTabs = () => {
 
       <Tab.Screen
         name="newListing"
-        component={OwnerOnboarding1}
+        component={OwnerNewListingStart}
         options={{
           tabBarLabel: "New Listing",
           tabBarIcon: ({ color }) => (

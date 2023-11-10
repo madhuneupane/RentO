@@ -170,6 +170,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     // margin: 30,
+    backgroundColor: "white",
     height: "10%",
     justifyContent: "center",
   },

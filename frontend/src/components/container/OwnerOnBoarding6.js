@@ -15,7 +15,7 @@ const OwnerOnBoarding6 = ({ navigation, route }) => {
   var touchProps = {
     // activeOpacity: 1,
     underlayColor: "#FFFFFF",
-    // style: { borderRadius: 5, borderWidth: 1 },
+
     // onHideUnderlay: () => setIsPress(false),
     onShowUnderlay: () => setIsPress(true),
     // onPressOut: () => setIsPress(true),
@@ -125,8 +125,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     textAlign: "center",
     padding: 5,
-    margin:5,
-    height:30,
+    margin: 5,
+    height: 30,
   },
   amenitiesExtra: {
     color: "#36827F",
@@ -137,10 +137,10 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     textAlign: "center",
     padding: 5,
-    height:30,
+    height: 30,
   },
   selectOptions: {
-    fontFamily:"Mulish_800ExtraBold",
+    fontFamily: "Mulish_800ExtraBold",
     color: "white",
     margin: 5,
     backgroundColor: "#36827F",
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     borderColor: "#36827F",
     textAlign: "center",
     padding: 5,
-    height:30
+    height: 30,
     // width: 70,
   },
   progressBar: {
@@ -177,11 +177,11 @@ const styles = StyleSheet.create({
     height: "25",
     fontWeight: "300",
     fontSize: 22,
-    marginBottom:30,
+    marginBottom: 30,
     marginLeft: 10,
     fontSize: 20,
     textAlign: "center",
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
   propertyType: {
     marginBottom: 10,
@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginLeft: 70,
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
   },
   submitButton: {
     backgroundColor: "#36827F",
@@ -242,18 +242,18 @@ const styles = StyleSheet.create({
   customStyle: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 20, 
-    fontFamily:"Mulish_400Regular",
+    fontSize: 20,
+    fontFamily: "Mulish_400Regular",
   },
   listContainer: {
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
     height: "270%",
     width: "100%",
     marginLeft: 10,
     marginRight: 10,
   },
   textContainer: {
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
     height: "100%",
     width: "90%",
     justifyContent: "center",

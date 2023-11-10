@@ -26,7 +26,10 @@ const Login = ({ navigation }) => {
       <View style={styles.imageContainer}>
         <Image source={logo} style={styles.image}></Image>
       </View>
+
       <View style={styles.subContainer}>
+        <Text style={styles.title}>What brings you here?</Text>
+
         <View style={styles.buttonView}>
           <ButtonUI
             item={{ value: `I’m looking for a new place` }}
@@ -52,6 +55,12 @@ const Login = ({ navigation }) => {
 export default Login;
 
 const styles = StyleSheet.create({
+  title: {
+    // marginLeft: 10,
+    color: "#413855",
+    fontFamily: "Mulish_700Bold",
+    fontSize: 20,
+  },
   container: {
     backgroundColor: "white",
   },
@@ -121,17 +130,17 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 22,
-    margin:10,
+    margin: 10,
     textAlign: "center",
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
   customStyleOrange: {
     color: "#413855",
     fontWeight: "bold",
     fontSize: 22,
-    margin:10,
+    margin: 10,
     textAlign: "center",
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
 
   postButton: {

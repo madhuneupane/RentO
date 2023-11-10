@@ -39,7 +39,7 @@ const PropertyDescription = ({ navigation, route }) => {
     setCreating(false);
     //setDesc(test);
 
-    setOwnerData({ ...keywords, description: test });
+    setOwnerData({ ...keywords, description: desc });
   };
   //
   const nextPage = () => {

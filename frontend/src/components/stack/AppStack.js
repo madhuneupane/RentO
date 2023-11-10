@@ -43,6 +43,7 @@ const AppStack = () => {
       ...DefaultTheme.colors,
       primary: "#36827F",
       background: "white",
+      // height:"100%"
     },
   };
   const forFade = ({ current }) => ({

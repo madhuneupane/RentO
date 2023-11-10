@@ -12,7 +12,7 @@ const RentorStack = () => {
         options={{
           headerShown: false,
           headerBackTitle: "",
-          headerTintColor: "black",
+          headerTintColor: "#36827F",
           headerTitle: "",
         }}
       />

@@ -19,7 +19,7 @@ const routes = (app) => {
   app.route("/fetchAllProperty").get(propertyController.fetchAllProperty);
   app.route("/fetchPropertyById/:id").get(propertyController.fetchPropertyById);
   app
-    .route("/fetchPropertiesByOwner")
+    .route("/fetchPropertiesByOwner/:id")
     .get(verifyToken, propertyController.fetchPropertiesByOwner);
 
   app
@@ -37,7 +37,8 @@ const verifyToken = (req, res, next) => {
     return res.status(401).json({ message: "unauthorized" });
   }
   try {
-    jwt.verify(token, "hello");
+    jwt.verify(token, "RentOMadhu");
+
     next();
     //testing
   } catch (error) {

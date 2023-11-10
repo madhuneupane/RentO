@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   image:{
     width: "85%",
     height:"100%",
-    overflow:true,
+   
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
   }

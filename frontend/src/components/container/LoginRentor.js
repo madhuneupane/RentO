@@ -29,7 +29,7 @@ const LoginRentor = ({ navigation }) => {
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
-  const logo = require("../../../assets/favicon.png");
+  const logo = require("../../../assets/login-screen-logo.png");
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -48,13 +48,14 @@ const LoginRentor = ({ navigation }) => {
         value="madhu@gmail.com"
       />
       <InputUI
-        placeholder=" Password"
+        placeholder="Password"
         selectedItems={saveCredentials}
         type={rentorCredentials.password}
         coustomStyle={styles}
         value="madhu123"
         secureTextEntry={true}
       />
+      <Text style={styles.textMessage}>Forgot your password?</Text>
       <View style={styles.buttonContainer}>
         <ButtonUI
           item={{ value: "Sign in" }}
@@ -70,31 +71,43 @@ const LoginRentor = ({ navigation }) => {
 export default LoginRentor;
 
 const styles = StyleSheet.create({
+  textMessage: {
+    marginTop: 10,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: "18",
+    fontFamily: "Mulish_400Regular",
+    color: "#36827F",
+  },
   imageContainer: {
-    marginTop: "20%",
+    marginTop: "30%",
     alignItems: "center",
   },
   image: {
     width: 100,
-    height: 100,
+    height: 110,
   },
   container: {
     height: "70%",
     justifyContent: "center",
-    margin: 10,
-    padding: 5,
+    // margin: 10,
+    // padding: 5,
+    backgroundColor: "white",
   },
   subContainer: {
     alignItems: "center",
     height: 60,
   },
   textInput: {
-    fontSize: 20,
+    fontSize: 18,
+    fontStyle: "italic",
     height: 30,
-    width: "90%",
-    borderRadius: 15,
+    width: "87%",
+    borderRadius: 10,
     textAlign: "justify",
-    height: 50,
+    height: 45,
+    paddingLeft: 10,
+    fontFamily: "Mulish_400Regular",
   },
   button: {
     borderWidth: 1.5,
@@ -106,18 +119,21 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: "center",
-    fontWeight: "light",
+    fontWeight: "bold",
     fontSize: "20",
+    fontFamily: "Mulish_400Regular",
   },
   textContainer: {
-    margin: 30,
-    height: "10%",
+    margin: 10,
+    height: "15%",
     justifyContent: "center",
   },
   title: {
     fontWeight: "300",
-    fontSize: 25,
+    fontSize: 28,
     textAlign: "center",
+    fontFamily: "Mulish_700Bold",
+    color: "#36827F",
   },
   submitButton: {
     backgroundColor: "#36827F",
@@ -141,11 +157,12 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 50,
+    marginTop: 40,
   },
   customStyle: {
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily: "Mulish_700Bold",
   },
 });

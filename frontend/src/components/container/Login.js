@@ -5,7 +5,7 @@ const Login = ({ navigation }) => {
   const selectedItems = (value, type) => {
     navigation.navigate(type);
   };
-  const logo = require("../../../assets/favicon.png");
+  const logo = require("../../../assets/login-screen-logo.png");
   var [isPress, setIsPress] = useState(false);
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var touchPropsSubmit = {
@@ -22,14 +22,17 @@ const Login = ({ navigation }) => {
     onShowUnderlay: () => setIsPress(true),
   };
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image source={logo} style={styles.image}></Image>
       </View>
+
       <View style={styles.subContainer}>
+        <Text style={styles.title}>What brings you here?</Text>
+
         <View style={styles.buttonView}>
           <ButtonUI
-            item={{ value: `I'm  looking for a new Place` }}
+            item={{ value: `I’m looking for a new place` }}
             customStyle={styles.customStyle}
             selectedItems={selectedItems}
             touchProps={touchPropsSubmit}
@@ -37,8 +40,8 @@ const Login = ({ navigation }) => {
           />
 
           <ButtonUI
-            item={{ value: `I want to post a listing` }}
-            customStyle={styles.customStyle}
+            item={{ value: `I want to list my property` }}
+            customStyle={styles.customStyleOrange}
             selectedItems={selectedItems}
             touchProps={touchProps}
             type="owner"
@@ -52,23 +55,37 @@ const Login = ({ navigation }) => {
 export default Login;
 
 const styles = StyleSheet.create({
+  title: {
+    // marginLeft: 10,
+    color: "#413855",
+    fontFamily: "Mulish_700Bold",
+    fontSize: 20,
+  },
+  container: {
+    backgroundColor: "white",
+  },
   imageContainer: {
-    marginTop: "20%",
+    marginTop: "15%",
     alignItems: "center",
+    // backgroundColor: "yellow",
+    height: "30%",
   },
   image: {
-    width: 100,
-    height: 100,
+    marginTop: 20,
+    width: "35%",
+    height: "63%",
+    // backgroundColor: "Pink",
   },
   subContainer: {
     // marginBottom: 20,
     justifyContent: "space-around",
     alignItems: "center",
-    height: "65%",
-    marginBottom: 20,
+    // height: "65%",
+    // marginBottom: 45,
+    // backgroundColor: "pink",
   },
   button: {
-    borderWidth: 3,
+    borderWidth: 5,
     borderRadius: 15,
     fontSize: 22,
     // margin: 10,
@@ -82,7 +99,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     marginBottom: 100,
-    marginTop: 100,
+    // marginTop: 100,
     // backgroundColor: "pink",
     justifyContent: "space-around",
     height: "50%",
@@ -91,49 +108,59 @@ const styles = StyleSheet.create({
   submitButton: {
     backgroundColor: "#36827F",
     borderColor: "#36827F",
-    height: "35%",
+    height: "25%",
     width: "88%",
     marginLeft: 20,
     // marginTop: 20,
-    padding: 10,
+    //padding: 10,
     borderWidth: 0.5,
     borderRadius: 30,
   },
   submitButtonClicked: {
     borderColor: "#B1D4D2",
-    height: "35%",
+    height: "25%",
     width: "88%",
     marginLeft: 20,
     // marginTop: 20,
-    padding: 10,
+    //padding: 10,
     borderWidth: 0.5,
     borderRadius: 30,
   },
   customStyle: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 22,
+    margin: 10,
     textAlign: "center",
+    fontFamily: "Mulish_700Bold",
+  },
+  customStyleOrange: {
+    color: "#413855",
+    fontWeight: "bold",
+    fontSize: 22,
+    margin: 10,
+    textAlign: "center",
+    fontFamily: "Mulish_700Bold",
   },
 
   postButton: {
-    backgroundColor: "#f56e51",
-    borderColor: "#f56e51",
-    height: "35%",
+    backgroundColor: "#ED7861",
+    borderColor: "#ED7861",
+    height: "25%",
     width: "88%",
     marginLeft: 20,
-    // marginTop: 20,
-    padding: 10,
+    marginTop: -80,
+    //padding: 10,
     borderWidth: 0.5,
     borderRadius: 30,
   },
   postButtonClicked: {
-    borderColor: "#f56e51",
-    height: "35%",
+    borderColor: "#ED7861",
+    height: "25%",
     width: "88%",
     marginLeft: 20,
-    // marginTop: 20,
-    padding: 10,
+    marginTop: -80,
+    //padding: 10,
     borderWidth: 0.5,
     borderRadius: 30,
   },

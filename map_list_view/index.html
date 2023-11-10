@@ -31,6 +31,11 @@ json-server --watch data.json -->
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
     <!-- Swiper CSS lib -->
     <link
       rel="stylesheet"
@@ -49,8 +54,8 @@ json-server --watch data.json -->
         width: 80%;
         margin-bottom: 1rem;
         display: flex;
-        flex-direction: column; /* Display children in a column layout */
-        align-items: center; /* Center children horizontally */
+        flex-direction: column;
+        align-items: center;
       }
 
       .swiper-slide {
@@ -59,34 +64,91 @@ json-server --watch data.json -->
         height: 350px;
         background-color: rgb(207, 206, 206);
         display: flex;
-        flex-direction: column; /* Display children in a column layout */
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         font-size: 18px;
-        border: 3px solid #2c2c2c;
-        border-radius: 10px;
+        border-radius: 20px;
         margin-bottom: 1.5rem;
       }
 
       img {
-        max-width: 100%;
-        max-height: 60%; /* Set the maximum height for the image */
-        object-fit: cover; /* Ensure the image covers the available space */
+        max-width: 120%;
+        max-height: 100%;
+        object-fit: cover;
+      }
+
+      .image-div {
+        width: 100%;
+        border-radius: 20px 20px 0 0;
       }
 
       .details-panel {
-        margin-top: 1rem;
+        padding: 15px;
+        width: 100%;
+        background-color: white;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        font-family: "Inter", sans-serif;
       }
 
       .details-panel .detail {
         margin-bottom: 0.5rem;
       }
 
-      /* Style the "Link" label */
+      .detail .rent {
+        font-size: 1.8rem;
+        font-weight: bold;
+      }
+
+      .detail .location {
+        font-size: 1.1rem;
+        color: #003233;
+      }
+
+      .detail .rooms {
+        font-size: 0.3rem;
+      }
+
       .details-panel a {
         text-decoration: none;
-        color: #0078d4; /* Use a color for links, you can adjust this color */
+        color: #0078d4;
         font-weight: bold;
+      }
+
+      .detail hidden {
+        display: none;
+      }
+
+      .left-column {
+        grid-column: 1;
+      }
+
+      .left-column .detail {
+        margin-bottom: 1rem;
+      }
+
+      .right-column {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+
+      .right-column .fa-heart {
+        margin-bottom: 3rem;
+      }
+
+      .right-column .fa-heart {
+        align-content: end;
+        color: red;
+        font-size: 1rem;
+      }
+
+      .right-column .detail .time {
+        color: #767676;
       }
     </style>
   </head>

@@ -1,24 +1,18 @@
-import * as React from "react";
-import { Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import * as React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import OwnerWelcome from "../container/OwnerWelcome";
-import OwnerOnboarding1 from "../container/OwnerOnboarding1";
-import OwnerListings from "./OwnerListings";
-import OwnerOnboardingStack from "./OwnerOnboardingStack";
 import RentorStack from "./RentorStack";
 
 const Tab = createMaterialBottomTabNavigator();
-const RentorTabs = () => {
+const RentorTabs = ({ navigation }) => {
   const color = "#36827F";
   return (
     <Tab.Navigator
       initialRouteName="rentor_welcome"
-      activeColor="#5C5D8D"
-      labelStyle={{ fontSize: 12 }}
-      style={{ backgroundColor: "#5C5D8D", color: "black" }}
+      activeColor="#36827F"
       options={{ headerShown: false }}
+      labelStyle={{ fontSize: 12, fontWeight: "bold", color: "#36827F" }}
+      ScreenOptions={{ headerShown: false, tabBarActiveTintColor: "white" }}
     >
       <Tab.Screen
         name="rentor_welcome"
@@ -33,8 +27,9 @@ const RentorTabs = () => {
             />
           ),
           title: false,
-          headerBackTitle: "Back",
+          headerBackTitle: "",
           headerTintColor: "black",
+          headerTitle: "",
         }}
       />
 

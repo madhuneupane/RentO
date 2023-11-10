@@ -1,24 +1,25 @@
-import * as React from "react";
-import { Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import * as React from "react";
+import { Image } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import OwnerWelcome from "../container/OwnerWelcome";
 import OwnerOnboarding1 from "../container/OwnerOnboarding1";
 import OwnerListings from "./OwnerListings";
-import OwnerOnboardingStack from "./OwnerOnboardingStack";
-import Title from "../container/Title";
-
+import TenantInterested from "../container/TenantInterested";
+import ProfileStack from "./ProfileStack";
+import MyListing from "../../../assets/MyListings.svg";
+import Alert from "../../../assets/Filled-Alerts.svg";
+import NewListing from "../../../assets/Filled-NewListing.svg";
+import User from "../../../assets/Filled-Profile.svg";
+import OwnerNewListingStart from "../container/OwnerNewListingStart";
 const Tab = createMaterialBottomTabNavigator();
 const OwnerTabs = () => {
   const color = "#36827F";
   return (
     <Tab.Navigator
       initialRouteName="owner_welcome"
-      activeColor="#e91e63"
-      labelStyle={{ fontSize: 12 }}
-      style={{ backgroundColor: "#E9E7EE", color: "black" }}
-      ScreenOptions={{ headerShown: false }}
+      activeColor="#36827F"
+      labelStyle={{ fontSize: 12, fontWeight: "bold", color: "#36827F" }}
+      ScreenOptions={{ headerShown: false, tabBarActiveTintColor: "white" }}
     >
       <Tab.Screen
         name="owner_welcome"
@@ -26,25 +27,23 @@ const OwnerTabs = () => {
         options={{
           tabBarLabel: "My Listing",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="view-list"
-              color={"#36827F"}
-              size={26}
-            />
+            <MyListing width={30} height={30} fill="#36827F" stoke="#36827F" />
           ),
         }}
       />
 
       <Tab.Screen
         name="newListing"
-        component={OwnerOnboarding1}
+        component={OwnerNewListingStart}
         options={{
           tabBarLabel: "New Listing",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="home-city"
-              color={"#36827F"}
-              size={26}
+            <NewListing
+              width={30}
+              height={30}
+              fill="#36827F"
+              // stoke={"#36827F"}
+              // style={{ stroke: "white" }}
             />
           ),
         }}
@@ -56,22 +55,18 @@ const OwnerTabs = () => {
         options={{
           tabBarLabel: "Alerts",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="bell" color={"#36827F"} size={26} />
+            <Alert width={30} height={30} fill="#36827F" stroke="#36827F" />
           ),
         }}
       />
 
       <Tab.Screen
         name="profile"
-        component={OwnerOnboarding1}
+        component={ProfileStack}
         options={{
           tabBarLabel: "User",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="account"
-              color={"#36827F"}
-              size={26}
-            />
+            <User width={30} height={30} fill="#36827F" stroke="#36827F" />
           ),
         }}
       />

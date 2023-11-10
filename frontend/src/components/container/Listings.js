@@ -25,8 +25,10 @@ const Listings = ({ navigation }) => {
   }
   //trr
   showlistingDets = (id) => {
-    navigation.navigate("listing_details",id);
+    navigation.navigate("listing_details", id);
+
   };
+
   const [listData, setListData] = useState();
   data(setListData);
   return (

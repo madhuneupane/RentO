@@ -7,7 +7,7 @@ const WelcomeScreen = ({ navigation }) => {
   const showListView = () => {
     navigation.navigate("rentor");
   };
-  const logo = require("../../../assets/favicon.png");
+  const logo = require("../../../assets/login-screen-logo.png");
   // remove back button
   var [isSubmitPress, setIsSubmitPress] = useState(false);
 
@@ -21,13 +21,14 @@ const WelcomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={logo} style={styles.image}></Image>
+        <Image source={logo} style={styles.image} resizeMode="contain"></Image>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.title}>Search your city</Text>
+        <Text style={styles.title}>What’s your address?</Text>
       </View>
       <InputUI
-        placeholder=" search city"
+        style={styles.input}
+        placeholder="  Search by location  "
         coustomStyle={styles}
         selectedItems={saveCity}
       />
@@ -45,18 +46,22 @@ export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   imageContainer: {
-    marginTop: "10%",
+    // marginTop: "5%",
     alignItems: "center",
+    // backgroundColor: "pink",
+    height: "25%",
   },
   image: {
-    width: 100,
-    height: 100,
+    marginTop: 3,
+    width: "30%",
+    height: "90%",
   },
   container: {
-    height: "70%",
+    height: "100%",
     justifyContent: "center",
     // margin: 10,
-    padding: 10,
+    padding: 0,
+    backgroundColor: "white",
   },
   subContainer: {
     alignItems: "center",
@@ -65,9 +70,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     height: 30,
     width: "90%",
-    borderRadius: 15,
+    borderRadius: 30,
     textAlign: "justify",
     height: 50,
+    paddingLeft: 20,
   },
   button: {
     borderWidth: 1.5,
@@ -98,20 +104,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#36827F",
     // borderWidth: 1,
     borderColor: "#36827F",
-    height: "20%",
+    height: "10%",
     width: "80%",
     marginLeft: 40,
-    marginTop: "20%",
-    padding: 10,
+    marginTop: "30%",
+    padding: 5,
     borderWidth: 0.5,
     borderRadius: 40,
   },
   submitButtonClicked: {
     borderColor: "#B1D4D2",
-    height: "20%",
+    height: "10%",
     width: "80%",
     marginLeft: 40,
-    marginTop: "20%",
+    marginTop: "30%",
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,

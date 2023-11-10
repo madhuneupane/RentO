@@ -2,24 +2,23 @@ import React, { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import List from "../list/List";
 import { listingOptions } from "../static/ListingOptions";
-import { useEffect } from "react";
-import Postdata from "../hooks/postdata";
-const OwnerOnboarding1 = ({ navigation }) => {
+
+const OwnerOnboarding1 = ({ navigation, route }) => {
+  console.log("Back:" + JSON.stringify(route.params));
+  var [isPress, setIsPress] = useState(false);
   const selectedItems = (value, type) => {
     navigation.navigate("owner_onboarding2", { placeType: value });
   };
-  var [isPress, setIsPress] = useState(false);
   var touchProps = {
     activeOpacity: 1,
-    underlayColor: "#f56e51", // <-- "backgroundColor" will be always overwritten by "underlayColor"
+    underlayColor: "#ED7861", // <-- "backgroundColor" will be always overwritten by "underlayColor"
     style: isPress ? styles.btnPress : styles.btnNormal, // <-- but you can still apply other style changes
     onHideUnderlay: () => setIsPress(false),
     onShowUnderlay: () => setIsPress(true),
-    // onPress: () => console.log("HELLO"), // <-- "onPress" is apparently required
   };
-  // Postdata();
+
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.title}>
           What kind of place do you want to list?
@@ -45,28 +44,33 @@ const OwnerOnboarding1 = ({ navigation }) => {
 export default OwnerOnboarding1;
 
 var styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+  },
   progressBar: {
     borderColor: "#B1D4D2",
     height: 10,
-    width: "70%",
+    width: "75%",
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 45,
+    marginTop: 40,
     marginLeft: 55,
+    marginBottom: 60,
   },
   progressBarGreen: {
     backgroundColor: "#36827F",
     height: 10,
-    width: 20,
+    width: 10,
     borderRadius: 20,
+    marginBottom: 20,
   },
   customStyle: {
     color: "#413855",
     fontSize: 15,
   },
   btnNormal: {
-    borderColor: "#f56e51",
+    borderColor: "#FBEDEA",
     // borderWidth: 1,
     backgroundColor: "#FBEDEA",
     height: "50",
@@ -75,32 +79,36 @@ var styles = StyleSheet.create({
     marginTop: 20,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 25,
+    borderRadius: 30,
   },
   btnPress: {
-    borderColor: "#f56e51",
+    borderColor: "#FBEDEA",
+    backgroundColor: "#FBEDEA",
     height: "50",
     width: "80%",
     marginLeft: 40,
     marginTop: 20,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 25,
+    borderRadius: 30,
   },
   textContainer: {
     margin: 30,
-    height: "20%",
+    height: "18%",
     justifyContent: "center",
+    fontWeight: "bold",
+    fontFamily: "Mulish_400Regular"
     // backgroundColor: "pink",
   },
   listContainer: {
     // marginTop: ,
   },
   title: {
-    fontWeight: 300,
+    fontWeight: "300",
     fontSize: 15,
     marginLeft: 10,
-    fontSize: 20,
+    fontSize: 22,
     textAlign: "center",
+    fontFamily: "Mulish_700Bold",
   },
 });

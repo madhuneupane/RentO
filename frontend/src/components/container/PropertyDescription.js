@@ -5,6 +5,7 @@ import { InputUI } from "../UI/input/InputUI";
 import ButtonUI from "../UI/button/ButtonUI";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ApiClient from "../service/Api";
+import LottieView from "lottie-react-native";
 
 const PropertyDescription = ({ navigation, route }) => {
   const keywords = route.params;
@@ -15,7 +16,7 @@ const PropertyDescription = ({ navigation, route }) => {
   const api = new ApiClient("/descriptionSuggest");
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var [isSubmit, setIsSubmit] = useState(false);
-
+  const [creating, setCreating] = useState(false);
   var touchPropsSubmit = {
     underlayColor: "#ffffff00",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
@@ -30,13 +31,14 @@ const PropertyDescription = ({ navigation, route }) => {
   };
 
   const generateDesc = async (test) => {
-    // token = await AsyncStorage.getItem("token");
-    // // console.log(onBoardData);
-    // const response = await api.getDescription(token, key);
-    // // console.log("description2: " + JSON.stringify(response));
-    // const result = JSON.stringify(response);
-    // setDesc(result);
-    setDesc(test);
+    setCreating(true);
+    token = await AsyncStorage.getItem("token");
+    const response = await api.getDescription(token, key);
+    const result = JSON.stringify(response);
+    setDesc(result);
+    setCreating(false);
+    //setDesc(test);
+
     setOwnerData({ ...keywords, description: test });
   };
   //
@@ -45,17 +47,30 @@ const PropertyDescription = ({ navigation, route }) => {
     navigation.navigate("owner_onboarding5", ownerData);
   };
   return (
-    <View style={styles.conatiner}>
-      <View>
-        <Text>Let's create a captivating property description</Text>
+    <View style={styles.container}>
+      <View style={styles.textContainer}>
+        <Text style={styles.title}>
+          Let's create a captivating property description
+        </Text>
       </View>
-      <View style={styles.card}>
-        <InputUI
-          // label="Let's create a captivating property description"
-          value={desc ? desc : ownerSelections}
-          coustomStyle={styles}
+      {creating ? (
+        <LottieView
+          autoPlay
+          style={{
+            width: "100%",
+            height: "72%",
+            backgroundColor: "white",
+            marginLeft: 10,
+          }}
+          source={require("../../../assets/waitingCat.json")}
+          // source={{
+          //   uri: "https://lottie.host/73bbe7a4-f718-48d6-bc72-f608432fe7c5/Vkwa7zBEZW.json",
+          // }}
         />
-      </View>
+      ) : (
+        <InputUI value={desc ? desc : ownerSelections} coustomStyle={styles} />
+      )}
+
       {!desc ? (
         <View style={styles.wirteContainer}>
           <ButtonUI
@@ -72,7 +87,7 @@ const PropertyDescription = ({ navigation, route }) => {
           />
         </View>
       ) : (
-        <View>
+        <View style={styles.wirteContainer}>
           <ButtonUI
             customStyle={styles.customStyle}
             selectedItems={nextPage}
@@ -97,31 +112,58 @@ const PropertyDescription = ({ navigation, route }) => {
 export default PropertyDescription;
 
 const styles = StyleSheet.create({
-  card: {
-    width: "40%",
-    height: "50%",
+  textContainer: {
+    // marginTop: 10,
+    height: "20%",
+    justifyContent: "center",
+    // backgroundColor: "white",
   },
-  conatiner: {
-    margin: 10,
+  title: {
+    fontWeight: "300",
+    fontSize: 15,
+    marginLeft: 10,
+    fontSize: 20,
+    textAlign: "center",
+  },
+  card: {
+    width: "100%",
+    height: "40%",
+    borderRadius: 1,
+    backgroundColor: "yellow",
+    // flex: 10,
+  },
+  container: {
+    // margin: 10,
+    backgroundColor: "white",
   },
   subContainer: {
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,
-    height: "70%",
+    marginBottom: 10,
+    height: "40%",
+    width: "100%",
+    // borderWidth: 1,
+    // borderRadius: 30,
+    // alignItems: "center",
+    // backgroundColor: "yellow",
+    // flex: 1,
+    backgroundColor: "white",
   },
   textInput: {
-    height: "90%",
+    height: "130%",
     width: "90%",
-    marginTop: 15,
+    marginTop: 40,
+    marginBottom: 15,
     fontSize: 20,
     textAlign: "center",
-    padding: 10,
+    // padding: 10,
     backgroundColor: "#e6dff5",
-    borderColor: "#e6dff5",
+    borderColor: "#413855",
+    borderRadius: 20,
   },
   label: {
-    fontWeight: 300,
+    fontWeight: "300",
     fontSize: 15,
     marginLeft: 10,
     fontSize: 20,
@@ -142,7 +184,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   submitButtonClicked: {
     borderColor: "#36827F",
@@ -151,10 +193,11 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 250,
+    marginBottom: 250,
+    backgroundColor: "white",
   },
   customStyle: {
     color: "white",
@@ -165,10 +208,10 @@ const styles = StyleSheet.create({
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 2,
+    // marginTop: 2,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   writesubmitButton: {
     backgroundColor: "#f56e51",
@@ -179,9 +222,30 @@ const styles = StyleSheet.create({
     marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   wirteContainer: {
+    flex: 1,
+    marginTop: "15%",
     height: 100,
+    backgroundColor: "white",
+  },
+  progressBar: {
+    borderColor: "#B1D4D2",
+    height: 10,
+    width: "80%",
+    borderRadius: 20,
+    flexDirection: "row",
+    backgroundColor: "#B1D4D2",
+    // marginTop: 50,
+    marginLeft: 50,
+    position: "absolute",
+    bottom: -120,
+  },
+  progressBarGreen: {
+    backgroundColor: "#36827F",
+    height: 10,
+    width: 200,
+    borderRadius: 20,
   },
 });

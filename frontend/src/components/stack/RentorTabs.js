@@ -9,10 +9,10 @@ const RentorTabs = ({ navigation }) => {
   return (
     <Tab.Navigator
       initialRouteName="rentor_welcome"
-      activeColor="#5C5D8D"
-      labelStyle={{ fontSize: 12 }}
-      style={{ backgroundColor: "#5C5D8D", color: "black" }}
+      activeColor="#36827F"
       options={{ headerShown: false }}
+      labelStyle={{ fontSize: 12, fontWeight: "bold", color: "#36827F" }}
+      ScreenOptions={{ headerShown: false, tabBarActiveTintColor: "white" }}
     >
       <Tab.Screen
         name="rentor_welcome"

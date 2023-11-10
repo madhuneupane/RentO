@@ -13,11 +13,11 @@ const Title = () => {
 export default Title;
 const styles = StyleSheet.create({
   container: {
-    marginTop: 6,
+    marginTop: 45,
     backgroundColor: "#36827F",
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    height: "100%",
+    height: "60%",
   },
 });

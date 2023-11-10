@@ -18,6 +18,7 @@ const OwnerNewListingStart = ({ navigation, route }) => {
             fill="white"
             // style={{ backgroundColor: "white" }}
           />
+          <Text style={styles.newlisting}> New Listing</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -51,5 +52,11 @@ const styles = StyleSheet.create({
     marginLeft: 60,
     fontSize: 25,
     fontFamily: "Mulish_700Bold",
+  },
+  newlisting: {
+    marginTop: 10,
+    color: "white",
+    fontFamily: "Mulish_700Bold",
+    fontSize: 18,
   },
 });

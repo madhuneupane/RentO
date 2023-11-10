@@ -3,9 +3,44 @@ import { InputUI } from "../UI/input/InputUI";
 import ButtonUI from "../UI/button/ButtonUI";
 import { CheckBox } from "@rneui/themed";
 import { useState } from "react";
+import { WebView } from "react-native-webview";
+
 const OwnerOnboarding3 = ({ navigation, route }) => {
+  const url = `http://127.0.0.1:5500/SearchWebview/index.html`;
+
+  function onMessage(data) {
+    const addressData = JSON.parse(data.nativeEvent.data);
+
+    const parsedAddress = {
+      address: `${addressData.address.streetNumber || "N/A"} ${
+        addressData.address.streetName || "N/A"
+      }`,
+      city: addressData.address.municipality || "N/A",
+      province: addressData.address.countrySubdivision || "N/A",
+      country: addressData.address.countryCode || "N/A",
+      postalcode: addressData.address.postalCode || "N/A",
+      longitude: addressData.position.lng || "N/A",
+      latitude: addressData.position.lat || "N/A",
+    };
+
+    console.log(parsedAddress);
+    // setParsedAddress(parsedAddress);
+    setOnBoardData({ ...route.params, address: parsedAddress });
+    navigation.navigate("owner_onboarding4", onBoardData);
+  }
+
   const [onBoardData, setOnBoardData] = useState();
   var [isSubmitPress, setIsSubmitPress] = useState(false);
+  const [parsedAddress, setParsedAddress] = useState({
+    address: "N/A",
+    city: "N/A",
+    province: "N/A",
+    country: "N/A",
+    postalcode: "N/A",
+    longitude: "N/A",
+    latitude: "N/A",
+  });
+
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
@@ -19,29 +54,63 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
     console.log("on 3:" + JSON.stringify(onBoardData));
     navigation.navigate("owner_onboarding4", onBoardData);
   };
+
+  //get 30% height of screen
+  // const screenHeight = Dimensions.get("window").height;
+  // const webViewHeight = screenHeight * 0.3;
+
   return (
-    <View style={styles.container}>
+    // <View style={{ flex: 1 }}>
+    //   <WebView
+    //     source={{ uri: url }}
+    //     javaScriptEnabled={true}
+    //     onError={(error) => {
+    //       console.error("WebView Error:", error);
+    //     }}
+    //     onMessage={onMessage}
+    //   />
+    // </View>
+    <View>
       <View style={styles.textContainer}>
-        <Text style={styles.title}>What’s your address?</Text>
+        <Text style={styles.title}>What's the address?</Text>
+      </View>
+      {/* <View>
+        <InputUI
+          selectedItems={setData}
+          type="address"
+          coustomStyle={styles}
+          value={parsedAddress.address}
+        />
+      </View> */}
+      <View style={styles.webviewContainer}>
+        <WebView
+          source={{ uri: url }}
+          javaScriptEnabled={true}
+          onError={(error) => {
+            console.error("WebView Error:", error);
+          }}
+          onMessage={onMessage}
+          style={styles.webview}
+        />
       </View>
 
-      <View>
+      {/* <View>
         <InputUI
-          placeholder="Search by location"
+          placeholder=" Type your address"
           selectedItems={setData}
           type="address"
           coustomStyle={styles}
         />
-        {/* <CheckBox checked title="I want to keep my address private" /> */}
-      </View>
-      <View style={styles.buttonContainer}>
+      </View> */}
+
+      {/* <View style={styles.buttonContainer}>
         <ButtonUI
           item={{ value: "Continue" }}
           selectedItems={navigateToNext}
           customStyle={styles.customStyle}
           touchProps={touchPropsSubmit}
         />
-      </View>
+      </View> */}
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
       </View>
@@ -58,7 +127,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 50,
+    // marginTop: 30,
     marginLeft: 55,
   },
   progressBarGreen: {
@@ -68,7 +137,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   container: {
-    backgroundColor: "white",
+    height: "70%",
+    justifyContent: "center",
+    margin: 10,
+    padding: 10,
   },
   subContainer: {
     alignItems: "center",
@@ -76,14 +148,12 @@ const styles = StyleSheet.create({
     // backgroundColor: "pink",
   },
   textInput: {
-    fontSize: 18,
+    fontSize: 20,
     height: 30,
-    width: "87%",
-    borderRadius: 24,
+    width: "90%",
+    borderRadius: 30,
     textAlign: "justify",
     height: 50,
-    paddingLeft: 15,
-    fontFamily:"Mulish_400Regular",
   },
   button: {
     borderWidth: 1.5,
@@ -96,26 +166,31 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: "20",
   },
   textContainer: {
-    margin: 30,
-    height: "15%",
+    // margin: 30,
+    backgroundColor: "white",
+    height: "10%",
     justifyContent: "center",
   },
+  webviewContainer: {
+    height: 500,
+  },
+  webview: {
+    height: 500,
+  },
   title: {
-    fontWeight: "300",
-
-    //marginLeft: 10,
-    fontSize: 22,
+    fontWeight: 300,
+    fontSize: 15,
+    marginLeft: 10,
+    fontSize: 20,
     textAlign: "center",
-    fontFamily: "Mulish_700Bold"
   },
   customStyle: {
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily:"Mulish_400Regular",
   },
   submitButton: {
     backgroundColor: "#36827F",

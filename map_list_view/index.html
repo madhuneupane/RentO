@@ -11,7 +11,10 @@ json-server --watch data.json -->
       name="viewport"
       content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
     />
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- TomTomMap CSS Libs -->
     <link
       rel="stylesheet"
@@ -61,7 +64,7 @@ json-server --watch data.json -->
       .swiper-slide {
         margin-right: 5%;
         width: 80%;
-        height: 350px;
+        height: 35vh;
         background-color: rgb(207, 206, 206);
         display: flex;
         flex-direction: column;
@@ -84,7 +87,8 @@ json-server --watch data.json -->
       }
 
       .details-panel {
-        padding: 15px;
+        padding: 10px;
+        padding-bottom: 20px;
         width: 100%;
         background-color: white;
         display: grid;
@@ -98,17 +102,17 @@ json-server --watch data.json -->
       }
 
       .detail .rent {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         font-weight: bold;
       }
 
       .detail .location {
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: #003233;
       }
 
       .detail .rooms {
-        font-size: 0.3rem;
+        font-size: 0.2rem;
       }
 
       .details-panel a {
@@ -157,6 +161,33 @@ json-server --watch data.json -->
     <div class="map-view">
       <div class="tt-side-panel">
         <header class="tt-side-panel__header"></header>
+        <div class="tt-side-panel__sum">
+          <div class="sum_total">
+            <p id="resultsCount">500 results in view</p>
+          </div>
+          <div class="sum_sort">
+            <p>
+              Sort by: <span id="sortOption">Relevance</span>
+              <i class="fa fa-caret-down"></i>
+            </p>
+            <ul id="sortOptions">
+              <li>Relevance</li>
+              <li>Time</li>
+              <li>Price: High to Low</li>
+              <li>Price: Low to High</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-div">
+        <button class="custom-geolocate-button" id="custom-geolocate-button">
+          <i class="fa-solid fa-location-arrow"></i>
+        </button>
+        <button class="save-search-button">Save Search</button>
+        <button class="list-view-button">
+          <i class="fa-solid fa-list"></i> List View
+        </button>
       </div>
 
       <div class="swiper-container">
@@ -204,5 +235,7 @@ json-server --watch data.json -->
 
     <script src="https://cdn.jsdelivr.net/npm/dotenv@10.0.0/dist/main.js"></script>
     <script type="module" src="script.js"></script>
+
+    <script></script>
   </body>
 </html>

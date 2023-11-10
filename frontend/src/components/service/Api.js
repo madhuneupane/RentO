@@ -28,7 +28,7 @@ class ApiClient {
     apiInstance.defaults.headers.common["Authorization"] =
       await AsyncStorage.getItem("token");
     const response = await apiInstance.get(
-      `http://localhost:5001/fetchPropertyById/${id}`
+      `http://3.232.202.158/api/fetchPropertyById/${id}`
     );
     return response;
   };

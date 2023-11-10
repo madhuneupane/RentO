@@ -108,7 +108,7 @@ ttSearchBox.on("tomtom.searchbox.resultselected", handleResultSelection);
 
 //Getting data from the API
 function fetchData() {
-const url = "http://localhost:5001/fetchAllProperty"; // Modify the URL to the new API endpoint
+const url = "http://3.232.202.158/api/fetchAllProperty"; // Modify the URL to the new API endpoint
 return fetch(url)
 .then((response) => {
 if (!response.ok) {

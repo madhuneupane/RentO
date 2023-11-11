@@ -1,43 +1,44 @@
 import React from "react";
 import { Card } from "@rneui/themed";
 import { Text } from "@rneui/base";
-import { StyleSheet, View ,Image} from "react-native";
+import { StyleSheet, View } from "react-native";
 const OwnerCards = ({ data }) => {
   return (
     <View style={styles.container}>
       <View style={styles.viewContainer}>
-        <Image
+        <Card.Image
           source={{ uri: data.images.bedrooms.back }}
-          style={styles.image}
-        ></Image>
+          style={{ width: "90%"}}
+        ></Card.Image>
       </View>
-      <View>
-        <Text style={styles.text}>
-          {data.title} on {data.location}
-        </Text>
-        <Text style={styles.textDate}>Created 06th Dec</Text>
-      </View>
+      <View style={styles.textContainer}>
+          <Text style={styles.type}>{data.type}</Text>
+          <Text style={styles.location}>{`on ${data.location}`}</Text>
+        </View>
     </View>
   );
 };
-
 export default OwnerCards;
-
 const styles = StyleSheet.create({
+  textContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // Other container styles if needed
+  },
   container: {
     margin: 10,
-    marginLeft: 20,
     flexDirection: "row",
     alignItems: "center",
-    //justifyContent: "space-between",
-    width: "90%",
-    height:"30%",
-    //border: "2",
+    justifyContent: "space-around",
+    width: "95%",
+    border: "2",
     borderWidth: 1,
-    borderRadius: 10,
-    borderColor: "#36827F",
+    borderRadius: 5,
+    borderColor: "black",
     backgroundColor: "#E9E7EE",
-    //padding: 10,
+    padding: 10,
+    fontSize: 0.5
     // height: 20,
     // borderRadius: 1,
     // padding: 10,
@@ -48,29 +49,21 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     // // justifyContent: "flex-start",
     // // width: "auto",
-    //marginTop: 20,
-    //marginBottom:5,
-    width: "40%",
-    marginLeft:"10",
-    borderRadius: 10,
-    overflow:false,
+    width: "50%",
   },
-  text:{
-    color: "#36827F",
-    fontFamily: "Mulish_700Bold",
-    fontSize: 16,
+  textContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    // Other container styles if needed
   },
-  textDate: {
-    color: "#5C5D8D",
-    fontFamily: "Mulish_400Regular",
-    fontSize: 13,
+  type: {
+    textAlign: 'center',
+    width: "100%", // Adjust the width as needed
+    // Other text styles for data.type
   },
-  image:{
-    width: "85%",
-    height:"100%",
-    overflow:true,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
+  location: {
+    textAlign: 'center',
+    width: "100%", // Adjust the width as needed
+    // Other text styles for data.location
   }
 });
-

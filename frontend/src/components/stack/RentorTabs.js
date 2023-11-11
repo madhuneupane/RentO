@@ -2,6 +2,14 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import * as React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import RentorStack from "./RentorStack";
+import Profile from "../../../assets/Profile.svg";
+import FilledProfile from "../../../assets/Filled-Profile.svg";
+import FilledAlert from "../../../assets/Filled-Alerts.svg";
+import Alert from "../../../assets/AlertsOut.svg";
+import Favourite from "../../../assets/Favourite.svg";
+import FilledFavourite from "../../../assets/Filled-Favourite.svg";
+import Search from "../../../assets/SearchExplore.svg";
+import FilledSearch from "../../../assets/Filled-SearchExplore.svg";
 
 const Tab = createMaterialBottomTabNavigator();
 const RentorTabs = ({ navigation }) => {
@@ -12,20 +20,23 @@ const RentorTabs = ({ navigation }) => {
       activeColor="#36827F"
       options={{ headerShown: false }}
       labelStyle={{ fontSize: 12, fontWeight: "bold", color: "#36827F" }}
-      ScreenOptions={{ headerShown: false, tabBarActiveTintColor: "white" }}
+      ScreenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: "white",
+      }}
     >
       <Tab.Screen
         name="rentor_welcome"
         component={RentorStack}
         options={{
           tabBarLabel: "Explore",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="home-search"
-              color={"#36827F"}
-              size={26}
-            />
-          ),
+          tabBarIcon: ({ color, focused }) => {
+            if (focused) {
+              return <FilledSearch />;
+            } else {
+              return <Search />;
+            }
+          },
           title: false,
           headerBackTitle: "",
           headerTintColor: "black",
@@ -37,10 +48,28 @@ const RentorTabs = ({ navigation }) => {
         name="newListing"
         component={RentorStack}
         options={{
-          tabBarLabel: "Favorites",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="heart" color={"#36827F"} size={26} />
-          ),
+          tabBarLabel: "Favourites",
+          tabBarIcon: ({ color, focused }) => {
+            if (focused) {
+              return (
+                <FilledFavourite
+                  width={30}
+                  height={30}
+                  fill="#36827F"
+                  stroke="#36827F"
+                />
+              );
+            } else {
+              return (
+                <Favourite
+                  width={30}
+                  height={30}
+                  fill="#36827F"
+                  stroke="#36827F"
+                />
+              );
+            }
+          },
         }}
       />
 
@@ -49,9 +78,13 @@ const RentorTabs = ({ navigation }) => {
         component={RentorStack}
         options={{
           tabBarLabel: "Alerts",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="bell" color={"#36827F"} size={26} />
-          ),
+          tabBarIcon: ({ color, focused }) => {
+            if (focused) {
+              return <FilledAlert />;
+            } else {
+              return <Alert />;
+            }
+          },
         }}
       />
 
@@ -60,13 +93,13 @@ const RentorTabs = ({ navigation }) => {
         component={RentorStack}
         options={{
           tabBarLabel: "User",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="account"
-              color={"#36827F"}
-              size={26}
-            />
-          ),
+          tabBarIcon: ({ color, focused }) => {
+            if (focused) {
+              return <FilledProfile />;
+            } else {
+              return <Profile />;
+            }
+          },
         }}
       />
     </Tab.Navigator>

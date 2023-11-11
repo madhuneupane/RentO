@@ -112,6 +112,9 @@ const ImageSelector = ({ navigation, route }) => {
   };
   return (
     <View style={styles.mainContainer}>
+      <Text style={styles.title}>
+        Start by clicking on each area to capture or upload a picture
+      </Text>
       <View style={styles.container}>
         <View>
           <TouchableWithoutFeedback onPress={() => selectImage("image1")}>
@@ -203,7 +206,7 @@ const ImageSelector = ({ navigation, route }) => {
       </View>
       {images.image6 && firebaseImages == null && (
         <ButtonUI
-          item={{ value: "Upload Images" }}
+          item={{ value: "Upload 6 Images" }}
           selectedItems={saveImages}
           customStyle={styles.customStyleCamera}
           touchProps={touchPropsCamera}
@@ -214,12 +217,12 @@ const ImageSelector = ({ navigation, route }) => {
           autoPlay
           style={{
             width: "100%",
-            height: "65%",
+            height: "45%",
             backgroundColor: "white",
             marginLeft: 30,
-            // marginBottom: 7,
+            marginBottom: 100,
           }}
-          source={require("../../../assets/loading.json")}
+          source={require("../../../assets/RentoO - Loading Animation.json")}
           // source={{
           //   uri: "https://lottie.host/fde45e7c-36a5-493d-ae49-80631ac15f5f/avgoduAK0g.json",
           // }}
@@ -237,9 +240,18 @@ const ImageSelector = ({ navigation, route }) => {
   );
 };
 const styles = StyleSheet.create({
+  title: {
+    fontFamily: "Mulish_700Bold",
+    fontSize: 20,
+    marginTop: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 70,
+    textAlign: "center",
+  },
   mainContainer: {
     alignItems: "center",
-    marginTop: "20%",
+    marginTop: "5%",
     padding: "3px",
   },
   container: {
@@ -252,13 +264,13 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   customStyleCamera: {
-    color: "black",
+    color: "white",
     fontWeight: "bold",
     fontSize: 20,
   },
   imageContainer: {
-    backgroundColor: "#E9E7EE",
-    borderColor: "#413855",
+    backgroundColor: "#FBEDEA",
+    borderColor: "#ED7861",
     borderWidth: 0.5,
     borderRadius: 5,
     justifyContent: "center",
@@ -266,6 +278,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     overflow: "hidden",
+    marginBottom: 10,
   },
   image: {
     width: "100%",
@@ -282,7 +295,7 @@ const styles = StyleSheet.create({
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 70,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
@@ -294,7 +307,7 @@ const styles = StyleSheet.create({
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 70,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
@@ -306,24 +319,24 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   CameraButton: {
-    backgroundColor: "#ED7861",
-    borderColor: "#ED7861",
+    backgroundColor: "#36827F",
+    borderColor: "#36827F",
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 70,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
     marginLeft: 20,
   },
   CameraButtonClicked: {
-    backgroundColor: "#FBEDEA",
-    borderColor: "#ED7861",
+    backgroundColor: "#B1D4D2",
+    borderColor: "#B1D4D2",
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 70,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,

@@ -49,8 +49,6 @@ export default function App() {
     <SafeAreaProvider>
       <View style={styles.container}>
         <AppStack />
-        {/* <OwnerOnBoarding6 /> */}
-        {/* <ImageSelector/> */}
       </View>
     </SafeAreaProvider>
   );
@@ -58,8 +56,13 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+
+    flex: 1,
+    // marginTop: 1,
+=======
     flex:1,
     marginTop: 30,
+sanjana_new
     backgroundColor: "white",
     // overflow:"visible"
   },

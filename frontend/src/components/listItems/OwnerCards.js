@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     //justifyContent: "space-between",
     width: "90%",
-    height:"55%",
+    height:"30%",
     //border: "2",
     borderWidth: 1,
     borderRadius: 10,
@@ -69,3 +69,4 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
   }
 });
+

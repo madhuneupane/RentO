@@ -25,11 +25,12 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
 
     console.log(parsedAddress);
     // setParsedAddress(parsedAddress);
-    setOnBoardData({ ...route.params, address: parsedAddress });
-    navigation.navigate("owner_onboarding4", onBoardData);
+    const location=JSON.stringify(parsedAddress)
+    setOnBoardData({ ...route.params, address: location });
+    // navigation.navigate("owner_onboarding4", onBoardData);
   }
 
-  const [onBoardData, setOnBoardData] = useState();
+  const [onBoardData, setOnBoardData] = useState(route.params);
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   const [parsedAddress, setParsedAddress] = useState({
     address: "N/A",
@@ -103,14 +104,14 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
         />
       </View> */}
 
-      {/* <View style={styles.buttonContainer}>
+      <View style={styles.buttonContainer}>
         <ButtonUI
           item={{ value: "Continue" }}
           selectedItems={navigateToNext}
           customStyle={styles.customStyle}
           touchProps={touchPropsSubmit}
         />
-      </View> */}
+      </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
       </View>
@@ -216,6 +217,6 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 150,
+    marginBottom: 120,
   },
 });

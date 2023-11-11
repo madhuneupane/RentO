@@ -22,6 +22,11 @@ const ListingDetails = ({ navigation, route }) => {
   const [single, setSingle] = useState();
   const [selectedImage, setSelectedImage] = useState(0);
   const item = { ...single };
+  
+  // const location=item.location
+
+  // const location1=JSON.parse(location).city
+  console.log("location in itemmss:"+JSON.stringify(item))
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,

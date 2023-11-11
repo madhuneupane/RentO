@@ -1,28 +1,24 @@
 import React from "react";
 import { Card } from "@rneui/themed";
 import { Text } from "@rneui/base";
-import { StyleSheet, View ,Image} from "react-native";
+import { StyleSheet, View } from "react-native";
 const OwnerCards = ({ data }) => {
   return (
     <View style={styles.container}>
       <View style={styles.viewContainer}>
-        <Image
+        <Card.Image
           source={{ uri: data.images.bedrooms.back }}
-          style={styles.image}
-        ></Image>
+          style={{ width: "90%"}}
+        ></Card.Image>
       </View>
-      <View>
-        <Text style={styles.text}>
-          {data.title} on {data.location}
-        </Text>
-        <Text style={styles.textDate}>Created 06th Dec</Text>
-      </View>
+      <View style={styles.textContainer}>
+          <Text style={styles.type}>{data.type}</Text>
+          <Text style={styles.location}>{`on ${data.location}`}</Text>
+        </View>
     </View>
   );
 };
-
 export default OwnerCards;
-
 const styles = StyleSheet.create({
   container: {
     margin: 10,
@@ -73,3 +69,4 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
   }
 });
+

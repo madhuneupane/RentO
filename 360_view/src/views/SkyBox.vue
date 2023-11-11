@@ -38,7 +38,7 @@ export default {
   methods: {
     fetchRoomImages() {
       const url =
-        "http://localhost:5001/fetchPropertyById/654e55cb0803e03f8993f980";
+        "http://3.232.202.158/api/fetchPropertyById/654e55cb0803e03f8993f980";
       fetch(url)
         .then((response) => {
           if (!response.ok) {

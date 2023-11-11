@@ -22,9 +22,14 @@ const OwnerPostCards = ({ data, getTenant }) => {
     </TouchableOpacity>
   );
 };
-
 export default OwnerPostCards;
 const styles = StyleSheet.create({
+  textContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // Other container styles if needed
+  },
   container: {
     margin: 10,
     marginLeft: 20,
@@ -38,8 +43,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: "#36827F",
     backgroundColor: "#E9E7EE",
-    //padding: 10,
-    // height: "80%",
+    padding: 10,
+    fontSize: 0.5
+    // height: 20,
     // borderRadius: 1,
     // padding: 10,
     
@@ -57,6 +63,23 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow:false,
   },
+  textContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    // Other container styles if needed
+  },
+  type: {
+    textAlign: 'center',
+    width: "100%", // Adjust the width as needed
+    // Other text styles for data.type
+  },
+  location: {
+    textAlign: 'center',
+    width: "100%", // Adjust the width as needed
+    // Other text styles for data.location
+  }
+});
+
   text:{
     color: "#36827F",
     fontFamily: "Mulish_700Bold",

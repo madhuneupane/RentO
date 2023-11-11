@@ -32,14 +32,14 @@ const PropertyDescription = ({ navigation, route }) => {
 
   const generateDesc = async (test) => {
     setCreating(true);
-    // token = await AsyncStorage.getItem("token");
-    // const response = await api.getDescription(token, key);
-    // const result = JSON.stringify(response);
-    // setDesc(result);
+    token = await AsyncStorage.getItem("token");
+    const response = await api.getDescription(token, key);
+    const result = JSON.stringify(response);
+    setDesc(result);
     setCreating(false);
-    setDesc(test);
+    //setDesc(test);
 
-    setOwnerData({ ...keywords, description: test });
+    setOwnerData({ ...keywords, description: desc });
   };
   //
   const nextPage = () => {

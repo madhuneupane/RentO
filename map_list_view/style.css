@@ -4,57 +4,196 @@
   position: relative;
 }
 
-.marker-active {
-  background-image: url("data:image/svg+xml,%3Csvg width='32' height='30' viewBox='0 0 32 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 2.46094C10.84 2.46094 6.66666 6.31221 6.66666 11.074C6.66666 17.5338 16 27.0697 16 27.0697C16 27.0697 25.3333 17.5338 25.3333 11.074C25.3333 6.31221 21.16 2.46094 16 2.46094V2.46094ZM16 14.1501C14.16 14.1501 12.6667 12.772 12.6667 11.074C12.6667 9.37601 14.16 7.99792 16 7.99792C17.84 7.99792 19.3333 9.37601 19.3333 11.074C19.3333 12.772 17.84 14.1501 16 14.1501V14.1501Z' fill='%23C2D1D9'/%3E%3Cmask id='mask0_102_2981' style='mask-type:luminance' maskUnits='userSpaceOnUse' x='6' y='2' width='20' height='26'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 2.46094C10.84 2.46094 6.66666 6.31221 6.66666 11.074C6.66666 17.5338 16 27.0697 16 27.0697C16 27.0697 25.3333 17.5338 25.3333 11.074C25.3333 6.31221 21.16 2.46094 16 2.46094V2.46094ZM16 14.1501C14.16 14.1501 12.6667 12.772 12.6667 11.074C12.6667 9.37601 14.16 7.99792 16 7.99792C17.84 7.99792 19.3333 9.37601 19.3333 11.074C19.3333 12.772 17.84 14.1501 16 14.1501V14.1501Z' fill='white'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_102_2981)'%3E%3Crect width='32' height='29.5306' fill='%233074DA'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: cover;
-  width: 40px;
-  height: 40px;
-  /* background-color: red; */
+.marker-active,
+.marker-normal {
+  font-size: 1rem;
+  height: 30px;
+  border-radius: 8px;
+  text-align: center;
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+.marker-active{
+  background-color: #36827F;
+  color:white;
 }
 
 .marker-normal {
-  background-image: url("data:image/svg+xml,%3Csvg width='32' height='30' viewBox='0 0 32 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 2.46094C21.16 2.46094 25.3333 6.31221 25.3333 11.074C25.3333 17.5338 16 27.0697 16 27.0697C16 27.0697 6.66668 17.5338 6.66668 11.074C6.66668 6.31221 10.84 2.46094 16 2.46094ZM16 14.1501C17.84 14.1501 19.3333 12.772 19.3333 11.074C19.3333 9.37601 17.84 7.99792 16 7.99792C14.16 7.99792 12.6667 9.37601 12.6667 11.074C12.6667 12.772 14.16 14.1501 16 14.1501Z' fill='%23C2D1D9'/%3E%3Cmask id='mask0_102_2979' style='mask-type:luminance' maskUnits='userSpaceOnUse' x='6' y='2' width='20' height='26'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 2.46094C21.16 2.46094 25.3333 6.31221 25.3333 11.074C25.3333 17.5338 16 27.0697 16 27.0697C16 27.0697 6.66668 17.5338 6.66668 11.074C6.66668 6.31221 10.84 2.46094 16 2.46094ZM16 14.1501C17.84 14.1501 19.3333 12.772 19.3333 11.074C19.3333 9.37601 17.84 7.99792 16 7.99792C14.16 7.99792 12.6667 9.37601 12.6667 11.074C12.6667 12.772 14.16 14.1501 16 14.1501Z' fill='white'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_102_2979)'%3E%3Crect width='32' height='29.5306' transform='matrix(-1 0 0 1 32 0)' fill='%23424D5C'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: cover;
-  width: 40px;
-  height: 40px;
+  background-color: orange;
 }
 
+.marker-active::after,
+.marker-normal::after {
+  content: '';
+  position: absolute;
+  bottom: -9px; 
+  margin-left: -10px; 
+  border-width: 10px 10px 0;
+  border-style: solid;
+  z-index: 1; 
+}
+
+.marker-active::after{
+  border-color: #36827F transparent transparent transparent; 
+}
+
+.marker-normal::after{
+  border-color: orange transparent transparent transparent; 
+}
 
 /* Searching Style */
-
 .tt-side-panel {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   display: flex;
-  /* Additional styling, e.g., background color, height, padding, etc. */
+  flex-direction: column;
+  /* align-items: center; */
+
   background-color: #f0f0f0;
-  height: 80px;
-  padding: 5px;
-  margin: 5px;
-  /* Add any other styling you desire */
+  height: 120px;
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+
   z-index: 2;
-  /* Adjust the z-index as needed */
 }
 
-
 .tt-side-panel__header {
+  align-items: center;
+  background-color: #f0f0f0;
+  padding:0;
+  padding-left:10px;
+  padding-right:10px;
+  margin: 0;
+  width: 100%;
+}
+
+.tt-side-panel__sum {
+
+  padding:0;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tt-search-box {
+  background-color: #f0f0f0;
+}
+.tt-search-box-input-container {
+  border: 1px solid black;
+  border-radius: 50px;
+}
+.sum_total,
+.sum_sort {
+  flex-grow: 1;
+  
+}
+
+.sum_sort {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#sortOptions {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid red;
+  list-style: none;
   padding: 0;
   margin: 0;
-  width: 90%;
+  z-index: 50;
+}
+
+#sortOptions li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#sortOptions li:hover {
+  background-color: #f0f0f0;
+}
+
+#sortOption:hover #sortOptions {
+  display: block;
 }
 
 .tt-tabs {
   /* visibility: hidden; */
-  border: 1px solid red;
   height: 50px;
-
 }
 
 .tt-side-panel__footer {
   visibility: hidden;
 }
- 
- 
+
+/* Map Controller Style */
+.mapboxgl-ctrl-top-right {
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+}
+
+.custom-geolocate-button {
+ margin-left: 10px;
+  font-size: 1.2rem;
+
+  background-color: #36827F;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 15;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.save-search-button{
+  background-color: #36827F;
+  color: #fff;
+  border-radius:30px;
+  width: 100px;
+  height: 40px;
+}
+
+.list-view-button{
+  background-color: #36827F;
+  color: #fff;
+  border-radius:30px;
+  width: 120px;
+  height: 40px;
+  margin-right: 10px;
+
+}
+
+.list-view-button i{
+  font-size: 1.1rem;
+}
+
+.menu-div{
+  position: absolute;
+  top:120px;
+  width: 100%;
+  height: 40px;
+  z-index: 10;
+  padding-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Mulish', sans-serif;
+}
+
 /* Swiper Style */

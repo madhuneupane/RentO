@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   ScrollView,
@@ -28,16 +28,20 @@ const ListingDetails = ({ navigation, route }) => {
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
+useEffect(()=>{
 
-  singleData(route.params, setSingle);
+},[single])
+singleData(route.params, setSingle);
 
-  console.log("data", item);
+  console.log("data2", item.images?.bedrooms);
+
+
   //console.log("item:" + JSON.stringify(item));
 
   const images = [
-    require("../../../assets/house2.jpg"),
-    require("../../../assets/house3.jpg"),
-    require("../../../assets/house4.jpg"),
+    item.images?.bedrooms.back,
+    item.images?.bedrooms.bottom,
+    item.images?.bedrooms.top,
     // Add more image paths
   ];
   const showTour = () => {
@@ -62,7 +66,7 @@ const ListingDetails = ({ navigation, route }) => {
           <View style={styles.mainImageContainer}>
             {/* Gallery Header Image */}
             <ImageBackground
-              source={require("../../../assets/house1.jpeg")}
+              source={{uri:item.images?.bedrooms.front}}
               style={{ width: 390, height: 423, overflow: true }}
             >
               <View style={styles.verifiedContainer}>
@@ -84,7 +88,7 @@ const ListingDetails = ({ navigation, route }) => {
                   onPress={() => handleImageClick(index)}
                 >
                   <Image
-                    source={imagePath}
+                    source={{uri:imagePath}}
                     style={{
                       width: 130,
                       height: 250,

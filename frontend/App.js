@@ -56,8 +56,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    // marginTop: 1,
+    flex:1,
+    marginTop: 30,
     backgroundColor: "white",
+    // overflow:"visible"
   },
 });

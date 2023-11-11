@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import OwnerPropertyInterestList from "../list/OwnerPropertyInterestList";
 import ownerpost from "../hooks/ownerpost";
 const OwnerPropertyInterest = ({ navigation, id }) => {
@@ -15,10 +15,18 @@ const OwnerPropertyInterest = ({ navigation, id }) => {
   ownerpost(setOwnerPosts);
   console.log("intenets:::" + JSON.stringify(ownerPost));
   return (
-    <View>
+    // <View style={styles.container}>
       <OwnerPropertyInterestList ownerData={ownerPost} getTenant={getTenant} />
-    </View>
+    // </View>
   );
 };
 
 export default OwnerPropertyInterest;
+const styles = StyleSheet.create({
+  container:{
+    flex:.5,
+    backgroundColor: "red",
+    height:"100%",
+    width: "100%",
+  }
+})

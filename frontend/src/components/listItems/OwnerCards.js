@@ -20,25 +20,21 @@ const OwnerCards = ({ data }) => {
 };
 export default OwnerCards;
 const styles = StyleSheet.create({
-  textContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // Other container styles if needed
-  },
   container: {
     margin: 10,
+    marginLeft: 20,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-around",
-    width: "95%",
-    border: "2",
+    //justifyContent: "space-between",
+    width: "90%",
+    height:"90%",
+    height:"30%",
+    //border: "2",
     borderWidth: 1,
-    borderRadius: 5,
-    borderColor: "black",
+    borderRadius: 10,
+    borderColor: "#36827F",
     backgroundColor: "#E9E7EE",
-    padding: 10,
-    fontSize: 0.5
+    //padding: 10,
     // height: 20,
     // borderRadius: 1,
     // padding: 10,
@@ -49,21 +45,28 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     // // justifyContent: "flex-start",
     // // width: "auto",
-    width: "50%",
+    //marginTop: 20,
+    //marginBottom:5,
+    width: "40%",
+    marginLeft:"10",
+    borderRadius: 10,
+    overflow:false,
   },
-  textContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    // Other container styles if needed
+  text:{
+    color: "#36827F",
+    fontFamily: "Mulish_700Bold",
+    fontSize: 16,
   },
-  type: {
-    textAlign: 'center',
-    width: "100%", // Adjust the width as needed
-    // Other text styles for data.type
+  textDate: {
+    color: "#5C5D8D",
+    fontFamily: "Mulish_400Regular",
+    fontSize: 13,
   },
-  location: {
-    textAlign: 'center',
-    width: "100%", // Adjust the width as needed
-    // Other text styles for data.location
+  image:{
+    width: "85%",
+    height:"100%",
+    overflow:true,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
   }
 });

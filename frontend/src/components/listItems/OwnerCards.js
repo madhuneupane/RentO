@@ -73,3 +73,4 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
   }
 });
+

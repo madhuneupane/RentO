@@ -8,33 +8,37 @@ const OwnerCards = ({ data }) => {
       <View style={styles.viewContainer}>
         <Card.Image
           source={{ uri: data.images.bedrooms.back }}
-          style={{ width: "100%" }}
+          style={{ width: "90%"}}
         ></Card.Image>
       </View>
-      <View>
-        <Text>
-          {data.title} on {data.location}
-        </Text>
-      </View>
+      <View style={styles.textContainer}>
+          <Text style={styles.type}>{data.type}</Text>
+          <Text style={styles.location}>{`on ${data.location}`}</Text>
+        </View>
     </View>
   );
 };
-
 export default OwnerCards;
-
 const styles = StyleSheet.create({
+  textContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // Other container styles if needed
+  },
   container: {
     margin: 10,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
-    width: "90%",
+    width: "95%",
     border: "2",
     borderWidth: 1,
     borderRadius: 5,
     borderColor: "black",
     backgroundColor: "#E9E7EE",
     padding: 10,
+    fontSize: 0.5
     // height: 20,
     // borderRadius: 1,
     // padding: 10,
@@ -47,4 +51,19 @@ const styles = StyleSheet.create({
     // // width: "auto",
     width: "50%",
   },
+  textContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    // Other container styles if needed
+  },
+  type: {
+    textAlign: 'center',
+    width: "100%", // Adjust the width as needed
+    // Other text styles for data.type
+  },
+  location: {
+    textAlign: 'center',
+    width: "100%", // Adjust the width as needed
+    // Other text styles for data.location
+  }
 });

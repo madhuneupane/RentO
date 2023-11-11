@@ -15,6 +15,8 @@ const OwnerOnboarding4 = ({ navigation, route }) => {
   };
   const setData = (value, type) => {
     console.log("on 4:" + JSON.stringify(onBoardData));
+    // console.log("on 4:" + onBoardData.address);
+
     setOnBoardData({ ...route.params, amount: value });
   };
   const navigateToNext = () => {

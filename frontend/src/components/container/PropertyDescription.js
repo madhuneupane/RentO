@@ -9,9 +9,12 @@ import LottieView from "lottie-react-native";
 
 const PropertyDescription = ({ navigation, route }) => {
   const keywords = route.params;
+  console.log(keywords);
+  const location=JSON.parse(keywords?.address).city
+  console.log("location:;;"+location)
   const [desc, setDesc] = useState();
-  const key = `${keywords?.placeType} place type, ${keywords?.propertyType} property type, ${keywords?.address} location, ${keywords?.amount} rent`;
-  const ownerSelections = `Place Type: 2${keywords?.placeType} | Property Type: ${keywords?.propertyType} | Address: ${keywords?.address} | Amount: ${keywords?.amount}`;
+  const key = `${keywords?.placeType} place type, ${keywords?.propertyType} property type, ${location} location, ${keywords?.amount} rent`;
+  const ownerSelections = `Place Type: 2${keywords?.placeType} | Property Type: ${keywords?.propertyType} | Address: ${location} | Amount: ${keywords?.amount}`;
   const [ownerData, setOwnerData] = useState();
   const api = new ApiClient("/descriptionSuggest");
   var [isSubmitPress, setIsSubmitPress] = useState(false);

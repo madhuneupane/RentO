@@ -60,9 +60,9 @@ const PropertyDescription = ({ navigation, route }) => {
             width: "100%",
             height: "72%",
             backgroundColor: "white",
-            marginLeft: 10,
+            marginLeft: 15,
           }}
-          source={require("../../../assets/waitingCat.json")}
+          source={require("../../../assets/RentoO - Loading Animation.json")}
           // source={{
           //   uri: "https://lottie.host/73bbe7a4-f718-48d6-bc72-f608432fe7c5/Vkwa7zBEZW.json",
           // }}

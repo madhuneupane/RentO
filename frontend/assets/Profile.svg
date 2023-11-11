@@ -4,14 +4,13 @@
 	 viewBox="0 0 56 56.1" style="enable-background:new 0 0 56 56.1;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:none;stroke:#36827F;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;}
-	.st1{fill:#36827F;stroke:#36827F;stroke-width:3.5;stroke-miterlimit:10;}
-	.st2{fill:#36827F;stroke:#36827F;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;}
+	.st1{fill:none;stroke:#36827F;stroke-width:3.5;stroke-miterlimit:10;}
 </style>
-<g id="filled-profile">
+<g id="Profile">
 	<g>
 		<line class="st0" x1="54.2" y1="54.2" x2="1.8" y2="54.3"/>
 		<path class="st1" d="M1.8,54.3C2,40,13.6,28.5,28,28.5s26,11.5,26.2,25.7"/>
-		<circle class="st2" cx="27.9" cy="12.2" r="10.4"/>
+		<circle class="st0" cx="27.9" cy="12.2" r="10.4"/>
 	</g>
 </g>
 </svg>

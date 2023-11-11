@@ -56,8 +56,14 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+
     flex: 1,
     // marginTop: 1,
+=======
+    flex:1,
+    marginTop: 30,
+sanjana_new
     backgroundColor: "white",
+    // overflow:"visible"
   },
 });

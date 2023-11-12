@@ -22,24 +22,21 @@ const ListingDetails = ({ navigation, route }) => {
   const [single, setSingle] = useState();
   const [selectedImage, setSelectedImage] = useState(0);
   const item = { ...single };
-  
-  // const location=item.location
-
-  // const location1=JSON.parse(location).city
-  console.log("location in itemmss:"+JSON.stringify(item))
+  // const [location, setLocaion] = useState();
+  console.log("item::" + JSON.stringify(item));
+  // const location1 = JSON.parse(item.location);
+  // console.log("locations:::" + location1);
+  // console.log("location in itemmss:" + JSON.stringify(item));
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
-useEffect(()=>{
+  useEffect(() => {}, [single]);
+  singleData(route.params, setSingle);
 
-},[single])
-singleData(route.params, setSingle);
-
-  console.log("data2", item.images?.bedrooms);
-
+  // console.log("data2", item.images?.bedrooms);
 
   //console.log("item:" + JSON.stringify(item));
 
@@ -71,7 +68,7 @@ singleData(route.params, setSingle);
           <View style={styles.mainImageContainer}>
             {/* Gallery Header Image */}
             <ImageBackground
-              source={{uri:item.images?.bedrooms.front}}
+              source={{ uri: item.images?.bedrooms.front }}
               style={{ width: 390, height: 423, overflow: true }}
             >
               <View style={styles.verifiedContainer}>
@@ -93,7 +90,7 @@ singleData(route.params, setSingle);
                   onPress={() => handleImageClick(index)}
                 >
                   <Image
-                    source={{uri:imagePath}}
+                    source={{ uri: imagePath }}
                     style={{
                       width: 130,
                       height: 250,
@@ -112,12 +109,17 @@ singleData(route.params, setSingle);
               touchProps={touchPropsSubmit}
             />
             <Text style={styles.heading}>
-              {item.roomNumbers} Bedroom {item.type} on {item.location}
+              {item.roomNumbers} Bedroom {item.type} on
+              {item.location ? JSON.parse(item.location)?.city : "Vancouver"}
             </Text>
             <View style={styles.subContainer}>
               <View>
                 <Text style={styles.rent}>${item.rent}</Text>
-                <Text style={styles.location}>{item.location}</Text>
+                <Text style={styles.location}>
+                  {item.location
+                    ? JSON.parse(item.location)?.city
+                    : "Vancouver"}
+                </Text>
                 <Text style={styles.rooms}>
                   {item.roomNumbers} bd | {item.bathRoomNumbers} ba |{" "}
                   {item.type}
@@ -134,24 +136,18 @@ singleData(route.params, setSingle);
               <Text style={styles.title}>Amenities</Text>
               <View style={styles.amenitiesTextView}>
                 <View>
-                  {item.amenities?.pet && (
-                    <Text style={styles.textView}>Pet friendly</Text>
-                  )}
-                  {item.amenities?.wifi && (
-                    <Text style={styles.textView}>Wi-fi</Text>
-                  )}
+                  <Text style={styles.textView}>
+                    {item.amenities?.pet ? "Pet friendly" : "Pet friendly"}
+                  </Text>
+                  <Text style={styles.textView}>
+                    {item.amenities?.wifi ? "Wi-fi" : "Wi-fi"}
+                  </Text>
                   <Text style={styles.textView}>TV</Text>
                 </View>
                 <View>
-                  {item.amenities?.parkingSpace && (
-                    <Text style={styles.textView}>Parking</Text>
-                  )}
-                  {item.amenities?.washerDryer && (
-                    <Text style={styles.textView}>In-unit laundry</Text>
-                  )}
-                  {item.amenities?.airConditioning && (
-                    <Text style={styles.textView}>Air Conditioning</Text>
-                  )}
+                  <Text style={styles.textView}>Parking</Text>
+                  <Text style={styles.textView}>In-unit laundry</Text>
+                  <Text style={styles.textView}>Air Conditioning</Text>
                 </View>
               </View>
             </View>

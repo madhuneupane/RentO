@@ -15,7 +15,7 @@ const TenantInterested = ({ navigation, route }) => {
     <View style={styles.container}>
       <Text style={styles.heading}>Tenant Matches</Text>
       <Text style={styles.subheading}>
-        {type} on {location}
+        {type} on {JSON.parse(location).city}
       </Text>
       <Text style={styles.text}>
         Review the renters' profiles that have matched with your criteria
@@ -23,6 +23,7 @@ const TenantInterested = ({ navigation, route }) => {
       {allTenants &&
         allTenants.map((item) => {
           if (ids.includes(item._id)) {
+            console.log("tentant:::::" + JSON.stringify(item));
             return (
               <View style={styles.card}>
                 <Text>{item.firstName}</Text>

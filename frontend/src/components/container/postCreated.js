@@ -24,7 +24,7 @@ const PostCreated = ({ showListings }) => {
           marginLeft: 20,
           // borderWidth: 1,
         }}
-        source={require("../../../assets/done.json")}
+        source={require("../../../assets/RentO - Success Animation.json")}
         // source={{
         //   uri: "https://lottie.host/e8627ca1-c06e-4eb9-b515-27314dbe5739/P4kSJCFxoV.json",
         // }}

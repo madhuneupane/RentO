@@ -14,7 +14,7 @@ const PropertyDescription = ({ navigation, route }) => {
   console.log("location:;;" + location);
   const [desc, setDesc] = useState();
   const key = `${keywords?.placeType} place type, ${keywords?.propertyType} property type, ${location} location, ${keywords?.amount} rent`;
-  const ownerSelections = `Place Type: 2${keywords?.placeType} | Property Type: ${keywords?.propertyType} | Address: ${location} | Amount: ${keywords?.amount}`;
+  const ownerSelections = `Place Type: ${keywords?.placeType} | Property Type: ${keywords?.propertyType} | Address: ${location} | Amount: ${keywords?.amount}`;
   const [ownerData, setOwnerData] = useState();
   const api = new ApiClient("/descriptionSuggest");
   var [isSubmitPress, setIsSubmitPress] = useState(false);

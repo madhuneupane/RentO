@@ -21,6 +21,7 @@ import {
   Mulish_800ExtraBold_Italic,
   Mulish_900Black_Italic,
 } from "@expo-google-fonts/mulish";
+import { LogBox } from "react-native";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -45,6 +46,8 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
+  LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
+  LogBox.ignoreAllLogs(); //Ignore all log notifications
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
@@ -56,7 +59,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     marginTop: 30,
     backgroundColor: "white",
     // overflow:"visible"

@@ -1,27 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "@rneui/themed";
 import { Text } from "@rneui/base";
 import { StyleSheet, View } from "react-native";
+import ButtonUI from "../UI/button/ButtonUI";
+
 const OwnerCards = ({ data }) => {
-  console.log("data in owner:;" + JSON.stringify(data));
+  // console.log("data in owner:;" + JSON.stringify(data));
   const city = JSON.parse(data.location)?.city;
+  var [isSubmitPress, setIsSubmitPress] = useState(false);
+
+  var touchPropsSubmit = {
+    underlayColor: "#B1D4D2",
+    style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
+    onHideUnderlay: () => setIsSubmitPress(false),
+    onShowUnderlay: () => setIsSubmitPress(true),
+  };
   return (
-    <View style={styles.container}>
-      <View style={styles.viewContainer}>
-        <Card.Image
-          source={{ uri: data.images.bedrooms.back }}
-          style={{ width: "90%" }}
-        ></Card.Image>
+    <>
+      <View style={styles.container}>
+        <View style={styles.viewContainer}>
+          <Card.Image
+            source={{ uri: data.images.bedrooms.back }}
+            style={{ width: "90%" }}
+          ></Card.Image>
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.type}>Cozy {data.type}</Text>
+          <Text style={styles.location}>{`on ${city}`}</Text>
+          <Text style={styles.date}>Created 6 Dec</Text>
+        </View>
       </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.type}>{data.type}</Text>
-        <Text style={styles.location}>{`on ${city}`}</Text>
+      <View style={styles.buttonContainer}>
+        <ButtonUI
+          item={{ value: "Manage Listings" }}
+          customStyle={styles.customStyle}
+          touchProps={touchPropsSubmit}
+        />
       </View>
-    </View>
+    </>
   );
 };
 export default OwnerCards;
 const styles = StyleSheet.create({
+  buttonContainer: {
+    marginBottom: 120,
+  },
+  customStyle: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  date: {
+    marginTop: 5,
+  },
   textContainer: {
     flex: 1,
     alignItems: "center",
@@ -67,5 +98,27 @@ const styles = StyleSheet.create({
     textAlign: "center",
     width: "100%", // Adjust the width as needed
     // Other text styles for data.location
+  },
+  submitButton: {
+    backgroundColor: "#36827F",
+    borderColor: "#36827F",
+    height: "50",
+    width: "80%",
+    marginLeft: 40,
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 40,
+  },
+  submitButtonClicked: {
+    backgroundColor: "#B1D4D2",
+    borderColor: "#B1D4D2",
+    height: "50",
+    width: "80%",
+    marginLeft: 40,
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 0.5,
+    borderRadius: 40,
   },
 });

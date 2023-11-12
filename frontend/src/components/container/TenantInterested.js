@@ -23,6 +23,7 @@ const TenantInterested = ({ navigation, route }) => {
       {allTenants &&
         allTenants.map((item) => {
           if (ids.includes(item._id)) {
+            console.log("tentant:::::" + JSON.stringify(item));
             return (
               <View style={styles.card}>
                 <Text>{item.firstName}</Text>

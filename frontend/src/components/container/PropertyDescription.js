@@ -10,8 +10,8 @@ import LottieView from "lottie-react-native";
 const PropertyDescription = ({ navigation, route }) => {
   const keywords = route.params;
   console.log(keywords);
-  const location=JSON.parse(keywords?.address).city
-  console.log("location:;;"+location)
+  const location = JSON.parse(keywords?.address).city;
+  console.log("location:;;" + location);
   const [desc, setDesc] = useState();
   const key = `${keywords?.placeType} place type, ${keywords?.propertyType} property type, ${location} location, ${keywords?.amount} rent`;
   const ownerSelections = `Place Type: 2${keywords?.placeType} | Property Type: ${keywords?.propertyType} | Address: ${location} | Amount: ${keywords?.amount}`;
@@ -38,15 +38,22 @@ const PropertyDescription = ({ navigation, route }) => {
     token = await AsyncStorage.getItem("token");
     const response = await api.getDescription(token, key);
     const result = JSON.stringify(response);
-    setDesc(result);
+    setDesc(result.substr(1).slice(0, -1));
     setCreating(false);
     //setDesc(test);
+    console.log("WAIT.....");
 
-    setOwnerData({ ...keywords, description: desc });
+    if (result) {
+      const desc1 = result.substr(1).slice(0, -1);
+      setOwnerData({ ...keywords, description: desc1 });
+    }
   };
   //
   const nextPage = () => {
-    // console.log("ownerData:" + JSON.stringify(ownerData));
+    // setOwnerData({ ...keywords, description: "desc" });
+
+    console.log("ownerData" + JSON.stringify(ownerData));
+    console.log("ownerData in desc" + desc);
     navigation.navigate("owner_onboarding5", ownerData);
   };
   return (
@@ -71,7 +78,10 @@ const PropertyDescription = ({ navigation, route }) => {
           // }}
         />
       ) : (
-        <InputUI value={desc ? desc : ownerSelections} coustomStyle={styles} />
+        // <InputUI value={desc ? desc : ownerSelections} coustomStyle={styles} />
+        <View style={styles.descView}>
+          <Text style={styles.descText}>{desc ? desc : ownerSelections}</Text>
+        </View>
       )}
 
       {!desc ? (
@@ -115,6 +125,11 @@ const PropertyDescription = ({ navigation, route }) => {
 export default PropertyDescription;
 
 const styles = StyleSheet.create({
+  descText: {
+    marginTop: 10,
+    fontFamily: "Mulish_700Bold",
+    fontSize: 18,
+  },
   textContainer: {
     // marginTop: 10,
     height: "20%",
@@ -139,31 +154,35 @@ const styles = StyleSheet.create({
     // margin: 10,
     backgroundColor: "white",
   },
-  subContainer: {
+  descView: {
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "center",
     marginTop: 10,
-    marginBottom: 10,
+    // marginBottom: 10,
+    marginLeft: 20,
     height: "40%",
-    width: "100%",
-    // borderWidth: 1,
-    // borderRadius: 30,
-    // alignItems: "center",
-    // backgroundColor: "yellow",
-    // flex: 1,
-    backgroundColor: "white",
-  },
-  textInput: {
-    height: "130%",
     width: "90%",
-    marginTop: 40,
-    marginBottom: 15,
-    fontSize: 20,
-    textAlign: "center",
-    // padding: 10,
+    borderWidth: 1,
+    borderRadius: 10,
+    // alignItems: "center",
+    backgroundColor: "yellow",
+    // flex: 1,
+    // backgroundColor: "white",
     backgroundColor: "#e6dff5",
     borderColor: "#413855",
-    borderRadius: 20,
+  },
+  textInput: {
+    height: "90%",
+    width: "100%",
+    marginTop: 30,
+    marginBottom: 15,
+    fontSize: 18,
+    textAlign: "center",
+    // padding: 10,
+    backgroundColor: "white",
+    // borderColor: "#413855",
+    // borderRadius: 20,
+    borderWidth: 0,
   },
   label: {
     fontWeight: "300",
@@ -229,7 +248,7 @@ const styles = StyleSheet.create({
   },
   wirteContainer: {
     flex: 1,
-    marginTop: "15%",
+    marginTop: "30%",
     height: 100,
     backgroundColor: "white",
   },

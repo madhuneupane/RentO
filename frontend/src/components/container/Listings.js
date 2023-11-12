@@ -10,40 +10,28 @@ const Listings = ({ navigation }) => {
   const navigation1 = useNavigation();
   const handleWebViewMessage = (event) => {
     const message = event.nativeEvent.data;
-    console.log("Received message from WebView:", event.nativeEvent.data);
-    console.log("clicked");
-    console.log(message);
+    // console.log("Received message from WebView:", event.nativeEvent.data);
+    // console.log("clicked");
+    // console.log(message);
     navigation1.navigate("Screen2", { message });
   };
   showFilter = () => {
     navigation.navigate("rentor");
   };
   function onMessage(data) {
-    console.log("data:" + data.nativeEvent.data);
-   // alert(data.nativeEvent.data);
+    // console.log("data:" + data.nativeEvent.data);
+    // alert(data.nativeEvent.data);
     showlistingDets(data.nativeEvent.data);
   }
   //trr
   showlistingDets = (id) => {
     navigation.navigate("listing_details", id);
-
   };
 
   const [listData, setListData] = useState();
   data(setListData);
   return (
     <>
-      {/* <View>
-        <TouchableOpacity onPress={showFilter}>
-          <Text>Filter</Text>
-        </TouchableOpacity>
-        {listData && <DataList navigation={navigation} data={listData} />}
-      </View> */}
-      {/* <SafeAreaView style={{ flex: 1 }}>
-        <View>
-          <Text>Screen1</Text>
-        </View>
-        <StatusBar style="auto" /> */}
       <WebView
         style={{ flex: 1 }}
         source={{ uri: LOCAL }}
@@ -53,10 +41,6 @@ const Listings = ({ navigation }) => {
         onMessage={onMessage}
         mixedContentMode="compatibility"
       />
-      {/* <View>
-          <Text>Some Description</Text>
-        </View>
-      </SafeAreaView> */}
     </>
   );
 };

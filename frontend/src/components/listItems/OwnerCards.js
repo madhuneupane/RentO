@@ -1,43 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card } from "@rneui/themed";
 import { Text } from "@rneui/base";
 import { StyleSheet, View } from "react-native";
-import ButtonUI from "../UI/button/ButtonUI";
 
 const OwnerCards = ({ data }) => {
   // console.log("data in owner:;" + JSON.stringify(data));
   const city = JSON.parse(data.location)?.city;
-  var [isSubmitPress, setIsSubmitPress] = useState(false);
 
-  var touchPropsSubmit = {
-    underlayColor: "#B1D4D2",
-    style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
-    onHideUnderlay: () => setIsSubmitPress(false),
-    onShowUnderlay: () => setIsSubmitPress(true),
-  };
   return (
-    <>
-      <View style={styles.container}>
-        <View style={styles.viewContainer}>
-          <Card.Image
-            source={{ uri: data.images.bedrooms.back }}
-            style={{ width: "90%" }}
-          ></Card.Image>
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.type}>Cozy {data.type}</Text>
-          <Text style={styles.location}>{`on ${city}`}</Text>
-          <Text style={styles.date}>Created 6 Dec</Text>
-        </View>
+    <View style={styles.container}>
+      <View style={styles.viewContainer}>
+        <Card.Image
+          source={{ uri: data.images.bedrooms.back }}
+          style={{ width: "90%" }}
+        ></Card.Image>
       </View>
-      <View style={styles.buttonContainer}>
-        <ButtonUI
-          item={{ value: "Manage Listings" }}
-          customStyle={styles.customStyle}
-          touchProps={touchPropsSubmit}
-        />
+      <View style={styles.textContainer}>
+        <Text style={styles.type}>Cozy {data.type}</Text>
+        <Text style={styles.location}>{`on ${city}`}</Text>
+        <Text style={styles.date}>Created 6 Dec</Text>
       </View>
-    </>
+    </View>
   );
 };
 export default OwnerCards;

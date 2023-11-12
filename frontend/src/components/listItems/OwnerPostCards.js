@@ -1,48 +1,51 @@
 import React from "react";
 import { Card } from "@rneui/themed";
-import { StyleSheet, TouchableOpacity, View,Image } from "react-native";
 import { Text } from "@rneui/base";
-const OwnerPostCards = ({ data, getTenant }) => {
-  console.log("card lis::" + JSON.stringify(data));
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+const OwnerCards = ({ data, getTenant }) => {
+  const location = JSON.parse(data.location)?.city;
+
   return (
-    <TouchableOpacity onPress={() => getTenant(data)} style={styles.main}>
+    <TouchableOpacity onPress={() => getTenant(data)}>
       <View style={styles.container}>
         <View style={styles.viewContainer}>
-          <Image
+          <Card.Image
             source={{ uri: data.images.bedrooms.back }}
-            style={styles.image}
-          ></Image>
+            style={{ width: "90%" }}
+          ></Card.Image>
         </View>
-        <View style={styles.textView}>
-          <Text style={styles.text}>
-            {data.type} on {data.location}
-          </Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.type}>{data.type}</Text>
+          <Text style={styles.location}>{`on ${location}`}</Text>
         </View>
       </View>
     </TouchableOpacity>
   );
 };
-
-export default OwnerPostCards;
+export default OwnerCards;
 const styles = StyleSheet.create({
+  textContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    // Other container styles if needed
+  },
   container: {
     margin: 10,
-    marginLeft: 20,
     flexDirection: "row",
     alignItems: "center",
-    //justifyContent: "space-between",
-    width: "90%",
-    height:"55%",
-    //border: "2",
+    justifyContent: "space-around",
+    width: "95%",
+    border: "2",
     borderWidth: 1,
-    borderRadius: 10,
-    borderColor: "#36827F",
+    borderRadius: 5,
+    borderColor: "black",
     backgroundColor: "#E9E7EE",
-    //padding: 10,
-    // height: "80%",
+    padding: 10,
+    fontSize: 0.5,
+    // height: 20,
     // borderRadius: 1,
     // padding: 10,
-    
   },
   viewContainer: {
     // // margin: 0,
@@ -50,28 +53,21 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     // // justifyContent: "flex-start",
     // // width: "auto",
-    //marginTop: 20,
-    //marginBottom:5,
-    width: "40%",
-    marginLeft:"10",
-    borderRadius: 10,
-    overflow:false,
+    width: "50%",
   },
-  text:{
-    color: "#36827F",
-    fontFamily: "Mulish_700Bold",
-    fontSize: 16,
+  textContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    // Other container styles if needed
   },
-  textDate: {
-    color: "#5C5D8D",
-    fontFamily: "Mulish_400Regular",
-    fontSize: 13,
+  type: {
+    textAlign: "center",
+    width: "100%", // Adjust the width as needed
+    // Other text styles for data.type
   },
-  image:{
-    width: "85%",
-    height:"100%",
-   
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-  }
+  location: {
+    textAlign: "center",
+    width: "100%", // Adjust the width as needed
+    // Other text styles for data.location
+  },
 });

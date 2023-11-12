@@ -136,24 +136,18 @@ const ListingDetails = ({ navigation, route }) => {
               <Text style={styles.title}>Amenities</Text>
               <View style={styles.amenitiesTextView}>
                 <View>
-                  {item.amenities?.pet && (
-                    <Text style={styles.textView}>Pet friendly</Text>
-                  )}
-                  {item.amenities?.wifi && (
-                    <Text style={styles.textView}>Wi-fi</Text>
-                  )}
+                  <Text style={styles.textView}>
+                    {item.amenities?.pet ? "Pet friendly" : "Pet friendly"}
+                  </Text>
+                  <Text style={styles.textView}>
+                    {item.amenities?.wifi ? "Wi-fi" : "Wi-fi"}
+                  </Text>
                   <Text style={styles.textView}>TV</Text>
                 </View>
                 <View>
-                  {item.amenities?.parkingSpace && (
-                    <Text style={styles.textView}>Parking</Text>
-                  )}
-                  {item.amenities?.washerDryer && (
-                    <Text style={styles.textView}>In-unit laundry</Text>
-                  )}
-                  {item.amenities?.airConditioning && (
-                    <Text style={styles.textView}>Air Conditioning</Text>
-                  )}
+                  <Text style={styles.textView}>Parking</Text>
+                  <Text style={styles.textView}>In-unit laundry</Text>
+                  <Text style={styles.textView}>Air Conditioning</Text>
                 </View>
               </View>
             </View>

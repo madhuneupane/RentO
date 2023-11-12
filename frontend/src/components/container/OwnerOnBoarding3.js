@@ -24,10 +24,8 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
     };
 
     console.log(parsedAddress);
-    // setParsedAddress(parsedAddress);
-    const location=JSON.stringify(parsedAddress)
+    const location = JSON.stringify(parsedAddress);
     setOnBoardData({ ...route.params, address: location });
-    // navigation.navigate("owner_onboarding4", onBoardData);
   }
 
   const [onBoardData, setOnBoardData] = useState(route.params);
@@ -56,33 +54,12 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
     navigation.navigate("owner_onboarding4", onBoardData);
   };
 
-  //get 30% height of screen
-  // const screenHeight = Dimensions.get("window").height;
-  // const webViewHeight = screenHeight * 0.3;
-
   return (
-    // <View style={{ flex: 1 }}>
-    //   <WebView
-    //     source={{ uri: url }}
-    //     javaScriptEnabled={true}
-    //     onError={(error) => {
-    //       console.error("WebView Error:", error);
-    //     }}
-    //     onMessage={onMessage}
-    //   />
-    // </View>
     <View>
       <View style={styles.textContainer}>
         <Text style={styles.title}>What's the address?</Text>
       </View>
-      {/* <View>
-        <InputUI
-          selectedItems={setData}
-          type="address"
-          coustomStyle={styles}
-          value={parsedAddress.address}
-        />
-      </View> */}
+
       <View style={styles.webviewContainer}>
         <WebView
           source={{ uri: url }}
@@ -94,15 +71,6 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
           style={styles.webview}
         />
       </View>
-
-      {/* <View>
-        <InputUI
-          placeholder=" Type your address"
-          selectedItems={setData}
-          type="address"
-          coustomStyle={styles}
-        />
-      </View> */}
 
       <View style={styles.buttonContainer}>
         <ButtonUI
@@ -196,7 +164,6 @@ const styles = StyleSheet.create({
   submitButton: {
     backgroundColor: "#36827F",
     borderColor: "#36827F",
-
     height: "50",
     width: "80%",
     marginLeft: 40,

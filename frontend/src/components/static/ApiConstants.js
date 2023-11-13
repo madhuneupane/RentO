@@ -1,1 +1,1 @@
-export const BASE_URL='http://3.232.202.158/api/'
+export const BASE_URL='https://api.rent-o.com/api/'

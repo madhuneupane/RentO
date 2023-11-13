@@ -34,17 +34,17 @@ class ApiClient {
   };
   newUser = async (data, headers) => {
     apiInstance.defaults.headers.common["Authorization"] = headers;
-    console.log("toke:" + JSON.stringify(headers));
-    console.log("data:" + JSON.stringify(data));
+    console.log("token:" + JSON.stringify(headers));
+    console.log("sing up data:" + JSON.stringify(data));
     const response = await apiInstance.post(this.endpoint, {
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
       password: data.password,
       phonenumber: data.contactNumber,
-      isOwner: data.owner == "Yes" ? "true" : false,
+      isOwner: data.owner == "Yes" ? true : false,
     });
-    console.log(response.data);
+    console.log("sign up data saved::" + JSON.stringify(response.data));
   };
   getAllData = async (headers) => {
     apiInstance.defaults.headers.common["Authorization"] = headers;

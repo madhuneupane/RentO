@@ -33,6 +33,8 @@ import SingUp from "../container/SinUp";
 import SingUp2 from "../container/SignUp2";
 import SingUp3 from "../container/SignUp3";
 import OwnerNewListingStart from "../container/OwnerNewListingStart";
+import CoverImagePicker from "../container/CoverImagePicker";
+import PostIsReady from "../container/PostIsReady";
 
 const Stack = createStackNavigator();
 
@@ -256,6 +258,26 @@ const AppStack = () => {
         <Stack.Screen
           name="camera_select"
           component={CameraSelector}
+          options={{
+            headerBackTitleVisible: false,
+            headerTitle: "",
+            headerTintColor: "#36827F",
+            headerBackTitle: false,
+          }}
+        />
+        <Stack.Screen
+          name="cover_images"
+          component={CoverImagePicker}
+          options={{
+            headerBackTitleVisible: false,
+            headerTitle: "",
+            headerTintColor: "#36827F",
+            headerBackTitle: false,
+          }}
+        />
+        <Stack.Screen
+          name="post_ready"
+          component={PostIsReady}
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",

@@ -24,7 +24,7 @@ const OwnerNewPost = ({ navigation, route }) => {
     onShowUnderlay: () => setIsSubmitPress(true),
   };
   const item = route.params;
-  const location=JSON.parse(item?.location).city
+  const location = JSON.parse(item?.location).city;
 
   console.log("item:" + JSON.stringify(item));
   const images = [
@@ -182,7 +182,7 @@ const OwnerNewPost = ({ navigation, route }) => {
             </View>
 
             <ButtonUI
-              item={{ value: "Create Post" }}
+              item={{ value: "See Applicants" }}
               selectedItems={savePost}
               customStyle={styles.customStyle}
               touchProps={touchPropsSubmit}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import AppStack from "./src/components/stack/AppStack";
+import CoverImagePicker from "./src/components/container/CoverImagePicker";
 import {
   useFonts,
   Mulish_800ExtraBold,
@@ -52,6 +53,7 @@ export default function App() {
     <SafeAreaProvider>
       <View style={styles.container}>
         <AppStack />
+        {/* <CoverImagePicker /> */}
       </View>
     </SafeAreaProvider>
   );

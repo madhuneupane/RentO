@@ -38,7 +38,7 @@ export default {
   methods: {
     fetchRoomImages() {
       const url =
-        "http://3.232.202.158/api/fetchPropertyById/654e55cb0803e03f8993f980";
+        "https://api.rent-o.com/api/fetchPropertyById/654e55cb0803e03f8993f980";
       fetch(url)
         .then((response) => {
           if (!response.ok) {

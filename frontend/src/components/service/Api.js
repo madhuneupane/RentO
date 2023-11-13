@@ -28,7 +28,7 @@ class ApiClient {
     apiInstance.defaults.headers.common["Authorization"] =
       await AsyncStorage.getItem("token");
     const response = await apiInstance.get(
-      `http://3.232.202.158/api/fetchPropertyById/${id}`
+      `https://api.rent-o.com/api/fetchPropertyById/${id}`
     );
     return response;
   };

@@ -10,6 +10,7 @@ const PostIsReady = ({ navigation, route }) => {
   const data = route.params;
   Postdata(data, setResponse, setLoading);
   showPost = () => {
+    // console.log("is ready data:" + JSON.stringify(data));
     navigation.navigate("ower_new_post", response);
   };
   showListings = () => {
@@ -22,7 +23,7 @@ const PostIsReady = ({ navigation, route }) => {
     onShowUnderlay: () => setIsSubmitPress(true),
   };
   var [isSubmitPress, setIsSubmitPress] = useState(false);
-  console.log("Finally::: last page" + JSON.stringify(data));
+  // console.log("Finally::: last page" + JSON.stringify(data));
   return (
     <View style={styles.descView}>
       <Text style={styles.descText}> Your listing has been posted</Text>

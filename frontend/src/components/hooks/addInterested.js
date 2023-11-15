@@ -12,7 +12,7 @@ const addInterested = (propertyId, interestedId, setTenants) => {
         interestedId,
         token
       );
-      console.log("response::" + JSON.stringify(response));
+      // console.log("response::" + JSON.stringify(response));
       setTenants(response);
     } catch (error) {
       console.log(error);

@@ -21,7 +21,7 @@ import CoverImageReducer from "../reducers/CoverImageReducer";
 const CoverImagePicker = ({ navigation, route }) => {
   const ownerGivenData = route.params;
   console.log("data in coverImage::" + JSON.stringify(ownerGivenData));
-  const [images, dispatch] = useReducer(CoverImageReducer, {});
+  const [images, dispatch] = useReducer(CoverImageReducer, []);
   const [ownerData, setOwnerData] = useState();
   const [firebaseImages, setFirebaseImage] = useState(null);
   const cameraPermission = async () => {
@@ -58,7 +58,7 @@ const CoverImagePicker = ({ navigation, route }) => {
       quality: 0,
     });
 
-    console.log("images seleted:" + JSON.stringify(result.assets[0]));
+    // console.log("images seleted:" + JSON.stringify(result.assets[0]));
 
     if (!result.canceled) {
       dispatch({ type: imageNumber, value: result.assets[0].uri });
@@ -66,10 +66,10 @@ const CoverImagePicker = ({ navigation, route }) => {
   };
   useEffect(() => {
     setOwnerData({ ...ownerGivenData, coverimages: images });
-    console.log("images:::" + JSON.stringify(images));
+    // console.log("images:::" + JSON.stringify(images));
   }, [images]);
   const uploadImages = () => {
-    console.log("upload coverImage", JSON.stringify(ownerData));
+    // console.log("upload coverImage", JSON.stringify(ownerData));
     navigation.navigate("post_ready", ownerData);
   };
   const saveImages = async () => {
@@ -120,10 +120,10 @@ const CoverImagePicker = ({ navigation, route }) => {
           <TouchableWithoutFeedback onPress={() => selectImage("image1")}>
             <View>
               <View style={styles.imageContainer1}>
-                {!images?.image1 ? (
+                {!images[0] ? (
                   <MaterialCommunityIcons name="camera" size="40" />
                 ) : (
-                  <Image source={{ uri: images.image1 }} style={styles.image} />
+                  <Image source={{ uri: images[0] }} style={styles.image} />
                 )}
               </View>
             </View>
@@ -134,13 +134,10 @@ const CoverImagePicker = ({ navigation, route }) => {
             <TouchableWithoutFeedback onPress={() => selectImage("image2")}>
               <View>
                 <View style={styles.imageContainer}>
-                  {!images?.image2 ? (
+                  {!images[1] ? (
                     <MaterialCommunityIcons name="camera" size="40" />
                   ) : (
-                    <Image
-                      source={{ uri: images.image2 }}
-                      style={styles.image}
-                    />
+                    <Image source={{ uri: images[1] }} style={styles.image} />
                   )}
                 </View>
               </View>
@@ -150,13 +147,23 @@ const CoverImagePicker = ({ navigation, route }) => {
             <TouchableWithoutFeedback onPress={() => selectImage("image3")}>
               <View>
                 <View style={styles.imageContainer}>
-                  {!images?.image3 ? (
+                  {!images[2] ? (
                     <MaterialCommunityIcons name="camera" size="40" />
                   ) : (
-                    <Image
-                      source={{ uri: images.image3 }}
-                      style={styles.image}
-                    />
+                    <Image source={{ uri: images[2] }} style={styles.image} />
+                  )}
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+          </View>
+          <View>
+            <TouchableWithoutFeedback onPress={() => selectImage("image4")}>
+              <View>
+                <View style={styles.imageContainer}>
+                  {!images[3] ? (
+                    <MaterialCommunityIcons name="camera" size="40" />
+                  ) : (
+                    <Image source={{ uri: images[3] }} style={styles.image} />
                   )}
                 </View>
               </View>
@@ -165,7 +172,7 @@ const CoverImagePicker = ({ navigation, route }) => {
         </View>
       </View>
 
-      {images.image3 && firebaseImages == null && (
+      {images[3] && firebaseImages == null && (
         <ButtonUI
           item={{ value: "Upload Images" }}
           selectedItems={saveImages}
@@ -252,8 +259,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
     overflow: "hidden",
     marginBottom: 10,
   },

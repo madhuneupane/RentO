@@ -8,7 +8,7 @@ const interestedTenant = (setTenants) => {
     try {
       let token = await AsyncStorage.getItem("token");
       const response = await api.getInterestedTenant(token);
-      console.log("response::" + JSON.stringify(response));
+      // console.log("response::" + JSON.stringify(response));
       setTenants(response);
     } catch (error) {
       console.log(error);

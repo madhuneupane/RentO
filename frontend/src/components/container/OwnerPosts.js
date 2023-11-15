@@ -15,7 +15,7 @@ const OwnerPosts = ({ navigation, route }) => {
   };
   const [ownerPosts, setOwnerPosts] = useState();
   ownerpost(setOwnerPosts, refreshing);
-  console.log("OwnerPosts::::" + ownerPosts);
+  // console.log("OwnerPosts::::" + JSON.stringify(ownerPosts));
   var [isSubmitPress, setIsSubmitPress] = useState(false);
 
   var touchPropsSubmit = {
@@ -26,12 +26,14 @@ const OwnerPosts = ({ navigation, route }) => {
   };
   return (
     <View style={styles.listContainer}>
-      <OwnerListingsList
-        ownerData={ownerPosts}
-        setRefreshing={setRefreshing}
-        refreshing={refreshing}
-        refresh={refresh}
-      />
+      {ownerPosts && (
+        <OwnerListingsList
+          ownerData={ownerPosts}
+          setRefreshing={setRefreshing}
+          refreshing={refreshing}
+          refresh={refresh}
+        />
+      )}
       <View style={styles.buttonContainer}>
         <ButtonUI
           item={{ value: "Manage Listings" }}
@@ -46,7 +48,7 @@ const OwnerPosts = ({ navigation, route }) => {
 export default OwnerPosts;
 const styles = StyleSheet.create({
   listContainer: {
-    flex: 0.5,
+    flex: 1,
   },
   buttonContainer: {
     // marginBottom: 20,

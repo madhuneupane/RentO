@@ -4,14 +4,15 @@ import { Text } from "@rneui/base";
 import { StyleSheet, View } from "react-native";
 
 const OwnerCards = ({ data }) => {
-  // console.log("data in owner:;" + JSON.stringify(data));
   const city = JSON.parse(data.location)?.city;
 
   return (
     <View style={styles.container}>
+      {/* <Text>{JSON.stringify(data)}</Text> */}
+
       <View style={styles.viewContainer}>
         <Card.Image
-          source={{ uri: data.images.bedrooms.back }}
+          // source={{ uri: data.images.bedrooms.back }}
           style={{ width: "90%" }}
         ></Card.Image>
       </View>

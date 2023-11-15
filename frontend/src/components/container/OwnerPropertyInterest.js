@@ -15,18 +15,23 @@ const OwnerPropertyInterest = ({ navigation, id }) => {
   ownerpost(setOwnerPosts);
   console.log("intenets:::" + JSON.stringify(ownerPost));
   return (
-    // <View style={styles.container}>
-      <OwnerPropertyInterestList ownerData={ownerPost} getTenant={getTenant} />
-    // </View>
+    <View style={styles.container}>
+      {ownerPost && (
+        <OwnerPropertyInterestList
+          ownerData={ownerPost}
+          getTenant={getTenant}
+        />
+      )}
+    </View>
   );
 };
 
 export default OwnerPropertyInterest;
 const styles = StyleSheet.create({
-  container:{
-    flex:.5,
+  container: {
+    flex: 0.5,
     backgroundColor: "red",
-    height:"100%",
+    height: "100%",
     width: "100%",
-  }
-})
+  },
+});

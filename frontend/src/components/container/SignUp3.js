@@ -23,10 +23,11 @@ const SignUp3 = ({ navigation, route }) => {
       <LottieView
         autoPlay
         style={{
-          width: "100%",
-          height: "75%",
+          width: "50%",
+          height: "68%",
           backgroundColor: "white",
-          // marginLeft: 10,
+          marginTop: 20,
+          // marginRight: 60,
         }}
         source={require("../../../assets/hello.json")}
         // source={{

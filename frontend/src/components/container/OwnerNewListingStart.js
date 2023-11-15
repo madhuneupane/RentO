@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StyleSheet } from "react-native";
-import NewListing from "../../../assets/NewListing.svg";
+import NewListing from "../../../assets/New-Listing-Start-.svg";
 const OwnerNewListingStart = ({ navigation, route }) => {
   const start = () => {
     navigation.navigate("owner_onboarding1");

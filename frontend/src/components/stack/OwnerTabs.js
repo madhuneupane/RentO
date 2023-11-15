@@ -6,13 +6,20 @@ import OwnerOnboarding1 from "../container/OwnerOnboarding1";
 import OwnerListings from "./OwnerListings";
 import TenantInterested from "../container/TenantInterested";
 import ProfileStack from "./ProfileStack";
-import MyListing from "../../../assets/MyListings.svg";
-import Alert from "../../../assets/Filled-Alerts.svg";
-import NewListing from "../../../assets/Filled-NewListing.svg";
-import User from "../../../assets/Filled-Profile.svg";
+import MyListing from "../../../assets/Filled-MyListings.svg";
+import FilledMyListing from "../../../assets/MyListings.svg";
+import FilledNewListing from "../../../assets/Filled-NewListing.svg";
+import Alert from "../../../assets/AlertsOut.svg";
+import NewListing from "../../../assets/NewListing.svg";
+import Profile from "../../../assets/Profile.svg";
 import OwnerNewListingStart from "../container/OwnerNewListingStart";
+import { useIsFocused } from "@react-navigation/native";
+import FilledAlert from "../../../assets/Filled-Alerts.svg";
+import FilledProfile from "../../../assets/Filled-Profile.svg";
 const Tab = createMaterialBottomTabNavigator();
+
 const OwnerTabs = () => {
+  const isFocused = useIsFocused();
   const color = "#36827F";
   return (
     <Tab.Navigator
@@ -26,9 +33,28 @@ const OwnerTabs = () => {
         component={OwnerListings}
         options={{
           tabBarLabel: "My Listing",
-          tabBarIcon: ({ color }) => (
-            <MyListing width={30} height={30} fill="#36827F" stoke="#36827F" />
-          ),
+          tabBarIcon: ({ color, focused }) => {
+            console.log("focused:::" + focused);
+            if (!focused) {
+              return (
+                <FilledMyListing
+                  width={30}
+                  height={30}
+                  fill="#36827F"
+                  stoke="#36827F"
+                />
+              );
+            } else {
+              return (
+                <MyListing
+                  width={30}
+                  height={30}
+                  fill="#36827F"
+                  stoke="#36827F"
+                />
+              );
+            }
+          },
         }}
       />
 
@@ -37,15 +63,13 @@ const OwnerTabs = () => {
         component={OwnerNewListingStart}
         options={{
           tabBarLabel: "New Listing",
-          tabBarIcon: ({ color }) => (
-            <NewListing
-              width={30}
-              height={30}
-              fill="#36827F"
-              // stoke={"#36827F"}
-              // style={{ stroke: "white" }}
-            />
-          ),
+          tabBarIcon: ({ color, focused }) => {
+            if (focused) {
+              return <FilledNewListing width={30} height={30} fill="#36827F" />;
+            } else {
+              return <NewListing width={30} height={30} fill="#36827F" />;
+            }
+          },
         }}
       />
 
@@ -54,9 +78,22 @@ const OwnerTabs = () => {
         component={OwnerOnboarding1}
         options={{
           tabBarLabel: "Alerts",
-          tabBarIcon: ({ color }) => (
-            <Alert width={30} height={30} fill="#36827F" stroke="#36827F" />
-          ),
+          tabBarIcon: ({ color, focused }) => {
+            if (focused) {
+              return (
+                <FilledAlert
+                  width={30}
+                  height={30}
+                  fill="#36827F"
+                  stroke="#36827F"
+                />
+              );
+            } else {
+              return (
+                <Alert width={30} height={30} fill="#36827F" stroke="#36827F" />
+              );
+            }
+          },
         }}
       />
 
@@ -65,9 +102,27 @@ const OwnerTabs = () => {
         component={ProfileStack}
         options={{
           tabBarLabel: "User",
-          tabBarIcon: ({ color }) => (
-            <User width={30} height={30} fill="#36827F" stroke="#36827F" />
-          ),
+          tabBarIcon: ({ color, focused }) => {
+            if (focused) {
+              return (
+                <FilledProfile
+                  width={30}
+                  height={30}
+                  fill="#36827F"
+                  stroke="#36827F"
+                />
+              );
+            } else {
+              return (
+                <Profile
+                  width={30}
+                  height={30}
+                  fill="#36827F"
+                  stroke="#36827F"
+                />
+              );
+            }
+          },
         }}
       />
     </Tab.Navigator>

@@ -3,7 +3,20 @@ import { View, StyleSheet, Image, Text } from "react-native";
 import ButtonUI from "../UI/button/ButtonUI";
 import { InputUI } from "../UI/input/InputUI";
 import { rentorCredentials } from "../static/constants";
+import { WebView } from "react-native-webview";
+
 const WelcomeScreen = ({ navigation }) => {
+
+  const [parsedAddress, setParsedAddress] = useState({
+    address: "N/A",
+    city: "N/A",
+    province: "N/A",
+    country: "N/A",
+    postalcode: "N/A",
+    longitude: "N/A",
+    latitude: "N/A",
+  });
+
   const showListView = () => {
     navigation.navigate("rentor");
   };
@@ -11,13 +24,40 @@ const WelcomeScreen = ({ navigation }) => {
   // remove back button
   var [isSubmitPress, setIsSubmitPress] = useState(false);
 
+  const url = `http://127.0.0.1:5500/SearchWebview/index.html`;
+
+  function onMessage(data) {
+    const addressData = JSON.parse(data.nativeEvent.data);
+
+    const parsedAddress = {
+      address: `${addressData.address.streetNumber || "N/A"} ${
+        addressData.address.streetName || "N/A"
+      }`,
+      city: addressData.address.municipality || "N/A",
+      province: addressData.address.countrySubdivision || "N/A",
+      country: addressData.address.countryCode || "N/A",
+      postalcode: addressData.address.postalCode || "N/A",
+      longitude: addressData.position.lng || "N/A",
+      latitude: addressData.position.lat || "N/A",
+    };
+
+    console.log(parsedAddress);
+    // setParsedAddress(parsedAddress);
+    //setOnBoardData({ ...route.params, address: parsedAddress });
+
+    //TODO
+    //navigation.navigate("owner_onboarding4", onBoardData);
+  }
+
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
+
   const saveCity = (value, type) => {};
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -26,12 +66,23 @@ const WelcomeScreen = ({ navigation }) => {
       <View style={styles.textContainer}>
         <Text style={styles.title}>What’s your address?</Text>
       </View>
-      <InputUI
+      <View style={styles.webviewContainer}>
+        <WebView
+          source={{ uri: url }}
+          javaScriptEnabled={true}
+          onError={(error) => {
+            console.error("WebView Error:", error);
+          }}
+          onMessage={onMessage}
+          style={styles.webview}
+        />
+      </View>
+      {/* <InputUI
         style={styles.input}
         placeholder="  Search by location  "
         coustomStyle={styles}
         selectedItems={saveCity}
-      />
+      /> */}
       <ButtonUI
         item={{ value: "Show" }}
         customStyle={styles.customStyle}
@@ -49,7 +100,7 @@ const styles = StyleSheet.create({
     // marginTop: "5%",
     alignItems: "center",
     // backgroundColor: "pink",
-    height: "25%",
+    height: "10%",
   },
   image: {
     marginTop: 3,
@@ -90,8 +141,14 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     // margin: 30,
-    height: "20%",
+    height: "10%",
     justifyContent: "center",
+  },
+  webviewContainer: {
+    height: 300,
+  },
+  webview: {
+    height: 300,
   },
   title: {
     fontWeight: 300,

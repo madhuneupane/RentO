@@ -30,10 +30,11 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
-  Postdata(data, setResponse, setLoading);
+  // Postdata(data, setResponse, setLoading);
   submitData = () => {
-    console.log("res::" + response);
-    navigation.navigate("ower_new_post", response);
+    // console.log("res::" + response);
+    // navigation.navigate("ower_new_post", response);
+    navigation.navigate("cover_images", data);
   };
   return (
     <View style={styles.container}>

@@ -9,7 +9,8 @@ const ownerpost = (setOwnerPosts, refreshing) => {
       let token = await AsyncStorage.getItem("token");
       const id = await AsyncStorage.getItem("id");
       const response = await api1.getOwnerPosts(token, id);
-      console.log("response::" + JSON.stringify(response));
+      // console.log("response::" + JSON.stringify(response));
+      // console.log("response::" + JSON.stringify(response[0]));
       setOwnerPosts(response);
     } catch (error) {
       console.log(error);

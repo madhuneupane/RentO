@@ -1,6 +1,6 @@
 import { all } from "axios";
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import interestedTenant from "../hooks/interestedTenant";
 import { Card } from "@rneui/themed";
 import { StyleSheet } from "react-native";
@@ -15,7 +15,7 @@ const TenantInterested = ({ navigation, route }) => {
     <View style={styles.container}>
       <Text style={styles.heading}>Tenant Matches</Text>
       <Text style={styles.subheading}>
-        {type} on {location}
+        {type} on {JSON.parse(location).city}
       </Text>
       <Text style={styles.text}>
         Review the renters' profiles that have matched with your criteria
@@ -23,10 +23,18 @@ const TenantInterested = ({ navigation, route }) => {
       {allTenants &&
         allTenants.map((item) => {
           if (ids.includes(item._id)) {
+            console.log("tentant:::::" + JSON.stringify(item));
             return (
               <View style={styles.card}>
-                <Text>{item.firstName}</Text>
-                <Text>connect: madhu@gmail.com</Text>
+                <Image
+                  source={require("../../../assets/Kayla-Person.jpg")}
+                  style={styles.image}
+                />
+
+                <View>
+                  <Text>{item.firstName}</Text>
+                  <Text>connect: madhu@gmail.com</Text>
+                </View>
               </View>
             );
           }
@@ -37,6 +45,11 @@ const TenantInterested = ({ navigation, route }) => {
 
 export default TenantInterested;
 const styles = StyleSheet.create({
+  image: {
+    width: 80,
+    height: 80,
+    margin: 10,
+  },
   container: {
     margin: 10,
     alignItems: "center",
@@ -63,5 +76,6 @@ const styles = StyleSheet.create({
     height: "30%",
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "row",
   },
 });

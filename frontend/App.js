@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import AppStack from "./src/components/stack/AppStack";
+import CoverImagePicker from "./src/components/container/CoverImagePicker";
 import {
   useFonts,
   Mulish_800ExtraBold,
@@ -21,6 +22,7 @@ import {
   Mulish_800ExtraBold_Italic,
   Mulish_900Black_Italic,
 } from "@expo-google-fonts/mulish";
+import { LogBox } from "react-native";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -45,12 +47,13 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
+  LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
+  LogBox.ignoreAllLogs(); //Ignore all log notifications
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
         <AppStack />
-        {/* <OwnerOnBoarding6 /> */}
-        {/* <ImageSelector/> */}
+        {/* <CoverImagePicker /> */}
       </View>
     </SafeAreaProvider>
   );
@@ -61,5 +64,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 30,
     backgroundColor: "white",
+    // overflow:"visible"
   },
 });

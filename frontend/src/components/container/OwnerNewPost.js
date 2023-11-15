@@ -17,7 +17,6 @@ import PostCreated from "./postCreated";
 const OwnerNewPost = ({ navigation, route }) => {
   const [isSubmitPress, setIsSubmitPress] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
@@ -25,6 +24,8 @@ const OwnerNewPost = ({ navigation, route }) => {
     onShowUnderlay: () => setIsSubmitPress(true),
   };
   const item = route.params;
+  const location = JSON.parse(item?.location).city;
+
   console.log("item:" + JSON.stringify(item));
   const images = [
     require("../../../assets/house2.jpg"),
@@ -96,7 +97,7 @@ const OwnerNewPost = ({ navigation, route }) => {
             />
 
             <Text style={styles.heading}>
-              {item.roomNumbers} Bedroom {item.type} on {item.location}
+              {item.roomNumbers} Bedroom {item.type} on {location}
             </Text>
             <View style={styles.subContainer}>
               <View style={styles.edit}>
@@ -108,7 +109,7 @@ const OwnerNewPost = ({ navigation, route }) => {
               </View>
               <View>
                 <Text style={styles.rent}>${item.rent}</Text>
-                <Text style={styles.location}>{item.location}</Text>
+                <Text style={styles.location}>{location}</Text>
                 <Text style={styles.rooms}>
                   {item.roomNumbers} bd | {item.bathRoomNumbers} ba |{" "}
                   {item.type}
@@ -181,7 +182,7 @@ const OwnerNewPost = ({ navigation, route }) => {
             </View>
 
             <ButtonUI
-              item={{ value: "Create Post" }}
+              item={{ value: "See Applicants" }}
               selectedItems={savePost}
               customStyle={styles.customStyle}
               touchProps={touchPropsSubmit}

@@ -35,7 +35,7 @@ class ApiClient {
   newUser = async (data, headers) => {
     apiInstance.defaults.headers.common["Authorization"] = headers;
     console.log("token:" + JSON.stringify(headers));
-    console.log("sing up data:" + JSON.stringify(data));
+    // console.log("sing up data:" + JSON.stringify(data));
     const response = await apiInstance.post(this.endpoint, {
       firstName: data.firstName,
       lastName: data.lastName,
@@ -44,7 +44,7 @@ class ApiClient {
       phonenumber: data.contactNumber,
       isOwner: data.owner == "Yes" ? true : false,
     });
-    console.log("sign up data saved::" + JSON.stringify(response.data));
+    // console.log("sign up data saved::" + JSON.stringify(response.data));
   };
   getAllData = async (headers) => {
     apiInstance.defaults.headers.common["Authorization"] = headers;
@@ -58,7 +58,7 @@ class ApiClient {
     const response = await apiInstance.post(this.endpoint, {
       content: ownerSelections,
     });
-    console.log("description: " + JSON.stringify(response.data));
+    // console.log("description: " + JSON.stringify(response.data));
     return response.data;
   };
   getOwnerPosts = async (token, id) => {
@@ -66,13 +66,13 @@ class ApiClient {
     console.log("token in post" + token);
     console.log("id of owner:" + id);
     const response = await apiInstance.get(this.endpoint + `/${id}`);
-    console.log("onwer posts: " + JSON.stringify(response.data));
+    // console.log("onwer posts: " + JSON.stringify(response.data));
     return response.data;
   };
   getInterestedTenant = async (token) => {
     apiInstance.defaults.headers.common["Authorization"] = token;
     const response = await apiInstance.get(this.endpoint);
-    console.log("InterestedTenant: " + JSON.stringify(response.data));
+    // console.log("InterestedTenant: " + JSON.stringify(response.data));
     return response.data;
   };
   updateInteredtedList = async (propertyId, interestedId, token) => {
@@ -81,13 +81,17 @@ class ApiClient {
       propertyId: propertyId,
       interestedId: interestedId,
     });
-    console.log("InterestedList: " + JSON.stringify(response.data));
+    // console.log("InterestedList: " + JSON.stringify(response.data));
     return response.data;
   };
   postOwnerData = async (token, ownerData) => {
     apiInstance.defaults.headers.common["Authorization"] = token;
     const id = await AsyncStorage.getItem("id");
-    console.log("owner data:" + JSON.stringify(ownerData));
+    console.log("owner data::::::" + JSON.stringify(ownerData));
+    console.log(
+      "owner data cover images:" + JSON.stringify(ownerData.coverimages)
+    );
+
     const response = await apiInstance.post(this.endpoint, {
       type: ownerData.ownerData.propertyType,
       title: ownerData.ownerData.placeType,
@@ -115,7 +119,14 @@ class ApiClient {
         },
       },
       description: ownerData.ownerData.description,
+      coverImage: [
+        ownerData.coverimages[0],
+        ownerData.coverimages[1],
+        ownerData.coverimages[2],
+        ownerData.coverimages[3],
+      ],
     });
+
     console.log("owner response:" + JSON.stringify(response.data));
     return response.data;
   };

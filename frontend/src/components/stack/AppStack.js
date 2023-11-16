@@ -313,7 +313,8 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#FFF",
+            headerBackground: () => <Title />,
             headerBackTitle: false,
           }}
         />

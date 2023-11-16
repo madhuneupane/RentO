@@ -8,7 +8,7 @@ const addUser = (data) => {
   const saveUser = async () => {
     try {
       token = await AsyncStorage.getItem("token");
-      console.log("data:::" + JSON.stringify(data));
+      // console.log("data:::" + JSON.stringify(data));
       apiClient.newUser(data, token);
     } catch (error) {
       console.log(error);

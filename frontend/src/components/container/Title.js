@@ -5,7 +5,7 @@ import TitleImage from "../../../assets/horizontal-logo-top-bar-svg.svg";
 const Title = () => {
   return (
     <View style={styles.container}>
-      <TitleImage width={150} height={100} />
+      <TitleImage width={160} height={100} marginTop={80} />
     </View>
   );
 };
@@ -13,11 +13,11 @@ const Title = () => {
 export default Title;
 const styles = StyleSheet.create({
   container: {
-    marginTop: 55,
+    marginTop: -30,
     backgroundColor: "#36827F",
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    height: "45%",
+    height: "140%",
   },
 });

@@ -26,15 +26,15 @@ const TenantInterested = ({ navigation, route }) => {
             console.log("tentant:::::" + JSON.stringify(item));
             return (
               <View style={styles.card}>
+
                 <Image
                   source={require("../../../assets/Kayla-Person.jpg")}
                   style={styles.image}
                 />
 
-                <View>
-                  <Text>{item.firstName}</Text>
-                  <Text>connect: madhu@gmail.com</Text>
-                </View>
+                <Text style={styles.name}>{item.firstName}</Text>
+                <Text style={styles.email}>connect: madhu@gmail.com</Text>
+
               </View>
             );
           }
@@ -56,26 +56,47 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   heading: {
-    fontWeight: "bold",
-    fontSize: 30,
+    fontSize: 26,
+    color: "#413855",
+    fontFamily: "Mulish_700Bold",
   },
   subheading: {
-    fontWeight: "bold",
-    fontSize: 15,
-    margin: 10,
+    fontSize: 22,
+    color: "#2B6866",
+    fontFamily: "Mulish_600SemiBold",
+    marginTop: 15,
   },
   text: {
-    fontWeight: "bold",
-    fontSize: 15,
-    margin: 10,
+    color: "#5C5D8D",
+    fontSize: 18,
+    marginTop: 10,
+    fontFamily: "Mulish_500Medium",
+    textAlign: "center"
   },
   card: {
+    margin: 30,
     borderWidth: 1,
-    borderRadius: 1,
-    width: "100%",
-    height: "30%",
+    borderRadius: 8,
+    width: "95%",
+    height: "25%",
+    borderColor: "#36827F",
+    backgroundColor: "#E9E7EE",
     justifyContent: "center",
-    alignItems: "center",
+
     flexDirection: "row",
+
+    alignItems: "left",
+    paddingLeft: 50
   },
+  name: {
+    color: "#2B6866",
+    fontSize: 18,
+    fontFamily: "Mulish_600SemiBold",
+
+  },
+  email: {
+    color: "#5C5D8D",
+    fontSize: 16,
+    fontFamily: "Mulish_500Medium",
+  }
 });

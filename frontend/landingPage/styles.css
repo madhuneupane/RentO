@@ -1,0 +1,90 @@
+/* styles.css */
+
+:root {
+    --primary-color: #36827F;
+    --text-color: #5C5D8D;
+}
+
+* {
+    font-family: 'Mulish', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 2rem
+}
+
+#logoID {
+    width: 100px;
+    height: auto;
+    width: 217.727px;
+    height: 54.958px;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+#menu {
+    display: flex;
+}
+
+#menu a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 4rem;
+}
+
+
+#part1 {
+    display: flex;
+    align-items: center;
+}
+
+#intro {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-left: 2rem; /* Add margin between intro and image */
+}
+
+#intro h1, #intro h4 {
+    /* Ensure these are block-level elements */
+    display: block;
+    margin: 0; /* Remove default margin */
+}
+
+#intro h1 {
+    margin-bottom: 20px; /* Add margin between h1 and h4 */
+    color: var(--primary-color);
+    font-size: 36px;
+}
+
+#intro h4 {
+    color: var(--text-color)
+}
+
+#part1 img {
+    width: 591.135px;
+    height: 386.704px;
+    margin-right: 5rem;
+}
+
+#proposal {
+    margin-top: 4rem;
+    display: flex;
+    width: 314px;
+    height: 56px;
+    padding: 15px 53px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    background-color: var(--primary-color);
+    border-radius: 30px;
+    color: white;
+    
+}
+

@@ -29,6 +29,7 @@ export default OwnerNewListingStart;
 
 const styles = StyleSheet.create({
   container: {
+   
     // alignItems: "center",
     // justifyContent: "center",
   },

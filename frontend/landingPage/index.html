@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RentO!</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,400&display=swap"
+        rel="stylesheet">
+
+    <script>
+        function openTab(evt, tabName) {
+            console.log("Open tab called")
+            var i, x, tablinks;
+            x = document.getElementsByClassName("tab-content");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+            }
+            console.log(tabName + " to visible")
+            document.getElementById(tabName + '-content').style.display = "block";
+            evt.currentTarget.firstElementChild.className += " w3-border-red";
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <img src="./assetsLP/logo.png" alt="logo" id="logoID">
+
+        <div id="menu">
+            <a href="home.html">Home</a>
+            <a href="features.html">Features</a>
+            <a href="team.html">Meet the Team</a>
+        </div>
+
+    </header>
+
+    <section id="part1">
+        <div id="intro">
+            <h1>Welcome to the new era of finding your next home sweet home!</h1>
+            <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur perspiciatis saepe vero laudantium
+                molestias delectus quisquam, repellat deleniti?
+            </h4>
+            <br>
+            <h4>Ut porro maxime accusantium perspiciatis. Quas impedit assumenda nesciunt eveniet qui saepe.</h4>
+            <button id="proposal">Download our business proposal</button>
+        </div>
+        <img src="./assetsLP/houses.png" alt="houses with mountains in the background">
+    </section>
+
+    <section id="part2">
+        <h2>What's really new about it?</h2>
+        <h4>RentO brings a fresh perspective to your home search. We offer comprehensive listings with 360 Tours, a
+            house hunting assistant, verified listings, and tailored search options. You can save time and ensure trust
+            in your rental process.</h4>
+    </section>
+
+    <div class="tabs-container">
+        <a href="javascript:void(0)" onclick="openTab(event, 'renters-tab');">
+            <div class="tab w3-third w3-bottombar w3-hover-light-grey w3-padding">Renters</div>
+        </a>
+        <a href="javascript:void(0)" onclick="openTab(event, 'owners-tab');">
+            <div class="tab w3-third w3-bottombar w3-hover-light-grey w3-padding">Property Owners</div>
+        </a>
+        <div class="indicator"></div>
+    </div>
+
+    <div class="tab-content" id="renters-tab-content">
+        <!-- Content for Renters tab -->
+        <h2>Renters Content Goes Here</h2>
+    </div>
+
+    <div class="tab-content" id="owners-tab-content">
+        <!-- Content for Property Owners tab -->
+        <h2>Property Owners Content Goes Here</h2>
+    </div>
+
+
+
+
+
+    <!-- <div id="test">
+        <div class="tabs-container">
+                <input type="radio" id="renters-tab" name="tab" checked>
+                <label for="renters-tab" class="tab">Renters</label>
+        
+                <input type="radio" id="owners-tab" name="tab">
+                <label for="owners-tab" class="tab">Property Owners</label>
+        
+                <div class="indicator"></div>
+            </div>
+        
+            <div class="tab-content" id="renters-content">
+               
+                <h2>Renters Content Goes Here</h2>
+            </div>
+        
+            <div class="tab-content" id="owners-content">
+            
+                <h2>Property Owners Content Goes Here</h2>
+            </div>
+    </div> -->
+
+
+</body>
+
+</html>

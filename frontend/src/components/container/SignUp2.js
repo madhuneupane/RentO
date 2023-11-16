@@ -20,6 +20,10 @@ const SingUp = ({ navigation, route }) => {
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
+
+  var touchPropsOption = {
+    underlayColor: "#FBEDEA",
+  };
   const logo = require("../../../assets/login-screen-logo.png");
   return (
     <View style={styles.container}>
@@ -39,13 +43,13 @@ const SingUp = ({ navigation, route }) => {
           item={{ value: "Yes" }}
           selectedItems={saveUserOptions}
           customStyle={styles.customStyleOptions}
-          // touchProps={touchPropsOptions}
+          touchProps={touchPropsOption}
         />
         <ButtonUI
           item={{ value: "No" }}
           selectedItems={saveUserOptions}
           customStyle={styles.customStyleOptions}
-          // touchProps={touchPropsOptions}
+          touchProps={touchPropsOption}
         />
       </View>
       <View style={styles.buttonContainer}>

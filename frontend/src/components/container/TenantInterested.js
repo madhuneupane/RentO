@@ -1,6 +1,6 @@
 import { all } from "axios";
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import interestedTenant from "../hooks/interestedTenant";
 import { Card } from "@rneui/themed";
 import { StyleSheet } from "react-native";
@@ -26,8 +26,15 @@ const TenantInterested = ({ navigation, route }) => {
             console.log("tentant:::::" + JSON.stringify(item));
             return (
               <View style={styles.card}>
+
+                <Image
+                  source={require("../../../assets/Kayla-Person.jpg")}
+                  style={styles.image}
+                />
+
                 <Text style={styles.name}>{item.firstName}</Text>
                 <Text style={styles.email}>connect: madhu@gmail.com</Text>
+
               </View>
             );
           }
@@ -38,6 +45,11 @@ const TenantInterested = ({ navigation, route }) => {
 
 export default TenantInterested;
 const styles = StyleSheet.create({
+  image: {
+    width: 80,
+    height: 80,
+    margin: 10,
+  },
   container: {
     margin: 10,
     alignItems: "center",
@@ -70,6 +82,9 @@ const styles = StyleSheet.create({
     borderColor: "#36827F",
     backgroundColor: "#E9E7EE",
     justifyContent: "center",
+
+    flexDirection: "row",
+
     alignItems: "left",
     paddingLeft: 50
   },
@@ -77,6 +92,7 @@ const styles = StyleSheet.create({
     color: "#2B6866",
     fontSize: 18,
     fontFamily: "Mulish_600SemiBold",
+
   },
   email: {
     color: "#5C5D8D",

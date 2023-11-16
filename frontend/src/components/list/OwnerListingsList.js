@@ -8,6 +8,7 @@ const OwnerListingsList = ({
   refreshing,
   refresh,
 }) => {
+  const item = JSON.stringify(ownerData[0]);
   return (
     <View style={styles.container}>
       <FlatList

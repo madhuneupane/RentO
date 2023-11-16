@@ -10,8 +10,10 @@ const OwnerCards = ({ data, getTenant }) => {
       <View style={styles.container}>
         <View style={styles.viewContainer}>
           <Card.Image
+
             source={{ uri: data.images.bedrooms.back }}
             style={styles.image}
+
           ></Card.Image>
         </View>
         <View style={styles.textContainer}>

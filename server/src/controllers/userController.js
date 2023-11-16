@@ -1,7 +1,7 @@
 const schemas = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt"); // Import the bcrypt library
- 
+
 const addNewUser = (req, res) => {
   console.log(req.body);
 
@@ -33,7 +33,6 @@ const addNewUser = (req, res) => {
   });
 };
 
-
 const fetchSingleUser = (req, res) => {
   const { email, password } = req.params;
   console.log(req.params.email, req.params.password);
@@ -50,7 +49,9 @@ const fetchSingleUser = (req, res) => {
           }
 
           if (result) {
-            const token = jwt.sign({ email }, "RentOMadhu", { expiresIn: "1h" });
+            const token = jwt.sign({ email }, "RentOMadhu", {
+              expiresIn: "1h",
+            });
             console.log(JSON.stringify(data));
             res.json({ token: token, id: data._id });
           } else {
@@ -76,8 +77,6 @@ const fetchAllUser = (req, res) => {
       console.error("Error fetching data:", error);
     });
 };
-
-
 
 const fetchUserById = (req, res) => {
   const { id } = req.params;

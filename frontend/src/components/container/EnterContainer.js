@@ -27,8 +27,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   container: {
-    marginTop: "4.8%",
-    //correct background collor!!!
+    marginTop: "0",
     backgroundColor: "#02696A",
     height: "100%",
     alignItems: "center",
@@ -36,8 +35,8 @@ const styles = StyleSheet.create({
     //padding: 10,
   },
   image: {
-    width: "45.4%",
-    height: "24%",
+    width: "50%",
+    height: "25.5%",
     shadowColor: "#171717",
   },
 });

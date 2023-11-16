@@ -8,7 +8,7 @@ import SingUpReducer from "../reducers/SingUpReducer";
 import login from "../hooks/login";
 const SingUp = ({ navigation }) => {
   const [userValues, dispatch] = useReducer(SingUpReducer, {});
-
+  //  pass 123
   const callLoginApi = () => {
     console.log("userValues:" + JSON.stringify(userValues));
     navigation.navigate("signup2", userValues);
@@ -80,7 +80,10 @@ const SingUp = ({ navigation }) => {
         />
       </View>
       <Text style={styles.loginText}>
-        Already have an account? <Text style={styles.signin} onPress={signIn}>Sign in</Text>
+        Already have an account?{" "}
+        <Text style={styles.signin} onPress={signIn}>
+          Sign in
+        </Text>
       </Text>
     </View>
   );
@@ -93,19 +96,19 @@ const styles = StyleSheet.create({
     color: "#36827F",
     fontSize: 16,
     fontFamily: "Mulish_700Bold",
-    textDecorationLine: 'underline',
+    textDecorationLine: "underline",
   },
   loginText: {
-    fontStyle: 'italic',
+    fontStyle: "italic",
     marginTop: 20,
     marginLeft: 77,
     fontSize: 16,
-    fontFamily: "Mulish_600SemiBold"
+    fontFamily: "Mulish_600SemiBold",
   },
   haveAccount: {
     marginTop: 10,
     marginLeft: 80,
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
   },
   imageContainer: {
     marginTop: "50%",
@@ -137,7 +140,7 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     height: 45,
     paddingLeft: 10,
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
   },
   button: {
     borderWidth: 1.5,
@@ -151,7 +154,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
   },
   textContainer: {
     //margin: 10,
@@ -162,11 +165,11 @@ const styles = StyleSheet.create({
     // marginTop: 15,
     fontWeight: "300",
     fontSize: 28,
-    width:"70%",
-    marginLeft:"12%",
+    width: "70%",
+    marginLeft: "12%",
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
-    color: "#36827F"
+    color: "#36827F",
   },
   submitButton: {
     backgroundColor: "#36827F",
@@ -196,6 +199,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
 });

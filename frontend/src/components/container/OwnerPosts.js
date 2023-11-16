@@ -48,7 +48,7 @@ const OwnerPosts = ({ navigation, route }) => {
 export default OwnerPosts;
 const styles = StyleSheet.create({
   listContainer: {
-    flex: 1,
+    flex: 0.8,
   },
   buttonContainer: {
     // marginBottom: 20,

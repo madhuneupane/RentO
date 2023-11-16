@@ -24,18 +24,20 @@ const OwnerNewPost = ({ navigation, route }) => {
     onShowUnderlay: () => setIsSubmitPress(true),
   };
   const item = route.params;
+  console.log("owner post item:::" + JSON.stringify(item));
   const location = JSON.parse(item?.location).city;
-
+  const coverimage = item.coverImage[0];
+  console.log("cover images in item:::" + coverimage);
   console.log("item:" + JSON.stringify(item));
   const images = [
-    require("../../../assets/house2.jpg"),
-    require("../../../assets/house3.jpg"),
-    require("../../../assets/house4.jpg"),
+    { url: item.coverImage[1] },
+    { url: item.coverImage[2] },
+    { url: item.coverImage[3] },
     // Add more image paths
   ];
   const showTour = () => {
     //navigation.navigate("")
-    console.log("click");
+    // console.log("click");
   };
   const savePost = () => {
     // StackActions.push("owner");
@@ -53,7 +55,7 @@ const OwnerNewPost = ({ navigation, route }) => {
           <View style={styles.mainImageContainer}>
             {/* Gallery Header Image */}
             <ImageBackground
-              source={require("../../../assets/house1.jpeg")}
+              source={{ url: coverimage }}
               style={{ width: 390, height: 423, overflow: true }}
             >
               <View style={styles.verifiedContainer}>

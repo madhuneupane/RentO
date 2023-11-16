@@ -12,7 +12,7 @@ const OwnerCards = ({ data }) => {
       <View style={styles.viewContainer}>
         <Card.Image
           source={{ uri: data.images.bedrooms.back }}
-          style={{ width: "90%" }}
+          style={styles.image}
         ></Card.Image>
       </View>
       <View style={styles.textContainer}>
@@ -32,9 +32,14 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily:"Mulish_500Medium",
   },
   date: {
     marginTop: 5,
+    color: "#5C5D8D",
+    fontFamily: "Mulish_400Regular",
+    fontSize: 13,
+    paddingRight: 50,
   },
   textContainer: {
     flex: 1,
@@ -43,18 +48,18 @@ const styles = StyleSheet.create({
     // Other container styles if needed
   },
   container: {
-    margin: 10,
+    margin: 20,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
-    width: "95%",
-    border: "2",
+    width: "90%",
+    height: "80%",
+    //border: "2",
     borderWidth: 1,
-    borderRadius: 5,
-    borderColor: "black",
+    borderRadius: 8,
+    borderColor: "#36827F",
     backgroundColor: "#E9E7EE",
-    padding: 10,
-    fontSize: 0.5,
+    //padding: 10,
     // height: 20,
     // borderRadius: 1,
     // padding: 10,
@@ -66,18 +71,34 @@ const styles = StyleSheet.create({
     // // justifyContent: "flex-start",
     // // width: "auto",
     width: "50%",
+    overflow:false,
+  },
+  image:{
+    width: "75%",
+    height:"100%",
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8,
   },
   textContainer: {
     alignItems: "center",
     justifyContent: "center",
+    //paddingLeft: 50,
     // Other container styles if needed
   },
   type: {
+    paddingRight: 55,
+    color: "#36827F",
+    fontFamily: "Mulish_700Bold",
+    fontSize: 15,
     textAlign: "center",
     width: "100%", // Adjust the width as needed
     // Other text styles for data.type
   },
   location: {
+    paddingRight: 55,
+    color: "#36827F",
+    fontFamily: "Mulish_700Bold",
+    fontSize: 15,
     textAlign: "center",
     width: "100%", // Adjust the width as needed
     // Other text styles for data.location

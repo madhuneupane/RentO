@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily:"Mulish_400Regular",
   },
   date: {
     marginTop: 5,

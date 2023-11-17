@@ -1,23 +1,44 @@
 <template>
   <div class="home">
     <div class="view-container" ref="threeDBox"></div>
-    <button
-      v-for="(value, room) in roomImages"
-      :key="room"
-      class="change-room-button"
-      @click="changeRoom(room)"
-      :class="{ 'current-room-button': currentRoom === room }"
-    >
-      {{ room }}
-    </button>
-
-    <!-- <button class="change-room-button" @click="changeToNextRoom">Change Room</button> -->
+    <div class="button-container">
+      <button
+        class="change-room-button"
+        @click="changeRoom('living')"
+        :class="{ 'current-room-button': currentRoom === 'living' }"
+      >
+        Living Room
+      </button>
+      <button
+        class="change-room-button"
+        @click="changeRoom('bed')"
+        :class="{ 'current-room-button': currentRoom === 'bed' }"
+        style="top: 60px"
+      >
+        Bedroom
+      </button>
+      <button
+        class="change-room-button"
+        @click="changeRoom('kitchen')"
+        :class="{ 'current-room-button': currentRoom === 'kitchen' }"
+        style="top: 110px"
+      >
+        Kitchen
+      </button>
+      <button
+        class="change-room-button"
+        @click="changeRoom('bath')"
+        :class="{ 'current-room-button': currentRoom === 'bath' }"
+        style="top: 160px"
+      >
+        Bathroom
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 import * as THREE from "three";
-import axios from "axios";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 export default {
   name: "Home",
@@ -31,41 +52,10 @@ export default {
       box: null,
       timer: {},
       picList: ["right", "left", "top", "bottom", "front", "back"],
-      currentRoom: "",
-      roomImages: {},
+      currentRoom: "living",
     };
   },
   methods: {
-    fetchRoomImages() {
-      const url =
-        "https://api.rent-o.com/api/fetchPropertyById/654e55cb0803e03f8993f980";
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(
-              `Network response was not ok: ${response.statusText}`
-            );
-          }
-          //console.log(response.json())
-          return response.json();
-        })
-        .then((data) => {
-          this.roomImages = data.data.images;
-          console.log("roomImages:", this.roomImages);
-
-          const roomKeys = Object.keys(this.roomImages);
-          console.log("Room Keys:", roomKeys);
-
-          if (roomKeys.length > 0) {
-            this.currentRoom = roomKeys[roomKeys.length - 1];
-          }
-
-          this.initContent();
-        })
-        .catch((error) => {
-          console.error("Error fetching room images:", error);
-        });
-    },
     initScene() {
       this.scene = new THREE.Scene();
       this.scene.background = new THREE.Color(0x101010);
@@ -93,17 +83,12 @@ export default {
     initContent() {
       let boxGeometry = new THREE.BoxGeometry(10, 10, 10);
       let boxMaterials = [];
-
-      console.log(this.roomImages);
-      if (this.roomImages[this.currentRoom]) {
-        this.picList.forEach((item) => {
-          let texture = new THREE.TextureLoader().load(
-            this.roomImages[this.currentRoom][item]
-          );
-          boxMaterials.push(new THREE.MeshBasicMaterial({ map: texture }));
-        });
-      }
-
+      this.picList.forEach((item) => {
+        let texture = new THREE.TextureLoader().load(
+          require(`@/assets/image/${this.currentRoom}/${item}.png`)
+        );
+        boxMaterials.push(new THREE.MeshBasicMaterial({ map: texture }));
+      });
       this.box = new THREE.Mesh(boxGeometry, boxMaterials);
       this.box.geometry.scale(10, 10, -10);
       this.scene.add(this.box);
@@ -123,29 +108,11 @@ export default {
       // Toggle between room1 and room2
       this.currentRoom = roomName;
       console.log("Current" + roomName);
-      // this.fetchRoomImages();
-      const roomKeys = Object.keys(this.roomImages);
-      if (roomKeys.length > 0) {
-        const currentIndex = roomKeys.indexOf(this.currentRoom);
-        const nextIndex = (currentIndex + 1) % roomKeys.length;
-        this.currentRoom = roomKeys[nextIndex];
-        this.initContent(); // Reload room content
-      }
-      // this.initContent(); // Reload room content
-      // },
-      // changeToNextRoom() {
-      // const roomKeys = Object.keys(this.roomImages);
-      // if (roomKeys.length > 0) {
-      //   const currentIndex = roomKeys.indexOf(this.currentRoom);
-      //   const nextIndex = (currentIndex + 1) % roomKeys.length;
-      //   this.currentRoom = roomKeys[nextIndex];
-      //   this.initContent(); // Reload room content
-      // }
+      this.initContent(); // Reload room content
     },
   },
   mounted() {
     let element = this.$refs.threeDBox;
-    this.fetchRoomImages();
     this.initScene();
     this.initCamera(element);
     this.initControls(element);
@@ -172,20 +139,26 @@ export default {
     overflow: hidden;
   }
   .change-room-button {
-    position: absolute;
-    width: 120px;
-    font-size: 0.9rem;
-    top: 30px;
-    left: 20px;
+    width: 90px;
+    font-size: 0.7rem;
     padding: 10px;
-    background-color: #007c38;
+    background-color: #36827f;
     color: #fff;
     border: none;
     cursor: pointer;
-    border: 1px solid black;
+    border: 2px solid rgb(75, 75, 75);
+    border-radius: 20px;
   }
   .current-room-button {
-    background-color: #15c08d;
+    background-color: #46a8a5;
+  }
+  .button-container {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
   }
 }
 </style>

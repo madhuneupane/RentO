@@ -29,8 +29,8 @@ const OwnerPropertyInterest = ({ navigation, id }) => {
 export default OwnerPropertyInterest;
 const styles = StyleSheet.create({
   container: {
-    flex: 0.5,
-    backgroundColor: "red",
+    flex: 1,
+    // backgroundColor: "red",
     height: "100%",
     width: "100%",
   },

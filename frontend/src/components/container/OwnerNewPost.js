@@ -24,18 +24,20 @@ const OwnerNewPost = ({ navigation, route }) => {
     onShowUnderlay: () => setIsSubmitPress(true),
   };
   const item = route.params;
+  console.log("owner post item:::" + JSON.stringify(item));
   const location = JSON.parse(item?.location).city;
-
+  const coverimage = item.coverImage[0];
+  console.log("cover images in item:::" + coverimage);
   console.log("item:" + JSON.stringify(item));
   const images = [
-    require("../../../assets/house2.jpg"),
-    require("../../../assets/house3.jpg"),
-    require("../../../assets/house4.jpg"),
+    { url: item.coverImage[1] },
+    { url: item.coverImage[2] },
+    { url: item.coverImage[3] },
     // Add more image paths
   ];
   const showTour = () => {
     //navigation.navigate("")
-    console.log("click");
+    // console.log("click");
   };
   const savePost = () => {
     // StackActions.push("owner");
@@ -53,7 +55,7 @@ const OwnerNewPost = ({ navigation, route }) => {
           <View style={styles.mainImageContainer}>
             {/* Gallery Header Image */}
             <ImageBackground
-              source={require("../../../assets/house1.jpeg")}
+              source={{ url: coverimage }}
               style={{ width: 390, height: 423, overflow: true }}
             >
               <View style={styles.verifiedContainer}>
@@ -104,7 +106,7 @@ const OwnerNewPost = ({ navigation, route }) => {
                 <MaterialCommunityIcons
                   name="cookie-edit"
                   size={30}
-                  color={"#36827F"}
+                  color={"#3B6665"}
                 ></MaterialCommunityIcons>
               </View>
               <View>
@@ -121,7 +123,7 @@ const OwnerNewPost = ({ navigation, route }) => {
                 <MaterialCommunityIcons
                   name="cookie-edit"
                   size={30}
-                  color={"#36827F"}
+                  color={"#3B6665"}
                 ></MaterialCommunityIcons>
               </View>
               <Text style={styles.title}>Description</Text>
@@ -134,7 +136,7 @@ const OwnerNewPost = ({ navigation, route }) => {
                 <MaterialCommunityIcons
                   name="cookie-edit"
                   size={30}
-                  color={"#36827F"}
+                  color={"#3B6665"}
                 ></MaterialCommunityIcons>
               </View>
               <Text style={styles.title}>Amenities</Text>
@@ -170,7 +172,7 @@ const OwnerNewPost = ({ navigation, route }) => {
                 <MaterialCommunityIcons
                   name="cookie-edit"
                   size={30}
-                  color={"#36827F"}
+                  color={"#3B6665"}
                 ></MaterialCommunityIcons>
               </View>
               <Text style={styles.title}>Property Owner</Text>
@@ -193,7 +195,7 @@ const OwnerNewPost = ({ navigation, route }) => {
                 <MaterialCommunityIcons
                   name="cookie-edit"
                   size={30}
-                  color={"#36827F"}
+                  color={"#3B6665"}
                 ></MaterialCommunityIcons>
               </View>
               <Text style={styles.title}>Location</Text>
@@ -233,7 +235,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   verifiedContainer: {
-    backgroundColor: "#36827F",
+    backgroundColor: "#3B6665",
     width: 90,
     height: 30,
     flexDirection: "row",
@@ -286,7 +288,7 @@ const styles = StyleSheet.create({
   },
   rent: {
     fontSize: 30,
-    color: "#36827F",
+    color: "#3B6665",
     fontWeight: "bold",
   },
   location: {
@@ -306,8 +308,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
 
     height: "50",
     width: "80%",

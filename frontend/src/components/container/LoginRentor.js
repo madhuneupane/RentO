@@ -55,7 +55,7 @@ const LoginRentor = ({ navigation }) => {
         value="madhu123"
         secureTextEntry={true}
       />
-      <Text style={styles.textMessage}>Forgot your password?</Text>
+      
       <View style={styles.buttonContainer}>
         <ButtonUI
           item={{ value: "Sign in" }}
@@ -64,6 +64,7 @@ const LoginRentor = ({ navigation }) => {
           touchProps={touchPropsSubmit}
         />
       </View>
+      <Text style={styles.textMessage}>Forgot your password?</Text>
     </View>
   );
 };
@@ -72,20 +73,21 @@ export default LoginRentor;
 
 const styles = StyleSheet.create({
   textMessage: {
-    marginTop: 10,
+    marginTop: 20,
     textAlign: "center",
     fontWeight: "bold",
     fontSize: "18",
-    fontFamily: "Mulish_400Regular",
-    color: "#36827F",
+    fontFamily: "Mulish_600SemiBold",
+    color: "#3B6665",
+    textDecorationLine: "underline",
   },
   imageContainer: {
-    marginTop: "30%",
+    marginTop: "35%",
     alignItems: "center",
   },
   image: {
-    width: 100,
-    height: 110,
+    width: 125,
+    height: 137,
   },
   container: {
     height: "70%",
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     height: 45,
     paddingLeft: 10,
-    fontFamily: "Mulish_400Regular",
+    fontFamily: "Mulish_400Regular_Italic",
   },
   button: {
     borderWidth: 1.5,
@@ -133,11 +135,11 @@ const styles = StyleSheet.create({
     fontSize: 28,
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
-    color: "#36827F",
+    color: "#3B6665",
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "30",
     width: "80%",
     marginLeft: 40,
@@ -157,7 +159,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 40,
+    marginTop: 30,
   },
   customStyle: {
     color: "white",

@@ -21,31 +21,46 @@ const ListingDetails = ({ navigation, route }) => {
   const [interestedId, setInterestedId] = useState();
   const [single, setSingle] = useState();
   const [selectedImage, setSelectedImage] = useState(0);
+  const [images, setImages] = useState([]);
   const item = { ...single };
   // const [location, setLocaion] = useState();
   console.log("item::" + JSON.stringify(item));
   // const location1 = JSON.parse(item.location);
   // console.log("locations:::" + location1);
-  // console.log("location in itemmss:" + JSON.stringify(item));
+  // console.log("cover in itemmss:" + item?.coverImage[0]);
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
-  useEffect(() => {}, [single]);
+  useEffect(() => {
+    image();
+  }, [single]);
   singleData(route.params, setSingle);
 
   // console.log("data2", item.images?.bedrooms);
 
   //console.log("item:" + JSON.stringify(item));
 
-  const images = [
-    item.images?.bedrooms.back,
-    item.images?.bedrooms.bottom,
-    item.images?.bedrooms.top,
-    // Add more image paths
-  ];
+  // const images = [
+  //   item.images?.bedrooms.back,
+  //   item.images?.bedrooms.bottom,
+  //   item.images?.bedrooms.top,
+  //   // Add more image paths
+  // ];
+
+  const image = () => {
+    if (item.coverImage) {
+      const coverImages = item.coverImage;
+      setImages([
+        coverImages[1],
+        coverImages[2],
+        coverImages[3],
+        // Add more image paths
+      ]);
+    }
+  };
   const showTour = () => {
     //navigation.navigate("")
     console.log("click");
@@ -68,7 +83,7 @@ const ListingDetails = ({ navigation, route }) => {
           <View style={styles.mainImageContainer}>
             {/* Gallery Header Image */}
             <ImageBackground
-              source={{ uri: item.images?.bedrooms.front }}
+              source={{ uri: item.coverImage ? item.coverImage[0] : "" }}
               style={{ width: 390, height: 423, overflow: true }}
             >
               <View style={styles.verifiedContainer}>
@@ -202,7 +217,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   verifiedContainer: {
-    backgroundColor: "#36827F",
+    backgroundColor: "#3B6665",
     width: 90,
     height: 30,
     flexDirection: "row",
@@ -255,7 +270,7 @@ const styles = StyleSheet.create({
   },
   rent: {
     fontSize: 30,
-    color: "#36827F",
+    color: "#3B6665",
     fontWeight: "bold",
   },
   location: {
@@ -275,8 +290,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "50",
     width: "80%",
     marginLeft: 40,

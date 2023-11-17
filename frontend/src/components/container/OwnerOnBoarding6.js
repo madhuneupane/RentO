@@ -56,6 +56,9 @@ const OwnerOnBoarding6 = ({ navigation, route }) => {
           <Text style={styles.title}>
             What amenities does your property offer?
           </Text>
+          <Text style={styles.subTitle}>
+            Select all that apply
+          </Text>
         </View>
         <View style={styles.listContainer}>
           <View style={styles.buttonConatiner}>
@@ -159,7 +162,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 185,
+    marginTop: 60,
     marginLeft: 55,
   },
   progressBarGreen: {
@@ -173,16 +176,21 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   title: {
-    color: "#413855",
-    width: "85%",
-    height: "25",
+    // marginLeft: 30,
+    marginTop: 40,
     fontWeight: "300",
-    fontSize: 22,
-    marginBottom: 30,
+    fontSize: 15,
     marginLeft: 10,
-    fontSize: 20,
+    fontSize: 22,
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
+    color: "#413855"
+  },
+  subTitle: {
+    color: "#5C5D8D",
+    fontFamily: "Mulish_600SemiBold",
+    fontSize: 16,
+    marginTop: 15,
   },
   propertyType: {
     marginBottom: 10,
@@ -238,7 +246,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   buttonContainer: {
-    marginTop: 280,
+    marginTop: 400,
   },
   customStyle: {
     color: "white",
@@ -247,6 +255,7 @@ const styles = StyleSheet.create({
     fontFamily: "Mulish_400Regular",
   },
   listContainer: {
+    marginTop: 50,
     fontFamily: "Mulish_400Regular",
     height: "270%",
     width: "100%",

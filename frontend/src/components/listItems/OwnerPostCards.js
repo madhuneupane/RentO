@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     alignContent:"center",
     justifyContent:"center",
     color: "#5C5D8D",
+    paddingTop:15,
     fontFamily: "Mulish_500Medium",
     fontSize: 13,
   },

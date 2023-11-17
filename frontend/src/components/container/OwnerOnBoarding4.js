@@ -15,19 +15,21 @@ const OwnerOnboarding4 = ({ navigation, route }) => {
   };
   const setData = (value, type) => {
     console.log("on 4:" + JSON.stringify(onBoardData));
+    // console.log("on 4:" + onBoardData.address);
+
     setOnBoardData({ ...route.params, amount: value });
   };
   const navigateToNext = () => {
     navigation.navigate("owner_property_desc", onBoardData);
   };
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.title}>What is your desired rent amount?</Text>
       </View>
       <View>
         <InputUI
-          placeholder=" $ Enter the amount"
+          placeholder="$ Type in your amount"
           selectedItems={setData}
           type="amount"
           coustomStyle={styles}
@@ -56,32 +58,31 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 30,
+    marginTop: 50,
     marginLeft: 55,
   },
   progressBarGreen: {
-    backgroundColor: "#36827F",
+    backgroundColor: "#3B6665",
     height: 10,
-    width: 120,
+    width: 150,
     borderRadius: 20,
   },
   container: {
-    height: "70%",
-    justifyContent: "center",
-    margin: 10,
-    padding: 10,
+    backgroundColor: "white",
   },
   subContainer: {
     alignItems: "center",
     height: 60,
   },
   textInput: {
-    fontSize: 20,
+    fontSize: 18,
     height: 30,
-    width: "90%",
-    borderRadius: 30,
+    width: "87%",
+    borderRadius: 24,
     textAlign: "justify",
     height: 50,
+    paddingLeft: 15,
+    fontFamily:"Mulish_400Regular",
   },
   button: {
     borderWidth: 1.5,
@@ -98,19 +99,20 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     margin: 30,
-    height: "20%",
+    height: "15%",
     justifyContent: "center",
   },
   title: {
-    fontWeight: 300,
-    fontSize: 15,
-    marginLeft: 10,
-    fontSize: 20,
+    fontWeight: "300",
+    
+    //marginLeft: 10,
+    fontSize: 22,
     textAlign: "center",
+    fontFamily: "Mulish_700Bold"
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "50",
     width: "80%",
     marginLeft: 40,
@@ -137,5 +139,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily:"Mulish_400Regular",
   },
 });

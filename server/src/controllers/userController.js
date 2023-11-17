@@ -1,19 +1,68 @@
 const schemas = require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt"); // Import the bcrypt library
 
 const addNewUser = (req, res) => {
   console.log(req.body);
-  let newUser = new schemas.user(req.body);
 
-  newUser
-    .save()
-    .then((user) => {
-      console.log("Data saved successfully");
-      res.send(user);
-      console.log(user);
+  const { email, password } = req.body;
+
+  // Hash the user's password before saving it
+  bcrypt.hash(password, 10, (err, hashedPassword) => {
+    if (err) {
+      console.error("Error hashing password:", err);
+      return res.status(500).send("Error saving user");
+    }
+
+    const newUser = new schemas.user({
+      email,
+      password: hashedPassword, // Store the hashed password
+    });
+
+    newUser
+      .save()
+      .then((user) => {
+        console.log("Data saved successfully");
+        res.send(user);
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error("Error saving data:", error);
+        res.status(500).send("Error saving user");
+      });
+  });
+};
+
+const fetchSingleUser = (req, res) => {
+  const { email, password } = req.params;
+  console.log(req.params.email, req.params.password);
+  schemas.user
+    .findOne({ email: req.params.email })
+    .then((data) => {
+      if (data) {
+        // Compare the entered password with the hashed password
+        console.log(password, data.password);
+        bcrypt.compare(password, data.password, (err, result) => {
+          if (err) {
+            console.error("Error comparing passwords:", err);
+            return res.status(500).send("Error fetching user");
+          }
+
+          if (result) {
+            const token = jwt.sign({ email }, "RentOMadhu", {
+              expiresIn: "1h",
+            });
+            console.log(JSON.stringify(data));
+            res.json({ token: token, id: data._id });
+          } else {
+            res.status(401).send("Password incorrect");
+          }
+        });
+      }
     })
     .catch((error) => {
-      console.error("Error saving data:", error);
+      console.error("Error fetching user:", error);
+      res.status(500).send("Error fetching user");
     });
 };
 
@@ -26,21 +75,6 @@ const fetchAllUser = (req, res) => {
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
-    });
-};
-
-const fetchSingleUser = (req, res) => {
-  const { email, pass } = req.params;
-  console.log(req.params.email, req.params.password);
-  schemas.user
-    .findOne({ email: req.params.email, password: req.params.password })
-    .then((data) => {
-      if (data) {
-        const token = jwt.sign({ email }, "hello", { expiresIn: "1h" });
-        console.log(JSON.stringify(data));
-        res.json({ token: token, id: data._id });
-        // res.json({ token: token });
-      }
     });
 };
 

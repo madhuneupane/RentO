@@ -36,8 +36,12 @@ const propertySchema = new Schema({
     type: [String],
     default: []
   },
+  coverImage: {
+    type: [String],
+    default: [], 
+  },
 
-  images: {
+  images: {  
     bedrooms: {
       left: {
         type: String,

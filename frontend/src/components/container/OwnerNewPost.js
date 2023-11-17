@@ -7,12 +7,16 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
+  Modal,
 } from "react-native";
+import { StackActions } from "@react-navigation/native";
 import ButtonUI from "../UI/button/ButtonUI";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import PostCreated from "./postCreated";
 
 const OwnerNewPost = ({ navigation, route }) => {
-  var [isSubmitPress, setIsSubmitPress] = useState(false);
+  const [isSubmitPress, setIsSubmitPress] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
@@ -20,183 +24,218 @@ const OwnerNewPost = ({ navigation, route }) => {
     onShowUnderlay: () => setIsSubmitPress(true),
   };
   const item = route.params;
+  console.log("owner post item:::" + JSON.stringify(item));
+  const location = JSON.parse(item?.location).city;
+  const coverimage = item.coverImage[0];
+  console.log("cover images in item:::" + coverimage);
   console.log("item:" + JSON.stringify(item));
-  const [selectedImage, setSelectedImage] = useState(0);
   const images = [
-    require("../../../assets/house2.jpg"),
-    require("../../../assets/house3.jpg"),
-    require("../../../assets/house4.jpg"),
+    { url: item.coverImage[1] },
+    { url: item.coverImage[2] },
+    { url: item.coverImage[3] },
     // Add more image paths
   ];
   const showTour = () => {
     //navigation.navigate("")
-    console.log("click");
+    // console.log("click");
   };
   const savePost = () => {
-    navigation.navigate("owner_welcome");
+    // StackActions.push("owner");
+    setModalVisible(true);
+    // navigation.navigate("post_created");
+  };
+  const showListings = () => {
+    setModalVisible(false);
+    navigation.navigate("Your Listings", { render: true });
   };
   return (
-    <ScrollView style={{ backgroundColor: "white" }}>
-      <View style={styles.mainImageContainer}>
-        {/* Gallery Header Image */}
-        <ImageBackground
-          source={require("../../../assets/house1.jpeg")}
-          style={{ width: 390, height: 423, overflow: true }}
-        >
-          <View style={styles.verifiedContainer}>
-            <View>
-              <MaterialCommunityIcons
-                name="check-circle"
-                size={20}
-                color="white"
-              />
-            </View>
-            <Text style={styles.verified}>Verified</Text>
-          </View>
-        </ImageBackground>
-
-        {/* Thumbnail Gallery */}
-        <ScrollView horizontal>
-          {images.map((imagePath, index) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() => handleImageClick(index)}
+    <>
+      {!modalVisible ? (
+        <ScrollView style={{ backgroundColor: "white" }}>
+          <View style={styles.mainImageContainer}>
+            {/* Gallery Header Image */}
+            <ImageBackground
+              source={{ url: coverimage }}
+              style={{ width: 390, height: 423, overflow: true }}
             >
-              <Image
-                source={imagePath}
-                style={{
-                  width: 130,
-                  height: 250,
-                  margin: 2,
-                  // borderWidth: selectedImage === index ? 2 : 0,
-                }}
-              />
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
+              <View style={styles.verifiedContainer}>
+                <View>
+                  <MaterialCommunityIcons
+                    name="check-circle"
+                    size={20}
+                    color="white"
+                  />
+                </View>
+                <Text style={styles.verified}>Verified</Text>
+              </View>
+            </ImageBackground>
 
-        <ButtonUI
-          item={{ value: "3D Tour Available" }}
-          // customStyle={styles.button}
-          selectedItems={showTour}
-          customStyle={styles.customStyle}
-          touchProps={touchPropsSubmit}
-        />
+            {/* Thumbnail Gallery */}
+            <ScrollView horizontal>
+              {images.map((imagePath, index) => (
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => handleImageClick(index)}
+                >
+                  <Image
+                    source={imagePath}
+                    style={{
+                      width: 130,
+                      height: 250,
+                      margin: 2,
+                      // borderWidth: selectedImage === index ? 2 : 0,
+                    }}
+                  />
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
 
-        <View style={styles.subContainer}>
-          <View style={styles.edit}>
-            <MaterialCommunityIcons
-              name="cookie-edit"
-              size={30}
-              color={"#36827F"}
-            ></MaterialCommunityIcons>
-          </View>
-          <View>
-            <Text style={styles.rent}>${item.rent}</Text>
-            <Text style={styles.location}>{item.location}</Text>
-            <Text style={styles.rooms}>
-              {item.roomNumbers} bd | {item.bathRoomNumbers} ba | {item.type}
+            <ButtonUI
+              item={{ value: "3D Tour Available" }}
+              // customStyle={styles.button}
+              selectedItems={showTour}
+              customStyle={styles.customStyle}
+              touchProps={touchPropsSubmit}
+            />
+
+            <Text style={styles.heading}>
+              {item.roomNumbers} Bedroom {item.type} on {location}
             </Text>
-          </View>
-        </View>
-        <View style={styles.subContainer}>
-          <View style={styles.edit}>
-            <MaterialCommunityIcons
-              name="cookie-edit"
-              size={30}
-              color={"#36827F"}
-            ></MaterialCommunityIcons>
-          </View>
-          <Text style={styles.title}>Description</Text>
-          <View style={styles.descView}>
-            <Text style={styles.desc}>{item.description}</Text>
-          </View>
-        </View>
-        <View style={styles.subContainer}>
-          <View style={styles.edit}>
-            <MaterialCommunityIcons
-              name="cookie-edit"
-              size={30}
-              color={"#36827F"}
-            ></MaterialCommunityIcons>
-          </View>
-          <Text style={styles.title}>Amenities</Text>
-          <View style={styles.amenitiesTextView}>
-            <View>
-              <Text style={styles.textView}>
-                {item.amenities?.pet ? "Pet friendly" : "Pet friendly"}
-              </Text>
-              <Text style={styles.textView}>
-                {item.amenities?.wifi ? "Wi-fi" : "Wi-fi"}
-              </Text>
-              <Text style={styles.textView}>TV</Text>
+            <View style={styles.subContainer}>
+              <View style={styles.edit}>
+                <MaterialCommunityIcons
+                  name="cookie-edit"
+                  size={30}
+                  color={"#3B6665"}
+                ></MaterialCommunityIcons>
+              </View>
+              <View>
+                <Text style={styles.rent}>${item.rent}</Text>
+                <Text style={styles.location}>{location}</Text>
+                <Text style={styles.rooms}>
+                  {item.roomNumbers} bd | {item.bathRoomNumbers} ba |{" "}
+                  {item.type}
+                </Text>
+              </View>
             </View>
-            <View>
-              <Text style={styles.textView}>
-                {item.amenities?.parkingSpace ? "Parking" : "Parking"}
-              </Text>
-              <Text style={styles.textView}>
-                {item.amenities?.washerDryer
-                  ? "In-unit laundry"
-                  : "In-unit laundry"}
-              </Text>
-              <Text style={styles.textView}>
-                {item.amenities?.airConditioning
-                  ? "Air Conditioning"
-                  : "Air Conditioning"}
+            <View style={styles.subContainer}>
+              <View style={styles.edit}>
+                <MaterialCommunityIcons
+                  name="cookie-edit"
+                  size={30}
+                  color={"#3B6665"}
+                ></MaterialCommunityIcons>
+              </View>
+              <Text style={styles.title}>Description</Text>
+              <View style={styles.descView}>
+                <Text style={styles.desc}>{item.description}</Text>
+              </View>
+            </View>
+            <View style={styles.subContainer}>
+              <View style={styles.edit}>
+                <MaterialCommunityIcons
+                  name="cookie-edit"
+                  size={30}
+                  color={"#3B6665"}
+                ></MaterialCommunityIcons>
+              </View>
+              <Text style={styles.title}>Amenities</Text>
+              <View style={styles.amenitiesTextView}>
+                <View>
+                  <Text style={styles.textView}>
+                    {item.amenities?.pet ? "Pet friendly" : "Pet friendly"}
+                  </Text>
+                  <Text style={styles.textView}>
+                    {item.amenities?.wifi ? "Wi-fi" : "Wi-fi"}
+                  </Text>
+                  <Text style={styles.textView}>TV</Text>
+                </View>
+                <View>
+                  <Text style={styles.textView}>
+                    {item.amenities?.parkingSpace ? "Parking" : "Parking"}
+                  </Text>
+                  <Text style={styles.textView}>
+                    {item.amenities?.washerDryer
+                      ? "In-unit laundry"
+                      : "In-unit laundry"}
+                  </Text>
+                  <Text style={styles.textView}>
+                    {item.amenities?.airConditioning
+                      ? "Air Conditioning"
+                      : "Air Conditioning"}
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View style={styles.subContainer}>
+              <View style={styles.edit}>
+                <MaterialCommunityIcons
+                  name="cookie-edit"
+                  size={30}
+                  color={"#3B6665"}
+                ></MaterialCommunityIcons>
+              </View>
+              <Text style={styles.title}>Property Owner</Text>
+              <Text
+                style={{ ...styles.textView, marginTop: 10, marginBottom: 20 }}
+              >
+                Madhu Sharma
               </Text>
             </View>
-          </View>
-        </View>
-        <View style={styles.subContainer}>
-          <View style={styles.edit}>
-            <MaterialCommunityIcons
-              name="cookie-edit"
-              size={30}
-              color={"#36827F"}
-            ></MaterialCommunityIcons>
-          </View>
-          <Text style={styles.title}>Property Owner</Text>
-          <Text style={{ ...styles.textView, marginTop: 10, marginBottom: 20 }}>
-            Madhu Sharma
-          </Text>
-        </View>
 
-        <ButtonUI
-          item={{ value: "See applicants" }}
-          selectedItems={savePost}
-          customStyle={styles.customStyle}
-          touchProps={touchPropsSubmit}
-        />
+            <ButtonUI
+              item={{ value: "See Applicants" }}
+              selectedItems={savePost}
+              customStyle={styles.customStyle}
+              touchProps={touchPropsSubmit}
+            />
 
-        <View style={styles.subContainer}>
-          <View style={styles.edit}>
-            <MaterialCommunityIcons
-              name="cookie-edit"
-              size={30}
-              color={"#36827F"}
-            ></MaterialCommunityIcons>
+            <View style={styles.subContainer}>
+              <View style={styles.edit}>
+                <MaterialCommunityIcons
+                  name="cookie-edit"
+                  size={30}
+                  color={"#3B6665"}
+                ></MaterialCommunityIcons>
+              </View>
+              <Text style={styles.title}>Location</Text>
+              <Image
+                source={require("../../../assets/map.png")}
+                style={styles.mapView}
+              ></Image>
+            </View>
           </View>
-          <Text style={styles.title}>Location</Text>
-          <Image
-            source={require("../../../assets/map.png")}
-            style={styles.mapView}
-          ></Image>
-        </View>
-      </View>
-    </ScrollView>
+        </ScrollView>
+      ) : (
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          // onDismiss={showListings}
+        >
+          <PostCreated showListings={showListings} />
+        </Modal>
+      )}
+    </>
   );
 };
 export default OwnerNewPost;
 
 const styles = StyleSheet.create({
+  heading: {
+    marginTop: 25,
+    fontSize: 25,
+    color: "black",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
   verified: {
     fontSize: 15,
     fontWeight: "bold",
     color: "white",
   },
   verifiedContainer: {
-    backgroundColor: "#36827F",
+    backgroundColor: "#3B6665",
     width: 90,
     height: 30,
     flexDirection: "row",
@@ -249,7 +288,7 @@ const styles = StyleSheet.create({
   },
   rent: {
     fontSize: 30,
-    color: "#36827F",
+    color: "#3B6665",
     fontWeight: "bold",
   },
   location: {
@@ -269,8 +308,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
 
     height: "50",
     width: "80%",

@@ -9,7 +9,7 @@ const AmenitiesReducer = (state, action) => {
       return { ...state, heating: true };
     case "Air Conditioning":
       return { ...state, air_conditioning: true };
-    case "parking":
+    case "Parking":
       return { ...state, parking: true };
     case "Washer/Dryer":
       return { ...state, washer_dryer: true };

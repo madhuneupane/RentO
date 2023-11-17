@@ -24,12 +24,11 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
     };
 
     console.log(parsedAddress);
-    // setParsedAddress(parsedAddress);
-    setOnBoardData({ ...route.params, address: parsedAddress });
-    navigation.navigate("owner_onboarding4", onBoardData);
+    const location = JSON.stringify(parsedAddress);
+    setOnBoardData({ ...route.params, address: location });
   }
 
-  const [onBoardData, setOnBoardData] = useState();
+  const [onBoardData, setOnBoardData] = useState(route.params);
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   const [parsedAddress, setParsedAddress] = useState({
     address: "N/A",
@@ -55,33 +54,12 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
     navigation.navigate("owner_onboarding4", onBoardData);
   };
 
-  //get 30% height of screen
-  // const screenHeight = Dimensions.get("window").height;
-  // const webViewHeight = screenHeight * 0.3;
-
   return (
-    // <View style={{ flex: 1 }}>
-    //   <WebView
-    //     source={{ uri: url }}
-    //     javaScriptEnabled={true}
-    //     onError={(error) => {
-    //       console.error("WebView Error:", error);
-    //     }}
-    //     onMessage={onMessage}
-    //   />
-    // </View>
     <View>
       <View style={styles.textContainer}>
         <Text style={styles.title}>What's the address?</Text>
       </View>
-      {/* <View>
-        <InputUI
-          selectedItems={setData}
-          type="address"
-          coustomStyle={styles}
-          value={parsedAddress.address}
-        />
-      </View> */}
+
       <View style={styles.webviewContainer}>
         <WebView
           source={{ uri: url }}
@@ -94,23 +72,14 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
         />
       </View>
 
-      {/* <View>
-        <InputUI
-          placeholder=" Type your address"
-          selectedItems={setData}
-          type="address"
-          coustomStyle={styles}
-        />
-      </View> */}
-
-      {/* <View style={styles.buttonContainer}>
+      <View style={styles.buttonContainer}>
         <ButtonUI
           item={{ value: "Continue" }}
           selectedItems={navigateToNext}
           customStyle={styles.customStyle}
           touchProps={touchPropsSubmit}
         />
-      </View> */}
+      </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
       </View>
@@ -131,7 +100,7 @@ const styles = StyleSheet.create({
     marginLeft: 55,
   },
   progressBarGreen: {
-    backgroundColor: "#36827F",
+    backgroundColor: "#3B6665",
     height: 10,
     width: 110,
     borderRadius: 20,
@@ -193,9 +162,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
-
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "50",
     width: "80%",
     marginLeft: 40,
@@ -216,6 +184,6 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 150,
+    marginBottom: 120,
   },
 });

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import { TouchableHighlight } from "react-native";
 import { Text, View, StyleSheet, Image } from "react-native";
+import { Card } from "@rneui/themed";
 const EnterContainer = ({ navigation, route }) => {
-  const logo = require("../../../assets/favicon.png");
-
+  const logo = require("../../../assets/splash-screen-logo.png");
   const login = () => {
-    navigation.navigate("login_rentor");
+    navigation.navigate("signup");
   };
+
   return (
     <TouchableHighlight onPress={login} style={styles.container}>
       <Image source={logo} style={styles.image}></Image>
@@ -16,15 +17,27 @@ const EnterContainer = ({ navigation, route }) => {
 
 export default EnterContainer;
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#36827F",
+  view: {
     height: "100%",
+    width: "100%",
+    // backgroundColor: "pink",
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
+    borderRadius: 8,
+  },
+  container: {
+    marginTop: "0",
+    //backgroundColor: "#3B6665",
+    backgroundColor: "#3B6665",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    //padding: 10,
   },
   image: {
-    width: 100,
-    height: 100,
+    width: "50%",
+    height: "25.5%",
+    shadowColor: "#171717",
   },
 });

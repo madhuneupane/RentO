@@ -1,22 +1,18 @@
 import qs from "qs";
 import axios from "axios";
 import { BASE_URL } from "../static/ApiConstants";
-
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 let testtoken;
 const url = BASE_URL;
 const apiInstance = axios.create({
   baseURL: url,
   params: {},
 });
-
 class ApiClient {
   constructor(endpoint) {
     console.log("en:" + endpoint);
     this.endpoint = endpoint;
   }
-
   loginUser = async () => {
     console.log("endpoint:" + this.endpoint);
     await apiInstance
@@ -29,13 +25,27 @@ class ApiClient {
       .then((testtoken = await AsyncStorage.getItem("token")));
   };
   getSingleProperty = async (id) => {
-    console.log("api" + id);
+    apiInstance.defaults.headers.common["Authorization"] =
+      await AsyncStorage.getItem("token");
     const response = await apiInstance.get(
-      `http://localhost:5001/fetchPropertyById/${id}`
+      `https://api.rent-o.com/api/fetchPropertyById/${id}`
     );
     return response;
   };
-
+  newUser = async (data, headers) => {
+    apiInstance.defaults.headers.common["Authorization"] = headers;
+    console.log("token:" + JSON.stringify(headers));
+    // console.log("sing up data:" + JSON.stringify(data));
+    const response = await apiInstance.post(this.endpoint, {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      password: data.password,
+      phonenumber: data.contactNumber,
+      isOwner: data.owner == "Yes" ? true : false,
+    });
+    // console.log("sign up data saved::" + JSON.stringify(response.data));
+  };
   getAllData = async (headers) => {
     apiInstance.defaults.headers.common["Authorization"] = headers;
     console.log("toke:" + JSON.stringify(headers));
@@ -48,14 +58,39 @@ class ApiClient {
     const response = await apiInstance.post(this.endpoint, {
       content: ownerSelections,
     });
-    console.log("description: " + JSON.stringify(response.data));
+    // console.log("description: " + JSON.stringify(response.data));
+    return response.data;
+  };
+  getOwnerPosts = async (token, id) => {
+    apiInstance.defaults.headers.common["Authorization"] = token;
+    console.log("token in post" + token);
+    console.log("id of owner:" + id);
+    const response = await apiInstance.get(this.endpoint + `/${id}`);
+    // console.log("onwer posts: " + JSON.stringify(response.data));
+    return response.data;
+  };
+  getInterestedTenant = async (token) => {
+    apiInstance.defaults.headers.common["Authorization"] = token;
+    const response = await apiInstance.get(this.endpoint);
+    // console.log("InterestedTenant: " + JSON.stringify(response.data));
+    return response.data;
+  };
+  updateInteredtedList = async (propertyId, interestedId, token) => {
+    apiInstance.defaults.headers.common["Authorization"] = token;
+    const response = await apiInstance.post(this.endpoint, {
+      propertyId: propertyId,
+      interestedId: interestedId,
+    });
+    // console.log("InterestedList: " + JSON.stringify(response.data));
     return response.data;
   };
   postOwnerData = async (token, ownerData) => {
     apiInstance.defaults.headers.common["Authorization"] = token;
     const id = await AsyncStorage.getItem("id");
-
-    console.log("owner data:" + JSON.stringify(ownerData));
+    console.log("owner data::::::" + JSON.stringify(ownerData));
+    console.log(
+      "owner data cover images:" + JSON.stringify(ownerData.coverimages)
+    );
 
     const response = await apiInstance.post(this.endpoint, {
       type: ownerData.ownerData.propertyType,
@@ -84,11 +119,16 @@ class ApiClient {
         },
       },
       description: ownerData.ownerData.description,
+      coverImage: [
+        ownerData.coverimages[0],
+        ownerData.coverimages[1],
+        ownerData.coverimages[2],
+        ownerData.coverimages[3],
+      ],
     });
 
     console.log("owner response:" + JSON.stringify(response.data));
     return response.data;
   };
 }
-
 export default ApiClient;

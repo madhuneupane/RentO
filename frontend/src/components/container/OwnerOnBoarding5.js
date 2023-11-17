@@ -30,13 +30,14 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
   };
-  Postdata(data, setResponse, setLoading);
+  // Postdata(data, setResponse, setLoading);
   submitData = () => {
-    console.log("res::" + response);
-    navigation.navigate("ower_new_post", response);
+    // console.log("res::" + response);
+    // navigation.navigate("ower_new_post", response);
+    navigation.navigate("cover_images", data);
   };
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.title}>
           Time to showcase your property with 360 panoramic pictures!
@@ -64,12 +65,18 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
           customStyle={styles.customStyleSubmit}
         ></ButtonUI>
       </View>
+      <View style={styles.progressBar}>
+        <View style={styles.progressBarGreen}></View>
+      </View>
     </View>
   );
 };
 
 export default OwnerOnBoarding5;
 var styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+  },
   customStyle: {
     color: "#413855",
     fontSize: 15,
@@ -80,23 +87,26 @@ var styles = StyleSheet.create({
     fontSize: 20,
   },
   btnNormal: {
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     // borderWidth: 1,
     // backgroundColor: "#FBEDEA",
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 25,
+    // flexDirection: "row",
+    // justifyContent: "center",
+    // alignItems: "center",
   },
   btnPress: {
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 20,
+    marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 25,
@@ -118,31 +128,62 @@ var styles = StyleSheet.create({
     textAlign: "center",
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
 
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 2,
+    // marginTop: 2,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 30,
   },
   submitButtonClicked: {
-    // backgroundColor: "#36827F",
+    // backgroundColor: "#3B6665",
     // borderWidth: 1,
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     height: 50,
     width: "80%",
     marginLeft: 40,
-    marginTop: 2,
+    // marginTop: 2,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 30,
   },
   submitContainer: {
     marginTop: 20,
-    // backgroundColor: 20,
+    backgroundColor: "white",
+  },
+  textContainer: {
+    margin: 2,
+    height: "20%",
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+  title: {
+    fontWeight: "300",
+    fontSize: 15,
+    marginLeft: 10,
+    fontSize: 20,
+    textAlign: "center",
+  },
+  progressBar: {
+    borderColor: "#B1D4D2",
+    height: 10,
+    width: "80%",
+    borderRadius: 20,
+    flexDirection: "row",
+    backgroundColor: "#B1D4D2",
+    // marginTop: 50,
+    marginLeft: 50,
+    position: "absolute",
+    bottom: -40,
+  },
+  progressBarGreen: {
+    backgroundColor: "#3B6665",
+    height: 10,
+    width: 220,
+    borderRadius: 20,
   },
 });

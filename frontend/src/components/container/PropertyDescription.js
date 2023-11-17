@@ -5,17 +5,21 @@ import { InputUI } from "../UI/input/InputUI";
 import ButtonUI from "../UI/button/ButtonUI";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ApiClient from "../service/Api";
+import LottieView from "lottie-react-native";
 
 const PropertyDescription = ({ navigation, route }) => {
   const keywords = route.params;
+  console.log(keywords);
+  const location = JSON.parse(keywords?.address).city;
+  console.log("location:;;" + location);
   const [desc, setDesc] = useState();
-  const key = `${keywords?.placeType} place type, ${keywords?.propertyType} property type, ${keywords?.address} location, ${keywords?.amount} rent`;
-  const ownerSelections = `Place Type: 2${keywords?.placeType} | Property Type: ${keywords?.propertyType} | Address: ${keywords?.address} | Amount: ${keywords?.amount}`;
+  const key = `${keywords?.placeType} place type, ${keywords?.propertyType} property type, ${location} location, ${keywords?.amount} rent`;
+  const ownerSelections = `Place Type: ${keywords?.placeType} | Property Type: ${keywords?.propertyType} | Address: ${location} | Amount: ${keywords?.amount}`;
   const [ownerData, setOwnerData] = useState();
   const api = new ApiClient("/descriptionSuggest");
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var [isSubmit, setIsSubmit] = useState(false);
-
+  const [creating, setCreating] = useState(false);
   var touchPropsSubmit = {
     underlayColor: "#ffffff00",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
@@ -30,32 +34,56 @@ const PropertyDescription = ({ navigation, route }) => {
   };
 
   const generateDesc = async (test) => {
-    // token = await AsyncStorage.getItem("token");
-    // // console.log(onBoardData);
-    // const response = await api.getDescription(token, key);
-    // // console.log("description2: " + JSON.stringify(response));
-    // const result = JSON.stringify(response);
-    // setDesc(result);
-    setDesc(test);
-    setOwnerData({ ...keywords, description: test });
+    setCreating(true);
+    token = await AsyncStorage.getItem("token");
+    const response = await api.getDescription(token, key);
+    const result = JSON.stringify(response);
+    setDesc(result.substr(1).slice(0, -1));
+    setCreating(false);
+    //setDesc(test);
+    console.log("WAIT.....");
+
+    if (result) {
+      const desc1 = result.substr(1).slice(0, -1);
+      setOwnerData({ ...keywords, description: desc1 });
+    }
   };
   //
   const nextPage = () => {
-    // console.log("ownerData:" + JSON.stringify(ownerData));
+    // setOwnerData({ ...keywords, description: "desc" });
+
+    console.log("ownerData" + JSON.stringify(ownerData));
+    console.log("ownerData in desc" + desc);
     navigation.navigate("owner_onboarding5", ownerData);
   };
   return (
-    <View style={styles.conatiner}>
-      <View>
-        <Text>Let's create a captivating property description</Text>
+    <View style={styles.container}>
+      <View style={styles.textContainer}>
+        <Text style={styles.title}>
+          Let's create a captivating property description
+        </Text>
       </View>
-      <View style={styles.card}>
-        <InputUI
-          // label="Let's create a captivating property description"
-          value={desc ? desc : ownerSelections}
-          coustomStyle={styles}
+      {creating ? (
+        <LottieView
+          autoPlay
+          style={{
+            width: "100%",
+            height: "72%",
+            backgroundColor: "white",
+            marginLeft: 15,
+          }}
+          source={require("../../../assets/RentoO - Loading Animation.json")}
+          // source={{
+          //   uri: "https://lottie.host/73bbe7a4-f718-48d6-bc72-f608432fe7c5/Vkwa7zBEZW.json",
+          // }}
         />
-      </View>
+      ) : (
+        // <InputUI value={desc ? desc : ownerSelections} coustomStyle={styles} />
+        <View style={styles.descView}>
+          <Text style={styles.descText}>{desc ? desc : ownerSelections}</Text>
+        </View>
+      )}
+
       {!desc ? (
         <View style={styles.wirteContainer}>
           <ButtonUI
@@ -72,7 +100,7 @@ const PropertyDescription = ({ navigation, route }) => {
           />
         </View>
       ) : (
-        <View>
+        <View style={styles.wirteContainer}>
           <ButtonUI
             customStyle={styles.customStyle}
             selectedItems={nextPage}
@@ -97,31 +125,67 @@ const PropertyDescription = ({ navigation, route }) => {
 export default PropertyDescription;
 
 const styles = StyleSheet.create({
-  card: {
-    width: "40%",
-    height: "50%",
-  },
-  conatiner: {
-    margin: 10,
-  },
-  subContainer: {
-    alignItems: "center",
-    justifyContent: "center",
+  descText: {
     marginTop: 10,
-    height: "70%",
+    fontFamily: "Mulish_700Bold",
+    fontSize: 18,
+  },
+  textContainer: {
+    // marginTop: 10,
+    height: "20%",
+    justifyContent: "center",
+    // backgroundColor: "white",
+  },
+  title: {
+    fontWeight: "300",
+    fontSize: 15,
+    marginLeft: 10,
+    fontSize: 20,
+    textAlign: "center",
+  },
+  card: {
+    width: "100%",
+    height: "40%",
+    borderRadius: 1,
+    backgroundColor: "yellow",
+    // flex: 10,
+  },
+  container: {
+    // margin: 10,
+    backgroundColor: "white",
+  },
+  descView: {
+    alignItems: "center",
+    // justifyContent: "center",
+    marginTop: 10,
+    // marginBottom: 10,
+    marginLeft: 20,
+    height: "40%",
+    width: "90%",
+    borderWidth: 1,
+    borderRadius: 10,
+    // alignItems: "center",
+    backgroundColor: "yellow",
+    // flex: 1,
+    // backgroundColor: "white",
+    backgroundColor: "#e6dff5",
+    borderColor: "#413855",
   },
   textInput: {
     height: "90%",
-    width: "90%",
-    marginTop: 15,
-    fontSize: 20,
+    width: "100%",
+    marginTop: 30,
+    marginBottom: 15,
+    fontSize: 18,
     textAlign: "center",
-    padding: 10,
-    backgroundColor: "#e6dff5",
-    borderColor: "#e6dff5",
+    // padding: 10,
+    backgroundColor: "white",
+    // borderColor: "#413855",
+    // borderRadius: 20,
+    borderWidth: 0,
   },
   label: {
-    fontWeight: 300,
+    fontWeight: "300",
     fontSize: 15,
     marginLeft: 10,
     fontSize: 20,
@@ -135,26 +199,27 @@ const styles = StyleSheet.create({
     marginLeft: 50,
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "30",
     width: "80%",
     marginLeft: 40,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   submitButtonClicked: {
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     height: "30",
     width: "80%",
     marginLeft: 40,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 250,
+    marginBottom: 250,
+    backgroundColor: "white",
   },
   customStyle: {
     color: "white",
@@ -165,10 +230,10 @@ const styles = StyleSheet.create({
     height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: 2,
+    // marginTop: 2,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   writesubmitButton: {
     backgroundColor: "#f56e51",
@@ -179,9 +244,30 @@ const styles = StyleSheet.create({
     marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   wirteContainer: {
+    flex: 1,
+    marginTop: "30%",
     height: 100,
+    backgroundColor: "white",
+  },
+  progressBar: {
+    borderColor: "#B1D4D2",
+    height: 10,
+    width: "80%",
+    borderRadius: 20,
+    flexDirection: "row",
+    backgroundColor: "#B1D4D2",
+    // marginTop: 50,
+    marginLeft: 50,
+    position: "absolute",
+    bottom: -120,
+  },
+  progressBarGreen: {
+    backgroundColor: "#3B6665",
+    height: 10,
+    width: 200,
+    borderRadius: 20,
   },
 });

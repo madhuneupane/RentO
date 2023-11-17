@@ -16,6 +16,7 @@ import OwnerNewListingStart from "../container/OwnerNewListingStart";
 import { useIsFocused } from "@react-navigation/native";
 import FilledAlert from "../../../assets/Filled-Alerts.svg";
 import FilledProfile from "../../../assets/Filled-Profile.svg";
+import Alerts from "../container/Alert";
 const Tab = createMaterialBottomTabNavigator();
 
 const OwnerTabs = () => {
@@ -82,7 +83,7 @@ const OwnerTabs = () => {
 
       <Tab.Screen
         name="alert"
-        component={OwnerOnboarding1}
+        component={Alerts}
         options={{
           tabBarLabel: "Alerts",
           tabBarIcon: ({ color, focused }) => {

@@ -74,40 +74,40 @@ const CoverImagePicker = ({ navigation, route }) => {
   };
   const saveImages = async () => {
     setFirebaseImage(true);
-    //     console.log("WE ARE INSIDE", ownerData.images);
-    //     if (ownerData.images) {
-    //       for (const imageKey in ownerData.images) {
-    //         const imageUri = ownerData.images[imageKey];
+      // console.log("WE ARE INSIDE", ownerData.images);
+        //if (ownerData.images) {
+          for (let i=0; i <4;i++) {
+            const imageUri = ownerData.coverimages[i];
 
-    //         if (imageUri) {
-    //           const blob = await new Promise((resolve, reject) => {
-    //             const xhr = new XMLHttpRequest();
-    //             xhr.onload = function () {
-    //               resolve(xhr.response);
-    //             };
+            if (imageUri) {
+              const blob = await new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.onload = function () {
+                  resolve(xhr.response);
+                };
 
-    //             xhr.onerror = function (e) {
-    //               console.log(e);
-    //               reject(new TypeError("Network request failed"));
-    //             };
-    //             xhr.responseType = "blob";
-    //             xhr.open("GET", imageUri, true);
-    //             xhr.send(null);
-    //           });
-    //           //console.log("line 60");
+                xhr.onerror = function (e) {
+                  console.log(e);
+                  reject(new TypeError("Network request failed"));
+                };
+                xhr.responseType = "blob";
+                xhr.open("GET", imageUri, true);
+                xhr.send(null);
+              });
+              //console.log("line 60");
 
-    //           const fileRef = ref(getStorage(), `RentO/${imageUri}`);
-    //           const result1 = await uploadBytes(fileRef, blob);
-    //           // console.log("line 64");
-    //           // We're done with the blob, close and release it
-    //           blob.close();
-    //           //console.log("line 67");
-    //           const h = await getDownloadURL(fileRef);
-    //           console.log(h);
-    //           ownerData.images[imageKey] = h;
-    //         }
-    //       }
-    //     }
+              const fileRef = ref(getStorage(), `RentO/${imageUri}`);
+              const result1 = await uploadBytes(fileRef, blob);
+              // console.log("line 64");
+              // We're done with the blob, close and release it
+              blob.close();
+              //console.log("line 67");
+              const h = await getDownloadURL(fileRef);
+              console.log(h);
+              ownerData.coverimages[i] = h;
+            }
+          }
+       // }
     setFirebaseImage(false);
   };
   return (

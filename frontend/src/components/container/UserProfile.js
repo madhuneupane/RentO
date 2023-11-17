@@ -1,11 +1,13 @@
 import React from "react";
-import { Text, View, Image, StyleSheet } from "react-native";
+import { Text, View, Image, StyleSheet, ScrollView } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import OwnerPosts from "./OwnerPosts";
 
 const UserProfile = () => {
+  
   return (
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.container}>
       <View style={styles.edit}>
         <MaterialCommunityIcons
@@ -40,17 +42,22 @@ const UserProfile = () => {
         <Text style={{ marginTop: 10, fontSize: 20, fontWeight: "bold" }}>
           My Posts
         </Text>
-
-        <OwnerPosts />
+        <OwnerPosts/>   
       </View>
     </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    marginTop:20,
+    flexGrow: 1,
+    alignItems: "center",
+    height:1300
+  },
   container: {
     flex: 1,
-
     alignItems: "center",
   },
   imageContainer: {

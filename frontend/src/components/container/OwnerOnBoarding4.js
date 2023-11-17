@@ -82,7 +82,8 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     height: 50,
     paddingLeft: 15,
-    fontFamily:"Mulish_400Regular",
+    color: "#5C5D8D",
+    fontFamily:"Mulish_400Regular_Italic",
   },
   button: {
     borderWidth: 1.5,
@@ -103,8 +104,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontWeight: "300",
-    
+    marginTop: "10",
+    color: "#413855",
     //marginLeft: 10,
     fontSize: 22,
     textAlign: "center",
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 150,
+    marginTop: 290,
   },
   customStyle: {
     color: "white",

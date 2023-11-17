@@ -54,7 +54,7 @@ function sortAndRenderList() {
   const swiperWrapper = swiperContainer.querySelector(".swiper-wrapper");
   swiperWrapper.innerHTML = "";
 
-  RenderList();
+  RenderListForBoth();
 }
 
 //Init Data
@@ -63,7 +63,7 @@ import config from "./web_config.js";
 tt.setProductInfo("RentO_Map", "0.6");
 
 //Global var
-const locations = [];
+let locations = [];
 const markerCoordinates = [];
 var markerInstances = [];
 const IDArray = [];
@@ -188,26 +188,63 @@ ttSearchBox.on("tomtom.searchbox.resultfocused", handleResultSelection);
 ttSearchBox.on("tomtom.searchbox.resultselected", handleResultSelection);
 
 //Getting data from the API
-function fetchData() {
-  const url = "https://api.rent-o.com/api/fetchAllProperty"; // Modify the URL to the new API endpoint
-  return fetch(url)
+async function fetchDataFromBothAPIs() {
+  const rentOUrl = "https://api.rent-o.com/api/fetchAllProperty";
+  const craigslistUrl = "https://api.rent-o.com/api/craigExtract";
+
+  const rentOPromise = fetch(rentOUrl)
     .then((response) => {
       if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.status}`);
+        throw new Error(
+          `Rent-O API Network response was not ok: ${response.status}`
+        );
       }
       return response.json();
     })
     .then((data) => {
-      //console.log(data);
       if (Array.isArray(data)) {
-        locations.push(...data);
+        return data;
       } else {
-        throw new Error("Invalid data format: Data should be an array.");
+        throw new Error(
+          "Rent-O API Invalid data format: Data should be an array."
+        );
       }
     })
     .catch((error) => {
-      console.error("Error fetching data:", error);
+      console.error("Rent-O API Error fetching data:", error);
+      return [];
     });
+
+  const craigslistPromise = fetch(craigslistUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(
+          `Craigslist API Network response was not ok: ${response.status}`
+        );
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (Array.isArray(data)) {
+        return data;
+      } else {
+        throw new Error(
+          "Craigslist API Invalid data format: Data should be an array."
+        );
+      }
+    })
+    .catch((error) => {
+      console.error("Craigslist API Error fetching data:", error);
+      return [];
+    });
+  return Promise.all([rentOPromise, craigslistPromise]).then((results) => {
+    // Concatenate RentO data (results[0]) and Craigslist data (results[1])
+    const concatenatedData = results[0].concat(results[1]);
+    locations = concatenatedData;
+
+    //optional
+    return concatenatedData;
+  });
 }
 
 // Update search options to provide geobiasing based on current map center
@@ -419,85 +456,104 @@ function loadList() {
     resultsCountElement.textContent = `${resultsCount} results in view`;
   }
 
-  RenderList();
+  RenderListForBoth();
 }
 
-function RenderList() {
-  //Randomly generate coordinates
-  const minLongitude = -123.178899;
-  const maxLongitude = -123.099158;
-  const minLatitude = 49.223433;
-  const maxLatitude = 49.299;
-
+function RenderListForBoth() {
   locations.forEach((property, index) => {
     const {
       _id,
       title,
       type,
       location,
-      // longitude,
-      // latitude,
       roomNumbers,
       bathRoomNumbers,
       rent,
       photoUrl,
+      coverImage,
       availableDate,
     } = property;
 
     IDArray.push(_id);
 
-    const randomLongitude =
-      Math.random() * (maxLongitude - minLongitude) + minLongitude;
-    const randomLatitude =
-      Math.random() * (maxLatitude - minLatitude) + minLatitude;
-    //console.log("log=" + randomLongitude + ", and lat=" + randomLatitude);
-
-    markerCoordinates.push([
-      parseFloat(randomLongitude),
-      parseFloat(randomLatitude),
-    ]);
-
-    const customerReview = Math.random() * 2 + 2;
-
-    let daysDifference = 0;
-    if (availableDate) {
-      const currentDate = new Date();
-      const availableDateTime = new Date(availableDate);
-      const timeDifference =
-        availableDateTime.getTime() - currentDate.getTime();
-      daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
-    }
-
-    let starIcons = "";
-    for (let i = 0; i < Math.floor(customerReview); i++) {
-      starIcons += '<i class="fa fa-star"></i>';
-    }
+    const isRentOProperty = Boolean(property.images);
 
     const swiperSlide = document.createElement("div");
     swiperSlide.classList.add("swiper-slide");
 
-    const imageDiv = document.createElement("div");
-    imageDiv.classList.add("image-div");
-    imageDiv.style.height = "55%";
+    if (isRentOProperty) {
+      const locationData = JSON.parse(location);
+      const { longitude, latitude, city, province } = locationData;
 
-    // const imageElement = document.createElement("img");
-    // imageElement.src = "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1469&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-    // imageDiv.appendChild(imageElement);
+      markerCoordinates.push([parseFloat(longitude), parseFloat(latitude)]);
 
-    imageDiv.style.backgroundImage = `url("https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1469&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`;
+      const customerReview = Math.random() * 2 + 2;
 
-    imageDiv.style.backgroundSize = "cover";
+      let daysDifference = 0;
+      if (availableDate) {
+        const currentDate = new Date();
+        const availableDateTime = new Date(availableDate);
+        const timeDifference =
+          availableDateTime.getTime() - currentDate.getTime();
+        daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+      }
 
-    imageDiv.style.backgroundPosition = "center";
+      let starIcons = "";
+      for (let i = 0; i < Math.floor(customerReview); i++) {
+        starIcons += '<i class="fa fa-star"></i>';
+      }
 
-    const detailsPanel = document.createElement("div");
-    detailsPanel.classList.add("details-panel");
-    detailsPanel.style.height = "45%";
+      const imageDiv = document.createElement("div");
+      imageDiv.classList.add("image-div");
+      imageDiv.style.height = "55%";
 
-    detailsPanel.innerHTML = `
+      const verifiedLabel = document.createElement("div");
+      verifiedLabel.classList.add("verified-label");
+      verifiedLabel.style.position = "absolute";
+      verifiedLabel.style.top = "15px";
+      verifiedLabel.style.left = "25px";
+      verifiedLabel.style.fontFamily = "Mulish";
+      verifiedLabel.style.padding = "10px";
+      verifiedLabel.style.borderRadius = "20px";
+      verifiedLabel.style.backgroundColor = "#36827F";
+      verifiedLabel.style.color = "white";
+
+      const checkMarkCircle = document.createElement("div");
+      checkMarkCircle.style.backgroundColor = "white";
+      checkMarkCircle.style.width = "20px";
+      checkMarkCircle.style.height = "20px";
+      checkMarkCircle.style.borderRadius = "50%";
+      checkMarkCircle.style.display = "inline-block";
+      checkMarkCircle.style.marginRight = "5px";
+      checkMarkCircle.style.textAlign = "center";
+      checkMarkCircle.style.lineHeight = "20px";
+
+      const checkMarkIcon = document.createElement("i");
+      checkMarkIcon.classList.add("fa", "fa-check");
+      checkMarkIcon.style.color = "#36827F";
+
+      checkMarkCircle.appendChild(checkMarkIcon);
+
+      verifiedLabel.appendChild(checkMarkCircle);
+
+      verifiedLabel.innerHTML += " Verified";
+
+      imageDiv.appendChild(verifiedLabel);
+
+      imageDiv.style.backgroundImage = `url(${coverImage[0]})`;
+
+      imageDiv.style.backgroundSize = "cover";
+
+      imageDiv.style.backgroundPosition = "center";
+
+      const detailsPanel = document.createElement("div");
+      detailsPanel.classList.add("details-panel");
+      detailsPanel.style.height = "45%";
+
+      detailsPanel.innerHTML = `
     <div class="left-column">
     <div class="detail rent"><span class="rent">$${rent}</span></div>
-    <div class="detail location"><span class="location">Vancouver, BC</span></div>
+    <div class="detail location"><span class="location">${city}, ${province}</span></div>
     <div class="detail rooms"><span class="roomNumbers">${roomNumbers} bd</span> | <span class="bathRoomNumbers">${bathRoomNumbers} ba</span></div>
     </div>
     <div class="right-column">
@@ -507,18 +563,66 @@ function RenderList() {
     }</div>
     </div>
     `;
+      swiperSlide.appendChild(imageDiv);
+      swiperSlide.appendChild(detailsPanel);
+      swiperContainer.querySelector(".swiper-wrapper").appendChild(swiperSlide);
+    } else {
+      //Crag data-> slider
+      const { link, metaData, body, imageList } = property;
+      console.log("Crag Link=" + link);
+      console.log("Crag meta=" + metaData.longitude);
+      console.log("Crag imageList=" + imageList);
 
-    // <div class="detail star">${starIcons}</div>
+      //Get Rent
+      const rentMatch = body.match(/Monthly Rent: \$([\d,.]+)/);
+      let cargRent = 0;
 
-    swiperSlide.appendChild(imageDiv);
-    swiperSlide.appendChild(detailsPanel);
+      if (rentMatch && rentMatch[1]) {
+        const rentString = rentMatch[1];
+        cargRent = parseFloat(rentString.replace(/,/g, ""));
+      } else {
+        cargRent = "N/A";
+      }
 
-    swiperContainer.querySelector(".swiper-wrapper").appendChild(swiperSlide);
+      console.log("current index=" + index + ", and rent =" + cargRent);
+      locations[index].rent = cargRent;
+
+      markerCoordinates.push([
+        parseFloat(metaData.longitude),
+        parseFloat(metaData.latitude),
+      ]);
+
+      const imageDiv = document.createElement("div");
+      imageDiv.classList.add("image-div");
+      imageDiv.style.height = "55%";
+      imageDiv.style.backgroundImage = `url(${imageList})`;
+      imageDiv.style.backgroundSize = "cover";
+      imageDiv.style.backgroundPosition = "center";
+
+      const detailsPanel = document.createElement("div");
+      detailsPanel.classList.add("details-panel");
+      detailsPanel.style.height = "45%";
+
+      detailsPanel.innerHTML = `
+    <div class="left-column">
+    <div class="detail rent"><span class="rent">${cargRent}</span></div>
+    <div class="detail location"><span class="location">${metaData.address.addressLocality}, ${metaData.address.addressCountry}</span></div>
+    <div class="detail link"><a href="${link}" target="_blank">Link to Craigslist</a></div>
+    </div>
+    <div class="right-column">
+    <i class="far fa-heart"></i>
+    </div>
+    `;
+      swiperSlide.appendChild(imageDiv);
+      swiperSlide.appendChild(detailsPanel);
+      swiperContainer.querySelector(".swiper-wrapper").appendChild(swiperSlide);
+    }
   });
 }
+
 async function initializeApp() {
   try {
-    await fetchData();
+    await fetchDataFromBothAPIs();
     loadList();
     initMarkers();
   } catch (error) {
@@ -548,8 +652,10 @@ function updateNormalMarkersRentText() {
       rentText = "$";
     } else if (rentValue >= 100 && rentValue <= 1000) {
       rentText = "$$";
-    } else {
+    } else if (rentValue > 1000) {
       rentText = "$$$";
+    } else {
+      rentText = "(N/A)";
     }
 
     var messageBody = marker.getElement().querySelector(".message-body");
@@ -576,8 +682,10 @@ function initMarkers() {
       rentText = "$";
     } else if (rentValue >= 100 && rentValue <= 1000) {
       rentText = "$$";
-    } else {
+    } else if (rentValue > 1000) {
       rentText = "$$$";
+    } else {
+      rentText = "(N/A)";
     }
 
     var messageIcon = document.createElement("div");
@@ -624,7 +732,11 @@ function initMarkers() {
 
       // Update the messageBody.textContent of the current marker with the rent value
       var rentValue = locations[index].rent;
-      messageBody.textContent = "$" + rentValue;
+      if (typeof rentValue !== "undefined") {
+        messageBody.textContent = "$" + rentValue;
+      } else {
+        messageBody.textContent = "N/A";
+      }
 
       // Sync with swiper
       swiper.slideTo(index);

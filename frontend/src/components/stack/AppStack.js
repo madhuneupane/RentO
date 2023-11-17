@@ -43,7 +43,7 @@ const AppStack = () => {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: "#36827F",
+      primary: "#3B6665",
       background: "white",
       // height:"100%"
     },
@@ -95,7 +95,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -141,7 +141,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -151,7 +151,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -161,7 +161,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -171,7 +171,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -181,7 +181,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -191,7 +191,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -201,7 +201,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -211,7 +211,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -221,7 +221,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -231,7 +231,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -241,7 +241,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -251,7 +251,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -261,7 +261,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -271,7 +271,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -281,7 +281,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -291,7 +291,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -301,7 +301,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />
@@ -313,7 +313,8 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#FFF",
+            headerBackground: () => <Title />,
             headerBackTitle: false,
           }}
         />
@@ -323,7 +324,7 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#36827F",
+            headerTintColor: "#3B6665",
             headerBackTitle: false,
           }}
         />

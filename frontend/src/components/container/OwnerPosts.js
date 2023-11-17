@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily:"Mulish_400Regular",
   },
   date: {
     marginTop: 5,
@@ -103,8 +104,8 @@ const styles = StyleSheet.create({
     // Other text styles for data.location
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "50",
     width: "80%",
     marginLeft: 40,

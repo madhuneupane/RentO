@@ -1,13 +1,11 @@
 const schemas = require("../models/userModel");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt"); // Import the bcrypt library
+const bcrypt = require("bcrypt"); 
 
 const addNewUser = (req, res) => {
-  console.log(req.body);
 
-  const { email, password } = req.body;
-
-  // Hash the user's password before saving it
+  const { firstName, lastName, email, password, phonenumber, isOwner } = req.body;
+  
   bcrypt.hash(password, 10, (err, hashedPassword) => {
     if (err) {
       console.error("Error hashing password:", err);
@@ -15,8 +13,13 @@ const addNewUser = (req, res) => {
     }
 
     const newUser = new schemas.user({
+      firstName,
+      lastName,
       email,
-      password: hashedPassword, // Store the hashed password
+      password: hashedPassword,
+      phonenumber,
+      isOwner,
+      
     });
 
     newUser

@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 50,
+    marginTop: 55,
     marginLeft: 55,
   },
   progressBarGreen: {
@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
     width: 80,
     borderRadius: 20,
   },
-
   subContainer: {
     alignItems: "center",
     height: 80,
@@ -91,9 +90,10 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     textAlign: "justify",
     height: 50,
+    color: "#5C5D8D",
     //marginTop: 10,
     paddingLeft: 15,
-    fontFamily:"Mulish_400Regular",
+    fontFamily:"Mulish_400Regular_Italic",
   },
   button: {
     borderWidth: 1.5,
@@ -119,13 +119,13 @@ const styles = StyleSheet.create({
     width:"70%",
     marginLeft: 50,
     fontSize: 22,
+    color: "#413855",
     textAlign: "center",
     fontFamily: "Mulish_700Bold"
   },
   submitButton: {
     backgroundColor: "#3B6665",
     borderColor: "#3B6665",
-
     height: "50",
     width: "80%",
     marginLeft: 40,
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 150,
+    marginTop: 200,
   },
   customStyle: {
     color: "white",

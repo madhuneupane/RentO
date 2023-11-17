@@ -14,7 +14,7 @@ export default Title;
 const styles = StyleSheet.create({
   container: {
     marginTop: -30,
-    backgroundColor: "#36827F",
+    backgroundColor: "#3B6665",
     alignItems: "center",
     justifyContent: "center",
     width: "100%",

@@ -13,8 +13,8 @@ const OwnerNewListingStart = ({ navigation, route }) => {
       <TouchableOpacity onPress={start}>
         <View style={styles.button}>
           <NewListing
-            width={"70"}
-            height={"40"}
+            width={"56"}
+            height={"56"}
             fill="white"
             // style={{ backgroundColor: "white" }}
           />
@@ -36,27 +36,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 60,
-    marginLeft: 110,
-    backgroundColor: "#36827F",
-    width: "40%",
-    height: "50%",
+    marginLeft: 90,
+    marginRight: 90,
+    backgroundColor: "#3B6665",
+    width: "95",
+    height: "55%",
     // position: "absolute",
     // bottom: 30,
     borderWidth: 1,
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     padding: 10,
-    borderRadius: 5,
+    borderRadius : "10.81"
   },
   text: {
-    marginTop: 60,
-    marginLeft: 60,
-    fontSize: 25,
+    color: "#413855",
+    marginTop: 120,
+    marginLeft: 65,
+    fontSize: 24,
     fontFamily: "Mulish_700Bold",
   },
   newlisting: {
-    marginTop: 10,
+    marginTop: 5,
     color: "white",
     fontFamily: "Mulish_700Bold",
-    fontSize: 18,
+    fontSize: 22,
+    
   },
 });

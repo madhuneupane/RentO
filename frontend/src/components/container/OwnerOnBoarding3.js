@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     marginLeft: 55,
   },
   progressBarGreen: {
-    backgroundColor: "#36827F",
+    backgroundColor: "#3B6665",
     height: 10,
     width: 110,
     borderRadius: 20,
@@ -162,8 +162,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "50",
     width: "80%",
     marginLeft: 40,

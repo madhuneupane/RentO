@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     //border: "2",
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     backgroundColor: "#E9E7EE",
     //padding: 10,
     // height: 20,
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   type: {
     paddingRight: 55,
-    color: "#36827F",
+    color: "#3B6665",
     fontFamily: "Mulish_700Bold",
     fontSize: 15,
     textAlign: "center",
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   },
   location: {
     paddingRight: 55,
-    color: "#36827F",
+    color: "#3B6665",
     fontFamily: "Mulish_700Bold",
     fontSize: 15,
     textAlign: "center",
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
     // Other text styles for data.location
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "50",
     width: "80%",
     marginLeft: 40,

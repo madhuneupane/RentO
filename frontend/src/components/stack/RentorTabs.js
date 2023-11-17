@@ -13,16 +13,23 @@ import FilledSearch from "../../../assets/Filled-SearchExplore.svg";
 
 const Tab = createMaterialBottomTabNavigator();
 const RentorTabs = ({ navigation }) => {
-  const color = "#36827F";
+  const color = "#3B6665";
   return (
     <Tab.Navigator
       initialRouteName="rentor_welcome"
-      activeColor="#36827F"
+      activeColor="#3B6665"
       options={{ headerShown: false }}
-      labelStyle={{ fontSize: 12, fontWeight: "bold", color: "#36827F" }}
+      labelStyle={{ fontSize: 12, fontWeight: "bold", color: "#3B6665" }}
       ScreenOptions={{
         headerShown: false,
         tabBarActiveTintColor: "white",
+      }}
+      barStyle={{
+        backgroundColor: "#E6DFF6",
+        borderRadius: 25,
+        height: "12%",
+        overflow: "hidden",
+        padding: 5,
       }}
     >
       <Tab.Screen
@@ -55,8 +62,8 @@ const RentorTabs = ({ navigation }) => {
                 <FilledFavourite
                   width={30}
                   height={30}
-                  fill="#36827F"
-                  stroke="#36827F"
+                  fill="#3B6665"
+                  stroke="#3B6665"
                 />
               );
             } else {
@@ -64,8 +71,8 @@ const RentorTabs = ({ navigation }) => {
                 <Favourite
                   width={30}
                   height={30}
-                  fill="#36827F"
-                  stroke="#36827F"
+                  fill="#3B6665"
+                  stroke="#3B6665"
                 />
               );
             }

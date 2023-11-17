@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     width: "90%",
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     backgroundColor: "#E9E7EE",
     
   },
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   type: {
     //paddingRight: 65,
-    color: "#36827F",
+    color: "#3B6665",
     fontFamily: "Mulish_700Bold",
     fontSize: 18,
     textAlign: "center",
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   location: {
     //paddingRight: 65,
-    color: "#36827F",
+    color: "#3B6665",
     fontFamily: "Mulish_700Bold",
     fontSize: 17,
     textAlign: "center",

@@ -20,13 +20,20 @@ const Tab = createMaterialBottomTabNavigator();
 
 const OwnerTabs = () => {
   const isFocused = useIsFocused();
-  const color = "#36827F";
+  const color = "#3B6665";
   return (
     <Tab.Navigator
       initialRouteName="owner_welcome"
-      activeColor="#36827F"
-      labelStyle={{ fontSize: 12, fontWeight: "bold", color: "#36827F" }}
+      activeColor="#3B6665"
+      labelStyle={{ fontSize: 12, fontWeight: "bold", color: "#3B6665" }}
       ScreenOptions={{ headerShown: false, tabBarActiveTintColor: "white" }}
+      barStyle={{
+        backgroundColor: "#E6DFF6",
+        borderRadius: 25,
+        height: "12%",
+        overflow: "hidden",
+        padding: 5,
+      }}
     >
       <Tab.Screen
         name="owner_welcome"
@@ -40,8 +47,8 @@ const OwnerTabs = () => {
                 <FilledMyListing
                   width={30}
                   height={30}
-                  fill="#36827F"
-                  stoke="#36827F"
+                  fill="#3B6665"
+                  stoke="#3B6665"
                 />
               );
             } else {
@@ -49,8 +56,8 @@ const OwnerTabs = () => {
                 <MyListing
                   width={30}
                   height={30}
-                  fill="#36827F"
-                  stoke="#36827F"
+                  fill="#3B6665"
+                  stoke="#3B6665"
                 />
               );
             }
@@ -65,9 +72,9 @@ const OwnerTabs = () => {
           tabBarLabel: "New Listing",
           tabBarIcon: ({ color, focused }) => {
             if (focused) {
-              return <FilledNewListing width={30} height={30} fill="#36827F" />;
+              return <FilledNewListing width={30} height={30} fill="#3B6665" />;
             } else {
-              return <NewListing width={30} height={30} fill="#36827F" />;
+              return <NewListing width={30} height={30} fill="#3B6665" />;
             }
           },
         }}
@@ -84,13 +91,13 @@ const OwnerTabs = () => {
                 <FilledAlert
                   width={30}
                   height={30}
-                  fill="#36827F"
-                  stroke="#36827F"
+                  fill="#3B6665"
+                  stroke="#3B6665"
                 />
               );
             } else {
               return (
-                <Alert width={30} height={30} fill="#36827F" stroke="#36827F" />
+                <Alert width={30} height={30} fill="#3B6665" stroke="#3B6665" />
               );
             }
           },
@@ -108,8 +115,8 @@ const OwnerTabs = () => {
                 <FilledProfile
                   width={30}
                   height={30}
-                  fill="#36827F"
-                  stroke="#36827F"
+                  fill="#3B6665"
+                  stroke="#3B6665"
                 />
               );
             } else {
@@ -117,8 +124,8 @@ const OwnerTabs = () => {
                 <Profile
                   width={30}
                   height={30}
-                  fill="#36827F"
-                  stroke="#36827F"
+                  fill="#3B6665"
+                  stroke="#3B6665"
                 />
               );
             }

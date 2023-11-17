@@ -31,10 +31,10 @@ const TenantInterested = ({ navigation, route }) => {
                   source={require("../../../assets/Kayla-Person.jpg")}
                   style={styles.image}
                 />
-
-                <Text style={styles.name}>{item.firstName}</Text>
-                <Text style={styles.email}>connect: madhu@gmail.com</Text>
-
+                <View style={styles.desc}>
+                  <Text style={styles.name}>{item.firstName}</Text>
+                  <Text style={styles.email}>connect: madhu@gmail.com</Text>
+                </View>
               </View>
             );
           }
@@ -48,7 +48,9 @@ const styles = StyleSheet.create({
   image: {
     width: 80,
     height: 80,
-    margin: 10,
+    margin: 5,
+    borderRadius:50,
+    marginTop: 13,
   },
   container: {
     margin: 10,
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   heading: {
-    fontSize: 26,
+    fontSize: 28,
     color: "#413855",
     fontFamily: "Mulish_700Bold",
   },
@@ -69,29 +71,29 @@ const styles = StyleSheet.create({
   text: {
     color: "#5C5D8D",
     fontSize: 18,
-    marginTop: 10,
+    marginTop: 18,
     fontFamily: "Mulish_500Medium",
     textAlign: "center"
+  },
+  desc: {
+    justifyContent: "center",
+    marginLeft: 15,
   },
   card: {
     margin: 30,
     borderWidth: 1,
     borderRadius: 8,
     width: "95%",
-    height: "25%",
-    borderColor: "#36827F",
+    height: "28%",
+    borderColor: "#3B6665",
     backgroundColor: "#E9E7EE",
-    justifyContent: "center",
-
     flexDirection: "row",
-
-    alignItems: "left",
-    paddingLeft: 50
+    paddingLeft: 20
   },
   name: {
     color: "#2B6866",
     fontSize: 18,
-    fontFamily: "Mulish_600SemiBold",
+    fontFamily: "Mulish_700Bold",
 
   },
   email: {

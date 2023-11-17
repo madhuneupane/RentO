@@ -106,7 +106,7 @@ const OwnerNewPost = ({ navigation, route }) => {
                 <MaterialCommunityIcons
                   name="cookie-edit"
                   size={30}
-                  color={"#36827F"}
+                  color={"#3B6665"}
                 ></MaterialCommunityIcons>
               </View>
               <View>
@@ -123,7 +123,7 @@ const OwnerNewPost = ({ navigation, route }) => {
                 <MaterialCommunityIcons
                   name="cookie-edit"
                   size={30}
-                  color={"#36827F"}
+                  color={"#3B6665"}
                 ></MaterialCommunityIcons>
               </View>
               <Text style={styles.title}>Description</Text>
@@ -136,7 +136,7 @@ const OwnerNewPost = ({ navigation, route }) => {
                 <MaterialCommunityIcons
                   name="cookie-edit"
                   size={30}
-                  color={"#36827F"}
+                  color={"#3B6665"}
                 ></MaterialCommunityIcons>
               </View>
               <Text style={styles.title}>Amenities</Text>
@@ -172,7 +172,7 @@ const OwnerNewPost = ({ navigation, route }) => {
                 <MaterialCommunityIcons
                   name="cookie-edit"
                   size={30}
-                  color={"#36827F"}
+                  color={"#3B6665"}
                 ></MaterialCommunityIcons>
               </View>
               <Text style={styles.title}>Property Owner</Text>
@@ -195,7 +195,7 @@ const OwnerNewPost = ({ navigation, route }) => {
                 <MaterialCommunityIcons
                   name="cookie-edit"
                   size={30}
-                  color={"#36827F"}
+                  color={"#3B6665"}
                 ></MaterialCommunityIcons>
               </View>
               <Text style={styles.title}>Location</Text>
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   verifiedContainer: {
-    backgroundColor: "#36827F",
+    backgroundColor: "#3B6665",
     width: 90,
     height: 30,
     flexDirection: "row",
@@ -288,7 +288,7 @@ const styles = StyleSheet.create({
   },
   rent: {
     fontSize: 30,
-    color: "#36827F",
+    color: "#3B6665",
     fontWeight: "bold",
   },
   location: {
@@ -308,8 +308,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
 
     height: "50",
     width: "80%",

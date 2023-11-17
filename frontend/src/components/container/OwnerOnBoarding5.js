@@ -87,7 +87,7 @@ var styles = StyleSheet.create({
     fontSize: 20,
   },
   btnNormal: {
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     // borderWidth: 1,
     // backgroundColor: "#FBEDEA",
     height: "50",
@@ -102,7 +102,7 @@ var styles = StyleSheet.create({
     // alignItems: "center",
   },
   btnPress: {
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     height: "50",
     width: "80%",
     marginLeft: 40,
@@ -128,8 +128,8 @@ var styles = StyleSheet.create({
     textAlign: "center",
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
 
     height: "50",
     width: "80%",
@@ -140,9 +140,9 @@ var styles = StyleSheet.create({
     borderRadius: 30,
   },
   submitButtonClicked: {
-    // backgroundColor: "#36827F",
+    // backgroundColor: "#3B6665",
     // borderWidth: 1,
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     height: 50,
     width: "80%",
     marginLeft: 40,
@@ -181,7 +181,7 @@ var styles = StyleSheet.create({
     bottom: -40,
   },
   progressBarGreen: {
-    backgroundColor: "#36827F",
+    backgroundColor: "#3B6665",
     height: 10,
     width: 220,
     borderRadius: 20,

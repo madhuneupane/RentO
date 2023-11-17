@@ -3,7 +3,9 @@ import { Text, View, Image, StyleSheet, ScrollView } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import OwnerPosts from "./OwnerPosts";
 const UserProfile = () => {
+  
   return (
+
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.container}>
         <View style={styles.edit}>
@@ -51,6 +53,12 @@ const UserProfile = () => {
 };
 export default UserProfile
 const styles = StyleSheet.create({
+  scrollContainer: {
+    marginTop:20,
+    flexGrow: 1,
+    alignItems: "center",
+    height:1300
+  },
   container: {
     marginTop: 15,
     flex: 1,

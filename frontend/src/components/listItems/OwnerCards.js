@@ -13,7 +13,7 @@ const OwnerCards = ({ data }) => {
 
       <View style={styles.viewContainer}>
         <Card.Image
-          source={{ uri: data.images.bedrooms.back }}
+          source={{ uri: data.images.bedrooms?.back }}
           style={styles.image}
         ></Card.Image>
       </View>

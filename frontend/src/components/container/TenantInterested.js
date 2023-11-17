@@ -32,8 +32,8 @@ const TenantInterested = ({ navigation, route }) => {
                   style={styles.image}
                 />
                 <View style={styles.desc}>
-                  <Text style={styles.name}>{item.firstName}</Text>
-                  <Text style={styles.email}>connect: madhu@gmail.com</Text>
+                  <Text style={styles.name}>{item.firstName} {item.lastName}</Text>
+                  <Text style={styles.email}>connect: {item.email}</Text>
                 </View>
               </View>
             );

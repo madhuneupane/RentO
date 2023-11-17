@@ -68,9 +68,10 @@ const PropertyDescription = ({ navigation, route }) => {
           autoPlay
           style={{
             width: "100%",
-            height: "72%",
+            height: "62%",
             backgroundColor: "white",
-            marginLeft: 15,
+            marginLeft: 28,
+            marginBottom: 100,
           }}
           source={require("../../../assets/RentoO - Loading Animation.json")}
           // source={{
@@ -93,7 +94,7 @@ const PropertyDescription = ({ navigation, route }) => {
             touchProps={touchPropsSubmit}
           />
           <ButtonUI
-            customStyle={styles.customStyle}
+            customStyle={styles.customStyleOrange}
             selectedItems={() => generateDesc("tests")}
             item={{ value: "Continue with my text" }}
             touchProps={touchProps}
@@ -108,7 +109,7 @@ const PropertyDescription = ({ navigation, route }) => {
             touchProps={touchPropsSubmit}
           />
           <ButtonUI
-            customStyle={styles.customStyle}
+            customStyle={styles.customStyleOrange}
             selectedItems={() => generateDesc("tests")}
             item={{ value: "Make my own edit" }}
             touchProps={touchProps}
@@ -128,7 +129,9 @@ const styles = StyleSheet.create({
   descText: {
     marginTop: 10,
     fontFamily: "Mulish_700Bold",
-    fontSize: 18,
+    fontSize: 16,
+    padding:10,
+    color: "#5C5D8D",
   },
   textContainer: {
     // marginTop: 10,
@@ -137,15 +140,18 @@ const styles = StyleSheet.create({
     // backgroundColor: "white",
   },
   title: {
-    fontWeight: "300",
-    fontSize: 15,
-    marginLeft: 10,
-    fontSize: 20,
+    width: "70%",
+    marginLeft: 60,
+    marginTop: 20,
+    color: "#413855",
+    //marginLeft: 10,
+    fontSize: 22,
     textAlign: "center",
+    fontFamily: "Mulish_700Bold"
   },
   card: {
     width: "100%",
-    height: "40%",
+    height: "20%",
     borderRadius: 1,
     backgroundColor: "yellow",
     // flex: 10,
@@ -160,9 +166,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
     // marginBottom: 10,
     marginLeft: 20,
-    height: "40%",
+    height: "49.5%",
     width: "90%",
     borderWidth: 1,
+    color: "#5C5D8D",
     borderRadius: 10,
     // alignItems: "center",
     backgroundColor: "yellow",
@@ -172,6 +179,7 @@ const styles = StyleSheet.create({
     borderColor: "#413855",
   },
   textInput: {
+    color : "#5C5D8D",
     height: "90%",
     width: "100%",
     marginTop: 30,
@@ -220,17 +228,28 @@ const styles = StyleSheet.create({
   buttonContainer: {
     marginBottom: 250,
     backgroundColor: "white",
+    fontFamily: "Mulish_700Bold",
   },
   customStyle: {
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily: "Mulish_700Bold",
+  },
+  customStyleOrange: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "#413855",
+    fontFamily: "Mulish_700Bold",
   },
   writeButtonClicked: {
+    backgroundColor: "#FBEDEA",
+    borderColor: "#f56e51",
     height: "50",
     width: "80%",
     marginLeft: 40,
-    // marginTop: 2,
+    marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
@@ -248,7 +267,7 @@ const styles = StyleSheet.create({
   },
   wirteContainer: {
     flex: 1,
-    marginTop: "30%",
+    marginTop: "15%",
     height: 100,
     backgroundColor: "white",
   },
@@ -261,8 +280,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#B1D4D2",
     // marginTop: 50,
     marginLeft: 50,
+    marginTop: 10,
     position: "absolute",
-    bottom: -120,
+    bottom: -78,
   },
   progressBarGreen: {
     backgroundColor: "#3B6665",

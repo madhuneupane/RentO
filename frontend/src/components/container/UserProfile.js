@@ -3,9 +3,7 @@ import { Text, View, Image, StyleSheet, ScrollView } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import OwnerPosts from "./OwnerPosts";
 const UserProfile = () => {
-  
   return (
-
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.container}>
         <View style={styles.edit}>
@@ -19,8 +17,7 @@ const UserProfile = () => {
           <Image
             style={styles.image}
             source={{
-              uri:
-                "https://firebasestorage.googleapis.com/v0/b/app1-504b3.appspot.com/o/SevenKnightGroupPhotos%2FMadhu.jpg?alt=media&token=407e2460-c652-4272-84e7-34317e68ea97&_gl=1*tk3ds5*_ga*ODc0MzgwNzQ3LjE2OTgzNjA5MzY.*_ga_CW55HF8NVT*MTY5OTI5MzMzOS4xNy4xLjE2OTkyOTMzNTMuNDYuMC4w",
+              uri: "https://firebasestorage.googleapis.com/v0/b/app1-504b3.appspot.com/o/SevenKnightGroupPhotos%2FMadhu.jpg?alt=media&token=407e2460-c652-4272-84e7-34317e68ea97&_gl=1*tk3ds5*_ga*ODc0MzgwNzQ3LjE2OTgzNjA5MzY.*_ga_CW55HF8NVT*MTY5OTI5MzMzOS4xNy4xLjE2OTkyOTMzNTMuNDYuMC4w",
             }}
           />
         </View>
@@ -31,19 +28,15 @@ const UserProfile = () => {
           <Text style={styles.contact}>nyoupanemadhu07@gmail.com</Text>
         </View>
         <View style={styles.leftAlign}>
-          <Text style={styles.titles}>
-            About Me
+          <Text style={styles.titles}>About Me</Text>
+          <Text style={styles.textBody}>
+            <Text>My wife and I are from Spain,</Text>
+            <Text> but we love all recreation</Text>
+            <Text> and beauty of Vancouver.</Text>
+            <Text> We love to travel and explore new places </Text>
+            <Text> and thats why we rent ours houses!</Text>
           </Text>
-            <Text style={styles.textBody}>
-              <Text >My wife and I are from Spain,</Text>
-              <Text> but we love all recreation</Text>
-              <Text> and beauty of Vancouver.</Text>
-              <Text> We love to travel and explore new places </Text>
-              <Text> and thats why we rent ours houses!</Text>
-            </Text>
-          <Text style={styles.titlePost}>
-            My Posts
-          </Text>
+          <Text style={styles.titlePost}>My Posts</Text>
           <OwnerPosts />
           <View style={styles.makeRoom}></View>
         </View>
@@ -51,13 +44,13 @@ const UserProfile = () => {
     </ScrollView>
   );
 };
-export default UserProfile
+export default UserProfile;
 const styles = StyleSheet.create({
   scrollContainer: {
-    marginTop:20,
+    marginTop: 20,
     flexGrow: 1,
-    alignItems: "center",
-    height:1300
+    // alignItems: "center",
+    height: 1300,
   },
   container: {
     marginTop: 15,
@@ -93,7 +86,7 @@ const styles = StyleSheet.create({
     marginTop: 18,
     marginBottom: 18,
     backgroundColor: "#F7DBD5",
-    fontFamily: "Mulish_400Regular"
+    fontFamily: "Mulish_400Regular",
   },
   contact: {
     fontSize: 15,
@@ -103,7 +96,7 @@ const styles = StyleSheet.create({
   },
   leftAlign: {
     marginLeft: 10,
-    fontFamily: "Mulish_400Regular"
+    fontFamily: "Mulish_400Regular",
   },
   edit: {
     // backgroundColor: "green",
@@ -116,25 +109,25 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     color: "#413855",
     paddingRight: 23,
-    paddingLeft: 20
+    paddingLeft: 20,
   },
-  makeRoom:{
-    height: 400
+  makeRoom: {
+    height: 400,
   },
-  titles:{
+  titles: {
     fontWeight: "bold",
     fontSize: 20,
     fontFamily: "Mulish_800ExtraBold",
     marginTop: 5,
     marginBottom: 10,
     color: "#413855",
-    marginLeft: 20
+    marginLeft: 20,
   },
   titlePost: {
     color: "#413855",
     fontSize: 20,
     fontFamily: "Mulish_800ExtraBold",
     marginTop: 12,
-    marginLeft: 20
-  }
+    marginLeft: 20,
+  },
 });

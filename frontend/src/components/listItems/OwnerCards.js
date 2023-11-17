@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderColor: "#3B6665",
     backgroundColor: "#E9E7EE",
+    paddingRight: 70,
     //padding: 10,
     // height: 20,
     // borderRadius: 1,
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
     height: "100%",
     borderTopLeftRadius: 8,
     borderBottomLeftRadius: 8,
+    
   },
   textContainer: {
     alignItems: "center",

@@ -17,7 +17,7 @@
 }
 
 .marker-active{
-  background-color: #36827F;
+  background-color: #3B6665;
   color:white;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .marker-active::after{
-  border-color: #36827F transparent transparent transparent; 
+  border-color: #3B6665 transparent transparent transparent; 
 }
 
 .marker-normal::after{
@@ -150,7 +150,7 @@
  margin-left: 10px;
   font-size: 1.2rem;
 
-  background-color: #36827F;
+  background-color: #3B6665;
   color: #fff;
   border: none;
   padding: 8px;
@@ -162,7 +162,7 @@
 }
 
 .save-search-button{
-  background-color: #36827F;
+  background-color: #3B6665;
   color: #fff;
   border-radius:30px;
   width: 100px;
@@ -170,7 +170,7 @@
 }
 
 .list-view-button{
-  background-color: #36827F;
+  background-color: #3B6665;
   color: #fff;
   border-radius:30px;
   width: 120px;

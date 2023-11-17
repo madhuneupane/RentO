@@ -158,9 +158,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   submitButton: {
-    backgroundColor: "#36827F",
+    backgroundColor: "#3B6665",
     // borderWidth: 1,
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     height: "10%",
     width: "80%",
     marginLeft: 40,

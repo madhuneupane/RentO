@@ -93,7 +93,7 @@ export default SingUp;
 
 const styles = StyleSheet.create({
   signin: {
-    color: "#36827F",
+    color: "#3B6665",
     fontSize: 16,
     fontFamily: "Mulish_700Bold",
     textDecorationLine: "underline",
@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 20,
+    textDecorationColor: "#413855",
     fontFamily: "Mulish_400Regular",
   },
   textContainer: {
@@ -174,11 +175,11 @@ const styles = StyleSheet.create({
 
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
-    color: "#36827F",
+    color: "#3B6665",
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "30",
     width: "80%",
     marginLeft: 40,

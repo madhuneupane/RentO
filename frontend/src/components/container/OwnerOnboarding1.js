@@ -54,12 +54,12 @@ var styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 40,
+    marginTop: 210,
     marginLeft: 55,
     marginBottom: 60,
   },
   progressBarGreen: {
-    backgroundColor: "#36827F",
+    backgroundColor: "#3B6665",
     height: 10,
     width: 10,
     borderRadius: 20,
@@ -91,14 +91,15 @@ var styles = StyleSheet.create({
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 30,
+    color: "#413855"
   },
   textContainer: {
     margin: 30,
     height: "18%",
     justifyContent: "center",
     fontWeight: "bold",
-    fontFamily: "Mulish_400Regular"
-    // backgroundColor: "pink",
+    fontFamily: "Mulish_400Regular",
+    color: "#413855"
   },
   listContainer: {
     // marginTop: ,
@@ -110,5 +111,6 @@ var styles = StyleSheet.create({
     fontSize: 22,
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
+    color: "#413855"
   },
 });

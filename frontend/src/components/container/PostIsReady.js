@@ -17,7 +17,7 @@ const PostIsReady = ({ navigation, route }) => {
     navigation.navigate("owner_welcome");
   };
   var touchPropsSubmit = {
-    underlayColor: "#36827F",
+    underlayColor: "#3B6665",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     backgroundColor: "#E9E7EE",
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     height: "55%",
     width: "46%",
     marginLeft: 10,
@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   submitButtonClicked: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "55%",
     width: "46%",
     marginLeft: 40,

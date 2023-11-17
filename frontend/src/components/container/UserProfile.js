@@ -11,7 +11,7 @@ const UserProfile = () => {
         <MaterialCommunityIcons
           name="cookie-edit"
           size={30}
-          color={"#36827F"}
+          color={"#3B6665"}
         ></MaterialCommunityIcons>
       </View>
       <View style={styles.imageContainer}>
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 20, // Adjust the spacing between the image and text
-    color: "#36827F",
+    color: "#3B6665",
     fontWeight: "bold",
     fontSize: 20,
   },

@@ -55,12 +55,12 @@ var styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 20,
+    marginTop: 75,
     marginLeft: 55,
-    marginBottom:20,
+    //marginBottom:10,
   },
   progressBarGreen: {
-    backgroundColor: "#36827F",
+    backgroundColor: "#3B6665",
     height: 10,
     width: 20,
     borderRadius: 20,
@@ -97,6 +97,7 @@ var styles = StyleSheet.create({
   textContainer: {
     margin: 10,
     height: "20%",
+    color: "#413855",
     justifyContent: "center",
     fontWeight: "bold",
     fontFamily: "Mulish_400Regular"
@@ -110,7 +111,7 @@ var styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 22,
     marginLeft: 10,
-    
+    color: "#413855",
     textAlign: "center",
     fontFamily: "Mulish_700Bold"
   },

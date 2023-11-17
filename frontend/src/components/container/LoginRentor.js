@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: "18",
     fontFamily: "Mulish_600SemiBold",
-    color: "#36827F",
+    color: "#3B6665",
     textDecorationLine: "underline",
   },
   imageContainer: {
@@ -135,11 +135,11 @@ const styles = StyleSheet.create({
     fontSize: 28,
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
-    color: "#36827F",
+    color: "#3B6665",
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "30",
     width: "80%",
     marginLeft: 40,

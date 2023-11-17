@@ -11,7 +11,7 @@ import Title from "../container/Title";
 const Tab = createMaterialTopTabNavigator();
 const OwnerListings = () => {
   return (
-    <Tab.Navigator activeColor="#36827F" style={{marginTop: 20,}}>
+    <Tab.Navigator activeColor="#3B6665" style={{marginTop: 20,}}>
       <Tab.Screen name="Your Listings" component={OwnerPosts}
         
       />

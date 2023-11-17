@@ -42,10 +42,10 @@ export default ButtonUI;
 
 const styles = StyleSheet.create({
   text: {
-    color: "#36827F",
+    color: "#3B6665",
     // borderWidth: 0.5,
     // borderRadius: 13,
-    borderColor: "#36827F",
+    borderColor: "#3B6665",
     margin: 8,
     padding: 5,
     textAlign: "center",

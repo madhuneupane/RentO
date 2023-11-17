@@ -290,8 +290,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   submitButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "50",
     width: "80%",
     marginLeft: 40,
@@ -319,8 +319,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   CameraButton: {
-    backgroundColor: "#36827F",
-    borderColor: "#36827F",
+    backgroundColor: "#3B6665",
+    borderColor: "#3B6665",
     height: "50",
     width: "80%",
     marginLeft: 40,

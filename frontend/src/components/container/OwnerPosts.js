@@ -49,6 +49,7 @@ export default OwnerPosts;
 const styles = StyleSheet.create({
   listContainer: {
     flex: 0.8,
+    height: 600
   },
   buttonContainer: {
     // marginBottom: 20,

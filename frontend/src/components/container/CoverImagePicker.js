@@ -5,6 +5,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from "expo-image-picker";
 import LottieView from "lottie-react-native";
+import CameraColor from "../../../assets/CameraColor.svg";
 
 import {
   View,
@@ -74,40 +75,40 @@ const CoverImagePicker = ({ navigation, route }) => {
   };
   const saveImages = async () => {
     setFirebaseImage(true);
-      // console.log("WE ARE INSIDE", ownerData.images);
-        //if (ownerData.images) {
-          for (let i=0; i <4;i++) {
-            const imageUri = ownerData.coverimages[i];
+    // console.log("WE ARE INSIDE", ownerData.images);
+    //if (ownerData.images) {
+    for (let i = 0; i < 4; i++) {
+      const imageUri = ownerData.coverimages[i];
 
-            if (imageUri) {
-              const blob = await new Promise((resolve, reject) => {
-                const xhr = new XMLHttpRequest();
-                xhr.onload = function () {
-                  resolve(xhr.response);
-                };
+      if (imageUri) {
+        const blob = await new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.onload = function () {
+            resolve(xhr.response);
+          };
 
-                xhr.onerror = function (e) {
-                  console.log(e);
-                  reject(new TypeError("Network request failed"));
-                };
-                xhr.responseType = "blob";
-                xhr.open("GET", imageUri, true);
-                xhr.send(null);
-              });
-              //console.log("line 60");
+          xhr.onerror = function (e) {
+            console.log(e);
+            reject(new TypeError("Network request failed"));
+          };
+          xhr.responseType = "blob";
+          xhr.open("GET", imageUri, true);
+          xhr.send(null);
+        });
+        //console.log("line 60");
 
-              const fileRef = ref(getStorage(), `RentO/${imageUri}`);
-              const result1 = await uploadBytes(fileRef, blob);
-              // console.log("line 64");
-              // We're done with the blob, close and release it
-              blob.close();
-              //console.log("line 67");
-              const h = await getDownloadURL(fileRef);
-              console.log(h);
-              ownerData.coverimages[i] = h;
-            }
-          }
-       // }
+        const fileRef = ref(getStorage(), `RentO/${imageUri}`);
+        const result1 = await uploadBytes(fileRef, blob);
+        // console.log("line 64");
+        // We're done with the blob, close and release it
+        blob.close();
+        //console.log("line 67");
+        const h = await getDownloadURL(fileRef);
+        console.log(h);
+        ownerData.coverimages[i] = h;
+      }
+    }
+    // }
     setFirebaseImage(false);
   };
   return (
@@ -121,7 +122,7 @@ const CoverImagePicker = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer1}>
                 {!images[0] ? (
-                  <MaterialCommunityIcons name="camera" size="40" />
+                  <CameraColor width={60} height={60} />
                 ) : (
                   <Image source={{ uri: images[0] }} style={styles.image} />
                 )}
@@ -135,7 +136,7 @@ const CoverImagePicker = ({ navigation, route }) => {
               <View>
                 <View style={styles.imageContainer}>
                   {!images[1] ? (
-                    <MaterialCommunityIcons name="camera" size="40" />
+                    <CameraColor width={60} height={30} />
                   ) : (
                     <Image source={{ uri: images[1] }} style={styles.image} />
                   )}
@@ -148,7 +149,7 @@ const CoverImagePicker = ({ navigation, route }) => {
               <View>
                 <View style={styles.imageContainer}>
                   {!images[2] ? (
-                    <MaterialCommunityIcons name="camera" size="40" />
+                    <CameraColor width={60} height={30} />
                   ) : (
                     <Image source={{ uri: images[2] }} style={styles.image} />
                   )}
@@ -161,7 +162,7 @@ const CoverImagePicker = ({ navigation, route }) => {
               <View>
                 <View style={styles.imageContainer}>
                   {!images[3] ? (
-                    <MaterialCommunityIcons name="camera" size="40" />
+                    <CameraColor width={60} height={30} />
                   ) : (
                     <Image source={{ uri: images[3] }} style={styles.image} />
                   )}

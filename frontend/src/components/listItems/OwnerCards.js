@@ -44,38 +44,41 @@ const styles = StyleSheet.create({
   date: {
     marginTop: 10,
     textAlign: "left",
-    marginLeft: -30,
+    marginLeft: -10,
     color: "#5C5D8D",
     fontFamily: "Mulish_400Regular",
     fontSize: 13,
-    paddingRight: 50,
+    paddingRight: 30,
+    marginLeft: 0,
   },
 
   container: {
+    flex:1,
     marginTop: 15,
     marginLeft: 15,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
-    width: "90%",
-    height: "80%",
+    width: "92%",
+    height: "99%",
     //border: "2",
     borderWidth: 1,
     borderRadius: 8,
     borderColor: "#3B6665",
     backgroundColor: "#E9E7EE",
+    paddingRight: 70,
     //padding: 10,
     // height: 20,
     // borderRadius: 1,
     // padding: 10,
   },
   viewContainer: {
-    // // margin: 0,
+    marginLeft: 76,
     // flexDirection: "row",
     // alignItems: "center",
     // // justifyContent: "flex-start",
     // // width: "auto",
-    width: "40%",
+    width: "45%",
     overflow: false,
   },
   image: {
@@ -83,18 +86,20 @@ const styles = StyleSheet.create({
     height: "100%",
     borderTopLeftRadius: 8,
     borderBottomLeftRadius: 8,
+    
   },
   textContainer: {
+    padding:10,
     alignItems: "center",
     justifyContent: "center",
-    // height: "90%",
+    //height: "90%",
   },
   type: {
-    // paddingRight: 55,
     color: "#3B6665",
     fontFamily: "Mulish_700Bold",
     fontSize: 15,
     textAlign: "left",
+    marginLeft: 10,
     // width: "100%", // Adjust the width as needed
     // Other text styles for data.type
   },
@@ -105,7 +110,8 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: "left",
     marginTop: 3,
-    width: "100%", // Adjust the width as needed
+    marginLeft: 400,
+    width: "107%", // Adjust the width as needed
     // Other text styles for data.location
   },
   submitButton: {
@@ -131,7 +137,6 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   chevron: {
-    marginRight: 10,
     color: "#3B6665",
   },
 });

@@ -5,7 +5,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from "expo-image-picker";
 import LottieView from "lottie-react-native";
-
+import CameraColor from "../../../assets/CameraColor.svg";
 import {
   View,
   Text,
@@ -121,7 +121,7 @@ const ImageSelector = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer}>
                 {!images?.image1 ? (
-                  <MaterialCommunityIcons name="camera" size="40" />
+                  <CameraColor width={60} height={40} />
                 ) : (
                   <Image source={{ uri: images.image1 }} style={styles.image} />
                 )}
@@ -135,7 +135,7 @@ const ImageSelector = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer}>
                 {!images?.image2 ? (
-                  <MaterialCommunityIcons name="camera" size="40" />
+                  <CameraColor width={60} height={40} />
                 ) : (
                   <Image source={{ uri: images.image2 }} style={styles.image} />
                 )}
@@ -149,7 +149,7 @@ const ImageSelector = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer}>
                 {!images?.image3 ? (
-                  <MaterialCommunityIcons name="camera" size="40" />
+                  <CameraColor width={60} height={40} />
                 ) : (
                   <Image source={{ uri: images.image3 }} style={styles.image} />
                 )}
@@ -166,7 +166,7 @@ const ImageSelector = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer}>
                 {!images?.image4 ? (
-                  <MaterialCommunityIcons name="camera" size="40" />
+                  <CameraColor width={60} height={40} />
                 ) : (
                   <Image source={{ uri: images.image4 }} style={styles.image} />
                 )}
@@ -180,7 +180,7 @@ const ImageSelector = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer}>
                 {!images?.image5 ? (
-                  <MaterialCommunityIcons name="camera" size="40" />
+                  <CameraColor width={60} height={40} />
                 ) : (
                   <Image source={{ uri: images.image5 }} style={styles.image} />
                 )}
@@ -194,7 +194,7 @@ const ImageSelector = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer}>
                 {!images?.image6 ? (
-                  <MaterialCommunityIcons name="camera" size="40" />
+                  <CameraColor width={60} height={40} />
                 ) : (
                   <Image source={{ uri: images.image6 }} style={styles.image} />
                 )}

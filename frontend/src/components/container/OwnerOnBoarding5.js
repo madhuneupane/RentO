@@ -59,7 +59,7 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
       ></List>
       <View style={styles.submitContainer}>
         <ButtonUI
-          item={{ value: "submit" }}
+          item={{ value: "+ Add a Room" }}
           selectedItems={submitData}
           touchProps={touchPropsSubmit}
           customStyle={styles.customStyleSubmit}
@@ -79,80 +79,76 @@ var styles = StyleSheet.create({
   },
   customStyle: {
     color: "#413855",
-    fontSize: 15,
+    fontSize: 18,
+    fontFamily: "Mulish_400Regular"
   },
   customStyleSubmit: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 18,
+    fontFamily: "Mulish_700Bold"
   },
   btnNormal: {
+    color: "#413855",
     borderColor: "#3B6665",
-    // borderWidth: 1,
-    // backgroundColor: "#FBEDEA",
     height: "50",
-    width: "80%",
-    marginLeft: 40,
-    marginTop: 10,
-    padding: 10,
+    width: "90%",
+    marginLeft: 20,
+    marginTop: 15,
+    padding: 8,
     borderWidth: 0.5,
-    borderRadius: 25,
-    // flexDirection: "row",
-    // justifyContent: "center",
-    // alignItems: "center",
+    borderRadius: 35,
   },
   btnPress: {
+    color: "#413855",
     borderColor: "#3B6665",
     height: "50",
-    width: "80%",
-    marginLeft: 40,
-    marginTop: 10,
-    padding: 10,
+    width: "90%",
+    marginLeft: 20,
+    marginTop: 15,
+    padding: 8,
     borderWidth: 0.5,
-    borderRadius: 25,
+    borderRadius: 35,
   },
   textContainer: {
     margin: 5,
     height: "20%",
     justifyContent: "center",
-    // backgroundColor: "pink",
   },
   listContainer: {
     // marginTop: ,
   },
   title: {
-    fontWeight: "bold",
-    fontSize: 15,
-    marginLeft: 10,
-    fontSize: 20,
-    textAlign: "center",
+  width: "90%",
+  marginLeft: 20,
+  marginTop: 20,
+  color: "#413855",
+  //marginLeft: 10,
+  fontSize: 19,
+  textAlign: "center",
+  fontFamily: "Mulish_700Bold"
   },
   submitButton: {
     backgroundColor: "#3B6665",
     borderColor: "#3B6665",
-
-    height: "50",
+    height: "30",
     width: "80%",
     marginLeft: 40,
-    // marginTop: 2,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   submitButtonClicked: {
-    // backgroundColor: "#3B6665",
-    // borderWidth: 1,
     borderColor: "#3B6665",
-    height: 50,
+    height: "30",
     width: "80%",
     marginLeft: 40,
-    // marginTop: 2,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   submitContainer: {
-    marginTop: 20,
+    marginTop: 35,
     backgroundColor: "white",
   },
   textContainer: {
@@ -161,13 +157,6 @@ var styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "white",
   },
-  title: {
-    fontWeight: "300",
-    fontSize: 15,
-    marginLeft: 10,
-    fontSize: 20,
-    textAlign: "center",
-  },
   progressBar: {
     borderColor: "#B1D4D2",
     height: 10,
@@ -175,10 +164,10 @@ var styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    // marginTop: 50,
+    //marginTop: 50,
     marginLeft: 50,
     position: "absolute",
-    bottom: -40,
+    bottom: -87,
   },
   progressBarGreen: {
     backgroundColor: "#3B6665",

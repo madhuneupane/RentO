@@ -40,13 +40,15 @@ const PropertyDescription = ({ navigation, route }) => {
     const result = JSON.stringify(response);
     setDesc(result.substr(1).slice(0, -1));
     setCreating(false);
-    //setDesc(test);
+    // setDesc(test);
     console.log("WAIT.....");
 
     if (result) {
       const desc1 = result.substr(1).slice(0, -1);
       setOwnerData({ ...keywords, description: desc1 });
     }
+    // setOwnerData({ ...keywords, description: "test" });
+
   };
   //
   const nextPage = () => {

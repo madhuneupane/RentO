@@ -241,8 +241,16 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#3B6665",
+            headerTintColor: "#fff",
             headerBackTitle: false,
+            
+            headerStyle: {
+              // Set your desired background color
+              backgroundColor: "#413855",
+              // for iOS;  elevation: 0, // for Android
+              shadowOpacity:0,
+            },
+           
           }}
         />
         <Stack.Screen

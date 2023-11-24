@@ -9,8 +9,8 @@ const SelectImageOption = ({ navigation, route }) => {
   const data = route.params;
   const selectedItems = (value) => {
     console.log("data from select:" + JSON.stringify(data));
-    if (value == "Gallery") navigation.navigate("image_select", data);
-    if (value == "Camera") navigation.navigate("camera_select", data);
+    if (value == "Upload from Gallery") navigation.navigate("image_select", data);
+    if (value == "Take a photo") navigation.navigate("camera_select", data);
   };
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var [isCameraPress, setIsCamerasPress] = useState(false);
@@ -33,11 +33,14 @@ const SelectImageOption = ({ navigation, route }) => {
         <View style={styles.bulb}>
           <MaterialCommunityIcons
             name={"lightbulb-on"}
-            size={30}
+            size={35}
             color={"#ED7861"}
           />
         </View>
-        <Text style={styles.text}>
+        <Text style={styles.text1}>
+          Hold your phone upright in portrait mode for all pictures
+        </Text>
+        <Text style={styles.text2}>
           Hold your phone upright in portrait mode for all pictures. Begin by
           capturing one picture each of four walls followed by one picture of
           ceiling and one picture of the floor
@@ -45,14 +48,14 @@ const SelectImageOption = ({ navigation, route }) => {
       </View>
       <ButtonUI
         // numColumns={imageUploadOptions.uploadOptions.length / 2}
-        item={{ value: "Gallery" }}
+        item={{ value: "Upload from Gallery" }}
         selectedItems={selectedItems}
         customStyle={styles.customStyle}
         touchProps={touchPropsSubmit}
       ></ButtonUI>
       <ButtonUI
         // numColumns={imageUploadOptions.uploadOptions.length / 2}
-        item={{ value: "Camera" }}
+        item={{ value: "Take a photo" }}
         selectedItems={selectedItems}
         customStyle={styles.customStyleCamera}
         touchProps={touchPropsCamera}
@@ -70,7 +73,7 @@ var styles = StyleSheet.create({
   card: {
     margin: 20,
     backgroundColor: "white",
-    height: "50%",
+    height: "60%",
     // width: "50%",
     // alignItems: "center",
     justifyContent: "center",
@@ -78,23 +81,40 @@ var styles = StyleSheet.create({
   },
   bulb: {
     position: "absolute",
-    top: 20,
-    left: 150,
+    top: 40,
+    left: 155,
   },
-  text: {
+  text1: {
     textAlign: "center",
     fontWeight: "300",
-    fontSize: 20,
+    fontSize: 18,
+    color: "#413855",
+    backgroundColor: "#E9E7EE",
+    margin:15,
+    padding:15,
+    fontFamily: "Mulish_400Regular"
+  },
+  text2: {
+    textAlign: "center",
+    fontWeight: "300",
+    fontSize: 18,
+    color: "#413855",
+    backgroundColor: "#E9E7EE",
+    margin:15,
+    padding:15,
+    fontFamily: "Mulish_400Regular"
   },
   customStyle: {
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily: "Mulish_700Bold"
   },
   customStyleCamera: {
-    color: "black",
+    color: "#413855",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily: "Mulish_700Bold"
   },
   submitButton: {
     backgroundColor: "#3B6665",

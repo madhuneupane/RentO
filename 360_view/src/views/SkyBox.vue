@@ -146,7 +146,6 @@ export default {
     color: #fff;
     border: none;
     cursor: pointer;
-    border: 2px solid rgb(75, 75, 75);
     border-radius: 20px;
   }
   .current-room-button {

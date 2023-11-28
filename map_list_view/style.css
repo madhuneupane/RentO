@@ -16,32 +16,32 @@
   padding-top: 5px;
 }
 
-.marker-active{
-  background-color: #3B6665;
-  color:white;
+.marker-active {
+  background-color: #3b6665;
+  color: white;
 }
 
 .marker-normal {
-  background-color: orange;
+  background-color: #f1927e;
 }
 
 .marker-active::after,
 .marker-normal::after {
-  content: '';
+  content: "";
   position: absolute;
-  bottom: -9px; 
-  margin-left: -10px; 
+  bottom: -9px;
+  margin-left: -10px;
   border-width: 10px 10px 0;
   border-style: solid;
-  z-index: 1; 
+  z-index: 1;
 }
 
-.marker-active::after{
-  border-color: #3B6665 transparent transparent transparent; 
+.marker-active::after {
+  border-color: #3b6665 transparent transparent transparent;
 }
 
-.marker-normal::after{
-  border-color: orange transparent transparent transparent; 
+.marker-normal::after {
+  border-color: #f1927e transparent transparent transparent;
 }
 
 /* Searching Style */
@@ -66,16 +66,15 @@
 .tt-side-panel__header {
   align-items: center;
   background-color: #f0f0f0;
-  padding:0;
-  padding-left:10px;
-  padding-right:10px;
+  padding: 0;
+  padding-left: 10px;
+  padding-right: 10px;
   margin: 0;
   width: 100%;
 }
 
 .tt-side-panel__sum {
-
-  padding:0;
+  padding: 0;
   padding-left: 10px;
   padding-right: 10px;
   display: flex;
@@ -92,7 +91,6 @@
 .sum_total,
 .sum_sort {
   flex-grow: 1;
-  
 }
 
 .sum_sort {
@@ -105,10 +103,11 @@
 #sortOptions {
   display: none;
   position: absolute;
+  font-size: 13px;
   top: 100%;
   right: 0;
   background-color: #fff;
-  border: 1px solid red;
+  border: 1px solid grey;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -116,7 +115,7 @@
 }
 
 #sortOptions li {
-  padding: 10px;
+  padding: 8px;
   cursor: pointer;
 }
 
@@ -147,10 +146,10 @@
 }
 
 .custom-geolocate-button {
- margin-left: 10px;
+  margin-left: 10px;
   font-size: 1.2rem;
 
-  background-color: #3B6665;
+  background-color: #3b6665;
   color: #fff;
   border: none;
   padding: 8px;
@@ -161,31 +160,30 @@
   height: 40px;
 }
 
-.save-search-button{
-  background-color: #3B6665;
+.save-search-button {
+  background-color: #3b6665;
   color: #fff;
-  border-radius:30px;
+  border-radius: 30px;
   width: 100px;
   height: 40px;
 }
 
-.list-view-button{
-  background-color: #3B6665;
+.list-view-button {
+  background-color: #3b6665;
   color: #fff;
-  border-radius:30px;
+  border-radius: 30px;
   width: 120px;
   height: 40px;
-  margin-right: 10px;
-
+  margin-right: 35%;
 }
 
-.list-view-button i{
+.list-view-button i {
   font-size: 1.1rem;
 }
 
-.menu-div{
+.menu-div {
   position: absolute;
-  top:120px;
+  top: 120px;
   width: 100%;
   height: 40px;
   z-index: 10;
@@ -193,7 +191,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
 }
 
 /* Swiper Style */

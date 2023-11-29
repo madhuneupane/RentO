@@ -58,14 +58,14 @@ export default Login;
 const styles = StyleSheet.create({
   title: {
     // marginLeft: 10,
-    marginTop:-10,
+    marginTop: -10,
     marginBottom: -28,
     color: "#413855",
     fontFamily: "Mulish_700Bold",
     fontSize: 24,
   },
   container: {
-    backgroundColor: "white",
+    backgroundColor: "rgb(229 231 235)",
   },
   // imageContainer: {
   //   marginTop: "20%",

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import List from "../list/List";
 import { listingOptions } from "../static/ListingOptions";
-
+import RentoBack from "../../../assets/rentoBack.svg";
 const OwnerOnboarding1 = ({ navigation, route }) => {
   console.log("Back:" + JSON.stringify(route.params));
   var [isPress, setIsPress] = useState(false);
@@ -36,6 +36,7 @@ const OwnerOnboarding1 = ({ navigation, route }) => {
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
+        <RentoBack width={420} height={200} />
       </View>
     </View>
   );
@@ -102,7 +103,7 @@ var styles = StyleSheet.create({
     justifyContent: "center",
     fontWeight: "bold",
     fontFamily: "Mulish_400Regular",
-    color: "#413855"
+    color: "#413855",
   },
   listContainer: {
     // marginTop: ,
@@ -115,6 +116,6 @@ var styles = StyleSheet.create({
     fontSize: 22,
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
-    color: "#413855"
+    color: "#413855",
   },
 });

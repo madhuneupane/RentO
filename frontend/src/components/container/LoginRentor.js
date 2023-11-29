@@ -60,7 +60,7 @@ const LoginRentor = ({ navigation }) => {
         <ButtonUI
           item={{ value: "Sign in" }}
           selectedItems={callLoginApi}
-          customStyle={styles.customStyle}
+          customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
           touchProps={touchPropsSubmit}
         />
       </View>

@@ -25,7 +25,7 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
     // onPress: () => console.log("HELLO"), // <-- "onPress" is apparently required
   };
   var touchPropsSubmit = {
-    underlayColor: "#ffffff00",
+    underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
@@ -62,7 +62,7 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
           item={{ value: "+ Add a Room" }}
           selectedItems={submitData}
           touchProps={touchPropsSubmit}
-          customStyle={styles.customStyleSubmit}
+          customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyleSubmit}
         ></ButtonUI>
       </View>
       <View style={styles.progressBar}>

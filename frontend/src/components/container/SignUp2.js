@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     marginLeft: 80,
   },
   imageContainer: {
-    marginTop: "40%",
+    marginTop: "60%",
     alignItems: "center",
   },
   image: {
@@ -107,9 +107,11 @@ const styles = StyleSheet.create({
     height: 35,
   },
   text: {
+    color: "#413855",
+    fontFamily: "Mulish_700Bold",
     textAlign: "center",
     fontWeight: "light",
-    fontSize: 20,
+    fontSize: 22,
   },
   textContainer: {
     // margin: 10,
@@ -117,7 +119,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontWeight: "300",
+    color: "#413855",
+    fontFamily: "Mulish_700Bold",
+    marginTop: 20,
     fontSize: 25,
     textAlign: "center",
   },
@@ -131,6 +135,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
+    marginTop:100,
   },
   submitButtonClicked: {
     borderColor: "#B1D4D2",
@@ -141,30 +146,34 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
+    marginTop:150,
   },
   buttonContainer: {
-    marginTop: 50,
+    marginTop: 20,
   },
   customStyle: {
     color: "white",
+    fontFamily: "Mulish_700Bold",
     fontWeight: "bold",
     fontSize: 20,
   },
   customStyleOptions: {
-    color: "black",
+    color: "#413855",
     fontWeight: "bold",
     fontSize: 20,
     backgroundColor: "#FBEDEA",
     borderColor: "#ED7861",
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 10,
   },
   optionContainer: {
     margin: 10,
+    color: "#413855",
     flexDirection: "row",
     justifyContent: "center",
   },
   optionTitle: {
-    marginTop: "20%",
+    color: "#413855",
+    marginTop: "15%",
   },
 });

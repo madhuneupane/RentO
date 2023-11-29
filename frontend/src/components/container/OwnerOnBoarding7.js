@@ -48,7 +48,7 @@ const OwnerOnboarding7 = ({ navigation, route }) => {
         <ButtonUI
           item={{ value: "Continue" }}
           selectedItems={navigateToNext}
-          customStyle={styles.customStyle}
+          customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
           touchProps={touchPropsSubmit}
         />
       </View>
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 55,
-    marginLeft: 55,
+    marginTop: 67,
+    marginLeft: 65,
   },
   progressBarGreen: {
     backgroundColor: "#3B6665",
@@ -106,11 +106,14 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 22,
+    color: "#413855",
     fontFamily:"Mulish_400Regular",
   },
   textContainer: {
     margin: 10,
+    marginLeft: 50,
+    width: "72%",
     height: "20%",
     justifyContent: "center",
   },

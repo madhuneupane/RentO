@@ -102,7 +102,7 @@ const OwnerOnBoarding6 = ({ navigation, route }) => {
           item={{ value: "Continue" }}
           selectedItems={submit}
           touchProps={touchPropsSubmit}
-          customStyle={styles.customStyle}
+          customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
         ></ButtonUI>
       </View>
       <View style={styles.progressBar}>
@@ -162,8 +162,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
-    marginTop: 60,
-    marginLeft: 55,
+    marginTop: 77,
+    marginLeft: 75,
   },
   progressBarGreen: {
     backgroundColor: "#3B6665",
@@ -172,15 +172,15 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   container: {
-    width: "100%",
+    width: "90%",
     backgroundColor: "white",
   },
   title: {
     // marginLeft: 30,
-    marginTop: 40,
+    marginTop: 42,
     fontWeight: "300",
     fontSize: 15,
-    marginLeft: 10,
+    marginLeft: 60,
     fontSize: 22,
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
@@ -189,8 +189,9 @@ const styles = StyleSheet.create({
   subTitle: {
     color: "#5C5D8D",
     fontFamily: "Mulish_600SemiBold",
-    fontSize: 16,
-    marginTop: 15,
+    fontSize: 17,
+    marginLeft: 60,
+    marginTop: 25,
   },
   propertyType: {
     marginBottom: 10,
@@ -227,23 +228,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#3B6665",
     borderColor: "#3B6665",
     height: "50",
-    width: "80%",
-    marginLeft: 40,
+    width: "85%",
+    marginLeft: 50,
     marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 35,
+    borderRadius: 40,
   },
   submitButtonClicked: {
     backgroundColor: "#B1D4D2",
     borderColor: "#B1D4D2",
     height: "50",
-    width: "80%",
-    marginLeft: 40,
+    width: "85%",
+    marginLeft: 50,
     marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 35,
+    borderRadius: 40,
   },
   buttonContainer: {
     marginTop: 400,
@@ -255,11 +256,11 @@ const styles = StyleSheet.create({
     fontFamily: "Mulish_400Regular",
   },
   listContainer: {
-    marginTop: 50,
+    marginTop: 60,
     fontFamily: "Mulish_400Regular",
     height: "270%",
     width: "100%",
-    marginLeft: 10,
+    marginLeft: 30,
     marginRight: 10,
   },
   textContainer: {

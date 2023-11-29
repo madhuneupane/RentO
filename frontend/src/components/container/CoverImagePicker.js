@@ -214,6 +214,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
+    color: "#413855",
     fontFamily: "Mulish_700Bold",
     fontSize: 20,
     marginTop: "15%",

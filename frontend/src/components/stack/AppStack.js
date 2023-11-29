@@ -43,8 +43,9 @@ const AppStack = () => {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: "#3B6665",
+      primary: "white",
       background: "white",
+
       // height:"100%"
     },
   };
@@ -243,14 +244,13 @@ const AppStack = () => {
             headerTitle: "",
             headerTintColor: "#fff",
             headerBackTitle: false,
-            
+
             headerStyle: {
               // Set your desired background color
               backgroundColor: "#413855",
               // for iOS;  elevation: 0, // for Android
-              shadowOpacity:0,
+              shadowOpacity: 0,
             },
-           
           }}
         />
         <Stack.Screen

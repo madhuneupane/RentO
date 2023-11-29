@@ -15,7 +15,7 @@ const TenantInterested = ({ navigation, route }) => {
     <View style={styles.container}>
       <Text style={styles.heading}>Tenant Matches</Text>
       <Text style={styles.subheading}>
-        {type} on {JSON.parse(location).city}
+        Cozy {type} on {JSON.parse(location).city}
       </Text>
       <Text style={styles.text}>
         Review the renters' profiles that have matched with your criteria
@@ -58,21 +58,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   heading: {
-    fontSize: 28,
+    fontSize: 30,
     color: "#413855",
     fontFamily: "Mulish_700Bold",
   },
   subheading: {
     fontSize: 22,
     color: "#2B6866",
-    fontFamily: "Mulish_600SemiBold",
+    fontFamily: "Mulish_700Bold",
     marginTop: 15,
   },
   text: {
     color: "#5C5D8D",
     fontSize: 18,
     marginTop: 18,
-    fontFamily: "Mulish_500Medium",
+    fontFamily: "Mulish_700Bold",
     textAlign: "center"
   },
   desc: {

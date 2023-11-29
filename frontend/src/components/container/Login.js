@@ -9,7 +9,8 @@ const Login = ({ navigation }) => {
   var [isPress, setIsPress] = useState(false);
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var touchPropsSubmit = {
-    underlayColor: "#B1D4D2", // <-- "backgroundColor" will be always overwritten by "underlayColor"
+    underlayColor: "#B1D4D2",
+     // <-- "backgroundColor" will be always overwritten by "underlayColor"
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
@@ -33,7 +34,7 @@ const Login = ({ navigation }) => {
         <View style={styles.buttonView}>
           <ButtonUI
             item={{ value: `I’m looking for a new place` }}
-            customStyle={styles.customStyle}
+            customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
             selectedItems={selectedItems}
             touchProps={touchPropsSubmit}
             type="welcome"
@@ -96,6 +97,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "pink",
   },
   button: {
+    color: "white",
     borderWidth: 5,
     borderRadius: 15,
     fontSize: 22,
@@ -117,6 +119,7 @@ const styles = StyleSheet.create({
   },
 
   submitButton: {
+    color: "white",
     backgroundColor: "#3B6665",
     borderColor: "#3B6665",
     height: "30%",
@@ -128,6 +131,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   submitButtonClicked: {
+    color: "#02696A",
+    backgroundColor: "#B1D4D2",
     borderColor: "#B1D4D2",
     height: "30%",
     width: "85%",

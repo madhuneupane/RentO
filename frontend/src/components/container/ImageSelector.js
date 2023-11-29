@@ -121,7 +121,7 @@ const ImageSelector = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer}>
                 {!images?.image1 ? (
-                  <CameraColor width={60} height={40} />
+                  <CameraColor width={40} height={40} />
                 ) : (
                   <Image source={{ uri: images.image1 }} style={styles.image} />
                 )}
@@ -135,7 +135,7 @@ const ImageSelector = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer}>
                 {!images?.image2 ? (
-                  <CameraColor width={60} height={40} />
+                  <CameraColor width={40} height={40} />
                 ) : (
                   <Image source={{ uri: images.image2 }} style={styles.image} />
                 )}
@@ -149,7 +149,7 @@ const ImageSelector = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer}>
                 {!images?.image3 ? (
-                  <CameraColor width={60} height={40} />
+                  <CameraColor width={40} height={40} />
                 ) : (
                   <Image source={{ uri: images.image3 }} style={styles.image} />
                 )}
@@ -166,7 +166,7 @@ const ImageSelector = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer}>
                 {!images?.image4 ? (
-                  <CameraColor width={60} height={40} />
+                  <CameraColor width={40} height={40} />
                 ) : (
                   <Image source={{ uri: images.image4 }} style={styles.image} />
                 )}
@@ -180,7 +180,7 @@ const ImageSelector = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer}>
                 {!images?.image5 ? (
-                  <CameraColor width={60} height={40} />
+                  <CameraColor width={40} height={40} />
                 ) : (
                   <Image source={{ uri: images.image5 }} style={styles.image} />
                 )}
@@ -194,7 +194,7 @@ const ImageSelector = ({ navigation, route }) => {
             <View>
               <View style={styles.imageContainer}>
                 {!images?.image6 ? (
-                  <CameraColor width={60} height={40} />
+                  <CameraColor width={40} height={40} />
                 ) : (
                   <Image source={{ uri: images.image6 }} style={styles.image} />
                 )}
@@ -208,7 +208,7 @@ const ImageSelector = ({ navigation, route }) => {
         <ButtonUI
           item={{ value: "Upload 6 Images" }}
           selectedItems={saveImages}
-          customStyle={styles.customStyleCamera}
+          customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
           touchProps={touchPropsCamera}
         />
       )}
@@ -241,9 +241,10 @@ const ImageSelector = ({ navigation, route }) => {
 };
 const styles = StyleSheet.create({
   title: {
+    color: "#413855",
     fontFamily: "Mulish_700Bold",
     fontSize: 20,
-    marginTop: 5,
+    marginTop: 20,
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 70,
@@ -286,7 +287,8 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 5,
-    fontWeight: 400,
+    color: "#413855",
+    fontFamily: "Mulish_700Bold",
     textAlign: "center",
   },
   submitButton: {

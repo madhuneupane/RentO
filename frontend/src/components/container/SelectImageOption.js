@@ -33,7 +33,7 @@ const SelectImageOption = ({ navigation, route }) => {
         <View style={styles.bulb}>
           <MaterialCommunityIcons
             name={"lightbulb-on"}
-            size={35}
+            size={37}
             color={"#ED7861"}
           />
         </View>
@@ -50,7 +50,7 @@ const SelectImageOption = ({ navigation, route }) => {
         // numColumns={imageUploadOptions.uploadOptions.length / 2}
         item={{ value: "Upload from Gallery" }}
         selectedItems={selectedItems}
-        customStyle={styles.customStyle}
+        customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
         touchProps={touchPropsSubmit}
       ></ButtonUI>
       <ButtonUI
@@ -82,7 +82,7 @@ var styles = StyleSheet.create({
   bulb: {
     position: "absolute",
     top: 40,
-    left: 155,
+    left: 175,
   },
   text1: {
     textAlign: "center",

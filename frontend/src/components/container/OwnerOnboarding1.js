@@ -68,7 +68,8 @@ var styles = StyleSheet.create({
   },
   customStyle: {
     color: "#413855",
-    fontSize: 15,
+    fontSize: 16,
+    fontFamily: "Mulish_700Bold",
   },
   btnNormal: {
     borderColor: "#FBEDEA",
@@ -80,7 +81,7 @@ var styles = StyleSheet.create({
     marginTop: 20,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 35,
   },
   btnPress: {
     borderColor: "#FBEDEA",
@@ -91,12 +92,14 @@ var styles = StyleSheet.create({
     marginTop: 20,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
-    color: "#413855",
+    borderRadius: 35,
+    color: "#413855"
   },
   textContainer: {
     margin: 30,
+    marginLeft: 60,
     height: "18%",
+    width: "70%",
     justifyContent: "center",
     fontWeight: "bold",
     fontFamily: "Mulish_400Regular",
@@ -104,6 +107,7 @@ var styles = StyleSheet.create({
   },
   listContainer: {
     // marginTop: ,
+    
   },
   title: {
     fontWeight: "300",

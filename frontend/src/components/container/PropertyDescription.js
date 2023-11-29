@@ -21,7 +21,7 @@ const PropertyDescription = ({ navigation, route }) => {
   var [isSubmit, setIsSubmit] = useState(false);
   const [creating, setCreating] = useState(false);
   var touchPropsSubmit = {
-    underlayColor: "#ffffff00",
+    underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
@@ -70,9 +70,9 @@ const PropertyDescription = ({ navigation, route }) => {
           autoPlay
           style={{
             width: "100%",
-            height: "62%",
+            height: "68%",
             backgroundColor: "white",
-            marginLeft: 28,
+            marginLeft: 22,
             marginBottom: 100,
           }}
           source={require("../../../assets/RentoO - Loading Animation.json")}
@@ -90,7 +90,7 @@ const PropertyDescription = ({ navigation, route }) => {
       {!desc ? (
         <View style={styles.wirteContainer}>
           <ButtonUI
-            customStyle={styles.customStyle}
+            customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
             selectedItems={() => generateDesc("tests")}
             item={{ value: "Write for me" }}
             touchProps={touchPropsSubmit}
@@ -105,7 +105,7 @@ const PropertyDescription = ({ navigation, route }) => {
       ) : (
         <View style={styles.wirteContainer}>
           <ButtonUI
-            customStyle={styles.customStyle}
+            customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
             selectedItems={nextPage}
             item={{ value: "Looks good!!" }}
             touchProps={touchPropsSubmit}
@@ -137,7 +137,8 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     // marginTop: 10,
-    height: "20%",
+    height: "14%",
+    margin: 10,
     justifyContent: "center",
     // backgroundColor: "white",
   },
@@ -214,15 +215,19 @@ const styles = StyleSheet.create({
     height: "30",
     width: "80%",
     marginLeft: 40,
+    marginBottom: 12,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
   },
   submitButtonClicked: {
+    color: "#02696A",
+    backgroundColor: "#3B6665",
     borderColor: "#3B6665",
     height: "30",
     width: "80%",
     marginLeft: 40,
+    marginBottom: 12,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
@@ -269,14 +274,14 @@ const styles = StyleSheet.create({
   },
   wirteContainer: {
     flex: 1,
-    marginTop: "15%",
+    marginTop: "10%",
     height: 100,
     backgroundColor: "white",
   },
   progressBar: {
     borderColor: "#B1D4D2",
     height: 10,
-    width: "80%",
+    width: "77%",
     borderRadius: 20,
     flexDirection: "row",
     backgroundColor: "#B1D4D2",
@@ -284,7 +289,7 @@ const styles = StyleSheet.create({
     marginLeft: 50,
     marginTop: 10,
     position: "absolute",
-    bottom: -78,
+    bottom: -80,
   },
   progressBarGreen: {
     backgroundColor: "#3B6665",

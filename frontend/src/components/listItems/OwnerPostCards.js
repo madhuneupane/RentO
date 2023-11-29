@@ -17,9 +17,9 @@ const OwnerCards = ({ data, getTenant }) => {
           ></Card.Image>
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.type}>{data.type}</Text>
-          <Text style={styles.location}>{` in ${location}`}</Text>
+          <Text style={styles.type}>{`Cozy ${data.type} in ${location}`}</Text>
           <Text style={styles.match}>You have 1 tenant matches</Text>
+          <Text style={styles.profile}>See profiles  </Text>
         </View>
 
       </View>
@@ -36,36 +36,39 @@ const styles = StyleSheet.create({
   },
   container: {
     margin: 20,
-    flexDirection: "row",
+    //flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
     width: "90%",
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 12,
+    marginLeft: 23,
     borderColor: "#3B6665",
     backgroundColor: "#E9E7EE",
     
   },
   viewContainer: {
-    width: "43%",
+    width: "44%",
     overflow:false,
   },
   textContainer: {
     alignItems: "center",
     justifyContent: "center",
-    paddingRight: 35,
+    paddingBottom: 20,
     // Other container styles if needed
   },
   type: {
     //paddingRight: 65,
     color: "#3B6665",
     fontFamily: "Mulish_700Bold",
-    fontSize: 18,
+    fontSize: 20,
     textAlign: "center",
     width: "100%", // Adjust the width as needed
     // Other text styles for data.type
   },
-  location: {
+  profile: {
+    textDecorationLine: "underline",
+    paddingTop:20,
     //paddingRight: 65,
     color: "#3B6665",
     fontFamily: "Mulish_700Bold",
@@ -79,13 +82,15 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     color: "#5C5D8D",
     paddingTop:15,
-    fontFamily: "Mulish_500Medium",
-    fontSize: 13,
+    fontFamily: "Mulish_700Bold",
+    fontSize: 16,
   },
   image:{
-    width: "75%",
-    //height:"100%",
-    borderTopLeftRadius: 8,
-    borderBottomLeftRadius: 8,
+    width: "90%",
+    //height:"70%",
+    //borderTopLeftRadius: 8,
+    //borderBottomLeftRadius: 8,
+    borderRadius: 100,
+    margin:16,
   },
 });

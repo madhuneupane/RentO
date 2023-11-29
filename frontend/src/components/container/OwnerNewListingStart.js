@@ -36,11 +36,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 60,
-    marginLeft: 90,
+    marginLeft: 100,
     marginRight: 90,
     backgroundColor: "#3B6665",
-    width: "95",
-    height: "55%",
+    width: "51%",
+    height: "53%",
     // position: "absolute",
     // bottom: 30,
     borderWidth: 1,
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   text: {
     color: "#413855",
     marginTop: 120,
-    marginLeft: 65,
+    marginLeft: 78,
     fontSize: 24,
     fontFamily: "Mulish_700Bold",
   },
@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
     color: "white",
     fontFamily: "Mulish_700Bold",
-    fontSize: 22,
-    
+    fontSize: 20,
   },
 });

@@ -68,7 +68,8 @@ var styles = StyleSheet.create({
   },
   customStyle: {
     color: "#413855",
-    fontSize: 15,
+    fontSize: 16,
+    fontFamily: "Mulish_700Bold",
   },
   btnNormal: {
     borderColor: "#FBEDEA",
@@ -80,7 +81,7 @@ var styles = StyleSheet.create({
     marginBottom: 20,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 35,
   },
   btnPress: {
     borderColor: "#FBEDEA",
@@ -92,7 +93,7 @@ var styles = StyleSheet.create({
     marginBottom:20,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 35,
   },
   textContainer: {
     margin: 10,

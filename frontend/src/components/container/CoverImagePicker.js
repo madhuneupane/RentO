@@ -314,8 +314,8 @@ const styles = StyleSheet.create({
   },
   customStyle: {
     color: "white",
-    fontWeight: "bold",
     fontSize: 20,
+    fontFamily: "Mulish_700Bold",
   },
   CameraButton: {
     backgroundColor: "#3B6665",

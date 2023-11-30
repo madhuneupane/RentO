@@ -6,6 +6,7 @@ import ButtonUI from "../UI/button/ButtonUI";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ApiClient from "../service/Api";
 import LottieView from "lottie-react-native";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const PropertyDescription = ({ navigation, route }) => {
   const keywords = route.params;
@@ -48,7 +49,6 @@ const PropertyDescription = ({ navigation, route }) => {
       setOwnerData({ ...keywords, description: desc1 });
     }
     // setOwnerData({ ...keywords, description: "test" });
-
   };
   //
   const nextPage = () => {
@@ -90,7 +90,11 @@ const PropertyDescription = ({ navigation, route }) => {
       {!desc ? (
         <View style={styles.wirteContainer}>
           <ButtonUI
-            customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
+            customStyle={
+              isSubmitPress
+                ? { ...styles.customStyle, color: "#02696A" }
+                : styles.customStyle
+            }
             selectedItems={() => generateDesc("tests")}
             item={{ value: "Write for me" }}
             touchProps={touchPropsSubmit}
@@ -105,7 +109,11 @@ const PropertyDescription = ({ navigation, route }) => {
       ) : (
         <View style={styles.wirteContainer}>
           <ButtonUI
-            customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
+            customStyle={
+              isSubmitPress
+                ? { ...styles.customStyle, color: "#02696A" }
+                : styles.customStyle
+            }
             selectedItems={nextPage}
             item={{ value: "Looks good!!" }}
             touchProps={touchPropsSubmit}
@@ -120,6 +128,13 @@ const PropertyDescription = ({ navigation, route }) => {
       )}
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
+        <RentoBack
+          width={840}
+          height={950}
+          marginTop={-350}
+          marginLeft={-535}
+          opacity={0.2}
+        />
       </View>
     </View>
   );
@@ -132,7 +147,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontFamily: "Mulish_700Bold",
     fontSize: 16,
-    padding:10,
+    padding: 10,
     color: "#5C5D8D",
   },
   textContainer: {
@@ -150,7 +165,7 @@ const styles = StyleSheet.create({
     //marginLeft: 10,
     fontSize: 22,
     textAlign: "center",
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
   card: {
     width: "100%",
@@ -182,7 +197,7 @@ const styles = StyleSheet.create({
     borderColor: "#413855",
   },
   textInput: {
-    color : "#5C5D8D",
+    color: "#5C5D8D",
     height: "90%",
     width: "100%",
     marginTop: 30,

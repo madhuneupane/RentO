@@ -36,7 +36,13 @@ const OwnerOnboarding1 = ({ navigation, route }) => {
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
-        <RentoBack width={420} height={200} />
+        <RentoBack
+          width={840}
+          height={910}
+          marginTop={-370}
+          marginLeft={-350}
+          opacity={0.5}
+        />
       </View>
     </View>
   );
@@ -46,21 +52,21 @@ export default OwnerOnboarding1;
 
 var styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: "rgba(0, 0, 0)",
   },
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "75%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
+    backgroundColor: "#3B6665",
     marginTop: 210,
     marginLeft: 55,
     marginBottom: 60,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 10,
     borderRadius: 20,
@@ -72,28 +78,28 @@ var styles = StyleSheet.create({
     fontFamily: "Mulish_700Bold",
   },
   btnNormal: {
-    borderColor: "#FBEDEA",
+    borderColor: "#ED7861",
     // borderWidth: 1,
-    backgroundColor: "#FBEDEA",
+    backgroundColor: "#F6D6CF",
     height: "50",
     width: "80%",
     marginLeft: 40,
     marginTop: 20,
     padding: 10,
-    borderWidth: 0.5,
+    borderWidth: 0.7,
     borderRadius: 35,
   },
   btnPress: {
-    borderColor: "#FBEDEA",
+    borderColor: "#ED7861",
     backgroundColor: "#FBEDEA",
     height: "50",
     width: "80%",
     marginLeft: 40,
     marginTop: 20,
     padding: 10,
-    borderWidth: 0.5,
+    borderWidth: 0.7,
     borderRadius: 35,
-    color: "#413855"
+    color: "#413855",
   },
   textContainer: {
     margin: 30,
@@ -107,7 +113,6 @@ var styles = StyleSheet.create({
   },
   listContainer: {
     // marginTop: ,
-    
   },
   title: {
     fontWeight: "300",

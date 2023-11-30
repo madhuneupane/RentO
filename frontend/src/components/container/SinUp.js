@@ -121,12 +121,12 @@ const styles = StyleSheet.create({
     height: 120,
   },
   container: {
-    marginTop:35,
+    marginTop: 35,
     height: "65%",
     justifyContent: "center",
     //margin: 10,
     // padding: 5,
-    backgroundColor: "white",
+    backgroundColor: "rgba(0,0,0,0.0)",
   },
   subContainer: {
     alignItems: "center",
@@ -142,8 +142,7 @@ const styles = StyleSheet.create({
     height: 45,
     paddingLeft: 10,
 
-    fontFamily:"Mulish_400Regular_Italic",
-
+    fontFamily: "Mulish_400Regular_Italic",
   },
   button: {
     borderWidth: 1.5,
@@ -170,8 +169,8 @@ const styles = StyleSheet.create({
     fontWeight: "300",
     fontSize: 28,
 
-    width:"70%",
-    marginLeft:"14%",
+    width: "70%",
+    marginLeft: "14%",
 
     textAlign: "center",
     fontFamily: "Mulish_700Bold",

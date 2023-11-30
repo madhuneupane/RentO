@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import Postdata from "../hooks/postdata";
 import ButtonUI from "../UI/button/ButtonUI";
 import { Button } from "react-native-paper";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const PostIsReady = ({ navigation, route }) => {
   const [loading, setLoading] = useState(false);
@@ -31,7 +32,11 @@ const PostIsReady = ({ navigation, route }) => {
         <ButtonUI
           item={{ value: "View Post" }}
           selectedItems={showPost}
-          customStyle={styles.customStyle}
+          customStyle={
+            isSubmitPress
+              ? { ...styles.customStyle, color: "white" }
+              : styles.customStyle
+          }
           touchProps={touchPropsSubmit}
         ></ButtonUI>
         <ButtonUI
@@ -41,6 +46,13 @@ const PostIsReady = ({ navigation, route }) => {
           touchProps={touchPropsSubmit}
         ></ButtonUI>
       </View>
+      <RentoBack
+        width={840}
+        height={890}
+        marginTop={-20}
+        marginLeft={-160}
+        opacity={0.2}
+      />
     </View>
   );
 };
@@ -49,10 +61,12 @@ export default PostIsReady;
 const styles = StyleSheet.create({
   ButtonContainer: {
     flexDirection: "row",
+    height: "40%",
+    width: "90%",
   },
   customStyle: {
-    color: "black",
-    fontWeight: "bold",
+    color: "#413855",
+    fontFamily: "Mulish_700Bold",
     fontSize: 20,
   },
   descView: {
@@ -63,18 +77,19 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     height: "40%",
     width: "90%",
-    borderWidth: 1,
+    borderWidth: 1.2,
     borderRadius: 10,
     // alignItems: "center",
     // flex: 1,
     // backgroundColor: "white",
     backgroundColor: "#E9E7EE",
-    borderColor: "#413855",
+    borderColor: "##413855",
   },
   descText: {
     marginTop: 50,
     fontFamily: "Mulish_700Bold",
-    fontSize: 20,
+    color: "#3B6665",
+    fontSize: 24,
   },
   submitButton: {
     backgroundColor: "#E9E7EE",
@@ -84,8 +99,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 70,
     padding: 10,
-    borderWidth: 1,
-    borderRadius: 20,
+    borderWidth: 1.2,
+    borderRadius: 40,
   },
   submitButtonClicked: {
     backgroundColor: "#3B6665",
@@ -95,7 +110,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     marginTop: 20,
     padding: 10,
-    borderWidth: 0.5,
-    borderRadius: 20,
+    borderWidth: 1.2,
+    borderRadius: 40,
   },
 });

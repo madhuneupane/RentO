@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { InputUI } from "../UI/input/InputUI";
 import ButtonUI from "../UI/button/ButtonUI";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const OwnerOnboarding4 = ({ navigation, route }) => {
   const [onBoardData, setOnBoardData] = useState();
@@ -39,12 +40,23 @@ const OwnerOnboarding4 = ({ navigation, route }) => {
         <ButtonUI
           item={{ value: "Continue" }}
           selectedItems={navigateToNext}
-          customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
+          customStyle={
+            isSubmitPress
+              ? { ...styles.customStyle, color: "#02696A" }
+              : styles.customStyle
+          }
           touchProps={touchPropsSubmit}
         />
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
+        <RentoBack
+          width={840}
+          height={925}
+          marginTop={-350}
+          marginLeft={-500}
+          opacity={0.2}
+        />
       </View>
     </View>
   );
@@ -83,7 +95,7 @@ const styles = StyleSheet.create({
     height: 50,
     paddingLeft: 15,
     color: "#5C5D8D",
-    fontFamily:"Mulish_400Regular_Italic",
+    fontFamily: "Mulish_400Regular_Italic",
   },
   button: {
     borderWidth: 1.5,
@@ -112,7 +124,7 @@ const styles = StyleSheet.create({
     //marginLeft: 10,
     fontSize: 22,
     textAlign: "center",
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
   submitButton: {
     backgroundColor: "#3B6665",
@@ -143,6 +155,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
   },
 });

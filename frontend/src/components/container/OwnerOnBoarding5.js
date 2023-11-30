@@ -4,6 +4,7 @@ import { roomsImages } from "../static/RoomImages";
 import Postdata from "../hooks/postdata";
 import ButtonUI from "../UI/button/ButtonUI";
 import { Text, View, StyleSheet } from "react-native";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const OwnerOnBoarding5 = ({ navigation, route }) => {
   const data = route.params;
@@ -62,11 +63,22 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
           item={{ value: "+ Add a Room" }}
           selectedItems={submitData}
           touchProps={touchPropsSubmit}
-          customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyleSubmit}
+          customStyle={
+            isSubmitPress
+              ? { ...styles.customStyle, color: "#02696A" }
+              : styles.customStyleSubmit
+          }
         ></ButtonUI>
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
+        <RentoBack
+          width={840}
+          height={910}
+          marginTop={-350}
+          marginLeft={-555}
+          opacity={0.2}
+        />
       </View>
     </View>
   );
@@ -80,13 +92,13 @@ var styles = StyleSheet.create({
   customStyle: {
     color: "#413855",
     fontSize: 18,
-    fontFamily: "Mulish_400Regular"
+    fontFamily: "Mulish_400Regular",
   },
   customStyleSubmit: {
     color: "white",
     fontWeight: "bold",
     fontSize: 18,
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
   btnNormal: {
     color: "#413855",
@@ -119,14 +131,14 @@ var styles = StyleSheet.create({
     // marginTop: ,
   },
   title: {
-  width: "90%",
-  marginLeft: 20,
-  marginTop: 20,
-  color: "#413855",
-  //marginLeft: 10,
-  fontSize: 19,
-  textAlign: "center",
-  fontFamily: "Mulish_700Bold"
+    width: "90%",
+    marginLeft: 20,
+    marginTop: 20,
+    color: "#413855",
+    //marginLeft: 10,
+    fontSize: 19,
+    textAlign: "center",
+    fontFamily: "Mulish_700Bold",
   },
   submitButton: {
     backgroundColor: "#3B6665",

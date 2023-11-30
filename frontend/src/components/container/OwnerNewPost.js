@@ -56,7 +56,7 @@ const OwnerNewPost = ({ navigation, route }) => {
             {/* Gallery Header Image */}
             <ImageBackground
               source={{ url: coverimage }}
-              style={{ width: 390, height: 423, overflow: true }}
+              style={{ width: 430, height: 423, overflow: true }}
             >
               <View style={styles.verifiedContainer}>
                 <View>
@@ -80,8 +80,8 @@ const OwnerNewPost = ({ navigation, route }) => {
                   <Image
                     source={imagePath}
                     style={{
-                      width: 130,
-                      height: 250,
+                      width: 140,
+                      height: 260,
                       margin: 2,
                       // borderWidth: selectedImage === index ? 2 : 0,
                     }}
@@ -89,6 +89,10 @@ const OwnerNewPost = ({ navigation, route }) => {
                 </TouchableOpacity>
               ))}
             </ScrollView>
+
+            <Text style={styles.heading}>
+              {item.roomNumbers} Bedroom {item.type} on {location}
+            </Text>
 
             <ButtonUI
               item={{ value: "3D Tour Available" }}
@@ -98,9 +102,6 @@ const OwnerNewPost = ({ navigation, route }) => {
               touchProps={touchPropsSubmit}
             />
 
-            <Text style={styles.heading}>
-              {item.roomNumbers} Bedroom {item.type} on {location}
-            </Text>
             <View style={styles.subContainer}>
               <View style={styles.edit}>
                 <MaterialCommunityIcons
@@ -225,18 +226,19 @@ const styles = StyleSheet.create({
   heading: {
     marginTop: 25,
     fontSize: 25,
-    color: "black",
-    fontWeight: "bold",
+    color: "#413855",
     textAlign: "center",
+    fontFamily: "Mulish_700Bold",
   },
   verified: {
-    fontSize: 15,
+    fontSize: 17,
     fontWeight: "bold",
     color: "white",
+    fontFamily: "Mulish_700Bold",
   },
   verifiedContainer: {
     backgroundColor: "#3B6665",
-    width: 90,
+    width: 100,
     height: 30,
     flexDirection: "row",
     justifyContent: "space-around",
@@ -249,7 +251,7 @@ const styles = StyleSheet.create({
   mapView: {
     marginTop: 10,
     width: "95%",
-    height: "30%",
+    height: "29%",
   },
   amenitiesTextView: {
     marginTop: 10,
@@ -304,8 +306,8 @@ const styles = StyleSheet.create({
   },
   customStyle: {
     color: "white",
-    fontWeight: "bold",
-    fontSize: 20,
+    fontFamily: "Mulish_700Bold",
+    fontSize: 22,
   },
   submitButton: {
     backgroundColor: "#3B6665",

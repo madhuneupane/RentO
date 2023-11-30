@@ -4,6 +4,7 @@ import ButtonUI from "../UI/button/ButtonUI";
 import { CheckBox } from "@rneui/themed";
 import { useState } from "react";
 import { WebView } from "react-native-webview";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const OwnerOnboarding3 = ({ navigation, route }) => {
   const url = `http://127.0.0.1:5500/SearchWebview/index.html`;
@@ -76,13 +77,24 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
         <ButtonUI
           item={{ value: "Continue" }}
           selectedItems={navigateToNext}
-          customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
+          customStyle={
+            isSubmitPress
+              ? { ...styles.customStyle, color: "#02696A" }
+              : styles.customStyle
+          }
           touchProps={touchPropsSubmit}
         />
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
       </View>
+      <RentoBack
+        width={540}
+        height={820}
+        marginTop={-350}
+        marginLeft={-30}
+        opacity={0.2}
+      />
     </View>
   );
 };
@@ -125,7 +137,7 @@ const styles = StyleSheet.create({
     color: "#5C5D8D",
     //marginTop: 10,
     paddingLeft: 15,
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
   },
   button: {
     borderWidth: 1.5,
@@ -139,7 +151,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
   },
   textContainer: {
     margin: 10,
@@ -154,7 +166,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginTop: "30",
-    width:"70%",
+    width: "70%",
     marginLeft: 60,
     fontSize: 22,
     color: "#413855",
@@ -165,7 +177,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
   },
   submitButton: {
     backgroundColor: "#3B6665",

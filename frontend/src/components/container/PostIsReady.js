@@ -26,18 +26,18 @@ const PostIsReady = ({ navigation, route }) => {
   // console.log("Finally::: last page" + JSON.stringify(data));
   return (
     <View style={styles.descView}>
-      <Text style={styles.descText}> Your listing has been posted</Text>
+      <Text style={styles.descText}> Your listing has been posted!</Text>
       <View style={styles.ButtonContainer}>
         <ButtonUI
           item={{ value: "View Post" }}
           selectedItems={showPost}
-          customStyle={styles.customStyle}
+          customStyle={isSubmitPress?{...styles.customStyle, color: "white"}:styles.customStyle}
           touchProps={touchPropsSubmit}
         ></ButtonUI>
         <ButtonUI
           item={{ value: "My Listings" }}
           selectedItems={showListings}
-          customStyle={styles.customStyle}
+          customStyle={isSubmitPress?{...styles.customStyle, color: "white"}:styles.customStyle}
           touchProps={touchPropsSubmit}
         ></ButtonUI>
       </View>
@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   customStyle: {
-    color: "black",
-    fontWeight: "bold",
+    color: "#413855",
     fontSize: 20,
+    fontFamily: "Mulish_700Bold",
   },
   descView: {
     alignItems: "center",
@@ -61,10 +61,10 @@ const styles = StyleSheet.create({
     marginTop: "30%",
     // marginBottom: 10,
     marginLeft: 20,
-    height: "40%",
+    height: "26%",
     width: "90%",
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 20,
     // alignItems: "center",
     // flex: 1,
     // backgroundColor: "white",
@@ -72,30 +72,33 @@ const styles = StyleSheet.create({
     borderColor: "#413855",
   },
   descText: {
-    marginTop: 50,
+    marginTop: 40,
     fontFamily: "Mulish_700Bold",
-    fontSize: 20,
+    fontSize: 25,
+    color: "#3B6665",
   },
   submitButton: {
     backgroundColor: "#E9E7EE",
     borderColor: "#3B6665",
-    height: "55%",
-    width: "46%",
+    //height: "50%",
+    width: "40%",
     marginLeft: 10,
-    marginTop: 70,
-    padding: 10,
+    marginTop: 30,
+    padding: 5,
+    color:"#413855",
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 40,
   },
   submitButtonClicked: {
+    color: "white",
     backgroundColor: "#3B6665",
     borderColor: "#3B6665",
-    height: "55%",
-    width: "46%",
-    marginLeft: 40,
-    marginTop: 20,
-    padding: 10,
+    //height: "50%",
+    width: "40%",
+    marginLeft: 10,
+    marginTop: 30,
+    padding: 5,
     borderWidth: 0.5,
-    borderRadius: 20,
+    borderRadius: 40,
   },
 });

@@ -4,6 +4,7 @@ import { amenitiesType } from "../static/constants";
 import { View, StyleSheet, Text } from "react-native";
 import List from "../list/List";
 import ButtonUI from "../UI/button/ButtonUI";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const OwnerOnBoarding6 = ({ navigation, route }) => {
   var [isPress, setIsPress] = useState(false);
@@ -56,9 +57,7 @@ const OwnerOnBoarding6 = ({ navigation, route }) => {
           <Text style={styles.title}>
             What amenities does your property offer?
           </Text>
-          <Text style={styles.subTitle}>
-            Select all that apply
-          </Text>
+          <Text style={styles.subTitle}>Select all that apply</Text>
         </View>
         <View style={styles.listContainer}>
           <View style={styles.buttonConatiner}>
@@ -102,11 +101,22 @@ const OwnerOnBoarding6 = ({ navigation, route }) => {
           item={{ value: "Continue" }}
           selectedItems={submit}
           touchProps={touchPropsSubmit}
-          customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
+          customStyle={
+            isSubmitPress
+              ? { ...styles.customStyle, color: "#02696A" }
+              : styles.customStyle
+          }
         ></ButtonUI>
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
+        <RentoBack
+          width={840}
+          height={910}
+          marginTop={-350}
+          marginLeft={-400}
+          opacity={0.2}
+        />
       </View>
     </View>
   );
@@ -184,7 +194,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
-    color: "#413855"
+    color: "#413855",
   },
   subTitle: {
     color: "#5C5D8D",

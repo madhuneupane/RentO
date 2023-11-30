@@ -6,6 +6,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from "expo-image-picker";
 import LottieView from "lottie-react-native";
 import CameraColor from "../../../assets/CameraColor.svg";
+import RentoBack from "../../../assets/rentoBack.svg";
 import {
   View,
   Text,
@@ -111,132 +112,163 @@ const ImageSelector = ({ navigation, route }) => {
     setFirebaseImage(false);
   };
   return (
-    <View style={styles.mainContainer}>
-      <Text style={styles.title}>
-        Start by clicking on each area to capture or upload a picture
-      </Text>
-      <View style={styles.container}>
-        <View>
-          <TouchableWithoutFeedback onPress={() => selectImage("image1")}>
-            <View>
-              <View style={styles.imageContainer}>
-                {!images?.image1 ? (
-                  <CameraColor width={40} height={40} />
-                ) : (
-                  <Image source={{ uri: images.image1 }} style={styles.image} />
-                )}
+    <>
+      <View style={styles.mainContainer}>
+        <Text style={styles.title}>
+          Start by clicking on each area to capture or upload a picture
+        </Text>
+        <View style={styles.container}>
+          <View>
+            <TouchableWithoutFeedback onPress={() => selectImage("image1")}>
+              <View>
+                <View style={styles.imageContainer}>
+                  {!images?.image1 ? (
+                    <CameraColor width={40} height={40} />
+                  ) : (
+                    <Image
+                      source={{ uri: images.image1 }}
+                      style={styles.image}
+                    />
+                  )}
+                </View>
               </View>
-            </View>
-          </TouchableWithoutFeedback>
-          <Text style={styles.text}>Left Wall</Text>
-        </View>
-        <View>
-          <TouchableWithoutFeedback onPress={() => selectImage("image2")}>
-            <View>
-              <View style={styles.imageContainer}>
-                {!images?.image2 ? (
-                  <CameraColor width={40} height={40} />
-                ) : (
-                  <Image source={{ uri: images.image2 }} style={styles.image} />
-                )}
+            </TouchableWithoutFeedback>
+            <Text style={styles.text}>Left Wall</Text>
+          </View>
+          <View>
+            <TouchableWithoutFeedback onPress={() => selectImage("image2")}>
+              <View>
+                <View style={styles.imageContainer}>
+                  {!images?.image2 ? (
+                    <CameraColor width={40} height={40} />
+                  ) : (
+                    <Image
+                      source={{ uri: images.image2 }}
+                      style={styles.image}
+                    />
+                  )}
+                </View>
               </View>
-            </View>
-          </TouchableWithoutFeedback>
-          <Text style={styles.text}>Right Wall</Text>
-        </View>
-        <View>
-          <TouchableWithoutFeedback onPress={() => selectImage("image3")}>
-            <View>
-              <View style={styles.imageContainer}>
-                {!images?.image3 ? (
-                  <CameraColor width={40} height={40} />
-                ) : (
-                  <Image source={{ uri: images.image3 }} style={styles.image} />
-                )}
+            </TouchableWithoutFeedback>
+            <Text style={styles.text}>Right Wall</Text>
+          </View>
+          <View>
+            <TouchableWithoutFeedback onPress={() => selectImage("image3")}>
+              <View>
+                <View style={styles.imageContainer}>
+                  {!images?.image3 ? (
+                    <CameraColor width={40} height={40} />
+                  ) : (
+                    <Image
+                      source={{ uri: images.image3 }}
+                      style={styles.image}
+                    />
+                  )}
+                </View>
               </View>
-            </View>
-          </TouchableWithoutFeedback>
-          <Text style={styles.text}>Front Wall</Text>
+            </TouchableWithoutFeedback>
+            <Text style={styles.text}>Front Wall</Text>
+          </View>
+          {/* 2nd Column  */}
         </View>
-        {/* 2nd Column  */}
+        <View style={styles.container}>
+          <View>
+            <TouchableWithoutFeedback onPress={() => selectImage("image4")}>
+              <View>
+                <View style={styles.imageContainer}>
+                  {!images?.image4 ? (
+                    <CameraColor width={40} height={40} />
+                  ) : (
+                    <Image
+                      source={{ uri: images.image4 }}
+                      style={styles.image}
+                    />
+                  )}
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+            <Text style={styles.text}>Back Wall</Text>
+          </View>
+          <View>
+            <TouchableWithoutFeedback onPress={() => selectImage("image5")}>
+              <View>
+                <View style={styles.imageContainer}>
+                  {!images?.image5 ? (
+                    <CameraColor width={40} height={40} />
+                  ) : (
+                    <Image
+                      source={{ uri: images.image5 }}
+                      style={styles.image}
+                    />
+                  )}
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+            <Text style={styles.text}>Ceiling</Text>
+          </View>
+          <View>
+            <TouchableWithoutFeedback onPress={() => selectImage("image6")}>
+              <View>
+                <View style={styles.imageContainer}>
+                  {!images?.image6 ? (
+                    <CameraColor width={40} height={40} />
+                  ) : (
+                    <Image
+                      source={{ uri: images.image6 }}
+                      style={styles.image}
+                    />
+                  )}
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+            <Text style={styles.text}>Floor</Text>
+          </View>
+        </View>
+        {images.image6 && firebaseImages == null && (
+          <ButtonUI
+            item={{ value: "Upload 6 Images" }}
+            selectedItems={saveImages}
+            customStyle={
+              isSubmitPress
+                ? { ...styles.customStyle, color: "#02696A" }
+                : styles.customStyle
+            }
+            touchProps={touchPropsCamera}
+          />
+        )}
+        {firebaseImages && (
+          <LottieView
+            autoPlay
+            style={{
+              width: "100%",
+              height: "45%",
+              backgroundColor: "white",
+              marginLeft: 33,
+              marginBottom: 100,
+            }}
+            source={require("../../../assets/RentoO - Loading Animation.json")}
+            // source={{
+            //   uri: "https://lottie.host/fde45e7c-36a5-493d-ae49-80631ac15f5f/avgoduAK0g.json",
+            // }}
+          />
+        )}
+        {!firebaseImages && firebaseImages != null && (
+          <ButtonUI
+            item={{ value: "Continue" }}
+            selectedItems={uploadImages}
+            customStyle={styles.customStyle}
+            touchProps={touchPropsSubmit}
+          />
+        )}
       </View>
-      <View style={styles.container}>
-        <View>
-          <TouchableWithoutFeedback onPress={() => selectImage("image4")}>
-            <View>
-              <View style={styles.imageContainer}>
-                {!images?.image4 ? (
-                  <CameraColor width={40} height={40} />
-                ) : (
-                  <Image source={{ uri: images.image4 }} style={styles.image} />
-                )}
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
-          <Text style={styles.text}>Back Wall</Text>
-        </View>
-        <View>
-          <TouchableWithoutFeedback onPress={() => selectImage("image5")}>
-            <View>
-              <View style={styles.imageContainer}>
-                {!images?.image5 ? (
-                  <CameraColor width={40} height={40} />
-                ) : (
-                  <Image source={{ uri: images.image5 }} style={styles.image} />
-                )}
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
-          <Text style={styles.text}>Ceiling</Text>
-        </View>
-        <View>
-          <TouchableWithoutFeedback onPress={() => selectImage("image6")}>
-            <View>
-              <View style={styles.imageContainer}>
-                {!images?.image6 ? (
-                  <CameraColor width={40} height={40} />
-                ) : (
-                  <Image source={{ uri: images.image6 }} style={styles.image} />
-                )}
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
-          <Text style={styles.text}>Floor</Text>
-        </View>
-      </View>
-      {images.image6 && firebaseImages == null && (
-        <ButtonUI
-          item={{ value: "Upload 6 Images" }}
-          selectedItems={saveImages}
-          customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
-          touchProps={touchPropsCamera}
-        />
-      )}
-      {firebaseImages && (
-        <LottieView
-          autoPlay
-          style={{
-            width: "100%",
-            height: "45%",
-            backgroundColor: "white",
-            marginLeft: 30,
-            marginBottom: 100,
-          }}
-          source={require("../../../assets/RentoO - Loading Animation.json")}
-          // source={{
-          //   uri: "https://lottie.host/fde45e7c-36a5-493d-ae49-80631ac15f5f/avgoduAK0g.json",
-          // }}
-        />
-      )}
-      {!firebaseImages && firebaseImages != null && (
-        <ButtonUI
-          item={{ value: "Continue" }}
-          selectedItems={uploadImages}
-          customStyle={styles.customStyle}
-          touchProps={touchPropsSubmit}
-        />
-      )}
-    </View>
+      <RentoBack
+        width={840}
+        height={990}
+        marginTop={-300}
+        marginLeft={-285}
+        opacity={0.2}
+      />
+    </>
   );
 };
 const styles = StyleSheet.create({

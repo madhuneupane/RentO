@@ -43,7 +43,9 @@ const AppStack = () => {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: "white",
+      // primary: "rgba(0, 0, 0, .5)",
+      // primary: "rgba(0, 0, 0,0.04)",
+      // background: "rgba(0, 0, 0,0.04)",
       background: "white",
 
       // height:"100%"

@@ -3,6 +3,7 @@ import OwnerListingsList from "../list/OwnerListingsList";
 import { View, StyleSheet } from "react-native";
 import ownerpost from "../hooks/ownerpost";
 import ButtonUI from "../UI/button/ButtonUI";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const OwnerPosts = ({ navigation, route }) => {
   const [refreshing, setRefreshing] = useState(false);
@@ -41,6 +42,13 @@ const OwnerPosts = ({ navigation, route }) => {
           touchProps={touchPropsSubmit}
         />
       </View>
+      <RentoBack
+        width={840}
+        height={300}
+        marginTop={-120}
+        marginLeft={-230}
+        opacity={0.0}
+      />
     </View>
   );
 };
@@ -58,7 +66,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
   },
   date: {
     marginTop: 5,

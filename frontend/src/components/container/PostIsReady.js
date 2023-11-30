@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import Postdata from "../hooks/postdata";
 import ButtonUI from "../UI/button/ButtonUI";
 import { Button } from "react-native-paper";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const PostIsReady = ({ navigation, route }) => {
   const [loading, setLoading] = useState(false);
@@ -41,6 +42,13 @@ const PostIsReady = ({ navigation, route }) => {
           touchProps={touchPropsSubmit}
         ></ButtonUI>
       </View>
+      <RentoBack
+        width={840}
+        height={890}
+        marginTop={-20}
+        marginLeft={-160}
+        opacity={0.2}
+      />
     </View>
   );
 };
@@ -49,6 +57,8 @@ export default PostIsReady;
 const styles = StyleSheet.create({
   ButtonContainer: {
     flexDirection: "row",
+    height: "40%",
+    width: "90%",
   },
   customStyle: {
     color: "#413855",
@@ -69,7 +79,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     // backgroundColor: "white",
     backgroundColor: "#E9E7EE",
-    borderColor: "#413855",
+    borderColor: "##413855",
   },
   descText: {
     marginTop: 40,

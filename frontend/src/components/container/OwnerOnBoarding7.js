@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { InputUI } from "../UI/input/InputUI";
 import ButtonUI from "../UI/button/ButtonUI";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const OwnerOnboarding7 = ({ navigation, route }) => {
   const [onBoardData, setOnBoardData] = useState();
@@ -48,12 +49,23 @@ const OwnerOnboarding7 = ({ navigation, route }) => {
         <ButtonUI
           item={{ value: "Continue" }}
           selectedItems={navigateToNext}
-          customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
+          customStyle={
+            isSubmitPress
+              ? { ...styles.customStyle, color: "#02696A" }
+              : styles.customStyle
+          }
           touchProps={touchPropsSubmit}
         />
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
+        <RentoBack
+          width={840}
+          height={920}
+          marginTop={-350}
+          marginLeft={-430}
+          opacity={0.2}
+        />
       </View>
     </View>
   );
@@ -93,7 +105,7 @@ const styles = StyleSheet.create({
     color: "#5C5D8D",
     //marginTop: 10,
     paddingLeft: 15,
-    fontFamily:"Mulish_400Regular_Italic",
+    fontFamily: "Mulish_400Regular_Italic",
   },
   button: {
     borderWidth: 1.5,
@@ -108,7 +120,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 22,
     color: "#413855",
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
   },
   textContainer: {
     margin: 10,
@@ -119,12 +131,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "300",
-    width:"70%",
+    width: "70%",
     marginLeft: 50,
     fontSize: 22,
     color: "#413855",
     textAlign: "center",
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
   submitButton: {
     backgroundColor: "#3B6665",
@@ -155,6 +167,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
   },
 });

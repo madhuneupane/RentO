@@ -6,6 +6,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from "expo-image-picker";
 import LottieView from "lottie-react-native";
 import CameraColor from "../../../assets/CameraColor.svg";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 import {
   View,
@@ -112,100 +113,109 @@ const CoverImagePicker = ({ navigation, route }) => {
     setFirebaseImage(false);
   };
   return (
-    <View style={styles.mainContainer}>
-      <Text style={styles.title}>
-        Start by clicking on each area to capture or upload a picture
-      </Text>
-      <View>
-        <View style={styles.firstContainer}>
-          <TouchableWithoutFeedback onPress={() => selectImage("image1")}>
-            <View>
-              <View style={styles.imageContainer1}>
-                {!images[0] ? (
-                  <CameraColor width={60} height={60} />
-                ) : (
-                  <Image source={{ uri: images[0] }} style={styles.image} />
-                )}
+    <>
+      <View style={styles.mainContainer}>
+        <Text style={styles.title}>
+          Start by clicking on each area to capture or upload a picture
+        </Text>
+        <View>
+          <View style={styles.firstContainer}>
+            <TouchableWithoutFeedback onPress={() => selectImage("image1")}>
+              <View>
+                <View style={styles.imageContainer1}>
+                  {!images[0] ? (
+                    <CameraColor width={60} height={60} />
+                  ) : (
+                    <Image source={{ uri: images[0] }} style={styles.image} />
+                  )}
+                </View>
               </View>
+            </TouchableWithoutFeedback>
+          </View>
+          <View style={styles.container}>
+            <View style={styles.image2Container}>
+              <TouchableWithoutFeedback onPress={() => selectImage("image2")}>
+                <View>
+                  <View style={styles.imageContainer}>
+                    {!images[1] ? (
+                      <CameraColor width={60} height={30} />
+                    ) : (
+                      <Image source={{ uri: images[1] }} style={styles.image} />
+                    )}
+                  </View>
+                </View>
+              </TouchableWithoutFeedback>
             </View>
-          </TouchableWithoutFeedback>
-        </View>
-        <View style={styles.container}>
-          <View style={styles.image2Container}>
-            <TouchableWithoutFeedback onPress={() => selectImage("image2")}>
-              <View>
-                <View style={styles.imageContainer}>
-                  {!images[1] ? (
-                    <CameraColor width={60} height={30} />
-                  ) : (
-                    <Image source={{ uri: images[1] }} style={styles.image} />
-                  )}
+            <View>
+              <TouchableWithoutFeedback onPress={() => selectImage("image3")}>
+                <View>
+                  <View style={styles.imageContainer}>
+                    {!images[2] ? (
+                      <CameraColor width={60} height={30} />
+                    ) : (
+                      <Image source={{ uri: images[2] }} style={styles.image} />
+                    )}
+                  </View>
                 </View>
-              </View>
-            </TouchableWithoutFeedback>
-          </View>
-          <View>
-            <TouchableWithoutFeedback onPress={() => selectImage("image3")}>
-              <View>
-                <View style={styles.imageContainer}>
-                  {!images[2] ? (
-                    <CameraColor width={60} height={30} />
-                  ) : (
-                    <Image source={{ uri: images[2] }} style={styles.image} />
-                  )}
+              </TouchableWithoutFeedback>
+            </View>
+            <View>
+              <TouchableWithoutFeedback onPress={() => selectImage("image4")}>
+                <View>
+                  <View style={styles.imageContainer}>
+                    {!images[3] ? (
+                      <CameraColor width={60} height={30} />
+                    ) : (
+                      <Image source={{ uri: images[3] }} style={styles.image} />
+                    )}
+                  </View>
                 </View>
-              </View>
-            </TouchableWithoutFeedback>
-          </View>
-          <View>
-            <TouchableWithoutFeedback onPress={() => selectImage("image4")}>
-              <View>
-                <View style={styles.imageContainer}>
-                  {!images[3] ? (
-                    <CameraColor width={60} height={30} />
-                  ) : (
-                    <Image source={{ uri: images[3] }} style={styles.image} />
-                  )}
-                </View>
-              </View>
-            </TouchableWithoutFeedback>
+              </TouchableWithoutFeedback>
+            </View>
           </View>
         </View>
-      </View>
 
-      {images[3] && firebaseImages == null && (
-        <ButtonUI
-          item={{ value: "Upload Images" }}
-          selectedItems={saveImages}
-          customStyle={styles.customStyleCamera}
-          touchProps={touchPropsCamera}
-        />
-      )}
-      {firebaseImages && (
-        <LottieView
-          autoPlay
-          style={{
-            width: "100%",
-            height: "45%",
-            backgroundColor: "white",
-            marginLeft: 30,
-            marginBottom: 100,
-          }}
-          source={require("../../../assets/RentoO - Loading Animation.json")}
-          // source={{
-          //   uri: "https://lottie.host/fde45e7c-36a5-493d-ae49-80631ac15f5f/avgoduAK0g.json",
-          // }}
-        />
-      )}
-      {!firebaseImages && firebaseImages != null && (
-        <ButtonUI
-          item={{ value: "Continue" }}
-          selectedItems={uploadImages}
-          customStyle={styles.customStyle}
-          touchProps={touchPropsSubmit}
-        />
-      )}
-    </View>
+        {images[3] && firebaseImages == null && (
+          <ButtonUI
+            item={{ value: "Upload Images" }}
+            selectedItems={saveImages}
+            customStyle={styles.customStyleCamera}
+            touchProps={touchPropsCamera}
+          />
+        )}
+        {firebaseImages && (
+          <LottieView
+            autoPlay
+            style={{
+              width: "100%",
+              height: "45%",
+              backgroundColor: "white",
+              marginLeft: 35,
+              marginBottom: 100,
+            }}
+            source={require("../../../assets/RentoO - Loading Animation.json")}
+            // source={{
+            //   uri: "https://lottie.host/fde45e7c-36a5-493d-ae49-80631ac15f5f/avgoduAK0g.json",
+            // }}
+          />
+        )}
+        {!firebaseImages && firebaseImages != null && (
+          <ButtonUI
+            item={{ value: "Continue" }}
+            selectedItems={uploadImages}
+            customStyle={styles.customStyle}
+            touchProps={touchPropsSubmit}
+          />
+        )}
+      </View>
+      <RentoBack
+        width={840}
+        height={990}
+        marginTop={-320}
+        marginLeft={-285}
+        opacity={0.2}
+      />
+    </>
   );
 };
 const styles = StyleSheet.create({

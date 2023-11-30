@@ -2,6 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 import { listingOptions } from "../static/ListingOptions";
 import List from "../list/List";
 import React, { useState } from "react";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const OwnerOnboarding2 = ({ navigation, route }) => {
   var [isPress, setIsPress] = useState(false);
@@ -37,6 +38,13 @@ const OwnerOnboarding2 = ({ navigation, route }) => {
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
+        <RentoBack
+          width={840}
+          height={910}
+          marginTop={-350}
+          marginLeft={-350}
+          opacity={0.2}
+        />
       </View>
     </View>
   );
@@ -64,7 +72,7 @@ var styles = StyleSheet.create({
     height: 10,
     width: 20,
     borderRadius: 20,
-    marginBottom:20,
+    marginBottom: 20,
   },
   customStyle: {
     color: "#413855",
@@ -72,9 +80,9 @@ var styles = StyleSheet.create({
     fontFamily: "Mulish_700Bold",
   },
   btnNormal: {
-    borderColor: "#FBEDEA",
+    borderColor: "#ED7861",
 
-    backgroundColor: "#FBEDEA",
+    backgroundColor: "#F6D6CF",
     height: "60",
     width: "80%",
     marginLeft: 40,
@@ -90,7 +98,7 @@ var styles = StyleSheet.create({
     width: "80%",
     marginLeft: 40,
     //marginTop: 18,
-    marginBottom:20,
+    marginBottom: 20,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 35,
@@ -101,7 +109,7 @@ var styles = StyleSheet.create({
     color: "#413855",
     justifyContent: "center",
     fontWeight: "bold",
-    fontFamily: "Mulish_400Regular"
+    fontFamily: "Mulish_400Regular",
     // backgroundColor: "pink",
   },
   listContainer: {
@@ -114,6 +122,6 @@ var styles = StyleSheet.create({
     marginLeft: 10,
     color: "#413855",
     textAlign: "center",
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
 });

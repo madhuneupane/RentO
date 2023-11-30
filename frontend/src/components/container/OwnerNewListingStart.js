@@ -3,6 +3,8 @@ import { View, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StyleSheet } from "react-native";
 import NewListing from "../../../assets/New-Listing-Start-.svg";
+import RentoBack from "../../../assets/rentoBack.svg";
+
 const OwnerNewListingStart = ({ navigation, route }) => {
   const start = () => {
     navigation.navigate("owner_onboarding1");
@@ -21,6 +23,13 @@ const OwnerNewListingStart = ({ navigation, route }) => {
           <Text style={styles.newlisting}> New Listing</Text>
         </View>
       </TouchableOpacity>
+      <RentoBack
+        width={840}
+        height={300}
+        marginTop={-120}
+        marginLeft={-240}
+        opacity={0.5}
+      />
     </View>
   );
 };
@@ -46,7 +55,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#3B6665",
     padding: 10,
-    borderRadius : "10.81"
+    borderRadius: "10.81",
   },
   text: {
     color: "#413855",

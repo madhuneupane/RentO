@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ButtonUI from "../UI/button/ButtonUI";
 import { Text, View, StyleSheet, Image } from "react-native";
+import RentoBack from "../../../assets/rentoBack.svg";
+
 const Login = ({ navigation }) => {
   const selectedItems = (value, type) => {
     navigation.navigate(type);
@@ -10,7 +12,7 @@ const Login = ({ navigation }) => {
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
-     // <-- "backgroundColor" will be always overwritten by "underlayColor"
+    // <-- "backgroundColor" will be always overwritten by "underlayColor"
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
@@ -34,7 +36,11 @@ const Login = ({ navigation }) => {
         <View style={styles.buttonView}>
           <ButtonUI
             item={{ value: `I’m looking for a new place` }}
-            customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
+            customStyle={
+              isSubmitPress
+                ? { ...styles.customStyle, color: "#02696A" }
+                : styles.customStyle
+            }
             selectedItems={selectedItems}
             touchProps={touchPropsSubmit}
             type="welcome"
@@ -49,6 +55,13 @@ const Login = ({ navigation }) => {
           />
         </View>
       </View>
+      <RentoBack
+        width={800}
+        height={300}
+        marginTop={-150}
+        marginLeft={-220}
+        opacity={0.7}
+      />
     </View>
   );
 };
@@ -58,14 +71,15 @@ export default Login;
 const styles = StyleSheet.create({
   title: {
     // marginLeft: 10,
-    marginTop:-10,
+    marginTop: -10,
     marginBottom: -28,
     color: "#413855",
     fontFamily: "Mulish_700Bold",
     fontSize: 24,
   },
   container: {
-    backgroundColor: "white",
+    // backgroundColor: "rgb(229 231 235)",
+    backgroundColor: "rgba(0, 0, 0)",
   },
   // imageContainer: {
   //   marginTop: "20%",

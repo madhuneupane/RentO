@@ -180,7 +180,7 @@ const OwnerNewPost = ({ navigation, route }) => {
               <Text
                 style={{ ...styles.textView, marginTop: 10, marginBottom: 20 }}
               >
-                Sanjana Chumber
+                Madhu Nyoupane
               </Text>
             </View>
 

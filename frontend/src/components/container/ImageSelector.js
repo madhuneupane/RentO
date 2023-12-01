@@ -57,7 +57,7 @@ const ImageSelector = ({ navigation, route }) => {
       quality: 0,
     });
 
-    console.log("images seleted:" + JSON.stringify(result.assets[0]));
+    // console.log("images seleted:" + JSON.stringify(result.assets[0]));
 
     if (!result.canceled) {
       dispatch({ type: imageNumber, value: result.assets[0].uri });
@@ -112,7 +112,6 @@ const ImageSelector = ({ navigation, route }) => {
     setTimeout(() => {
       setFirebaseImage(false);
     }, 3000);
-    
   };
   return (
     <>

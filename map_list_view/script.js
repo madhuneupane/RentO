@@ -189,8 +189,8 @@ ttSearchBox.on("tomtom.searchbox.resultselected", handleResultSelection);
 
 //Getting data from the API
 async function fetchDataFromBothAPIs() {
-  const rentOUrl = "https://api.rent-o.com/api/fetchAllProperty";
-  const craigslistUrl = "https://api.rent-o.com/api/craigExtract";
+  const rentOUrl = "https://rent-o.com/api/fetchAllProperty";
+  const craigslistUrl = "https://rent-o.com/api/craigExtract";
 
   const rentOPromise = fetch(rentOUrl)
     .then((response) => {
@@ -515,7 +515,7 @@ function RenderListForBoth() {
       verifiedLabel.style.fontFamily = "Mulish";
       verifiedLabel.style.padding = "10px";
       verifiedLabel.style.borderRadius = "20px";
-      verifiedLabel.style.backgroundColor = "#36827F";
+      verifiedLabel.style.backgroundColor = "#3b6665";
       verifiedLabel.style.color = "white";
 
       const checkMarkCircle = document.createElement("div");

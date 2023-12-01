@@ -24,7 +24,7 @@ const UserProfile = () => {
         <Text style={styles.text}>Madhu Nyoupane</Text>
         <View style={styles.contactContainer}>
           <Text style={styles.contact}> Vancouver, BC</Text>
-          <Text style={styles.contact}>+1-236-514-9569</Text>
+          <Text style={styles.contact}>+1(236)-514-9569</Text>
           <Text style={styles.contact}>nyoupanemadhu07@gmail.com</Text>
         </View>
         <View style={styles.leftAlign}>
@@ -37,7 +37,9 @@ const UserProfile = () => {
             <Text> and thats why we rent ours houses!</Text>
           </Text>
           <Text style={styles.titlePost}>My Posts</Text>
-          <OwnerPosts />
+          <View style={styles.postCard}> 
+            <OwnerPosts />
+          </View>
           <View style={styles.makeRoom}></View>
         </View>
       </View>
@@ -49,10 +51,7 @@ const styles = StyleSheet.create({
   scrollContainer: {
     marginTop: 20,
     flexGrow: 1,
-
     height: 1300,
-
-
   },
   container: {
     marginTop: 15,
@@ -60,8 +59,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imageContainer: {
-    width: 150, // Adjust the size of the circle as needed
-    height: 150,
+    width: 140, // Adjust the size of the circle as needed
+    height: 140,
     borderRadius: 75, // Set the borderRadius to half the width and height to create a circle
     overflow: "hidden", // Clip the image to the circular shape
     alignItems: "center", // Center the text horizontally
@@ -129,7 +128,10 @@ const styles = StyleSheet.create({
     color: "#413855",
     fontSize: 20,
     fontFamily: "Mulish_800ExtraBold",
-    marginTop: 12,
+    marginTop: 2,
     marginLeft: 20,
+  },
+  postCard: {
+  width:430
   },
 });

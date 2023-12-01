@@ -86,7 +86,6 @@ var styles = StyleSheet.create({
   },
   btnNormal: {
     borderColor: "#ED7861",
-
     backgroundColor: "#F6D6CF",
     height: "60",
     width: "80%",

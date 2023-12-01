@@ -97,7 +97,7 @@ var styles = StyleSheet.create({
   },
   btnPress: {
     borderColor: "#ED7861",
-    backgroundColor: "#FBEDEA",
+    backgroundColor: "#F6D6CF",
     height: "50",
     width: "80%",
     marginLeft: 40,

@@ -98,7 +98,7 @@ const OwnerNewPost = ({ navigation, route }) => {
               item={{ value: "3D Tour Available" }}
               // customStyle={styles.button}
               selectedItems={showTour}
-              customStyle={styles.customStyle}
+              customStyle={isSubmitPress?{...styles.customStyle, color: "#3B6665"}:styles.customStyle}
               touchProps={touchPropsSubmit}
             />
 
@@ -180,14 +180,14 @@ const OwnerNewPost = ({ navigation, route }) => {
               <Text
                 style={{ ...styles.textView, marginTop: 10, marginBottom: 20 }}
               >
-                Madhu Sharma
+                Sanjana Chumber
               </Text>
             </View>
 
             <ButtonUI
               item={{ value: "See Applicants" }}
               selectedItems={savePost}
-              customStyle={styles.customStyle}
+              customStyle={isSubmitPress?{...styles.customStyle, color: "#3B6665"}:styles.customStyle}
               touchProps={touchPropsSubmit}
             />
 
@@ -254,6 +254,7 @@ const styles = StyleSheet.create({
     height: "29%",
   },
   amenitiesTextView: {
+    
     marginTop: 10,
     flexDirection: "row",
     justifyContent: "space-evenly",
@@ -273,33 +274,42 @@ const styles = StyleSheet.create({
     // justifyContent: "space-around",
   },
   textView: {
-    fontSize: 16,
     color: "#5C5D8D",
+    fontFamily: "Mulish_600SemiBold",
+    fontSize: 17,
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
+    marginTop: -25,
+    fontSize: 25,
+    color: "#413855",
+    fontFamily: "Mulish_700Bold",
   },
   descView: {
     width: "90%",
     // marginLeft: 30,
   },
   desc: {
+    color: "#5C5D8D",
+    fontFamily: "Mulish_600SemiBold",
     marginTop: 10,
     fontSize: 18,
   },
   rent: {
-    fontSize: 30,
+    fontSize: 35,
     color: "#3B6665",
-    fontWeight: "bold",
+    fontFamily: "Mulish_700Bold",
   },
   location: {
     fontSize: 25,
     margin: 5,
+    color: "#413855",
+    fontFamily: "Mulish_700Bold",
   },
   rooms: {
     fontSize: 15,
     margin: 7,
+    color: "#5C5D8D",
+    fontFamily: "Mulish_700Bold",
   },
   mainImageContainer: {
     borderRadius: 20,

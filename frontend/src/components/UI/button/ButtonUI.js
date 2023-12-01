@@ -28,8 +28,13 @@ const ButtonUI = ({
           <View style={styles.checkContainer}>
             <MaterialCommunityIcons
               name="check-circle"
-              size={20}
+              size={30}
               color="#f56e51"
+              // marginLeft={300}
+              // marginTop={-15}
+              position="absolute"
+              top={-18}
+              right={-95}
             />
           </View>
         )}

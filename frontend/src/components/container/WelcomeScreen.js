@@ -4,9 +4,9 @@ import ButtonUI from "../UI/button/ButtonUI";
 import { InputUI } from "../UI/input/InputUI";
 import { rentorCredentials } from "../static/constants";
 import { WebView } from "react-native-webview";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const WelcomeScreen = ({ navigation }) => {
-
   const [parsedAddress, setParsedAddress] = useState({
     address: "N/A",
     city: "N/A",
@@ -66,6 +66,7 @@ const WelcomeScreen = ({ navigation }) => {
       <View style={styles.textContainer}>
         <Text style={styles.title}>What’s your address?</Text>
       </View>
+
       <View style={styles.webviewContainer}>
         <WebView
           source={{ uri: url }}
@@ -77,12 +78,6 @@ const WelcomeScreen = ({ navigation }) => {
           style={styles.webview}
         />
       </View>
-      {/* <InputUI
-        style={styles.input}
-        placeholder="  Search by location  "
-        coustomStyle={styles}
-        selectedItems={saveCity}
-      /> */}
       <ButtonUI
         item={{ value: "Show" }}
         customStyle={
@@ -93,6 +88,20 @@ const WelcomeScreen = ({ navigation }) => {
         selectedItems={showListView}
         touchProps={touchPropsSubmit}
       />
+      <RentoBack
+        style={{ zIndex: -1 }}
+        width={460}
+        height={290}
+        marginTop={-40}
+        marginLeft={-1}
+        opacity={0.7}
+      />
+      {/* <InputUI
+        style={styles.input}
+        placeholder="  Search by location  "
+        coustomStyle={styles}
+        selectedItems={saveCity}
+      /> */}
     </View>
   );
 };
@@ -101,21 +110,21 @@ export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   imageContainer: {
-    // marginTop: "5%",
+    // marginTop: "15%",
     alignItems: "center",
-    marginTop: 6,
+    // marginTop: -10,
     // backgroundColor: "pink",
     height: "15%",
   },
   image: {
-    marginTop: 3,
+    marginTop: 8,
     width: "35%",
     height: "95%",
   },
   container: {
     height: "95%",
     justifyContent: "center",
-    margin: 10,
+    marginTop: 100,
     padding: 10,
     backgroundColor: "white",
   },
@@ -150,11 +159,12 @@ const styles = StyleSheet.create({
     fontFamily: "Mulish_400Regular",
   },
   textContainer: {
-    margin: 10,
-    height: "8%",
+    marginTop: -10,
+    height: "12%",
     justifyContent: "center",
   },
   webviewContainer: {
+    marginTop: -30,
     height: 400,
   },
   webview: {
@@ -179,6 +189,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
+    marginTop: 30,
   },
   submitButtonClicked: {
     backgroundColor: "#B1D4D2",
@@ -190,6 +201,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
+    marginTop: 30,
   },
   buttonContainer: {
     marginTop: 0,

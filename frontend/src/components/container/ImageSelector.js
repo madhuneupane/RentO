@@ -241,7 +241,7 @@ const ImageSelector = ({ navigation, route }) => {
             autoPlay
             style={{
               width: "100%",
-              height: "60%",
+              height: "58%",
               backgroundColor: "white",
               marginLeft: 35,
               marginBottom: 100,
@@ -267,7 +267,7 @@ const ImageSelector = ({ navigation, route }) => {
           position: "absolute",
           top: 630,
           left: -290,
-          opacity: 0.7,
+          opacity: 0.8,
         }}
         width={990}
         height={270}

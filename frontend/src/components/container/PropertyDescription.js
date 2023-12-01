@@ -59,85 +59,87 @@ const PropertyDescription = ({ navigation, route }) => {
     navigation.navigate("owner_onboarding5", ownerData);
   };
   return (
-    <View style={styles.container}>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>
-          Let's create a captivating property description
-        </Text>
-      </View>
-      {creating ? (
-        <LottieView
-          autoPlay
-          style={{
-            width: "100%",
-            height: "68%",
-            backgroundColor: "white",
-            marginLeft: 22,
-            marginBottom: 100,
-          }}
-          source={require("../../../assets/RentoO - Loading Animation.json")}
-          // source={{
-          //   uri: "https://lottie.host/73bbe7a4-f718-48d6-bc72-f608432fe7c5/Vkwa7zBEZW.json",
-          // }}
-        />
-      ) : (
-        // <InputUI value={desc ? desc : ownerSelections} coustomStyle={styles} />
-        <View style={styles.descView}>
-          <Text style={styles.descText}>{desc ? desc : ownerSelections}</Text>
+    <>
+      <View style={styles.container}>
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>
+            Let's create a captivating property description
+          </Text>
         </View>
-      )}
+        {creating ? (
+          <LottieView
+            autoPlay
+            style={{
+              width: "100%",
+              height: "68%",
+              backgroundColor: "white",
+              marginLeft: 22,
+              marginBottom: 100,
+            }}
+            source={require("../../../assets/RentoO - Loading Animation.json")}
+            // source={{
+            //   uri: "https://lottie.host/73bbe7a4-f718-48d6-bc72-f608432fe7c5/Vkwa7zBEZW.json",
+            // }}
+          />
+        ) : (
+          // <InputUI value={desc ? desc : ownerSelections} coustomStyle={styles} />
+          <View style={styles.descView}>
+            <Text style={styles.descText}>{desc ? desc : ownerSelections}</Text>
+          </View>
+        )}
 
-      {!desc ? (
-        <View style={styles.wirteContainer}>
-          <ButtonUI
-            customStyle={
-              isSubmitPress
-                ? { ...styles.customStyle, color: "#02696A" }
-                : styles.customStyle
-            }
-            selectedItems={() => generateDesc("tests")}
-            item={{ value: "Write for me" }}
-            touchProps={touchPropsSubmit}
-          />
-          <ButtonUI
-            customStyle={styles.customStyleOrange}
-            selectedItems={() => generateDesc("tests")}
-            item={{ value: "Continue with my text" }}
-            touchProps={touchProps}
-          />
+        {!desc ? (
+          <View style={styles.wirteContainer}>
+            <ButtonUI
+              customStyle={
+                isSubmitPress
+                  ? { ...styles.customStyle, color: "#02696A" }
+                  : styles.customStyle
+              }
+              selectedItems={() => generateDesc("tests")}
+              item={{ value: "Write for me" }}
+              touchProps={touchPropsSubmit}
+            />
+            <ButtonUI
+              customStyle={styles.customStyleOrange}
+              selectedItems={() => generateDesc("tests")}
+              item={{ value: "Continue with my text" }}
+              touchProps={touchProps}
+            />
+          </View>
+        ) : (
+          <View style={styles.wirteContainer}>
+            <ButtonUI
+              customStyle={
+                isSubmitPress
+                  ? { ...styles.customStyle, color: "#02696A" }
+                  : styles.customStyle
+              }
+              selectedItems={nextPage}
+              item={{ value: "Looks good!!" }}
+              touchProps={touchPropsSubmit}
+            />
+            <ButtonUI
+              customStyle={styles.customStyleOrange}
+              selectedItems={() => generateDesc("tests")}
+              item={{ value: "Make my own edit" }}
+              touchProps={touchProps}
+            />
+          </View>
+        )}
+        <View style={styles.progressBar}>
+          <View style={styles.progressBarGreen}></View>
         </View>
-      ) : (
-        <View style={styles.wirteContainer}>
-          <ButtonUI
-            customStyle={
-              isSubmitPress
-                ? { ...styles.customStyle, color: "#02696A" }
-                : styles.customStyle
-            }
-            selectedItems={nextPage}
-            item={{ value: "Looks good!!" }}
-            touchProps={touchPropsSubmit}
-          />
-          <ButtonUI
-            customStyle={styles.customStyleOrange}
-            selectedItems={() => generateDesc("tests")}
-            item={{ value: "Make my own edit" }}
-            touchProps={touchProps}
-          />
-        </View>
-      )}
-      <View style={styles.progressBar}>
-        <View style={styles.progressBarGreen}></View>
-        <RentoBack
-          style={{ zIndex: -1 }}
-          width={840}
-          height={950}
-          marginTop={-345}
-          marginLeft={-535}
-          opacity={0.7}
-        />
       </View>
-    </View>
+      <RentoBack
+        style={{ zIndex: -1 }}
+        width={840}
+        height={950}
+        marginTop={-273}
+        marginLeft={-285}
+        opacity={0.7}
+      />
+    </>
   );
 };
 
@@ -295,6 +297,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   progressBar: {
+    zIndex: 1,
     borderColor: "#3B6665",
     height: 10,
     width: "77%",
@@ -308,6 +311,7 @@ const styles = StyleSheet.create({
     bottom: -80,
   },
   progressBarGreen: {
+    zIndex: 1,
     borderWidth: 2,
     borderColor: "#3B6665",
     backgroundColor: "#B1D4D2",

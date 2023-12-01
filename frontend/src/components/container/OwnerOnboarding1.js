@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import List from "../list/List";
 import { listingOptions } from "../static/ListingOptions";
-
+import RentoBack from "../../../assets/rentoBack.svg";
 const OwnerOnboarding1 = ({ navigation, route }) => {
   console.log("Back:" + JSON.stringify(route.params));
   var [isPress, setIsPress] = useState(false);
@@ -37,6 +37,16 @@ const OwnerOnboarding1 = ({ navigation, route }) => {
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
       </View>
+      <RentoBack
+        style={{
+          zIndex: -1,
+        }}
+        width={840}
+        height={910}
+        marginTop={-490}
+        marginLeft={-280}
+        opacity={0.7}
+      />
     </View>
   );
 };
@@ -46,20 +56,23 @@ export default OwnerOnboarding1;
 var styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
+    marginTop: -50,
   },
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "75%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
+    backgroundColor: "#3B6665",
     marginTop: 210,
     marginLeft: 55,
     marginBottom: 60,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 10,
     borderRadius: 20,
@@ -67,39 +80,42 @@ var styles = StyleSheet.create({
   },
   customStyle: {
     color: "#413855",
-    fontSize: 15,
+    fontSize: 16,
+    fontFamily: "Mulish_700Bold",
   },
   btnNormal: {
-    borderColor: "#FBEDEA",
+    borderColor: "#ED7861",
     // borderWidth: 1,
-    backgroundColor: "#FBEDEA",
+    backgroundColor: "#F6D6CF",
     height: "50",
     width: "80%",
     marginLeft: 40,
     marginTop: 20,
     padding: 10,
-    borderWidth: 0.5,
-    borderRadius: 30,
+    borderWidth: 0.7,
+    borderRadius: 35,
   },
   btnPress: {
-    borderColor: "#FBEDEA",
-    backgroundColor: "#FBEDEA",
+    borderColor: "#ED7861",
+    backgroundColor: "#F6D6CF",
     height: "50",
     width: "80%",
     marginLeft: 40,
     marginTop: 20,
     padding: 10,
-    borderWidth: 0.5,
-    borderRadius: 30,
-    color: "#413855"
+    borderWidth: 0.7,
+    borderRadius: 35,
+    color: "#413855",
   },
   textContainer: {
     margin: 30,
+    marginLeft: 60,
     height: "18%",
+    width: "70%",
     justifyContent: "center",
     fontWeight: "bold",
     fontFamily: "Mulish_400Regular",
-    color: "#413855"
+    color: "#413855",
   },
   listContainer: {
     // marginTop: ,
@@ -111,6 +127,6 @@ var styles = StyleSheet.create({
     fontSize: 22,
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
-    color: "#413855"
+    color: "#413855",
   },
 });

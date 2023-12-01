@@ -24,7 +24,7 @@ const OwnerCards = ({ data }) => {
       </View>
       <MaterialCommunityIcons
         name="chevron-right"
-        size={30}
+        size={37}
         style={styles.chevron}
       />
     </View>
@@ -39,29 +39,30 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily: "Mulish_500Medium",
+    fontFamily: "Mulish_700Bold",
   },
   date: {
     marginTop: 10,
     textAlign: "left",
-    marginLeft: -30,
     color: "#5C5D8D",
-    fontFamily: "Mulish_400Regular",
-    fontSize: 13,
-    paddingRight: 50,
+    fontFamily: "Mulish_700Bold",
+    fontSize: 14,
+    paddingRight: 30,
+    marginLeft: -53,
   },
 
   container: {
+    flex:1,
     marginTop: 15,
     marginLeft: 15,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
-    width: "90%",
-    height: "80%",
+    width: "92%",
+    height: "99%",
     //border: "2",
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 10,
     borderColor: "#3B6665",
     backgroundColor: "#E9E7EE",
     paddingRight: 70,
@@ -71,32 +72,33 @@ const styles = StyleSheet.create({
     // padding: 10,
   },
   viewContainer: {
-    // // margin: 0,
+    marginLeft: 85,
     // flexDirection: "row",
     // alignItems: "center",
     // // justifyContent: "flex-start",
     // // width: "auto",
-    width: "40%",
+    width: "36%",
     overflow: false,
   },
   image: {
-    width: "95%",
+    width: "100%",
     height: "100%",
-    borderTopLeftRadius: 8,
-    borderBottomLeftRadius: 8,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
     
   },
   textContainer: {
+    padding:30,
     alignItems: "center",
     justifyContent: "center",
-    // height: "90%",
+    //height: "90%",
   },
   type: {
-    // paddingRight: 55,
     color: "#3B6665",
     fontFamily: "Mulish_700Bold",
-    fontSize: 15,
+    fontSize: 18,
     textAlign: "left",
+    marginLeft: -25,
     // width: "100%", // Adjust the width as needed
     // Other text styles for data.type
   },
@@ -104,10 +106,11 @@ const styles = StyleSheet.create({
     // paddingRight: 55,
     color: "#3B6665",
     fontFamily: "Mulish_700Bold",
-    fontSize: 15,
+    fontSize: 18,
     textAlign: "left",
     marginTop: 3,
-    width: "100%", // Adjust the width as needed
+    marginLeft: 400,
+    width: "111%", // Adjust the width as needed
     // Other text styles for data.location
   },
   submitButton: {
@@ -133,7 +136,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   chevron: {
-    marginRight: 10,
     color: "#3B6665",
+    marginRight: 20,
   },
 });

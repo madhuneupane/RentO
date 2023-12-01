@@ -6,6 +6,7 @@ import ButtonUI from "../UI/button/ButtonUI";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ApiClient from "../service/Api";
 import LottieView from "lottie-react-native";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const PropertyDescription = ({ navigation, route }) => {
   const keywords = route.params;
@@ -21,7 +22,7 @@ const PropertyDescription = ({ navigation, route }) => {
   var [isSubmit, setIsSubmit] = useState(false);
   const [creating, setCreating] = useState(false);
   var touchPropsSubmit = {
-    underlayColor: "#ffffff00",
+    underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
@@ -40,13 +41,14 @@ const PropertyDescription = ({ navigation, route }) => {
     const result = JSON.stringify(response);
     setDesc(result.substr(1).slice(0, -1));
     setCreating(false);
-    //setDesc(test);
+    // setDesc(test);
     console.log("WAIT.....");
 
     if (result) {
       const desc1 = result.substr(1).slice(0, -1);
       setOwnerData({ ...keywords, description: desc1 });
     }
+    // setOwnerData({ ...keywords, description: "test" });
   };
   //
   const nextPage = () => {
@@ -57,69 +59,87 @@ const PropertyDescription = ({ navigation, route }) => {
     navigation.navigate("owner_onboarding5", ownerData);
   };
   return (
-    <View style={styles.container}>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>
-          Let's create a captivating property description
-        </Text>
-      </View>
-      {creating ? (
-        <LottieView
-          autoPlay
-          style={{
-            width: "100%",
-            height: "62%",
-            backgroundColor: "white",
-            marginLeft: 28,
-            marginBottom: 100,
-          }}
-          source={require("../../../assets/RentoO - Loading Animation.json")}
-          // source={{
-          //   uri: "https://lottie.host/73bbe7a4-f718-48d6-bc72-f608432fe7c5/Vkwa7zBEZW.json",
-          // }}
-        />
-      ) : (
-        // <InputUI value={desc ? desc : ownerSelections} coustomStyle={styles} />
-        <View style={styles.descView}>
-          <Text style={styles.descText}>{desc ? desc : ownerSelections}</Text>
+    <>
+      <View style={styles.container}>
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>
+            Let's create a captivating property description
+          </Text>
         </View>
-      )}
+        {creating ? (
+          <LottieView
+            autoPlay
+            style={{
+              width: "100%",
+              height: "68%",
+              backgroundColor: "white",
+              marginLeft: 22,
+              marginBottom: 100,
+            }}
+            source={require("../../../assets/RentoO - Loading Animation.json")}
+            // source={{
+            //   uri: "https://lottie.host/73bbe7a4-f718-48d6-bc72-f608432fe7c5/Vkwa7zBEZW.json",
+            // }}
+          />
+        ) : (
+          // <InputUI value={desc ? desc : ownerSelections} coustomStyle={styles} />
+          <View style={styles.descView}>
+            <Text style={styles.descText}>{desc ? desc : ownerSelections}</Text>
+          </View>
+        )}
 
-      {!desc ? (
-        <View style={styles.wirteContainer}>
-          <ButtonUI
-            customStyle={styles.customStyle}
-            selectedItems={() => generateDesc("tests")}
-            item={{ value: "Write for me" }}
-            touchProps={touchPropsSubmit}
-          />
-          <ButtonUI
-            customStyle={styles.customStyleOrange}
-            selectedItems={() => generateDesc("tests")}
-            item={{ value: "Continue with my text" }}
-            touchProps={touchProps}
-          />
+        {!desc ? (
+          <View style={styles.wirteContainer}>
+            <ButtonUI
+              customStyle={
+                isSubmitPress
+                  ? { ...styles.customStyle, color: "#02696A" }
+                  : styles.customStyle
+              }
+              selectedItems={() => generateDesc("tests")}
+              item={{ value: "Write for me" }}
+              touchProps={touchPropsSubmit}
+            />
+            <ButtonUI
+              customStyle={styles.customStyleOrange}
+              selectedItems={() => generateDesc("tests")}
+              item={{ value: "Continue with my text" }}
+              touchProps={touchProps}
+            />
+          </View>
+        ) : (
+          <View style={styles.wirteContainer}>
+            <ButtonUI
+              customStyle={
+                isSubmitPress
+                  ? { ...styles.customStyle, color: "#02696A" }
+                  : styles.customStyle
+              }
+              selectedItems={nextPage}
+              item={{ value: "Looks good!!" }}
+              touchProps={touchPropsSubmit}
+            />
+            <ButtonUI
+              customStyle={styles.customStyleOrange}
+              selectedItems={() => generateDesc("tests")}
+              item={{ value: "Make my own edit" }}
+              touchProps={touchProps}
+            />
+          </View>
+        )}
+        <View style={styles.progressBar}>
+          <View style={styles.progressBarGreen}></View>
         </View>
-      ) : (
-        <View style={styles.wirteContainer}>
-          <ButtonUI
-            customStyle={styles.customStyle}
-            selectedItems={nextPage}
-            item={{ value: "Looks good!!" }}
-            touchProps={touchPropsSubmit}
-          />
-          <ButtonUI
-            customStyle={styles.customStyleOrange}
-            selectedItems={() => generateDesc("tests")}
-            item={{ value: "Make my own edit" }}
-            touchProps={touchProps}
-          />
-        </View>
-      )}
-      <View style={styles.progressBar}>
-        <View style={styles.progressBarGreen}></View>
       </View>
-    </View>
+      <RentoBack
+        style={{ zIndex: -1 }}
+        width={840}
+        height={950}
+        marginTop={-273}
+        marginLeft={-285}
+        opacity={0.7}
+      />
+    </>
   );
 };
 
@@ -130,12 +150,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontFamily: "Mulish_700Bold",
     fontSize: 16,
-    padding:10,
+    padding: 10,
     color: "#5C5D8D",
   },
   textContainer: {
     // marginTop: 10,
-    height: "20%",
+    height: "14%",
+    margin: 10,
     justifyContent: "center",
     // backgroundColor: "white",
   },
@@ -147,7 +168,7 @@ const styles = StyleSheet.create({
     //marginLeft: 10,
     fontSize: 22,
     textAlign: "center",
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
   card: {
     width: "100%",
@@ -179,7 +200,7 @@ const styles = StyleSheet.create({
     borderColor: "#413855",
   },
   textInput: {
-    color : "#5C5D8D",
+    color: "#5C5D8D",
     height: "90%",
     width: "100%",
     marginTop: 30,
@@ -212,15 +233,19 @@ const styles = StyleSheet.create({
     height: "30",
     width: "80%",
     marginLeft: 40,
+    marginBottom: 12,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
   },
   submitButtonClicked: {
+    color: "#02696A",
+    backgroundColor: "#3B6665",
     borderColor: "#3B6665",
     height: "30",
     width: "80%",
     marginLeft: 40,
+    marginBottom: 12,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
@@ -267,25 +292,29 @@ const styles = StyleSheet.create({
   },
   wirteContainer: {
     flex: 1,
-    marginTop: "15%",
+    marginTop: "10%",
     height: 100,
     backgroundColor: "white",
   },
   progressBar: {
-    borderColor: "#B1D4D2",
+    zIndex: 1,
+    borderColor: "#3B6665",
     height: 10,
-    width: "80%",
+    width: "77%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
+    backgroundColor: "#3B6665",
     // marginTop: 50,
     marginLeft: 50,
     marginTop: 10,
     position: "absolute",
-    bottom: -78,
+    bottom: -80,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    zIndex: 1,
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 200,
     borderRadius: 20,

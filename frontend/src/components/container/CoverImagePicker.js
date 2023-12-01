@@ -5,6 +5,8 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import * as ImagePicker from "expo-image-picker";
 import LottieView from "lottie-react-native";
+import CameraColor from "../../../assets/CameraColor.svg";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 import {
   View,
@@ -74,137 +76,150 @@ const CoverImagePicker = ({ navigation, route }) => {
   };
   const saveImages = async () => {
     setFirebaseImage(true);
-      // console.log("WE ARE INSIDE", ownerData.images);
-        //if (ownerData.images) {
-          for (let i=0; i <4;i++) {
-            const imageUri = ownerData.coverimages[i];
+    // console.log("WE ARE INSIDE", ownerData.images);
+    //if (ownerData.images) {
+    for (let i = 0; i < 4; i++) {
+      const imageUri = ownerData.coverimages[i];
 
-            if (imageUri) {
-              const blob = await new Promise((resolve, reject) => {
-                const xhr = new XMLHttpRequest();
-                xhr.onload = function () {
-                  resolve(xhr.response);
-                };
+      if (imageUri) {
+        const blob = await new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.onload = function () {
+            resolve(xhr.response);
+          };
 
-                xhr.onerror = function (e) {
-                  console.log(e);
-                  reject(new TypeError("Network request failed"));
-                };
-                xhr.responseType = "blob";
-                xhr.open("GET", imageUri, true);
-                xhr.send(null);
-              });
-              //console.log("line 60");
+          xhr.onerror = function (e) {
+            console.log(e);
+            reject(new TypeError("Network request failed"));
+          };
+          xhr.responseType = "blob";
+          xhr.open("GET", imageUri, true);
+          xhr.send(null);
+        });
+        //console.log("line 60");
 
-              const fileRef = ref(getStorage(), `RentO/${imageUri}`);
-              const result1 = await uploadBytes(fileRef, blob);
-              // console.log("line 64");
-              // We're done with the blob, close and release it
-              blob.close();
-              //console.log("line 67");
-              const h = await getDownloadURL(fileRef);
-              console.log(h);
-              ownerData.coverimages[i] = h;
-            }
-          }
-       // }
+        const fileRef = ref(getStorage(), `RentO/${imageUri}`);
+        const result1 = await uploadBytes(fileRef, blob);
+        // console.log("line 64");
+        // We're done with the blob, close and release it
+        blob.close();
+        //console.log("line 67");
+        const h = await getDownloadURL(fileRef);
+        console.log(h);
+        ownerData.coverimages[i] = h;
+      }
+    }
+    // }
     setFirebaseImage(false);
   };
   return (
-    <View style={styles.mainContainer}>
-      <Text style={styles.title}>
-        Start by clicking on each area to capture or upload a picture
-      </Text>
-      <View>
-        <View style={styles.firstContainer}>
-          <TouchableWithoutFeedback onPress={() => selectImage("image1")}>
-            <View>
-              <View style={styles.imageContainer1}>
-                {!images[0] ? (
-                  <MaterialCommunityIcons name="camera" size="40" />
-                ) : (
-                  <Image source={{ uri: images[0] }} style={styles.image} />
-                )}
+    <>
+      <View style={styles.mainContainer}>
+        <Text style={styles.title}>
+          Start by clicking on each area to capture or upload a picture
+        </Text>
+        <View>
+          <View style={styles.firstContainer}>
+            <TouchableWithoutFeedback onPress={() => selectImage("image1")}>
+              <View>
+                <View style={styles.imageContainer1}>
+                  {!images[0] ? (
+                    <CameraColor width={60} height={60} />
+                  ) : (
+                    <Image source={{ uri: images[0] }} style={styles.image} />
+                  )}
+                </View>
               </View>
+            </TouchableWithoutFeedback>
+          </View>
+          <View style={styles.container}>
+            <View style={styles.image2Container}>
+              <TouchableWithoutFeedback onPress={() => selectImage("image2")}>
+                <View>
+                  <View style={styles.imageContainer}>
+                    {!images[1] ? (
+                      <CameraColor width={60} height={30} />
+                    ) : (
+                      <Image source={{ uri: images[1] }} style={styles.image} />
+                    )}
+                  </View>
+                </View>
+              </TouchableWithoutFeedback>
             </View>
-          </TouchableWithoutFeedback>
-        </View>
-        <View style={styles.container}>
-          <View style={styles.image2Container}>
-            <TouchableWithoutFeedback onPress={() => selectImage("image2")}>
-              <View>
-                <View style={styles.imageContainer}>
-                  {!images[1] ? (
-                    <MaterialCommunityIcons name="camera" size="40" />
-                  ) : (
-                    <Image source={{ uri: images[1] }} style={styles.image} />
-                  )}
+            <View>
+              <TouchableWithoutFeedback onPress={() => selectImage("image3")}>
+                <View>
+                  <View style={styles.imageContainer}>
+                    {!images[2] ? (
+                      <CameraColor width={60} height={30} />
+                    ) : (
+                      <Image source={{ uri: images[2] }} style={styles.image} />
+                    )}
+                  </View>
                 </View>
-              </View>
-            </TouchableWithoutFeedback>
-          </View>
-          <View>
-            <TouchableWithoutFeedback onPress={() => selectImage("image3")}>
-              <View>
-                <View style={styles.imageContainer}>
-                  {!images[2] ? (
-                    <MaterialCommunityIcons name="camera" size="40" />
-                  ) : (
-                    <Image source={{ uri: images[2] }} style={styles.image} />
-                  )}
+              </TouchableWithoutFeedback>
+            </View>
+            <View>
+              <TouchableWithoutFeedback onPress={() => selectImage("image4")}>
+                <View>
+                  <View style={styles.imageContainer}>
+                    {!images[3] ? (
+                      <CameraColor width={60} height={30} />
+                    ) : (
+                      <Image source={{ uri: images[3] }} style={styles.image} />
+                    )}
+                  </View>
                 </View>
-              </View>
-            </TouchableWithoutFeedback>
-          </View>
-          <View>
-            <TouchableWithoutFeedback onPress={() => selectImage("image4")}>
-              <View>
-                <View style={styles.imageContainer}>
-                  {!images[3] ? (
-                    <MaterialCommunityIcons name="camera" size="40" />
-                  ) : (
-                    <Image source={{ uri: images[3] }} style={styles.image} />
-                  )}
-                </View>
-              </View>
-            </TouchableWithoutFeedback>
+              </TouchableWithoutFeedback>
+            </View>
           </View>
         </View>
-      </View>
 
-      {images[3] && firebaseImages == null && (
-        <ButtonUI
-          item={{ value: "Upload Images" }}
-          selectedItems={saveImages}
-          customStyle={styles.customStyleCamera}
-          touchProps={touchPropsCamera}
-        />
-      )}
-      {firebaseImages && (
-        <LottieView
-          autoPlay
-          style={{
-            width: "100%",
-            height: "45%",
-            backgroundColor: "white",
-            marginLeft: 30,
-            marginBottom: 100,
-          }}
-          source={require("../../../assets/RentoO - Loading Animation.json")}
-          // source={{
-          //   uri: "https://lottie.host/fde45e7c-36a5-493d-ae49-80631ac15f5f/avgoduAK0g.json",
-          // }}
-        />
-      )}
-      {!firebaseImages && firebaseImages != null && (
-        <ButtonUI
-          item={{ value: "Continue" }}
-          selectedItems={uploadImages}
-          customStyle={styles.customStyle}
-          touchProps={touchPropsSubmit}
-        />
-      )}
-    </View>
+        {images[3] && firebaseImages == null && (
+          <ButtonUI
+            item={{ value: "Upload Images" }}
+            selectedItems={saveImages}
+            customStyle={styles.customStyleCamera}
+            touchProps={touchPropsCamera}
+          />
+        )}
+        {firebaseImages && (
+          <LottieView
+            autoPlay
+            style={{
+              width: "100%",
+              height: "55%",
+              backgroundColor: "white",
+              marginLeft: 35,
+              marginBottom: 100,
+            }}
+            source={require("../../../assets/RentoO - Loading Animation.json")}
+            // source={{
+            //   uri: "https://lottie.host/fde45e7c-36a5-493d-ae49-80631ac15f5f/avgoduAK0g.json",
+            // }}
+          />
+        )}
+        {!firebaseImages && firebaseImages != null && (
+          <ButtonUI
+            item={{ value: "Continue" }}
+            selectedItems={uploadImages}
+            customStyle={styles.customStyle}
+            touchProps={touchPropsSubmit}
+          />
+        )}
+      </View>
+      <RentoBack
+        style={{
+          zIndex: -1,
+          position: "absolute",
+          top: 630,
+          left: -290,
+          opacity: 0.8,
+        }}
+        width={990}
+        height={270}
+      />
+    </>
   );
 };
 const styles = StyleSheet.create({
@@ -213,6 +228,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
+    color: "#413855",
     fontFamily: "Mulish_700Bold",
     fontSize: 20,
     marginTop: "15%",
@@ -241,7 +257,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   imageContainer1: {
-    backgroundColor: "#FBEDEA",
+    backgroundColor: "#F6D6CF",
     borderColor: "#ED7861",
     borderWidth: 0.5,
     borderRadius: 5,
@@ -253,7 +269,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   imageContainer: {
-    backgroundColor: "#FBEDEA",
+    backgroundColor: "#F6D6CF",
     borderColor: "#ED7861",
     borderWidth: 0.5,
     borderRadius: 5,
@@ -302,8 +318,8 @@ const styles = StyleSheet.create({
   },
   customStyle: {
     color: "white",
-    fontWeight: "bold",
     fontSize: 20,
+    fontFamily: "Mulish_700Bold",
   },
   CameraButton: {
     backgroundColor: "#3B6665",

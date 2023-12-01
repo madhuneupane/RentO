@@ -84,7 +84,7 @@ const ListingDetails = ({ navigation, route }) => {
             {/* Gallery Header Image */}
             <ImageBackground
               source={{ uri: item.coverImage ? item.coverImage[0] : "" }}
-              style={{ width: 390, height: 423, overflow: true }}
+              style={{ width: 430, height: 423, overflow: true }}
             >
               <View style={styles.verifiedContainer}>
                 <View>
@@ -107,8 +107,8 @@ const ListingDetails = ({ navigation, route }) => {
                   <Image
                     source={{ uri: imagePath }}
                     style={{
-                      width: 130,
-                      height: 250,
+                      width: 140,
+                      height: 260,
                       margin: 2,
                       // borderWidth: selectedImage === index ? 2 : 0,
                     }}
@@ -116,17 +116,20 @@ const ListingDetails = ({ navigation, route }) => {
                 </TouchableOpacity>
               ))}
             </ScrollView>
-            <ButtonUI
-              item={{ value: "3D Tour Available" }}
-              // customStyle={styles.button}
-              selectedItems={showTour}
-              customStyle={styles.customStyle}
-              touchProps={touchPropsSubmit}
-            />
+
             <Text style={styles.heading}>
               {item.roomNumbers} Bedroom {item.type} on
               {item.location ? JSON.parse(item.location)?.city : "Vancouver"}
             </Text>
+
+            <ButtonUI
+              item={{ value: "3D Tour Available" }}
+              // customStyle={styles.button}
+              selectedItems={showTour}
+              customStyle={isSubmitPress?{...styles.customStyle, color: "#3B6665"}:styles.customStyle}
+              touchProps={touchPropsSubmit}
+            />
+            
             <View style={styles.subContainer}>
               <View>
                 <Text style={styles.rent}>${item.rent}</Text>
@@ -171,7 +174,7 @@ const ListingDetails = ({ navigation, route }) => {
               <Text
                 style={{ ...styles.textView, marginTop: 10, marginBottom: 20 }}
               >
-                Madhu Nyoupane
+                Sanjana Chumber
               </Text>
             </View>
             <ButtonUI
@@ -207,18 +210,19 @@ const styles = StyleSheet.create({
   heading: {
     marginTop: 25,
     fontSize: 25,
-    color: "black",
-    fontWeight: "bold",
+    color: "#413855",
     textAlign: "center",
+    fontFamily: "Mulish_700Bold",
   },
   verified: {
-    fontSize: 15,
+    fontSize: 17,
     fontWeight: "bold",
     color: "white",
+    fontFamily: "Mulish_700Bold",
   },
   verifiedContainer: {
     backgroundColor: "#3B6665",
-    width: 90,
+    width: 100,
     height: 30,
     flexDirection: "row",
     justifyContent: "space-around",
@@ -231,7 +235,7 @@ const styles = StyleSheet.create({
   mapView: {
     marginTop: 10,
     width: "95%",
-    height: "30%",
+    height: "29%",
   },
   amenitiesTextView: {
     marginTop: 10,
@@ -253,45 +257,55 @@ const styles = StyleSheet.create({
     // justifyContent: "space-around",
   },
   textView: {
-    fontSize: 16,
     color: "#5C5D8D",
+    fontFamily: "Mulish_600SemiBold",
+    fontSize: 17,
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
+    marginTop: -25,
+    fontSize: 25,
+    color: "#413855",
+    fontFamily: "Mulish_700Bold",
   },
   descView: {
     width: "90%",
     // marginLeft: 30,
   },
   desc: {
+    color: "#5C5D8D",
+    fontFamily: "Mulish_600SemiBold",
     marginTop: 10,
     fontSize: 18,
   },
   rent: {
-    fontSize: 30,
+    fontSize: 35,
     color: "#3B6665",
-    fontWeight: "bold",
+    fontFamily: "Mulish_700Bold",
   },
   location: {
     fontSize: 25,
     margin: 5,
+    color: "#413855",
+    fontFamily: "Mulish_700Bold",
   },
   rooms: {
     fontSize: 15,
     margin: 7,
+    color: "#5C5D8D",
+    fontFamily: "Mulish_700Bold",
   },
   mainImageContainer: {
     borderRadius: 20,
   },
   customStyle: {
     color: "white",
-    fontWeight: "bold",
-    fontSize: 20,
+    fontFamily: "Mulish_700Bold",
+    fontSize: 22,
   },
   submitButton: {
     backgroundColor: "#3B6665",
     borderColor: "#3B6665",
+
     height: "50",
     width: "80%",
     marginLeft: 40,

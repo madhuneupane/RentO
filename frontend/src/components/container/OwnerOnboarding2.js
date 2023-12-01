@@ -2,6 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 import { listingOptions } from "../static/ListingOptions";
 import List from "../list/List";
 import React, { useState } from "react";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const OwnerOnboarding2 = ({ navigation, route }) => {
   var [isPress, setIsPress] = useState(false);
@@ -38,6 +39,14 @@ const OwnerOnboarding2 = ({ navigation, route }) => {
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
       </View>
+      <RentoBack
+        style={{ zIndex: -1 }}
+        width={840}
+        height={810}
+        marginTop={-230}
+        marginLeft={-280}
+        opacity={0.7}
+      />
     </View>
   );
 };
@@ -47,52 +56,56 @@ export default OwnerOnboarding2;
 var styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
+    marginTop: -50,
   },
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "75%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
+    backgroundColor: "#3B6665",
     marginTop: 75,
     marginLeft: 55,
-    //marginBottom:10,
+    marginBottom: -100,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 20,
     borderRadius: 20,
-    marginBottom:20,
+    marginBottom: 20,
+    zIndex: 1,
   },
   customStyle: {
     color: "#413855",
-    fontSize: 15,
+    fontSize: 16,
+    fontFamily: "Mulish_700Bold",
   },
   btnNormal: {
-    borderColor: "#FBEDEA",
-
-    backgroundColor: "#FBEDEA",
+    borderColor: "#ED7861",
+    backgroundColor: "#F6D6CF",
     height: "60",
     width: "80%",
     marginLeft: 40,
     marginBottom: 20,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 35,
   },
   btnPress: {
-    borderColor: "#FBEDEA",
-    backgroundColor: "#FBEDEA",
+    borderColor: "#ED7861",
+    backgroundColor: "#F6D6CF",
     height: "60",
     width: "80%",
     marginLeft: 40,
     //marginTop: 18,
-    marginBottom:20,
+    marginBottom: 20,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 35,
   },
   textContainer: {
     margin: 10,
@@ -100,7 +113,7 @@ var styles = StyleSheet.create({
     color: "#413855",
     justifyContent: "center",
     fontWeight: "bold",
-    fontFamily: "Mulish_400Regular"
+    fontFamily: "Mulish_400Regular",
     // backgroundColor: "pink",
   },
   listContainer: {
@@ -113,6 +126,6 @@ var styles = StyleSheet.create({
     marginLeft: 10,
     color: "#413855",
     textAlign: "center",
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
 });

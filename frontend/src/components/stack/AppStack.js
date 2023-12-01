@@ -43,8 +43,11 @@ const AppStack = () => {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: "#3B6665",
+      // primary: "rgba(0, 0, 0, .5)",
+      // primary: "rgba(0, 0, 0,0.04)",
+      // background: "rgba(0, 0, 0,0.04)",
       background: "white",
+
       // height:"100%"
     },
   };
@@ -241,8 +244,15 @@ const AppStack = () => {
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",
-            headerTintColor: "#3B6665",
+            headerTintColor: "#fff",
             headerBackTitle: false,
+
+            headerStyle: {
+              // Set your desired background color
+              backgroundColor: "#413855",
+              // for iOS;  elevation: 0, // for Android
+              shadowOpacity: 0,
+            },
           }}
         />
         <Stack.Screen
@@ -306,7 +316,16 @@ const AppStack = () => {
           }}
         />
 
-        <Stack.Screen name="panaroma_view" component={PanaromaView} />
+        <Stack.Screen
+          name="panaroma_view"
+          component={PanaromaView}
+          options={{
+            headerBackTitleVisible: false,
+            headerTitle: "",
+            headerTintColor: "#3B6665",
+            headerBackTitle: false,
+          }}
+        />
         <Stack.Screen
           name="tenant_interested"
           component={TenantInterested}

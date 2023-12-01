@@ -55,12 +55,16 @@ const LoginRentor = ({ navigation }) => {
         value="madhu123"
         secureTextEntry={true}
       />
-      
+
       <View style={styles.buttonContainer}>
         <ButtonUI
           item={{ value: "Sign in" }}
           selectedItems={callLoginApi}
-          customStyle={styles.customStyle}
+          customStyle={
+            isSubmitPress
+              ? { ...styles.customStyle, color: "#02696A" }
+              : styles.customStyle
+          }
           touchProps={touchPropsSubmit}
         />
       </View>
@@ -160,6 +164,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 30,
+    // backgroundColor: "rgba(0, 0, 0,0.04)",
   },
   customStyle: {
     color: "white",

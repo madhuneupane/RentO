@@ -1,1 +1,1 @@
-export const BASE_URL='https://api.rent-o.com/api/'
+export const BASE_URL = "https://rent-o.com/api/";

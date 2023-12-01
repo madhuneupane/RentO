@@ -95,10 +95,14 @@ const OwnerNewPost = ({ navigation, route }) => {
             </Text>
 
             <ButtonUI
-              item={{ value: "3D Tour Available" }}
+              item={{ value: "360 Virtual Tour" }}
               // customStyle={styles.button}
               selectedItems={showTour}
-              customStyle={isSubmitPress?{...styles.customStyle, color: "#3B6665"}:styles.customStyle}
+              customStyle={
+                isSubmitPress
+                  ? { ...styles.customStyle, color: "#3B6665" }
+                  : styles.customStyle
+              }
               touchProps={touchPropsSubmit}
             />
 
@@ -187,7 +191,11 @@ const OwnerNewPost = ({ navigation, route }) => {
             <ButtonUI
               item={{ value: "See Applicants" }}
               selectedItems={savePost}
-              customStyle={isSubmitPress?{...styles.customStyle, color: "#3B6665"}:styles.customStyle}
+              customStyle={
+                isSubmitPress
+                  ? { ...styles.customStyle, color: "#3B6665" }
+                  : styles.customStyle
+              }
               touchProps={touchPropsSubmit}
             />
 
@@ -254,7 +262,6 @@ const styles = StyleSheet.create({
     height: "29%",
   },
   amenitiesTextView: {
-    
     marginTop: 10,
     flexDirection: "row",
     justifyContent: "space-evenly",

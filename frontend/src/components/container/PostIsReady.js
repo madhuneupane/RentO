@@ -57,8 +57,6 @@ export default PostIsReady;
 const styles = StyleSheet.create({
   ButtonContainer: {
     flexDirection: "row",
-    height: "40%",
-    width: "90%",
   },
   customStyle: {
     color: "#413855",
@@ -79,7 +77,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     // backgroundColor: "white",
     backgroundColor: "#E9E7EE",
-    borderColor: "##413855",
+    borderColor: "#413855",
   },
   descText: {
     marginTop: 40,

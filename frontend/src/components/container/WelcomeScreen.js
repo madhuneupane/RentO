@@ -85,7 +85,11 @@ const WelcomeScreen = ({ navigation }) => {
       /> */}
       <ButtonUI
         item={{ value: "Show" }}
-        customStyle={styles.customStyle}
+        customStyle={
+          isSubmitPress
+            ? { ...styles.customStyle, color: "#02696A" }
+            : styles.customStyle
+        }
         selectedItems={showListView}
         touchProps={touchPropsSubmit}
       />
@@ -99,32 +103,37 @@ const styles = StyleSheet.create({
   imageContainer: {
     // marginTop: "5%",
     alignItems: "center",
+    marginTop: 6,
     // backgroundColor: "pink",
-    height: "10%",
+    height: "15%",
   },
   image: {
     marginTop: 3,
-    width: "30%",
-    height: "90%",
+    width: "35%",
+    height: "95%",
   },
   container: {
-    height: "100%",
+    height: "95%",
     justifyContent: "center",
-    // margin: 10,
-    padding: 0,
+    margin: 10,
+    padding: 10,
     backgroundColor: "white",
   },
   subContainer: {
     alignItems: "center",
+    height: 70,
   },
   textInput: {
-    fontSize: 20,
+    fontSize: 18,
     height: 30,
-    width: "90%",
-    borderRadius: 30,
+    width: "87%",
+    borderRadius: 24,
     textAlign: "justify",
     height: 50,
-    paddingLeft: 20,
+    color: "#5C5D8D",
+    //marginTop: 10,
+    paddingLeft: 15,
+    fontFamily: "Mulish_400Regular",
   },
   button: {
     borderWidth: 1.5,
@@ -137,55 +146,59 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: "20",
+    fontSize: 20,
+    fontFamily: "Mulish_400Regular",
   },
   textContainer: {
-    // margin: 30,
-    height: "10%",
+    margin: 10,
+    height: "8%",
     justifyContent: "center",
   },
   webviewContainer: {
-    height: 300,
+    height: 400,
   },
   webview: {
-    height: 300,
+    height: 400,
   },
   title: {
-    fontWeight: 300,
-    fontSize: 25,
-    marginLeft: 10,
-    fontSize: 20,
+    marginTop: "30",
+    width: "70%",
+    marginLeft: 60,
+    fontSize: 22,
+    color: "#413855",
     textAlign: "center",
+    fontFamily: "Mulish_700Bold",
   },
   submitButton: {
     backgroundColor: "#3B6665",
-    // borderWidth: 1,
     borderColor: "#3B6665",
-    height: "10%",
+    height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: "30%",
-    padding: 5,
+    //marginTop: 5,
+    padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
   },
   submitButtonClicked: {
+    backgroundColor: "#B1D4D2",
     borderColor: "#B1D4D2",
-    height: "10%",
+    height: "50",
     width: "80%",
     marginLeft: 40,
-    marginTop: "30%",
+    //marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 50,
+    marginTop: 0,
   },
   customStyle: {
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
+    fontFamily: "Mulish_400Regular",
     borderColor: "#5C5D8D",
   },
 });

@@ -81,7 +81,6 @@ var styles = StyleSheet.create({
   },
   btnNormal: {
     borderColor: "#ED7861",
-
     backgroundColor: "#F6D6CF",
     height: "60",
     width: "80%",
@@ -92,8 +91,8 @@ var styles = StyleSheet.create({
     borderRadius: 35,
   },
   btnPress: {
-    borderColor: "#FBEDEA",
-    backgroundColor: "#FBEDEA",
+    borderColor: "#ED7861",
+    backgroundColor: "#F6D6CF",
     height: "60",
     width: "80%",
     marginLeft: 40,

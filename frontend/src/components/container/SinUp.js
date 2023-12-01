@@ -94,7 +94,7 @@ export default SingUp;
 const styles = StyleSheet.create({
   signin: {
     color: "#3B6665",
-    fontSize: 16,
+    fontSize: 17,
     fontFamily: "Mulish_700Bold",
     textDecorationLine: "underline",
   },

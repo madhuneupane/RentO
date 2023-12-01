@@ -41,7 +41,7 @@ const OwnerOnboarding1 = ({ navigation, route }) => {
           height={910}
           marginTop={-370}
           marginLeft={-350}
-          opacity={0.5}
+          opacity={0.2}
         />
       </View>
     </View>
@@ -91,7 +91,7 @@ var styles = StyleSheet.create({
   },
   btnPress: {
     borderColor: "#ED7861",
-    backgroundColor: "#FBEDEA",
+    backgroundColor: "#F6D6CF",
     height: "50",
     width: "80%",
     marginLeft: 40,

@@ -46,7 +46,7 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
           </Text>
         </View>
         <ButtonUI
-          item={{ value: "Living Area" }}
+          item={{ value: "Kitchen" }}
           selectedItems={selectedItems}
           check={data.imageUploaded ? check : false}
           touchProps={touchProps}

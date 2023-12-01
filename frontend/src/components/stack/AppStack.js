@@ -316,7 +316,16 @@ const AppStack = () => {
           }}
         />
 
-        <Stack.Screen name="panaroma_view" component={PanaromaView} />
+        <Stack.Screen
+          name="panaroma_view"
+          component={PanaromaView}
+          options={{
+            headerBackTitleVisible: false,
+            headerTitle: "",
+            headerTintColor: "#3B6665",
+            headerBackTitle: false,
+          }}
+        />
         <Stack.Screen
           name="tenant_interested"
           component={TenantInterested}

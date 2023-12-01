@@ -27,7 +27,7 @@ const PostIsReady = ({ navigation, route }) => {
   // console.log("Finally::: last page" + JSON.stringify(data));
   return (
     <View style={styles.descView}>
-      <Text style={styles.descText}> Your listing has been posted</Text>
+      <Text style={styles.descText}> Your listing has been posted!</Text>
       <View style={styles.ButtonContainer}>
         <ButtonUI
           item={{ value: "View Post" }}
@@ -47,11 +47,12 @@ const PostIsReady = ({ navigation, route }) => {
         ></ButtonUI>
       </View>
       <RentoBack
+        style={{ zIndex: 1 }}
         width={840}
         height={890}
-        marginTop={-20}
+        marginTop={-70}
         marginLeft={-160}
-        opacity={0.2}
+        opacity={0.7}
       />
     </View>
   );
@@ -82,18 +83,18 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     // flex: 1,
     // backgroundColor: "white",
-    backgroundColor: "#E9E7EE",
-    borderColor: "##413855",
+    backgroundColor: "#413855",
+    borderColor: "#413855",
   },
   descText: {
     marginTop: 50,
     fontFamily: "Mulish_700Bold",
-    color: "#3B6665",
+    color: "white",
     fontSize: 24,
   },
   submitButton: {
     backgroundColor: "#E9E7EE",
-    borderColor: "#3B6665",
+    borderColor: "#413855",
     height: "55%",
     width: "46%",
     marginLeft: 10,
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
   },
   submitButtonClicked: {
     backgroundColor: "#3B6665",
-    borderColor: "#3B6665",
+    borderColor: "#413855",
     height: "55%",
     width: "46%",
     marginLeft: 40,

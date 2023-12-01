@@ -110,14 +110,15 @@ const OwnerOnBoarding6 = ({ navigation, route }) => {
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
-        <RentoBack
-          width={840}
-          height={910}
-          marginTop={-350}
-          marginLeft={-400}
-          opacity={0.2}
-        />
       </View>
+      <RentoBack
+        style={{ zIndex: -1 }}
+        width={840}
+        height={810}
+        marginTop={-302}
+        marginLeft={-280}
+        opacity={0.7}
+      />
     </View>
   );
 };
@@ -166,17 +167,19 @@ const styles = StyleSheet.create({
     // width: 70,
   },
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "75%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
+    backgroundColor: "#3B6665",
     marginTop: 77,
     marginLeft: 75,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 40,
     borderRadius: 20,
@@ -257,7 +260,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 400,
+    marginTop: 350,
   },
   customStyle: {
     color: "white",

@@ -26,9 +26,9 @@ const OwnerNewListingStart = ({ navigation, route }) => {
       <RentoBack
         width={840}
         height={300}
-        marginTop={-120}
+        marginTop={-130}
         marginLeft={-240}
-        opacity={0.5}
+        opacity={0.7}
       />
     </View>
   );

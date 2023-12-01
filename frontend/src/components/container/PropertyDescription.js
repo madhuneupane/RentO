@@ -129,11 +129,12 @@ const PropertyDescription = ({ navigation, route }) => {
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
         <RentoBack
+          style={{ zIndex: -1 }}
           width={840}
           height={950}
-          marginTop={-350}
+          marginTop={-345}
           marginLeft={-535}
-          opacity={0.2}
+          opacity={0.7}
         />
       </View>
     </View>
@@ -294,12 +295,12 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "77%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
+    backgroundColor: "#3B6665",
     // marginTop: 50,
     marginLeft: 50,
     marginTop: 10,
@@ -307,7 +308,9 @@ const styles = StyleSheet.create({
     bottom: -80,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 200,
     borderRadius: 20,

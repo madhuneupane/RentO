@@ -38,14 +38,15 @@ const OwnerOnboarding2 = ({ navigation, route }) => {
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
-        <RentoBack
-          width={840}
-          height={910}
-          marginTop={-350}
-          marginLeft={-350}
-          opacity={0.2}
-        />
       </View>
+      <RentoBack
+        style={{ zIndex: -1 }}
+        width={840}
+        height={810}
+        marginTop={-230}
+        marginLeft={-280}
+        opacity={0.7}
+      />
     </View>
   );
 };
@@ -55,24 +56,28 @@ export default OwnerOnboarding2;
 var styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
+    marginTop: -50,
   },
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "75%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
+    backgroundColor: "#3B6665",
     marginTop: 75,
     marginLeft: 55,
-    //marginBottom:10,
+    marginBottom: -100,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 20,
     borderRadius: 20,
     marginBottom: 20,
+    zIndex: 1,
   },
   customStyle: {
     color: "#413855",
@@ -92,8 +97,8 @@ var styles = StyleSheet.create({
     borderRadius: 35,
   },
   btnPress: {
-    borderColor: "#FBEDEA",
-    backgroundColor: "#FBEDEA",
+    borderColor: "#ED7861",
+    backgroundColor: "#F6D6CF",
     height: "60",
     width: "80%",
     marginLeft: 40,

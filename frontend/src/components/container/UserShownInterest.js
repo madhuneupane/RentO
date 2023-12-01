@@ -29,14 +29,15 @@ const UserShownInterest = ({ interestedId, propertyId, setModalVisible }) => {
         <LottieView
           autoPlay
           style={{
-            width: "100%",
-            height: "100%",
+            width: "90%",
+            height: "90%",
             backgroundColor: "white",
+            marginLeft: "1%",
           }}
-          // source={require("../../../assets/done.json")}
-          source={{
-            uri: "https://lottie.host/e5d85eda-8ff0-45aa-bff5-42efb045d391/FEjgDtIUn0.json",
-          }}
+          source={require("../../../assets/rentoInterested.json")}
+          // source={{
+          //   uri: "https://lottie.host/e5d85eda-8ff0-45aa-bff5-42efb045d391/FEjgDtIUn0.json",
+          // }}
         />
         <View style={styles.buttonContainer}>
           <ButtonUI
@@ -58,20 +59,21 @@ const styles = StyleSheet.create({
     height: "65%",
   },
   title: {
-    fontWeight: "300",
+    fontFamily: "Mulish_600SemiBold",
     fontSize: 20,
     marginLeft: 10,
     fontSize: 30,
     textAlign: "center",
     marginTop: 100,
+    color: "#413855",
   },
   container: {
-    // margin: 10,
+    margin: 10,
     backgroundColor: "white",
   },
   buttonContainer: {
     marginBottom: 10,
-    marginLeft: 30,
+    marginLeft: 10,
   },
   customStyle: {
     color: "white",

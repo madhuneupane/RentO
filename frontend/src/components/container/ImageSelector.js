@@ -241,9 +241,9 @@ const ImageSelector = ({ navigation, route }) => {
             autoPlay
             style={{
               width: "100%",
-              height: "45%",
+              height: "60%",
               backgroundColor: "white",
-              marginLeft: 33,
+              marginLeft: 35,
               marginBottom: 100,
             }}
             source={require("../../../assets/RentoO - Loading Animation.json")}
@@ -262,11 +262,15 @@ const ImageSelector = ({ navigation, route }) => {
         )}
       </View>
       <RentoBack
-        width={840}
-        height={990}
-        marginTop={-300}
-        marginLeft={-285}
-        opacity={0.2}
+        style={{
+          zIndex: -1,
+          position: "absolute",
+          top: 630,
+          left: -290,
+          opacity: 0.7,
+        }}
+        width={990}
+        height={270}
       />
     </>
   );
@@ -302,7 +306,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   imageContainer: {
-    backgroundColor: "#FBEDEA",
+    backgroundColor: "#F6D6CF",
     borderColor: "#ED7861",
     borderWidth: 0.5,
     borderRadius: 5,

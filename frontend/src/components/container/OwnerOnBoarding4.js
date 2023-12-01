@@ -50,31 +50,34 @@ const OwnerOnboarding4 = ({ navigation, route }) => {
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
-        <RentoBack
-          width={840}
-          height={925}
-          marginTop={-350}
-          marginLeft={-500}
-          opacity={0.2}
-        />
       </View>
+      <RentoBack
+        style={{ zIndex: -1 }}
+        width={840}
+        height={810}
+        marginTop={-302}
+        marginLeft={-280}
+        opacity={0.7}
+      />
     </View>
   );
 };
 export default OwnerOnboarding4;
 const styles = StyleSheet.create({
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "70%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
+    backgroundColor: "#3B6665",
     marginTop: 62,
     marginLeft: 65,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 150,
     borderRadius: 20,
@@ -87,7 +90,7 @@ const styles = StyleSheet.create({
     height: 60,
   },
   textInput: {
-    fontSize: 18,
+    fontSize: 20,
     height: 30,
     width: "87%",
     borderRadius: 24,
@@ -95,7 +98,7 @@ const styles = StyleSheet.create({
     height: 50,
     paddingLeft: 15,
     color: "#5C5D8D",
-    fontFamily: "Mulish_400Regular_Italic",
+    fontFamily: "Mulish_700Bold_Italic",
   },
   button: {
     borderWidth: 1.5,
@@ -149,7 +152,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 290,
+    marginTop: 200,
   },
   customStyle: {
     color: "white",

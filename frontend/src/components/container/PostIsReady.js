@@ -43,11 +43,12 @@ const PostIsReady = ({ navigation, route }) => {
         ></ButtonUI>
       </View>
       <RentoBack
+        style={{ zIndex: 1 }}
         width={840}
         height={890}
-        marginTop={-20}
+        marginTop={-70}
         marginLeft={-160}
-        opacity={0.2}
+        opacity={0.7}
       />
     </View>
   );
@@ -90,6 +91,14 @@ const styles = StyleSheet.create({
     borderColor: "#3B6665",
     //height: "50%",
     width: "40%",
+    color: "white",
+    fontSize: 24,
+  },
+  submitButton: {
+    backgroundColor: "#E9E7EE",
+    borderColor: "#413855",
+    height: "55%",
+    width: "46%",
     marginLeft: 10,
     marginTop: 30,
     padding: 5,

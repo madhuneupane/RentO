@@ -139,17 +139,18 @@ export default {
     overflow: hidden;
   }
   .change-room-button {
-    width: 90px;
-    font-size: 0.7rem;
+    width: 95px;
+    font-size: 0.8rem;
     padding: 10px;
-    background-color: #36827f;
+    background-color: #3b6665;
     color: #fff;
-    border: none;
+    border: 0.5px solid grey;
     cursor: pointer;
     border-radius: 20px;
   }
   .current-room-button {
-    background-color: #46a8a5;
+    background-color: #f6d6cf;
+    color: purple;
   }
   .button-container {
     position: absolute;

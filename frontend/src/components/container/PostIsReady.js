@@ -38,7 +38,8 @@ const PostIsReady = ({ navigation, route }) => {
               : styles.customStyle
           }
           touchProps={touchPropsSubmit}
-        ></ButtonUI>
+        >
+        </ButtonUI>
         <ButtonUI
           item={{ value: "My Listings" }}
           selectedItems={showListings}
@@ -61,8 +62,9 @@ const PostIsReady = ({ navigation, route }) => {
 export default PostIsReady;
 const styles = StyleSheet.create({
   ButtonContainer: {
-    flexDirection: "row",
+    flexDirection: "column",
     height: "35%",
+    width:"150%"
   },
   customStyle: {
     color: "#413855",
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
     borderColor: "#413855",
     height: "65%",
     width: "46%",
-    marginLeft: 10,
+    marginLeft: 155,
     marginTop: 30,
     padding: 5,
     color: "#413855",
@@ -117,7 +119,7 @@ const styles = StyleSheet.create({
     borderColor: "#3B6665",
     height: "65%",
     width: "46%",
-    marginLeft: 10,
+    marginLeft: 155,
     marginTop: 30,
     padding: 5,
     borderWidth: 1,

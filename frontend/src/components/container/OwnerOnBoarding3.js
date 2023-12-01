@@ -89,11 +89,12 @@ const OwnerOnboarding3 = ({ navigation, route }) => {
         <View style={styles.progressBarGreen}></View>
       </View>
       <RentoBack
-        width={540}
+        style={{ zIndex: -1 }}
+        width={640}
         height={820}
-        marginTop={-350}
-        marginLeft={-30}
-        opacity={0.2}
+        marginTop={-355}
+        marginLeft={-55}
+        opacity={0.7}
       />
     </View>
   );
@@ -102,17 +103,19 @@ export default OwnerOnboarding3;
 
 const styles = StyleSheet.create({
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "70%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
+    backgroundColor: "#3B6665",
     marginTop: 42,
     marginLeft: 65,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 110,
     borderRadius: 20,

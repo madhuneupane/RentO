@@ -59,14 +59,15 @@ const OwnerOnboarding7 = ({ navigation, route }) => {
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
-        <RentoBack
-          width={840}
-          height={920}
-          marginTop={-350}
-          marginLeft={-430}
-          opacity={0.2}
-        />
       </View>
+      <RentoBack
+        style={{ zIndex: -1 }}
+        width={840}
+        height={810}
+        marginTop={-302}
+        marginLeft={-280}
+        opacity={0.7}
+      />
     </View>
   );
 };
@@ -74,19 +75,22 @@ export default OwnerOnboarding7;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
+    marginTop: -50,
   },
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "70%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
+    backgroundColor: "#3B6665",
     marginTop: 67,
     marginLeft: 65,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 80,
     borderRadius: 20,
@@ -96,7 +100,7 @@ const styles = StyleSheet.create({
     height: 80,
   },
   textInput: {
-    fontSize: 18,
+    fontSize: 20,
     height: 30,
     width: "87%",
     borderRadius: 24,
@@ -105,7 +109,7 @@ const styles = StyleSheet.create({
     color: "#5C5D8D",
     //marginTop: 10,
     paddingLeft: 15,
-    fontFamily: "Mulish_400Regular_Italic",
+    fontFamily: "Mulish_700Bold_Italic",
   },
   button: {
     borderWidth: 1.5,
@@ -161,7 +165,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 200,
+    marginTop: 100,
   },
   customStyle: {
     color: "white",

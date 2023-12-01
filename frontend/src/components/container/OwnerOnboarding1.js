@@ -36,14 +36,17 @@ const OwnerOnboarding1 = ({ navigation, route }) => {
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
-        <RentoBack
-          width={840}
-          height={910}
-          marginTop={-370}
-          marginLeft={-350}
-          opacity={0.2}
-        />
       </View>
+      <RentoBack
+        style={{
+          zIndex: -1,
+        }}
+        width={840}
+        height={910}
+        marginTop={-490}
+        marginLeft={-280}
+        opacity={0.7}
+      />
     </View>
   );
 };
@@ -52,7 +55,8 @@ export default OwnerOnboarding1;
 
 var styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(0, 0, 0)",
+    backgroundColor: "white",
+    marginTop: -50,
   },
   progressBar: {
     borderColor: "#3B6665",
@@ -66,6 +70,8 @@ var styles = StyleSheet.create({
     marginBottom: 60,
   },
   progressBarGreen: {
+    borderWidth: 2,
+    borderColor: "#3B6665",
     backgroundColor: "#B1D4D2",
     height: 10,
     width: 10,

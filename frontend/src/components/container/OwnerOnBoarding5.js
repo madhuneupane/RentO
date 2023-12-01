@@ -38,49 +38,52 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
     navigation.navigate("cover_images", data);
   };
   return (
-    <View style={styles.container}>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>
-          Time to showcase your property with 360 panoramic pictures!
-        </Text>
-      </View>
-      <ButtonUI
-        item={{ value: "Living Area" }}
-        selectedItems={selectedItems}
-        check={data.imageUploaded ? check : false}
-        touchProps={touchProps}
-        customStyle={styles.customStyle}
-      ></ButtonUI>
-      <List
-        numColumns={roomsImages.rooms.length / 5}
-        items={roomsImages.rooms}
-        selectedItems={selectedItems}
-        touchProps={touchProps}
-        customStyle={styles.customStyle}
-      ></List>
-      <View style={styles.submitContainer}>
+    <>
+      <View style={styles.container}>
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>
+            Time to showcase your property with 360 panoramic pictures!
+          </Text>
+        </View>
         <ButtonUI
-          item={{ value: "+ Add a Room" }}
-          selectedItems={submitData}
-          touchProps={touchPropsSubmit}
-          customStyle={
-            isSubmitPress
-              ? { ...styles.customStyle, color: "#02696A" }
-              : styles.customStyleSubmit
-          }
+          item={{ value: "Living Area" }}
+          selectedItems={selectedItems}
+          check={data.imageUploaded ? check : false}
+          touchProps={touchProps}
+          customStyle={styles.customStyle}
         ></ButtonUI>
+        <List
+          numColumns={roomsImages.rooms.length / 5}
+          items={roomsImages.rooms}
+          selectedItems={selectedItems}
+          touchProps={touchProps}
+          customStyle={styles.customStyle}
+        ></List>
+        <View style={styles.submitContainer}>
+          <ButtonUI
+            item={{ value: "+ Add a Room" }}
+            selectedItems={submitData}
+            touchProps={touchPropsSubmit}
+            customStyle={
+              isSubmitPress
+                ? { ...styles.customStyle, color: "#02696A" }
+                : styles.customStyleSubmit
+            }
+          ></ButtonUI>
+        </View>
+        <View style={styles.progressBar}>
+          <View style={styles.progressBarGreen}></View>
+        </View>
       </View>
-      <View style={styles.progressBar}>
-        <View style={styles.progressBarGreen}></View>
-        <RentoBack
-          width={840}
-          height={910}
-          marginTop={-350}
-          marginLeft={-555}
-          opacity={0.2}
-        />
-      </View>
-    </View>
+      <RentoBack
+        style={{ zIndex: -1 }}
+        width={840}
+        height={910}
+        marginTop={-268}
+        marginLeft={-285}
+        opacity={0.7}
+      />
+    </>
   );
 };
 
@@ -170,19 +173,21 @@ var styles = StyleSheet.create({
     backgroundColor: "white",
   },
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "80%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
+    backgroundColor: "#3B6665",
     //marginTop: 50,
     marginLeft: 50,
     position: "absolute",
     bottom: -87,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 220,
     borderRadius: 20,

@@ -36,6 +36,7 @@ const Listings = ({ navigation }) => {
         style={{ flex: 1 }}
         source={{ uri: LOCAL }}
         scrollEnabled={false}
+        bounces={false}
         javaScriptEnabled={true} // Enable JavaScript execution
         allowsWebContentsDebugging={true}
         onMessage={onMessage}

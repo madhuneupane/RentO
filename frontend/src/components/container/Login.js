@@ -58,7 +58,7 @@ const Login = ({ navigation }) => {
       <RentoBack
         width={800}
         height={300}
-        marginTop={-150}
+        marginTop={-130}
         marginLeft={-220}
         opacity={0.7}
       />

@@ -61,7 +61,7 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
         ></List>
         <View style={styles.submitContainer}>
           <ButtonUI
-            item={{ value: "+ Add a Room" }}
+            item={{ value: "Continue" }}
             selectedItems={submitData}
             touchProps={touchPropsSubmit}
             customStyle={

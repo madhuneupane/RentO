@@ -9,8 +9,9 @@ const SelectImageOption = ({ navigation, route }) => {
   const data = route.params;
   const selectedItems = (value) => {
     console.log("data from select:" + JSON.stringify(data));
-    if (value == "Upload from Gallery") navigation.navigate("image_select", data);
-    if (value == "Take a photo") navigation.navigate("camera_select", data);
+    if (value == "Upload from Gallery")
+      navigation.navigate("image_select", data);
+    if (value == "Take a Panorama") navigation.navigate("camera_select", data);
   };
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var [isCameraPress, setIsCamerasPress] = useState(false);
@@ -50,12 +51,16 @@ const SelectImageOption = ({ navigation, route }) => {
         // numColumns={imageUploadOptions.uploadOptions.length / 2}
         item={{ value: "Upload from Gallery" }}
         selectedItems={selectedItems}
-        customStyle={isSubmitPress?{...styles.customStyle, color: "#02696A"}:styles.customStyle}
+        customStyle={
+          isSubmitPress
+            ? { ...styles.customStyle, color: "#02696A" }
+            : styles.customStyle
+        }
         touchProps={touchPropsSubmit}
       ></ButtonUI>
       <ButtonUI
         // numColumns={imageUploadOptions.uploadOptions.length / 2}
-        item={{ value: "Take a photo" }}
+        item={{ value: "Take a Panorama" }}
         selectedItems={selectedItems}
         customStyle={styles.customStyleCamera}
         touchProps={touchPropsCamera}
@@ -90,9 +95,9 @@ var styles = StyleSheet.create({
     fontSize: 18,
     color: "#413855",
     backgroundColor: "#E9E7EE",
-    margin:15,
-    padding:15,
-    fontFamily: "Mulish_400Regular"
+    margin: 15,
+    padding: 15,
+    fontFamily: "Mulish_400Regular",
   },
   text2: {
     textAlign: "center",
@@ -100,21 +105,21 @@ var styles = StyleSheet.create({
     fontSize: 18,
     color: "#413855",
     backgroundColor: "#E9E7EE",
-    margin:15,
-    padding:15,
-    fontFamily: "Mulish_400Regular"
+    margin: 15,
+    padding: 15,
+    fontFamily: "Mulish_400Regular",
   },
   customStyle: {
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
   customStyleCamera: {
     color: "#413855",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
   submitButton: {
     backgroundColor: "#3B6665",

@@ -6,14 +6,14 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 const OwnerCards = ({ data }) => {
   const city = JSON.parse(data.location)?.city;
-
+  console.log("OwnerCards::::" + JSON.stringify(data));
   return (
     <View style={styles.container}>
       {/* <Text>{JSON.stringify(data)}</Text> */}
 
       <View style={styles.viewContainer}>
         <Card.Image
-          source={{ uri: data.images.bedrooms?.back }}
+          source={{ uri: data.coverImage[1] }}
           style={styles.image}
         ></Card.Image>
       </View>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    flex:1,
+    flex: 1,
     marginTop: 15,
     marginLeft: 15,
     flexDirection: "row",
@@ -85,10 +85,9 @@ const styles = StyleSheet.create({
     height: "100%",
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
-    
   },
   textContainer: {
-    padding:30,
+    padding: 30,
     alignItems: "center",
     justifyContent: "center",
     //height: "90%",

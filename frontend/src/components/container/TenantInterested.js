@@ -15,7 +15,7 @@ const TenantInterested = ({ navigation, route }) => {
     <View style={styles.container}>
       <Text style={styles.heading}>Tenant Matches</Text>
       <Text style={styles.subheading}>
-        {type} on {JSON.parse(location).city}
+        Cozy {type} on {JSON.parse(location).city}
       </Text>
       <Text style={styles.text}>
         Review the renters' profiles that have matched with your criteria
@@ -28,7 +28,9 @@ const TenantInterested = ({ navigation, route }) => {
               <View style={styles.card}>
 
                 <Image
-                  source={require("../../../assets/Kayla-Person.jpg")}
+                 source={{
+                  uri: "https://firebasestorage.googleapis.com/v0/b/app1-504b3.appspot.com/o/SevenKnightGroupPhotos%2FMadhu.jpg?alt=media&token=407e2460-c652-4272-84e7-34317e68ea97&_gl=1*tk3ds5*_ga*ODc0MzgwNzQ3LjE2OTgzNjA5MzY.*_ga_CW55HF8NVT*MTY5OTI5MzMzOS4xNy4xLjE2OTkyOTMzNTMuNDYuMC4w",
+                }}
                   style={styles.image}
                 />
                 <View style={styles.desc}>
@@ -58,21 +60,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   heading: {
-    fontSize: 28,
+    fontSize: 30,
     color: "#413855",
     fontFamily: "Mulish_700Bold",
   },
   subheading: {
     fontSize: 22,
     color: "#2B6866",
-    fontFamily: "Mulish_600SemiBold",
+    fontFamily: "Mulish_700Bold",
     marginTop: 15,
   },
   text: {
     color: "#5C5D8D",
     fontSize: 18,
     marginTop: 18,
-    fontFamily: "Mulish_500Medium",
+    fontFamily: "Mulish_700Bold",
     textAlign: "center"
   },
   desc: {
@@ -88,7 +90,8 @@ const styles = StyleSheet.create({
     borderColor: "#3B6665",
     backgroundColor: "#E9E7EE",
     flexDirection: "row",
-    paddingLeft: 20
+    paddingLeft: 20,
+    marginBottom: 4,
   },
   name: {
     color: "#2B6866",

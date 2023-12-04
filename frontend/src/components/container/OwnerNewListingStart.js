@@ -3,6 +3,8 @@ import { View, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StyleSheet } from "react-native";
 import NewListing from "../../../assets/New-Listing-Start-.svg";
+import RentoBack from "../../../assets/rentoBack.svg";
+
 const OwnerNewListingStart = ({ navigation, route }) => {
   const start = () => {
     navigation.navigate("owner_onboarding1");
@@ -21,6 +23,13 @@ const OwnerNewListingStart = ({ navigation, route }) => {
           <Text style={styles.newlisting}> New Listing</Text>
         </View>
       </TouchableOpacity>
+      <RentoBack
+        width={840}
+        height={300}
+        marginTop={-130}
+        marginLeft={-240}
+        opacity={0.7}
+      />
     </View>
   );
 };
@@ -36,22 +45,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 60,
-    marginLeft: 90,
+    marginLeft: 100,
     marginRight: 90,
     backgroundColor: "#3B6665",
-    width: "95",
-    height: "55%",
+    width: "51%",
+    height: "53%",
     // position: "absolute",
     // bottom: 30,
     borderWidth: 1,
     borderColor: "#3B6665",
     padding: 10,
-    borderRadius : "10.81"
+    borderRadius: "10.81",
   },
   text: {
     color: "#413855",
     marginTop: 120,
-    marginLeft: 65,
+    marginLeft: 78,
     fontSize: 24,
     fontFamily: "Mulish_700Bold",
   },
@@ -59,7 +68,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
     color: "white",
     fontFamily: "Mulish_700Bold",
-    fontSize: 22,
-    
+    fontSize: 20,
   },
 });

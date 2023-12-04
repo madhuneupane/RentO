@@ -4,6 +4,7 @@ import { amenitiesType } from "../static/constants";
 import { View, StyleSheet, Text } from "react-native";
 import List from "../list/List";
 import ButtonUI from "../UI/button/ButtonUI";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const OwnerOnBoarding6 = ({ navigation, route }) => {
   var [isPress, setIsPress] = useState(false);
@@ -56,9 +57,7 @@ const OwnerOnBoarding6 = ({ navigation, route }) => {
           <Text style={styles.title}>
             What amenities does your property offer?
           </Text>
-          <Text style={styles.subTitle}>
-            Select all that apply
-          </Text>
+          <Text style={styles.subTitle}>Select all that apply</Text>
         </View>
         <View style={styles.listContainer}>
           <View style={styles.buttonConatiner}>
@@ -102,12 +101,24 @@ const OwnerOnBoarding6 = ({ navigation, route }) => {
           item={{ value: "Continue" }}
           selectedItems={submit}
           touchProps={touchPropsSubmit}
-          customStyle={styles.customStyle}
+          customStyle={
+            isSubmitPress
+              ? { ...styles.customStyle, color: "#02696A" }
+              : styles.customStyle
+          }
         ></ButtonUI>
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
       </View>
+      <RentoBack
+        style={{ zIndex: -1 }}
+        width={840}
+        height={810}
+        marginTop={-302}
+        marginLeft={-280}
+        opacity={0.7}
+      />
     </View>
   );
 };
@@ -156,41 +167,44 @@ const styles = StyleSheet.create({
     // width: 70,
   },
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "75%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
-    marginTop: 60,
-    marginLeft: 55,
+    backgroundColor: "#3B6665",
+    marginTop: 77,
+    marginLeft: 75,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 40,
     borderRadius: 20,
   },
   container: {
-    width: "100%",
+    width: "90%",
     backgroundColor: "white",
   },
   title: {
     // marginLeft: 30,
-    marginTop: 40,
+    marginTop: 42,
     fontWeight: "300",
     fontSize: 15,
-    marginLeft: 10,
+    marginLeft: 60,
     fontSize: 22,
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
-    color: "#413855"
+    color: "#413855",
   },
   subTitle: {
     color: "#5C5D8D",
     fontFamily: "Mulish_600SemiBold",
-    fontSize: 16,
-    marginTop: 15,
+    fontSize: 17,
+    marginLeft: 60,
+    marginTop: 25,
   },
   propertyType: {
     marginBottom: 10,
@@ -227,26 +241,26 @@ const styles = StyleSheet.create({
     backgroundColor: "#3B6665",
     borderColor: "#3B6665",
     height: "50",
-    width: "80%",
-    marginLeft: 40,
+    width: "85%",
+    marginLeft: 50,
     marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 35,
+    borderRadius: 40,
   },
   submitButtonClicked: {
     backgroundColor: "#B1D4D2",
     borderColor: "#B1D4D2",
     height: "50",
-    width: "80%",
-    marginLeft: 40,
+    width: "85%",
+    marginLeft: 50,
     marginTop: 10,
     padding: 10,
     borderWidth: 0.5,
-    borderRadius: 35,
+    borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 400,
+    marginTop: 350,
   },
   customStyle: {
     color: "white",
@@ -255,11 +269,11 @@ const styles = StyleSheet.create({
     fontFamily: "Mulish_400Regular",
   },
   listContainer: {
-    marginTop: 50,
+    marginTop: 60,
     fontFamily: "Mulish_400Regular",
     height: "270%",
     width: "100%",
-    marginLeft: 10,
+    marginLeft: 30,
     marginRight: 10,
   },
   textContainer: {

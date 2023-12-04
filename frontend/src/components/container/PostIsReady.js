@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import Postdata from "../hooks/postdata";
 import ButtonUI from "../UI/button/ButtonUI";
 import { Button } from "react-native-paper";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const PostIsReady = ({ navigation, route }) => {
   const [loading, setLoading] = useState(false);
@@ -26,14 +27,19 @@ const PostIsReady = ({ navigation, route }) => {
   // console.log("Finally::: last page" + JSON.stringify(data));
   return (
     <View style={styles.descView}>
-      <Text style={styles.descText}> Your listing has been posted</Text>
+      <Text style={styles.descText}> Your listing has been posted!</Text>
       <View style={styles.ButtonContainer}>
         <ButtonUI
           item={{ value: "View Post" }}
           selectedItems={showPost}
-          customStyle={styles.customStyle}
+          customStyle={
+            isSubmitPress
+              ? { ...styles.customStyle, color: "white" }
+              : styles.customStyle
+          }
           touchProps={touchPropsSubmit}
-        ></ButtonUI>
+        >
+        </ButtonUI>
         <ButtonUI
           item={{ value: "My Listings" }}
           selectedItems={showListings}
@@ -41,6 +47,14 @@ const PostIsReady = ({ navigation, route }) => {
           touchProps={touchPropsSubmit}
         ></ButtonUI>
       </View>
+      <RentoBack
+        style={{ zIndex: 1 }}
+        width={840}
+        height={990}
+        marginTop={-70}
+        marginLeft={-160}
+        opacity={0.7}
+      />
     </View>
   );
 };
@@ -48,12 +62,14 @@ const PostIsReady = ({ navigation, route }) => {
 export default PostIsReady;
 const styles = StyleSheet.create({
   ButtonContainer: {
-    flexDirection: "row",
+    flexDirection: "column",
+    height: "35%",
+    width:"150%"
   },
   customStyle: {
-    color: "black",
-    fontWeight: "bold",
+    color: "#413855",
     fontSize: 20,
+    fontFamily: "Mulish_700Bold",
   },
   descView: {
     alignItems: "center",
@@ -61,41 +77,53 @@ const styles = StyleSheet.create({
     marginTop: "30%",
     // marginBottom: 10,
     marginLeft: 20,
-    height: "40%",
+    height: "36%",
     width: "90%",
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 20,
     // alignItems: "center",
     // flex: 1,
     // backgroundColor: "white",
-    backgroundColor: "#E9E7EE",
+    backgroundColor: "#413855",
     borderColor: "#413855",
   },
   descText: {
-    marginTop: 50,
+    marginTop: 40,
     fontFamily: "Mulish_700Bold",
-    fontSize: 20,
+    fontSize: 25,
+    color: "white",
   },
+  // submitButton: {
+  //   backgroundColor: "#E9E7EE",
+  //   borderColor: "#3B6665",
+  //   height: "25%",
+  //   width: "40%",
+  //   color: "white",
+  //   fontSize: 24,
+  // },
   submitButton: {
     backgroundColor: "#E9E7EE",
-    borderColor: "#3B6665",
-    height: "55%",
+    borderColor: "#413855",
+    height: "65%",
     width: "46%",
-    marginLeft: 10,
-    marginTop: 70,
-    padding: 10,
+    marginLeft: 155,
+    marginTop: 30,
+    padding: 5,
+    color: "#413855",
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 40,
   },
   submitButtonClicked: {
-    backgroundColor: "#3B6665",
+    // color: "white",
+    // backgroundColor: "#3B6665",
     borderColor: "#3B6665",
-    height: "55%",
+    height: "65%",
     width: "46%",
-    marginLeft: 40,
-    marginTop: 20,
-    padding: 10,
-    borderWidth: 0.5,
-    borderRadius: 20,
+    marginLeft: 155,
+    marginTop: 30,
+    padding: 5,
+    borderWidth: 1,
+    borderRadius: 40,
+    color: "#413855",
   },
 });

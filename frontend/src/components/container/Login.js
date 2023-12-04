@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ButtonUI from "../UI/button/ButtonUI";
 import { Text, View, StyleSheet, Image } from "react-native";
+import RentoBack from "../../../assets/rentoBack.svg";
+
 const Login = ({ navigation }) => {
   const selectedItems = (value, type) => {
     navigation.navigate(type);
@@ -9,7 +11,8 @@ const Login = ({ navigation }) => {
   var [isPress, setIsPress] = useState(false);
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var touchPropsSubmit = {
-    underlayColor: "#B1D4D2", // <-- "backgroundColor" will be always overwritten by "underlayColor"
+    underlayColor: "#B1D4D2",
+    // <-- "backgroundColor" will be always overwritten by "underlayColor"
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
@@ -33,7 +36,11 @@ const Login = ({ navigation }) => {
         <View style={styles.buttonView}>
           <ButtonUI
             item={{ value: `I’m looking for a new place` }}
-            customStyle={styles.customStyle}
+            customStyle={
+              isSubmitPress
+                ? { ...styles.customStyle, color: "#02696A" }
+                : styles.customStyle
+            }
             selectedItems={selectedItems}
             touchProps={touchPropsSubmit}
             type="welcome"
@@ -48,6 +55,13 @@ const Login = ({ navigation }) => {
           />
         </View>
       </View>
+      <RentoBack
+        width={800}
+        height={300}
+        marginTop={-130}
+        marginLeft={-220}
+        opacity={0.7}
+      />
     </View>
   );
 };
@@ -57,14 +71,15 @@ export default Login;
 const styles = StyleSheet.create({
   title: {
     // marginLeft: 10,
-    marginTop:-10,
+    marginTop: -10,
     marginBottom: -28,
     color: "#413855",
     fontFamily: "Mulish_700Bold",
     fontSize: 24,
   },
   container: {
-    backgroundColor: "white",
+    // backgroundColor: "rgb(229 231 235)",
+    backgroundColor: "rgba(0, 0, 0)",
   },
   // imageContainer: {
   //   marginTop: "20%",
@@ -96,6 +111,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "pink",
   },
   button: {
+    color: "white",
     borderWidth: 5,
     borderRadius: 15,
     fontSize: 22,
@@ -117,6 +133,7 @@ const styles = StyleSheet.create({
   },
 
   submitButton: {
+    color: "white",
     backgroundColor: "#3B6665",
     borderColor: "#3B6665",
     height: "30%",
@@ -125,9 +142,11 @@ const styles = StyleSheet.create({
     // marginTop: 20,
     //padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   submitButtonClicked: {
+    color: "#02696A",
+    backgroundColor: "#B1D4D2",
     borderColor: "#B1D4D2",
     height: "30%",
     width: "85%",
@@ -135,13 +154,13 @@ const styles = StyleSheet.create({
     // marginTop: 20,
     //padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   customStyle: {
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
-    margin: 10,
+    margin: 15,
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
   },
@@ -149,7 +168,7 @@ const styles = StyleSheet.create({
     color: "#413855",
     fontWeight: "bold",
     fontSize: 20,
-    margin: 10,
+    margin: 15,
     textAlign: "center",
     fontFamily: "Mulish_700Bold",
   },
@@ -163,7 +182,7 @@ const styles = StyleSheet.create({
     marginTop: -30,
     //padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
   postButtonClicked: {
     backgroundColor: "#FBEDEA",
@@ -174,6 +193,6 @@ const styles = StyleSheet.create({
     marginTop: -27,
     //padding: 10,
     borderWidth: 0.5,
-    borderRadius: 30,
+    borderRadius: 40,
   },
 });

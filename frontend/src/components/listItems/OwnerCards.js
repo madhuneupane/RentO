@@ -6,14 +6,14 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 const OwnerCards = ({ data }) => {
   const city = JSON.parse(data.location)?.city;
-
+  console.log("OwnerCards::::" + JSON.stringify(data));
   return (
     <View style={styles.container}>
       {/* <Text>{JSON.stringify(data)}</Text> */}
 
       <View style={styles.viewContainer}>
         <Card.Image
-          source={{ uri: data.images.bedrooms?.back }}
+          source={{ uri: data.coverImage[1] }}
           style={styles.image}
         ></Card.Image>
       </View>
@@ -24,7 +24,7 @@ const OwnerCards = ({ data }) => {
       </View>
       <MaterialCommunityIcons
         name="chevron-right"
-        size={30}
+        size={37}
         style={styles.chevron}
       />
     </View>
@@ -39,21 +39,20 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily: "Mulish_500Medium",
+    fontFamily: "Mulish_700Bold",
   },
   date: {
     marginTop: 10,
     textAlign: "left",
-    marginLeft: -10,
     color: "#5C5D8D",
-    fontFamily: "Mulish_400Regular",
-    fontSize: 13,
+    fontFamily: "Mulish_700Bold",
+    fontSize: 14,
     paddingRight: 30,
-    marginLeft: 0,
+    marginLeft: -53,
   },
 
   container: {
-    flex:1,
+    flex: 1,
     marginTop: 15,
     marginLeft: 15,
     flexDirection: "row",
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
     height: "99%",
     //border: "2",
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 10,
     borderColor: "#3B6665",
     backgroundColor: "#E9E7EE",
     paddingRight: 70,
@@ -73,23 +72,22 @@ const styles = StyleSheet.create({
     // padding: 10,
   },
   viewContainer: {
-    marginLeft: 76,
+    marginLeft: 85,
     // flexDirection: "row",
     // alignItems: "center",
     // // justifyContent: "flex-start",
     // // width: "auto",
-    width: "45%",
+    width: "36%",
     overflow: false,
   },
   image: {
-    width: "95%",
+    width: "100%",
     height: "100%",
-    borderTopLeftRadius: 8,
-    borderBottomLeftRadius: 8,
-    
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
   },
   textContainer: {
-    padding:10,
+    padding: 30,
     alignItems: "center",
     justifyContent: "center",
     //height: "90%",
@@ -97,9 +95,9 @@ const styles = StyleSheet.create({
   type: {
     color: "#3B6665",
     fontFamily: "Mulish_700Bold",
-    fontSize: 15,
+    fontSize: 18,
     textAlign: "left",
-    marginLeft: 10,
+    marginLeft: -25,
     // width: "100%", // Adjust the width as needed
     // Other text styles for data.type
   },
@@ -107,11 +105,11 @@ const styles = StyleSheet.create({
     // paddingRight: 55,
     color: "#3B6665",
     fontFamily: "Mulish_700Bold",
-    fontSize: 15,
+    fontSize: 18,
     textAlign: "left",
     marginTop: 3,
     marginLeft: 400,
-    width: "107%", // Adjust the width as needed
+    width: "111%", // Adjust the width as needed
     // Other text styles for data.location
   },
   submitButton: {
@@ -138,5 +136,6 @@ const styles = StyleSheet.create({
   },
   chevron: {
     color: "#3B6665",
+    marginRight: 20,
   },
 });

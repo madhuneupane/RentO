@@ -8,7 +8,7 @@ export const imageUploadOptions = {
 export const roomsImages = {
   rooms: [
     // { key: "living_area", value: "Living Area" },
-    { key: "kitchen", value: "Kitchen" },
+    { key: "living", value: "Living Area" },
     { key: "bedroom", value: "Bedroom" },
     { key: "bathroom", value: "Bathroom" },
   ],

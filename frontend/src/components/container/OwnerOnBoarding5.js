@@ -4,6 +4,7 @@ import { roomsImages } from "../static/RoomImages";
 import Postdata from "../hooks/postdata";
 import ButtonUI from "../UI/button/ButtonUI";
 import { Text, View, StyleSheet } from "react-native";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const OwnerOnBoarding5 = ({ navigation, route }) => {
   const data = route.params;
@@ -25,7 +26,7 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
     // onPress: () => console.log("HELLO"), // <-- "onPress" is apparently required
   };
   var touchPropsSubmit = {
-    underlayColor: "#ffffff00",
+    underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
     onHideUnderlay: () => setIsSubmitPress(false),
     onShowUnderlay: () => setIsSubmitPress(true),
@@ -37,38 +38,52 @@ const OwnerOnBoarding5 = ({ navigation, route }) => {
     navigation.navigate("cover_images", data);
   };
   return (
-    <View style={styles.container}>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>
-          Time to showcase your property with 360 panoramic pictures!
-        </Text>
-      </View>
-      <ButtonUI
-        item={{ value: "Living Area" }}
-        selectedItems={selectedItems}
-        check={data.imageUploaded ? check : false}
-        touchProps={touchProps}
-        customStyle={styles.customStyle}
-      ></ButtonUI>
-      <List
-        numColumns={roomsImages.rooms.length / 5}
-        items={roomsImages.rooms}
-        selectedItems={selectedItems}
-        touchProps={touchProps}
-        customStyle={styles.customStyle}
-      ></List>
-      <View style={styles.submitContainer}>
+    <>
+      <View style={styles.container}>
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>
+            Time to showcase your property with 360 panoramic pictures!
+          </Text>
+        </View>
         <ButtonUI
-          item={{ value: "+ Add a Room" }}
-          selectedItems={submitData}
-          touchProps={touchPropsSubmit}
-          customStyle={styles.customStyleSubmit}
+          item={{ value: "Kitchen" }}
+          selectedItems={selectedItems}
+          check={data.imageUploaded ? check : false}
+          touchProps={touchProps}
+          customStyle={styles.customStyle}
         ></ButtonUI>
+        <List
+          numColumns={roomsImages.rooms.length / 5}
+          items={roomsImages.rooms}
+          selectedItems={selectedItems}
+          touchProps={touchProps}
+          customStyle={styles.customStyle}
+        ></List>
+        <View style={styles.submitContainer}>
+          <ButtonUI
+            item={{ value: "Continue" }}
+            selectedItems={submitData}
+            touchProps={touchPropsSubmit}
+            customStyle={
+              isSubmitPress
+                ? { ...styles.customStyle, color: "#02696A" }
+                : styles.customStyleSubmit
+            }
+          ></ButtonUI>
+        </View>
+        <View style={styles.progressBar}>
+          <View style={styles.progressBarGreen}></View>
+        </View>
       </View>
-      <View style={styles.progressBar}>
-        <View style={styles.progressBarGreen}></View>
-      </View>
-    </View>
+      <RentoBack
+        style={{ zIndex: -1 }}
+        width={840}
+        height={910}
+        marginTop={-268}
+        marginLeft={-285}
+        opacity={0.7}
+      />
+    </>
   );
 };
 
@@ -80,13 +95,13 @@ var styles = StyleSheet.create({
   customStyle: {
     color: "#413855",
     fontSize: 18,
-    fontFamily: "Mulish_400Regular"
+    fontFamily: "Mulish_400Regular",
   },
   customStyleSubmit: {
     color: "white",
     fontWeight: "bold",
     fontSize: 18,
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
   btnNormal: {
     color: "#413855",
@@ -119,14 +134,14 @@ var styles = StyleSheet.create({
     // marginTop: ,
   },
   title: {
-  width: "90%",
-  marginLeft: 20,
-  marginTop: 20,
-  color: "#413855",
-  //marginLeft: 10,
-  fontSize: 19,
-  textAlign: "center",
-  fontFamily: "Mulish_700Bold"
+    width: "90%",
+    marginLeft: 20,
+    marginTop: 20,
+    color: "#413855",
+    //marginLeft: 10,
+    fontSize: 19,
+    textAlign: "center",
+    fontFamily: "Mulish_700Bold",
   },
   submitButton: {
     backgroundColor: "#3B6665",
@@ -158,19 +173,21 @@ var styles = StyleSheet.create({
     backgroundColor: "white",
   },
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "80%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
+    backgroundColor: "#3B6665",
     //marginTop: 50,
     marginLeft: 50,
     position: "absolute",
     bottom: -87,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 220,
     borderRadius: 20,

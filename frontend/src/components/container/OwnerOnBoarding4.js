@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { InputUI } from "../UI/input/InputUI";
 import ButtonUI from "../UI/button/ButtonUI";
+import RentoBack from "../../../assets/rentoBack.svg";
 
 const OwnerOnboarding4 = ({ navigation, route }) => {
   const [onBoardData, setOnBoardData] = useState();
@@ -39,30 +40,44 @@ const OwnerOnboarding4 = ({ navigation, route }) => {
         <ButtonUI
           item={{ value: "Continue" }}
           selectedItems={navigateToNext}
-          customStyle={styles.customStyle}
+          customStyle={
+            isSubmitPress
+              ? { ...styles.customStyle, color: "#02696A" }
+              : styles.customStyle
+          }
           touchProps={touchPropsSubmit}
         />
       </View>
       <View style={styles.progressBar}>
         <View style={styles.progressBarGreen}></View>
       </View>
+      <RentoBack
+        style={{ zIndex: -1 }}
+        width={840}
+        height={810}
+        marginTop={-302}
+        marginLeft={-280}
+        opacity={0.7}
+      />
     </View>
   );
 };
 export default OwnerOnboarding4;
 const styles = StyleSheet.create({
   progressBar: {
-    borderColor: "#B1D4D2",
+    borderColor: "#3B6665",
     height: 10,
     width: "70%",
     borderRadius: 20,
     flexDirection: "row",
-    backgroundColor: "#B1D4D2",
-    marginTop: 50,
-    marginLeft: 55,
+    backgroundColor: "#3B6665",
+    marginTop: 62,
+    marginLeft: 65,
   },
   progressBarGreen: {
-    backgroundColor: "#3B6665",
+    borderWidth: 2,
+    borderColor: "#3B6665",
+    backgroundColor: "#B1D4D2",
     height: 10,
     width: 150,
     borderRadius: 20,
@@ -75,7 +90,7 @@ const styles = StyleSheet.create({
     height: 60,
   },
   textInput: {
-    fontSize: 18,
+    fontSize: 20,
     height: 30,
     width: "87%",
     borderRadius: 24,
@@ -83,7 +98,7 @@ const styles = StyleSheet.create({
     height: 50,
     paddingLeft: 15,
     color: "#5C5D8D",
-    fontFamily:"Mulish_400Regular_Italic",
+    fontFamily: "Mulish_700Bold_Italic",
   },
   button: {
     borderWidth: 1.5,
@@ -99,7 +114,10 @@ const styles = StyleSheet.create({
     fontSize: "20",
   },
   textContainer: {
-    margin: 30,
+    marginBottom: 30,
+    width: "60%",
+    marginLeft: 80,
+    marginTop: 30,
     height: "15%",
     justifyContent: "center",
   },
@@ -109,7 +127,7 @@ const styles = StyleSheet.create({
     //marginLeft: 10,
     fontSize: 22,
     textAlign: "center",
-    fontFamily: "Mulish_700Bold"
+    fontFamily: "Mulish_700Bold",
   },
   submitButton: {
     backgroundColor: "#3B6665",
@@ -134,12 +152,12 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   buttonContainer: {
-    marginTop: 290,
+    marginTop: 200,
   },
   customStyle: {
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
-    fontFamily:"Mulish_400Regular",
+    fontFamily: "Mulish_400Regular",
   },
 });

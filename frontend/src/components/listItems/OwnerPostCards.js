@@ -10,18 +10,15 @@ const OwnerCards = ({ data, getTenant }) => {
       <View style={styles.container}>
         <View style={styles.viewContainer}>
           <Card.Image
-
-            source={{ uri: data.images.bedrooms?.back }}
+            source={{ uri: data.coverImage[1] }}
             style={styles.image}
-
           ></Card.Image>
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.type}>{`Cozy ${data.type} in ${location}`}</Text>
           <Text style={styles.match}>You have 1 tenant matches</Text>
-          <Text style={styles.profile}>See profiles  </Text>
+          <Text style={styles.profile}>See profiles </Text>
         </View>
-
       </View>
     </TouchableOpacity>
   );
@@ -45,11 +42,10 @@ const styles = StyleSheet.create({
     marginLeft: 23,
     borderColor: "#3B6665",
     backgroundColor: "#E9E7EE",
-    
   },
   viewContainer: {
     width: "44%",
-    overflow:false,
+    overflow: false,
   },
   textContainer: {
     alignItems: "center",
@@ -68,7 +64,7 @@ const styles = StyleSheet.create({
   },
   profile: {
     textDecorationLine: "underline",
-    paddingTop:20,
+    paddingTop: 20,
     //paddingRight: 65,
     color: "#3B6665",
     fontFamily: "Mulish_700Bold",
@@ -77,20 +73,20 @@ const styles = StyleSheet.create({
     width: "100%", // Adjust the width as needed
     // Other text styles for data.location
   },
-  match:{
-    alignContent:"center",
-    justifyContent:"center",
+  match: {
+    alignContent: "center",
+    justifyContent: "center",
     color: "#5C5D8D",
-    paddingTop:15,
+    paddingTop: 15,
     fontFamily: "Mulish_700Bold",
     fontSize: 16,
   },
-  image:{
+  image: {
     width: "90%",
     //height:"70%",
     //borderTopLeftRadius: 8,
     //borderBottomLeftRadius: 8,
     borderRadius: 100,
-    margin:16,
+    margin: 16,
   },
 });

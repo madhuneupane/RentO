@@ -189,8 +189,8 @@ ttSearchBox.on("tomtom.searchbox.resultselected", handleResultSelection);
 
 //Getting data from the API
 async function fetchDataFromBothAPIs() {
-  const rentOUrl = "https://api.rent-o.com/api/fetchAllProperty";
-  const craigslistUrl = "https://api.rent-o.com/api/craigExtract";
+  const rentOUrl = "https://rent-o.com/api/fetchAllProperty";
+  const craigslistUrl = "https://rent-o.com/api/craigExtract";
 
   const rentOPromise = fetch(rentOUrl)
     .then((response) => {
@@ -515,7 +515,7 @@ function RenderListForBoth() {
       verifiedLabel.style.fontFamily = "Mulish";
       verifiedLabel.style.padding = "10px";
       verifiedLabel.style.borderRadius = "20px";
-      verifiedLabel.style.backgroundColor = "#36827F";
+      verifiedLabel.style.backgroundColor = "#3b6665";
       verifiedLabel.style.color = "white";
 
       const checkMarkCircle = document.createElement("div");
@@ -607,7 +607,8 @@ function RenderListForBoth() {
     <div class="left-column">
     <div class="detail rent"><span class="rent">${cargRent}</span></div>
     <div class="detail location"><span class="location">${metaData.address.addressLocality}, ${metaData.address.addressCountry}</span></div>
-    <div class="detail link"><a href="${link}" target="_blank">Link to Craigslist</a></div>
+    <div class="detail link linkWrapper"><a href="${link}" target="_blank">Link to Craigslist</a></div>
+
     </div>
     <div class="right-column">
     <i class="far fa-heart"></i>
@@ -775,6 +776,19 @@ swiper.on("slideChange", function () {
   map.easeTo({
     center: activeCoord,
   });
+});
+
+swiperContainer.addEventListener("click", function (event) {
+  // Check if the clicked element has the class "linkWrapper"
+  if (event.target.classList.contains("linkWrapper")) {
+    // Handle link click: Open the link in a new tab
+    const linkElement = event.target.querySelector("a");
+    const linkUrl = linkElement.getAttribute("href");
+    window.open(linkUrl, "_blank");
+  } else {
+    // Trigger the swiper click event for other clicks
+    swiper.emit("click", event);
+  }
 });
 
 swiper.on("click", function () {

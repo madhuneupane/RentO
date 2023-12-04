@@ -39,7 +39,7 @@
 
 .tt-side-panel__header {
   align-items: center;
-  background-color: #f0f0f0;
+  background-color: #ffffff;
   padding: 0;
   padding-left: 10px;
   padding-right: 10px;
@@ -48,7 +48,7 @@
 }
 
 .tt-search-box {
-  background-color: #f0f0f0;
+  background-color: #ffffff;
 }
 
 .tt-search-box-input-container {

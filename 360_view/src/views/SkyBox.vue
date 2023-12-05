@@ -4,18 +4,18 @@
     <div class="button-container">
       <button
         class="change-room-button"
-        @click="changeRoom('living')"
-        :class="{ 'current-room-button': currentRoom === 'living' }"
+        @click="changeRoom('lowq')"
+        :class="{ 'current-room-button': currentRoom === 'lowq' }"
       >
-        Living Room
+        Low Quality
       </button>
       <button
         class="change-room-button"
-        @click="changeRoom('bed')"
-        :class="{ 'current-room-button': currentRoom === 'bed' }"
+        @click="changeRoom('medq')"
+        :class="{ 'current-room-button': currentRoom === 'medq' }"
         style="top: 60px"
       >
-        Bedroom
+        Medium Quality
       </button>
       <button
         class="change-room-button"
@@ -27,11 +27,11 @@
       </button>
       <button
         class="change-room-button"
-        @click="changeRoom('bath')"
-        :class="{ 'current-room-button': currentRoom === 'bath' }"
+        @click="changeRoom('living')"
+        :class="{ 'current-room-button': currentRoom === 'living' }"
         style="top: 160px"
       >
-        Bathroom
+        Living Room
       </button>
     </div>
   </div>
@@ -52,7 +52,7 @@ export default {
       box: null,
       timer: {},
       picList: ["right", "left", "top", "bottom", "front", "back"],
-      currentRoom: "living",
+      currentRoom: "lowq",
     };
   },
   methods: {

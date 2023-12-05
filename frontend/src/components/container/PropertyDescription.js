@@ -21,6 +21,8 @@ const PropertyDescription = ({ navigation, route }) => {
   var [isSubmitPress, setIsSubmitPress] = useState(false);
   var [isSubmit, setIsSubmit] = useState(false);
   const [creating, setCreating] = useState(false);
+  const description =
+    "This charming apartment in the heart of Vancouver offers an entire place experience for those seeking a cozy and convenient living space. With a rental fee of $2000, this property is ideal for those looking for a home in this bustling city.";
   var touchPropsSubmit = {
     underlayColor: "#B1D4D2",
     style: isSubmitPress ? styles.submitButtonClicked : styles.submitButton,
@@ -36,26 +38,28 @@ const PropertyDescription = ({ navigation, route }) => {
 
   const generateDesc = async (test) => {
     setCreating(true);
-    token = await AsyncStorage.getItem("token");
-    const response = await api.getDescription(token, key);
-    const result = JSON.stringify(response);
-    setDesc(result.substr(1).slice(0, -1));
-    setCreating(false);
-    // setDesc(test);
-    console.log("WAIT.....");
+    // token = await AsyncStorage.getItem("token");
+    // const response = await api.getDescription(token, key);
+    // const result = JSON.stringify(response);
+    // setDesc(result.substr(1).slice(0, -1));
+    // setCreating(false);
 
-    if (result) {
-      const desc1 = result.substr(1).slice(0, -1);
-      setOwnerData({ ...keywords, description: desc1 });
-    }
-    // setOwnerData({ ...keywords, description: "test" });
+    setTimeout(() => {
+      setDesc(description);
+      setCreating(false);
+    }, 2000);
+    // if (result) {
+    //   const desc1 = result.substr(1).slice(0, -1);
+    //   setOwnerData({ ...keywords, description: desc1 });
+    // }
+    setOwnerData({ ...keywords, description: description });
   };
   //
   const nextPage = () => {
     // setOwnerData({ ...keywords, description: "desc" });
 
-    console.log("ownerData" + JSON.stringify(ownerData));
-    console.log("ownerData in desc" + desc);
+    // console.log("ownerData" + JSON.stringify(ownerData));
+    // console.log("ownerData in desc" + desc);
     navigation.navigate("owner_onboarding5", ownerData);
   };
   return (

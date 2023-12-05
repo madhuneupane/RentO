@@ -157,20 +157,21 @@ const ListingDetails = ({ navigation, route }) => {
             <View style={styles.subContainer}>
               <Text style={styles.title}>Amenities</Text>
               <View style={styles.amenitiesTextView}>
-                <View>
-                  <Text style={styles.textView}>
-                    {item.amenities?.pet ? "Pet friendly" : "Pet friendly"}
-                  </Text>
-                  <Text style={styles.textView}>
-                    {item.amenities?.wifi ? "Wi-fi" : "Wi-fi"}
-                  </Text>
-                  <Text style={styles.textView}>TV</Text>
-                </View>
-                <View>
+                <Text style={styles.textView}>
+                  {item.amenities?.pet ? "Pet friendly" : "Pet friendly"}
+                </Text>
+                <Text style={styles.textView}>
+                  {item.amenities?.wifi ? "Wi-fi" : "Wi-fi"}
+                </Text>
+                <Text style={styles.textView}>
+                  {item.amenities?.wifi ? "Parking" : "Parking"}
+                </Text>
+
+                {/* <View>
                   <Text style={styles.textView}>Parking</Text>
                   <Text style={styles.textView}>In-unit laundry</Text>
                   <Text style={styles.textView}>Air Conditioning</Text>
-                </View>
+                </View> */}
               </View>
             </View>
             <View style={styles.subContainer}>
@@ -255,7 +256,7 @@ const styles = StyleSheet.create({
     marginLeft: "85%",
   },
   subContainer: {
-    marginTop: "5%",
+    marginTop: "10%",
     marginLeft: 20,
     // flexDirection: "row",
     // justifyContent: "space-around",

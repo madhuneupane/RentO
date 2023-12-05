@@ -19,7 +19,7 @@ export const amenitiesType = {
   types: [
     { key: 1, value: "Heating" },
     { key: 2, value: "Air Conditioning" },
-    { key: 3, value: "Parking" },
+    { key: 3, value: "Trash" },
     { key: 4, value: "TV" },
     { key: 5, value: "Swimming pool" },
     { key: 6, value: "Fitness center/Gym" },

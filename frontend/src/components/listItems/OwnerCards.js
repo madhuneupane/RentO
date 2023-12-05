@@ -4,7 +4,7 @@ import { Text } from "@rneui/base";
 import { StyleSheet, View } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-const OwnerCards = ({ data }) => {
+const OwnerCards = ({ data, adj }) => {
   const city = JSON.parse(data.location)?.city;
   console.log("OwnerCards::::" + JSON.stringify(data));
   return (
@@ -18,8 +18,10 @@ const OwnerCards = ({ data }) => {
         ></Card.Image>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.type}>Enjoy Cozy {data.type}</Text>
-        <Text style={styles.location}>{`on ${city}`}</Text>
+        <Text style={styles.type}>
+          {adj} {data.type}
+        </Text>
+        <Text style={styles.location}>{`in ${city}`}</Text>
         <Text style={styles.date}>Created 6 Dec</Text>
       </View>
       <MaterialCommunityIcons

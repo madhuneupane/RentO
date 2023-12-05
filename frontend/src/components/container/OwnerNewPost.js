@@ -146,16 +146,17 @@ const OwnerNewPost = ({ navigation, route }) => {
               </View>
               <Text style={styles.title}>Amenities</Text>
               <View style={styles.amenitiesTextView}>
-                <View>
-                  <Text style={styles.textView}>
-                    {item.amenities?.pet ? "Pet friendly" : "Pet friendly"}
-                  </Text>
-                  <Text style={styles.textView}>
-                    {item.amenities?.wifi ? "Wi-fi" : "Wi-fi"}
-                  </Text>
-                  <Text style={styles.textView}>TV</Text>
-                </View>
-                <View>
+                <Text style={styles.textView}>
+                  {item.amenities?.pet ? "Pet friendly" : "Pet friendly"}
+                </Text>
+                <Text style={styles.textView}>
+                  {item.amenities?.wifi ? "Wi-fi" : "Wi-fi"}
+                </Text>
+                <Text style={styles.textView}>
+                  {item.amenities?.wifi ? "Parking" : "Parking"}
+                </Text>
+
+                {/* <View>
                   <Text style={styles.textView}>
                     {item.amenities?.parkingSpace ? "Parking" : "Parking"}
                   </Text>
@@ -169,7 +170,7 @@ const OwnerNewPost = ({ navigation, route }) => {
                       ? "Air Conditioning"
                       : "Air Conditioning"}
                   </Text>
-                </View>
+                </View> */}
               </View>
             </View>
             <View style={styles.subContainer}>

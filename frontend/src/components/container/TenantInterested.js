@@ -7,10 +7,17 @@ import { StyleSheet } from "react-native";
 const TenantInterested = ({ navigation, route }) => {
   const { ids, type, location } = route.params;
   const [allTenants, setTenants] = useState([]);
-  console.log("ids::::" + ids);
+
+  const images = [
+    require("../../../assets/jhon.jpeg"),
+    require("../../../assets/jhon.jpeg"),
+    require("../../../assets/jhon.jpeg"),
+    require("../../../assets/Jhon2.jpeg"),
+    require("../../../assets/jhon.jpeg"),
+  ];
 
   interestedTenant(setTenants);
-  console.log("allTenants:::" + JSON.stringify(allTenants));
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Tenant Matches</Text>
@@ -21,21 +28,18 @@ const TenantInterested = ({ navigation, route }) => {
         Review the renters' profiles that have matched with your criteria
       </Text>
       {allTenants &&
-        allTenants.map((item) => {
+        allTenants.map((item, index) => {
           if (ids.includes(item._id)) {
-            console.log("tentant:::::" + JSON.stringify(item));
             return (
-              <View style={styles.card}>
-
-                <Image
-                 source={{
-                  uri: "https://firebasestorage.googleapis.com/v0/b/app1-504b3.appspot.com/o/SevenKnightGroupPhotos%2FMadhu.jpg?alt=media&token=407e2460-c652-4272-84e7-34317e68ea97&_gl=1*tk3ds5*_ga*ODc0MzgwNzQ3LjE2OTgzNjA5MzY.*_ga_CW55HF8NVT*MTY5OTI5MzMzOS4xNy4xLjE2OTkyOTMzNTMuNDYuMC4w",
-                }}
-                  style={styles.image}
-                />
-                <View style={styles.desc}>
-                  <Text style={styles.name}>{item.firstName} {item.lastName}</Text>
-                  <Text style={styles.email}>connect: {item.email}</Text>
+              <View style={styles.maincard}>
+                <View style={styles.card}>
+                  <Image source={images[index]} style={styles.image} />
+                  <View style={styles.desc}>
+                    <Text style={styles.name}>
+                      {item.firstName} {item.lastName}
+                    </Text>
+                    <Text style={styles.email}>connect: {item.email}</Text>
+                  </View>
                 </View>
               </View>
             );
@@ -47,11 +51,16 @@ const TenantInterested = ({ navigation, route }) => {
 
 export default TenantInterested;
 const styles = StyleSheet.create({
+  maincard: {
+    width: "95%",
+    height: "25%",
+    marginLeft: 15,
+  },
   image: {
     width: 80,
     height: 80,
-    margin: 5,
-    borderRadius:50,
+    margin: 15,
+    borderRadius: 50,
     marginTop: 13,
   },
   container: {
@@ -75,33 +84,32 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 18,
     fontFamily: "Mulish_700Bold",
-    textAlign: "center"
+    textAlign: "center",
   },
   desc: {
     justifyContent: "center",
-    marginLeft: 15,
+    marginLeft: 25,
   },
   card: {
-    margin: 30,
+    marginTop: 30,
     borderWidth: 1,
     borderRadius: 8,
     width: "95%",
-    height: "28%",
+    // height: "22%",
     borderColor: "#3B6665",
     backgroundColor: "#E9E7EE",
     flexDirection: "row",
-    paddingLeft: 20,
-    marginBottom: 4,
+    // paddingLeft: 20,
+    // marginBottom: 4,
   },
   name: {
     color: "#2B6866",
     fontSize: 18,
     fontFamily: "Mulish_700Bold",
-
   },
   email: {
     color: "#5C5D8D",
     fontSize: 16,
     fontFamily: "Mulish_500Medium",
-  }
+  },
 });

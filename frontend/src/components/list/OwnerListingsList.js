@@ -9,11 +9,14 @@ const OwnerListingsList = ({
   refresh,
 }) => {
   const item = JSON.stringify(ownerData[0]);
+  const adjectives = ["Enjoy Cozy", "Luxury"];
   return (
     <View style={styles.container}>
       <FlatList
         data={ownerData}
-        renderItem={({ item }) => <OwnerCards data={item} />}
+        renderItem={({ item, index }) => (
+          <OwnerCards data={item} adj={adjectives[index]} />
+        )}
         refreshing={refreshing}
         onRefresh={refresh}
         // contentContainerStyle={{ backgroundColor: "green" }}

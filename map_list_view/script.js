@@ -607,7 +607,8 @@ function RenderListForBoth() {
     <div class="left-column">
     <div class="detail rent"><span class="rent">${cargRent}</span></div>
     <div class="detail location"><span class="location">${metaData.address.addressLocality}, ${metaData.address.addressCountry}</span></div>
-    <div class="detail link"><a href="${link}" target="_blank">Link to Craigslist</a></div>
+    <div class="detail link linkWrapper"><a href="${link}" target="_blank">Link to Craigslist</a></div>
+
     </div>
     <div class="right-column">
     <i class="far fa-heart"></i>
@@ -775,6 +776,19 @@ swiper.on("slideChange", function () {
   map.easeTo({
     center: activeCoord,
   });
+});
+
+swiperContainer.addEventListener("click", function (event) {
+  // Check if the clicked element has the class "linkWrapper"
+  if (event.target.classList.contains("linkWrapper")) {
+    // Handle link click: Open the link in a new tab
+    const linkElement = event.target.querySelector("a");
+    const linkUrl = linkElement.getAttribute("href");
+    window.open(linkUrl, "_blank");
+  } else {
+    // Trigger the swiper click event for other clicks
+    swiper.emit("click", event);
+  }
 });
 
 swiper.on("click", function () {

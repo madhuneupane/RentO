@@ -22,7 +22,7 @@ const TenantInterested = ({ navigation, route }) => {
     <View style={styles.container}>
       <Text style={styles.heading}>Tenant Matches</Text>
       <Text style={styles.subheading}>
-        Cozy {type} on {JSON.parse(location).city}
+        Enjoy Cozy {type} in {JSON.parse(location).city}
       </Text>
       <Text style={styles.text}>
         Review the renters' profiles that have matched with your criteria

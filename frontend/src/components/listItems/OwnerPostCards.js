@@ -18,7 +18,7 @@ const OwnerCards = ({ data, getTenant, adj }) => {
           <Text
             style={styles.type}
           >{`${adj} ${data.type} in ${location}`}</Text>
-          <Text style={styles.match}>You have 1 tenant matches</Text>
+          <Text style={styles.match}>You have tenant matches</Text>
           <Text style={styles.profile}>See profiles </Text>
         </View>
       </View>

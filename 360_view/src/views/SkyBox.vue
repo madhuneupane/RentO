@@ -17,7 +17,7 @@
       >
         Medium Quality
       </button>
-      <button
+      <!-- <button
         class="change-room-button"
         @click="changeRoom('kitchen')"
         :class="{ 'current-room-button': currentRoom === 'kitchen' }"
@@ -32,7 +32,7 @@
         style="top: 160px"
       >
         Living Room
-      </button>
+      </button> -->
     </div>
   </div>
 </template>
@@ -139,9 +139,9 @@ export default {
     overflow: hidden;
   }
   .change-room-button {
-    width: 95px;
-    font-size: 0.8rem;
-    padding: 10px;
+    width: 120px;
+    font-size: 1rem;
+    padding: 12px;
     background-color: #3b6665;
     color: #fff;
     border: 0.5px solid grey;

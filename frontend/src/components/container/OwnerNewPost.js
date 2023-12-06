@@ -91,9 +91,9 @@ const OwnerNewPost = ({ navigation, route }) => {
             </ScrollView>
 
             <Text style={styles.heading}>
-              {item.roomNumbers} Bedroom {item.type} on {location}
+              {item.roomNumbers} Bedroom {item.type}
             </Text>
-
+            <Text style={styles.heading1}>in {location}</Text>
             <ButtonUI
               item={{ value: "360 Virtual Tour" }}
               // customStyle={styles.button}
@@ -232,6 +232,13 @@ const OwnerNewPost = ({ navigation, route }) => {
 export default OwnerNewPost;
 
 const styles = StyleSheet.create({
+  heading1: {
+    marginTop: 8,
+    fontSize: 25,
+    color: "#413855",
+    textAlign: "center",
+    fontFamily: "Mulish_700Bold",
+  },
   heading: {
     marginTop: 25,
     fontSize: 25,

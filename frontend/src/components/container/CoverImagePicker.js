@@ -302,7 +302,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
-    marginLeft: 20,
+    marginLeft: 5,
   },
   submitButtonClicked: {
     backgroundColor: "#B1D4D2",
@@ -314,7 +314,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 40,
-    marginLeft: 20,
+    marginLeft: 5,
   },
   customStyle: {
     color: "white",
@@ -335,7 +335,7 @@ const styles = StyleSheet.create({
   },
   CameraButtonClicked: {
     backgroundColor: "#B1D4D2",
-    borderColor: "#B1D4D2",
+    borderColor: "#ED7861",
     height: "50",
     width: "80%",
     marginLeft: 40,

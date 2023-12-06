@@ -62,9 +62,12 @@ const ListingDetails = ({ navigation, route }) => {
     }
   };
   const showTour = () => {
-    //navigation.navigate("")
-    console.log("click");
-    navigation.navigate("panaroma_view", { id: route.params });
+    console.log(".___id::::" + item._id);
+    if (item._id === "656fbe10498a492f662e9664") {
+      navigation.navigate("panaroma_view2", { id: route.params });
+    } else {
+      navigation.navigate("panaroma_view", { id: route.params });
+    }
   };
   const showInterest = async () => {
     const id = await AsyncStorage.getItem("id");
@@ -118,7 +121,7 @@ const ListingDetails = ({ navigation, route }) => {
             </ScrollView>
 
             <Text style={styles.heading}>
-              {item.roomNumbers} Bedroom {item.type} on
+              {item.roomNumbers} Bedroom {item.type} in
               {item.location ? JSON.parse(item.location)?.city : "Vancouver"}
             </Text>
 

@@ -35,6 +35,7 @@ import SingUp3 from "../container/SignUp3";
 import OwnerNewListingStart from "../container/OwnerNewListingStart";
 import CoverImagePicker from "../container/CoverImagePicker";
 import PostIsReady from "../container/PostIsReady";
+import PanaromaView2 from "../container/PanaromaView2";
 
 const Stack = createStackNavigator();
 
@@ -319,6 +320,16 @@ const AppStack = () => {
         <Stack.Screen
           name="panaroma_view"
           component={PanaromaView}
+          options={{
+            headerBackTitleVisible: false,
+            headerTitle: "",
+            headerTintColor: "#3B6665",
+            headerBackTitle: false,
+          }}
+        />
+        <Stack.Screen
+          name="panaroma_view2"
+          component={PanaromaView2}
           options={{
             headerBackTitleVisible: false,
             headerTitle: "",

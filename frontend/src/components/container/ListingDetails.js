@@ -121,10 +121,12 @@ const ListingDetails = ({ navigation, route }) => {
             </ScrollView>
 
             <Text style={styles.heading}>
-              {item.roomNumbers} Bedroom {item.type} in
-              {item.location ? JSON.parse(item.location)?.city : "Vancouver"}
+              {item.roomNumbers} Bedroom {item.type}
+              {/* {item.location ? JSON.parse(item.location)?.city : "Vancouver"} */}
             </Text>
-
+            <Text style={styles.heading1}>
+              in {item.location ? JSON.parse(item.location)?.city : "Vancouver"}
+            </Text>
             <ButtonUI
               item={{ value: "360 Virtual Tour" }}
               // customStyle={styles.button}
@@ -215,6 +217,13 @@ const ListingDetails = ({ navigation, route }) => {
 };
 export default ListingDetails;
 const styles = StyleSheet.create({
+  heading1: {
+    marginTop: 8,
+    fontSize: 25,
+    color: "#413855",
+    textAlign: "center",
+    fontFamily: "Mulish_700Bold",
+  },
   heading: {
     marginTop: 25,
     fontSize: 25,

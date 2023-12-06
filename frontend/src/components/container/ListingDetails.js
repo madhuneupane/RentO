@@ -121,7 +121,7 @@ const ListingDetails = ({ navigation, route }) => {
             </ScrollView>
 
             <Text style={styles.heading}>
-              {item.roomNumbers} Bedroom ${item.type} in
+              {item.roomNumbers} Bedroom {item.type} in
               {item.location ? JSON.parse(item.location)?.city : "Vancouver"}
             </Text>
 

@@ -2,7 +2,7 @@
   <div class="home">
     <div class="view-container" ref="threeDBox"></div>
     <div class="button-container">
-      <!-- <button
+      <button
         class="change-room-button"
         @click="changeRoom('lowq')"
         :class="{ 'current-room-button': currentRoom === 'lowq' }"
@@ -16,8 +16,8 @@
         style="top: 60px"
       >
         Medium Quality
-      </button> -->
-      <button
+      </button>
+      <!-- <button
         class="change-room-button"
         @click="changeRoom('kitchen')"
         :class="{ 'current-room-button': currentRoom === 'kitchen' }"
@@ -32,7 +32,7 @@
         style="top: 160px"
       >
         Living Room
-      </button>
+      </button> -->
     </div>
   </div>
 </template>
@@ -44,6 +44,7 @@ export default {
   name: "Home",
   data() {
     return {
+      p_id: null,
       scene: null,
       camera: null,
       controls: null,
@@ -52,7 +53,7 @@ export default {
       box: null,
       timer: {},
       picList: ["right", "left", "top", "bottom", "front", "back"],
-      currentRoom: "kitchen",
+      currentRoom: "lowq",
     };
   },
   methods: {
@@ -80,18 +81,65 @@ export default {
       this.renderer.setSize(element.offsetWidth, element.offsetHeight);
       element.appendChild(this.renderer.domElement);
     },
-    initContent() {
+    initContent(p_id) {
       let boxGeometry = new THREE.BoxGeometry(10, 10, 10);
       let boxMaterials = [];
-      this.picList.forEach((item) => {
-        let texture = new THREE.TextureLoader().load(
-          require(`@/assets/image/${this.currentRoom}/${item}.png`)
-        );
-        boxMaterials.push(new THREE.MeshBasicMaterial({ map: texture }));
-      });
-      this.box = new THREE.Mesh(boxGeometry, boxMaterials);
-      this.box.geometry.scale(10, 10, -10);
-      this.scene.add(this.box);
+
+      if (p_id) {
+        this.fetchRoomImages(p_id);
+      } else {
+        this.picList.forEach((item) => {
+          let texture = new THREE.TextureLoader().load(
+            require(`@/assets/image/${this.currentRoom}/${item}.png`)
+          );
+          boxMaterials.push(new THREE.MeshBasicMaterial({ map: texture }));
+        });
+
+        this.box = new THREE.Mesh(boxGeometry, boxMaterials);
+        this.box.geometry.scale(10, 10, -10);
+        this.scene.add(this.box);
+      }
+    },
+    fetchRoomImages(p_id) {
+      const url = `https://api.rent-o.com/api/fetchPropertyById/${p_id}`;
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(
+              `Network response was not ok: ${response.statusText}`
+            );
+          }
+          return response.json();
+        })
+        .then((data) => {
+          this.roomImages = data.data.images;
+          console.log("roomImages:", this.roomImages);
+
+          const roomKeys = Object.keys(this.roomImages);
+          console.log("Room Keys:", roomKeys);
+
+          if (roomKeys.length > 0) {
+            this.currentRoom = roomKeys[roomKeys.length - 1];
+            let boxMaterials = [];
+            roomKeys.forEach((item) => {
+              let texture = new THREE.TextureLoader().load(
+                this.roomImages[item]
+              );
+              boxMaterials.push(new THREE.MeshBasicMaterial({ map: texture }));
+            });
+
+            //Clear rooms
+            if (this.box) {
+              this.scene.remove(this.box);
+            }
+            this.box = new THREE.Mesh(boxGeometry, boxMaterials);
+            this.box.geometry.scale(10, 10, -10);
+            this.scene.add(this.box);
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching room images:", error);
+        });
     },
     render() {
       this.controls.update();
@@ -119,6 +167,17 @@ export default {
     this.initContent();
     this.initRenderer(element);
     this.render();
+    window.addEventListener("resize", this.onResize, false);
+    if (window.idFromReactNative !== undefined) {
+      console.log(
+        "----Received property id from React Native: " +
+          window.idFromReactNative
+      );
+      let p_id = window.idFromReactNative;
+    } else {
+      console.log("idFromReactNative is not defined----");
+    }
+
     window.addEventListener("resize", this.onResize, false);
   },
   destroyed() {

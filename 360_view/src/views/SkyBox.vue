@@ -4,20 +4,20 @@
     <div class="button-container">
       <button
         class="change-room-button"
-        @click="changeRoom('living')"
-        :class="{ 'current-room-button': currentRoom === 'living' }"
+        @click="changeRoom('lowq')"
+        :class="{ 'current-room-button': currentRoom === 'lowq' }"
       >
-        Living Room
+        Low Quality
       </button>
       <button
         class="change-room-button"
-        @click="changeRoom('bed')"
-        :class="{ 'current-room-button': currentRoom === 'bed' }"
+        @click="changeRoom('medq')"
+        :class="{ 'current-room-button': currentRoom === 'medq' }"
         style="top: 60px"
       >
-        Bedroom
+        Medium Quality
       </button>
-      <button
+      <!-- <button
         class="change-room-button"
         @click="changeRoom('kitchen')"
         :class="{ 'current-room-button': currentRoom === 'kitchen' }"
@@ -27,12 +27,12 @@
       </button>
       <button
         class="change-room-button"
-        @click="changeRoom('bath')"
-        :class="{ 'current-room-button': currentRoom === 'bath' }"
+        @click="changeRoom('living')"
+        :class="{ 'current-room-button': currentRoom === 'living' }"
         style="top: 160px"
       >
-        Bathroom
-      </button>
+        Living Room
+      </button> -->
     </div>
   </div>
 </template>
@@ -52,7 +52,7 @@ export default {
       box: null,
       timer: {},
       picList: ["right", "left", "top", "bottom", "front", "back"],
-      currentRoom: "living",
+      currentRoom: "lowq",
     };
   },
   methods: {
@@ -139,9 +139,9 @@ export default {
     overflow: hidden;
   }
   .change-room-button {
-    width: 95px;
-    font-size: 0.8rem;
-    padding: 10px;
+    width: 120px;
+    font-size: 1rem;
+    padding: 12px;
     background-color: #3b6665;
     color: #fff;
     border: 0.5px solid grey;

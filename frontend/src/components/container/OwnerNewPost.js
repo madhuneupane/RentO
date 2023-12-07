@@ -91,9 +91,9 @@ const OwnerNewPost = ({ navigation, route }) => {
             </ScrollView>
 
             <Text style={styles.heading}>
-              {item.roomNumbers} Bedroom {item.type} on {location}
+              {item.roomNumbers} Bedroom {item.type}
             </Text>
-
+            <Text style={styles.heading1}>in {location}</Text>
             <ButtonUI
               item={{ value: "360 Virtual Tour" }}
               // customStyle={styles.button}
@@ -146,16 +146,17 @@ const OwnerNewPost = ({ navigation, route }) => {
               </View>
               <Text style={styles.title}>Amenities</Text>
               <View style={styles.amenitiesTextView}>
-                <View>
-                  <Text style={styles.textView}>
-                    {item.amenities?.pet ? "Pet friendly" : "Pet friendly"}
-                  </Text>
-                  <Text style={styles.textView}>
-                    {item.amenities?.wifi ? "Wi-fi" : "Wi-fi"}
-                  </Text>
-                  <Text style={styles.textView}>TV</Text>
-                </View>
-                <View>
+                <Text style={styles.textView}>
+                  {item.amenities?.pet ? "Pet friendly" : "Pet friendly"}
+                </Text>
+                <Text style={styles.textView}>
+                  {item.amenities?.wifi ? "Wi-fi" : "Wi-fi"}
+                </Text>
+                <Text style={styles.textView}>
+                  {item.amenities?.wifi ? "Parking" : "Parking"}
+                </Text>
+
+                {/* <View>
                   <Text style={styles.textView}>
                     {item.amenities?.parkingSpace ? "Parking" : "Parking"}
                   </Text>
@@ -169,7 +170,7 @@ const OwnerNewPost = ({ navigation, route }) => {
                       ? "Air Conditioning"
                       : "Air Conditioning"}
                   </Text>
-                </View>
+                </View> */}
               </View>
             </View>
             <View style={styles.subContainer}>
@@ -231,6 +232,13 @@ const OwnerNewPost = ({ navigation, route }) => {
 export default OwnerNewPost;
 
 const styles = StyleSheet.create({
+  heading1: {
+    marginTop: 8,
+    fontSize: 25,
+    color: "#413855",
+    textAlign: "center",
+    fontFamily: "Mulish_700Bold",
+  },
   heading: {
     marginTop: 25,
     fontSize: 25,

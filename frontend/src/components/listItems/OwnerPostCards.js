@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "@rneui/themed";
 import { Text } from "@rneui/base";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-const OwnerCards = ({ data, getTenant }) => {
+const OwnerCards = ({ data, getTenant, adj }) => {
   const location = JSON.parse(data.location)?.city;
 
   return (
@@ -15,8 +15,10 @@ const OwnerCards = ({ data, getTenant }) => {
           ></Card.Image>
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.type}>{`Cozy ${data.type} in ${location}`}</Text>
-          <Text style={styles.match}>You have 1 tenant matches</Text>
+          <Text
+            style={styles.type}
+          >{`${adj} ${data.type} in ${location}`}</Text>
+          <Text style={styles.match}>You have tenant matches</Text>
           <Text style={styles.profile}>See profiles </Text>
         </View>
       </View>

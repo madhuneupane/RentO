@@ -62,9 +62,12 @@ const ListingDetails = ({ navigation, route }) => {
     }
   };
   const showTour = () => {
-    //navigation.navigate("")
-    console.log("click");
-    navigation.navigate("panaroma_view", { id: route.params });
+    console.log(".___id::::" + item._id);
+    if (item._id === "656fbe10498a492f662e9664") {
+      navigation.navigate("panaroma_view2", { id: route.params });
+    } else {
+      navigation.navigate("panaroma_view", { id: route.params });
+    }
   };
   const showInterest = async () => {
     const id = await AsyncStorage.getItem("id");
@@ -118,10 +121,12 @@ const ListingDetails = ({ navigation, route }) => {
             </ScrollView>
 
             <Text style={styles.heading}>
-              {item.roomNumbers} Bedroom {item.type} on
-              {item.location ? JSON.parse(item.location)?.city : "Vancouver"}
+              {item.roomNumbers} Bedroom {item.type}
+              {/* {item.location ? JSON.parse(item.location)?.city : "Vancouver"} */}
             </Text>
-
+            <Text style={styles.heading1}>
+              in {item.location ? JSON.parse(item.location)?.city : "Vancouver"}
+            </Text>
             <ButtonUI
               item={{ value: "360 Virtual Tour" }}
               // customStyle={styles.button}
@@ -157,20 +162,21 @@ const ListingDetails = ({ navigation, route }) => {
             <View style={styles.subContainer}>
               <Text style={styles.title}>Amenities</Text>
               <View style={styles.amenitiesTextView}>
-                <View>
-                  <Text style={styles.textView}>
-                    {item.amenities?.pet ? "Pet friendly" : "Pet friendly"}
-                  </Text>
-                  <Text style={styles.textView}>
-                    {item.amenities?.wifi ? "Wi-fi" : "Wi-fi"}
-                  </Text>
-                  <Text style={styles.textView}>TV</Text>
-                </View>
-                <View>
+                <Text style={styles.textView}>
+                  {item.amenities?.pet ? "Pet friendly" : "Pet friendly"}
+                </Text>
+                <Text style={styles.textView}>
+                  {item.amenities?.wifi ? "Wi-fi" : "Wi-fi"}
+                </Text>
+                <Text style={styles.textView}>
+                  {item.amenities?.wifi ? "Parking" : "Parking"}
+                </Text>
+
+                {/* <View>
                   <Text style={styles.textView}>Parking</Text>
                   <Text style={styles.textView}>In-unit laundry</Text>
                   <Text style={styles.textView}>Air Conditioning</Text>
-                </View>
+                </View> */}
               </View>
             </View>
             <View style={styles.subContainer}>
@@ -211,6 +217,13 @@ const ListingDetails = ({ navigation, route }) => {
 };
 export default ListingDetails;
 const styles = StyleSheet.create({
+  heading1: {
+    marginTop: 8,
+    fontSize: 25,
+    color: "#413855",
+    textAlign: "center",
+    fontFamily: "Mulish_700Bold",
+  },
   heading: {
     marginTop: 25,
     fontSize: 25,
@@ -255,7 +268,7 @@ const styles = StyleSheet.create({
     marginLeft: "85%",
   },
   subContainer: {
-    marginTop: "5%",
+    marginTop: "10%",
     marginLeft: 20,
     // flexDirection: "row",
     // justifyContent: "space-around",

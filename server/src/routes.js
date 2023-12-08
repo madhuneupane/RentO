@@ -10,14 +10,14 @@ const routes = (app) => {
   app
     .route("/fetchSingleUser/:email/:password")
     .get(userController.fetchSingleUser);
-  app.route("/fetchUserById/:id").get(userController.fetchUserById);
+  app.route("/fetchUserById/:id").get(verifyToken, userController.fetchUserById);
 
   app.route("/addProperty").post(verifyToken, propertyController.addProperty);
   app
     .route("/addInterested")
     .post(verifyToken, propertyController.addInterested);
-  app.route("/fetchAllProperty").get(propertyController.fetchAllProperty);
-  app.route("/fetchPropertyById/:id").get(propertyController.fetchPropertyById);
+  app.route("/fetchAllProperty").get(verifyToken, propertyController.fetchAllProperty);
+  app.route("/fetchPropertyById/:id").get(verifyToken, propertyController.fetchPropertyById);
   app
     .route("/fetchPropertiesByOwner/:id")
     .get(verifyToken, propertyController.fetchPropertiesByOwner);
@@ -26,7 +26,7 @@ const routes = (app) => {
     .route("/descriptionSuggest")
     .post(verifyToken, openAiController.suggestDescription);
 
-  app.route("/craigExtract").get(craigEnd.extractFromCraig);
+  app.route("/craigExtract").get(verifyToken, craigEnd.extractFromCraig);
 };
 
 const verifyToken = (req, res, next) => {

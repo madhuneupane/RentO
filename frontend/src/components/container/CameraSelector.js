@@ -40,16 +40,16 @@ export default function App({navigation, route}) {
     if (camera) {
       const data = await camera.takePictureAsync(null);
       
-      // const blob = await fetch(data.uri).then((response) => response.blob());
+      const blob = await fetch(data.uri).then((response) => response.blob());
 
-      // const fileRef = ref(getStorage(), `RentO/${data.uri}`);
-      // await uploadBytes(fileRef, blob);
+      const fileRef = ref(getStorage(), `RentO/${data.uri}`);
+      await uploadBytes(fileRef, blob);
   
-      // const downloadURL = await getDownloadURL(fileRef);
+      const downloadURL = await getDownloadURL(fileRef);
   
-      // console.log("image::" + downloadURL);
-      // setImage(downloadURL);
-      setImage(data.uri);
+      //console.log("image::" + downloadURL);
+      setImage(downloadURL);
+      //setImage(data.uri);
       navigation.navigate("image_select",route.params);
     }
   };

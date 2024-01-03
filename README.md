@@ -11,6 +11,10 @@ Replace the local server URL in ApiConstants.js in the static folder in frontend
  Open a new terminal for 360_view and 360_view_2
  <ul><li> Run npm run serve </li></ul>
 
+ #Run FrontEnd
+ Visit the Frontend folder in the new terminal 
+ <ul><li>Run npm install</li><li>Run npm start</li></ul>
+
 
 
 

@@ -4,7 +4,6 @@ Rent-O is a mobile application that addresses the pressing issue of finding rent
 
 https://github.com/madhuneupane/RentO/assets/116036967/bdedd8ce-9a07-46c2-85fa-dbf70d3e517e
 
----
  ### Run Backend
  ---
  In the new terminal visit server <br>

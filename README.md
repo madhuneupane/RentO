@@ -5,7 +5,7 @@ Rent-O is a mobile application that addresses the pressing issue of finding rent
 https://github.com/madhuneupane/RentO/assets/116036967/bdedd8ce-9a07-46c2-85fa-dbf70d3e517e
 
 
-<h3>Run Backend</h3>
+# <h3>Run Backend</h3>
 In the new terminal visit server <br>
 <ul><li>Run npm install</li><li>Run npm start</li></ul>
 Replace the local server URL in ApiConstants.js in the static folder in frontend.

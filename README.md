@@ -23,7 +23,7 @@ Replace the local server URL in ApiConstants.js in the static folder in frontend
 
 ## Run FrontEnd
 
- Visit the Frontend folder in the new terminal. 
+ Visit the frontend folder in the new terminal. 
  - Run `npm install`
  - Run `npm start`
 

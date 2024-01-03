@@ -8,7 +8,8 @@ In the new terminal visit server <br>
 Replace the local server URL in ApiConstants.js in the static folder in frontend.
 
 ## Run 360 View
- Open a new terminal for 360_view and 360_view_2 and write <b> npm run serve
+ Open a new terminal for 360_view and 360_view_2  <b> 
+ <ul><li> Run npm run serve </li></ul>
 
 
 

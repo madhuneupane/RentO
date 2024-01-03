@@ -15,6 +15,9 @@ Replace the local server URL in ApiConstants.js in the static folder in frontend
  Visit the Frontend folder in the new terminal 
  <ul><li>Run npm install</li><li>Run npm start</li></ul>
 
+ # Run MapView and Search Bar
+ Install Live Server Extension in VS Code and select "Open with Live Server" by right-clicking on index.html file in both SearchWebview and map_list_view folder 
+
 
 
 

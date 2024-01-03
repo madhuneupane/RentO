@@ -4,24 +4,24 @@ RentO is a mobile application that addresses the pressing issue of finding renta
 https://github.com/madhuneupane/RentO/assets/116036967/bdedd8ce-9a07-46c2-85fa-dbf70d3e517e
 
  ### Run Backend
- ----
- In the new terminal visit server <br>
+ ---
+ In the new terminal visit server. <br>
 <ul><li>Run npm install</li><li>Run npm start</li></ul>
 Replace the local server URL in ApiConstants.js in the static folder in frontend.
 
 ### Run 360 View
 ---
- Open a new terminal for 360_view and 360_view_2
+ Open a new terminal for 360_view and 360_view_2.
  <ul><li> Run npm run serve </li></ul>
 
 ### Run FrontEnd
 ---
- Visit the Frontend folder in the new terminal 
+ Visit the Frontend folder in the new terminal. 
  <ul><li>Run npm install</li><li>Run npm start</li></ul>
 
  ### Run MapView and Search Bar
  ---
- Install Live Server Extension in VS Code and select "Open with Live Server" by right-clicking on index.html file in both SearchWebview and map_list_view folder 
+ Install Live Server Extension in VS Code and select "Open with Live Server" by right-clicking on index.html file in both SearchWebview and map_list_view folder. 
 
 
 
